@@ -39,3 +39,13 @@ In the same file you can deactivate/activate shoulders inputs by commenting/deco
 * Simulate Xbox360 Controller inputs: [vgamepad](https://pypi.org/project/vgamepad/)
 * Read keyboard inputs: [keyboard](https://github.com/boppreh/keyboard#api)
 * Simulate keyboard inputs: [pynput](https://pypi.org/project/pynput/)
+
+# Credits #
+A big "Thank you!" goes to
+* the authors of [ViGEmBus](https://github.com/ViGEm/ViGEmBus) driver
+* the authors of [Mediapipe Pose](https://google.github.io/mediapipe/solutions/pose.html) high-fidelity body pose tracking solution
+* the authors of [vgamepad](https://pypi.org/project/vgamepad/) python library
+* the authors of [keyboard](https://github.com/boppreh/keyboard) python library
+* the authors of [pynput](https://pypi.org/project/pynput/) python library
+
+on which our solution relies
