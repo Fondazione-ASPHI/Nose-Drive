@@ -1,10 +1,15 @@
-shoulders_sensibility = 0.05
-nose_analog_sensibility = 15
-# nose_arrows_sensibility = 0.015
+############################
+# You can EDIT the following values
+############################
+
+nose_analog_sensibility = 15 # suggested values between 0 and 30
+use_shoulders = True # set this to True or False whether you want to track the shoulders or not
+shoulders_sensibility = 0.05 # suggested values between 0.02 and 0.07
+
 
 
 ############################
-# DON'T EDIT BELOW THIS LINE
+# DON'T EDIT BELOW THIS LINE (unless you know what you are doing)
 ############################
 
 import cv2
@@ -163,6 +168,7 @@ with mp_pose.Pose(
           print(x, y)
 
         #### ARROWS ####
+        # nose_arrows_sensibility = 0.015
         # if  (temp_nose[0] - nose_last[0] > nose_arrows_sensibility):
         #   controller.press(Key.left)
         #   # print("NOSE left")
