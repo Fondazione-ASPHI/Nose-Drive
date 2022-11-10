@@ -1,4 +1,4 @@
-# Pose Buttons #
+# Nose Drive #
 Simulate Xbox360 controller inputs using [Mediapipe Pose](https://google.github.io/mediapipe/solutions/pose.html) tracking of Nose and Shoulders joints.
 
 AUTHORS: [Fondazione ASPHI Onlus](https://asphi.it/)
