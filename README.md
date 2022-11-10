@@ -47,4 +47,4 @@ A big "Thank you!" goes to
 * the authors of [keyboard](https://github.com/boppreh/keyboard) python library
 * the authors of [pynput](https://pypi.org/project/pynput/) python library
 
-on which our solution relies
+on whose our solution relies
