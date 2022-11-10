@@ -3,6 +3,7 @@ Simulate Xbox360 controller inputs using [Mediapipe Pose](https://google.github.
 
 AUTHORS: [Fondazione ASPHI Onlus](https://asphi.it/)
 
+## Demo video ##
 [![YouTube sample video](https://img.youtube.com/vi/r1LHRb9G_eM/0.jpg)](https://www.youtube.com/watch?v=r1LHRb9G_eM)
 
 ## Setup Instructions ##
