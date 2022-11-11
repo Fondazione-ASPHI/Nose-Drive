@@ -26,7 +26,7 @@ Optionally:
 ## Advanced customization ##
 The software and its releases are plain python code that can be modified if you know how to :)
 
-Sensibility values for nose and shoulders can be modified in the first lines of the [Buttons.py](https://github.com/Fondazione-ASPHI/Nose-Drive/blob/main/Buttons.py) file.
+Sensibility values for nose and shoulders can be modified in the first lines of the [Nose_Drive.py](https://github.com/Fondazione-ASPHI/Nose-Drive/blob/main/Nose_Drive.py) file.
 
 ## Mediapipe Pose Documentation ##
 [Python API examples](https://google.github.io/mediapipe/solutions/pose#python-solution-api)
