@@ -25,7 +25,7 @@ Optionally:
 * LEFT SHOULDER UP: press gamepad Button B (could be handbrake)
 
 ## Advanced customization ##
-The software and its releases are plain python code that can be modified if you know how to :)
+The software and its releases are plain python code that can be modified.
 
 In the first lines of the [Nose_Drive.py](https://github.com/Fondazione-ASPHI/Nose-Drive/blob/main/Nose_Drive.py) file you can modify:
 * sensibility values for nose horizontal and vertical inputs
