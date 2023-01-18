@@ -10,7 +10,7 @@ shoulders_sensibility = 0.05 # suggested values between 0.02 and 0.07
 
 calibration_time = 5 # in seconds
 
-mode = "Arrows" # can be "Gamepad", "Mouse" or "Arrows"
+mode = "Gamepad" # can be "Gamepad", "Mouse" or "Arrows"
 
 
 
@@ -53,6 +53,7 @@ if mode == "Gamepad":
   gamepad = vg.VX360Gamepad()
 
 # Init Mouse controller
+width, height = (0, 0)
 if mode == "Mouse":
   import pyautogui
   pyautogui.FAILSAFE = False
@@ -199,8 +200,9 @@ with mp_pose.Pose(
 
         #### MOUSE ####
         elif mode == "Mouse":
-          pyautogui.moveTo(-x * 100, y * 100)
-
+          mouse_x = ((-x + 1) / 2) * width
+          mouse_y = ((y + 1) / 2) * height
+          pyautogui.moveTo(mouse_x, mouse_y)
 
         # print(temp_nose)
         if debug:
