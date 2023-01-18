@@ -10,6 +10,8 @@ shoulders_sensibility = 0.05 # suggested values between 0.02 and 0.07
 
 calibration_time = 5 # in seconds
 
+mode = "Mouse" # can be "Gamepad", "Mouse" or "Arrows"
+
 
 
 ############################
@@ -20,11 +22,7 @@ import cv2
 import mediapipe as mp
 import sys
 import numpy
-import keyboard as board
-from pynput.keyboard import Key, Controller
-from pynput import keyboard
 import time
-import vgamepad as vg # https://pypi.org/project/vgamepad/   https://github.com/ViGEm/ViGEmBus
 
 
 mp_drawing = mp.solutions.drawing_utils
@@ -35,6 +33,14 @@ mp_pose = mp.solutions.pose
 ###############################
 # BUTTONS LOGIC
 ###############################
+
+import keyboard as board
+from pynput.keyboard import Key, Controller
+from pynput import keyboard
+import vgamepad as vg # https://pypi.org/project/vgamepad/   https://github.com/ViGEm/ViGEmBus
+import pyautogui
+
+
 args = sys.argv
 debug = False
 if len(args) > 1:
@@ -42,6 +48,7 @@ if len(args) > 1:
 
 controller = Controller()
 gamepad = vg.VX360Gamepad()
+pyautogui.FAILSAFE = False
 
 left_shoulder_last = 0
 right_shoulder_last = 0
@@ -151,7 +158,8 @@ with mp_pose.Pose(
 #################
 # NOSE #
 #################
-        #### ANALOG ####
+
+        #### Get X and Y values ####
         x = (temp_nose[0] - nose_last[0]) * nose_horizontal_sensibility
         if x > 1:
           x = 1
@@ -162,47 +170,57 @@ with mp_pose.Pose(
           y = 1
         elif y < -1:
           y = -1
-        gamepad.left_joystick_float(x_value_float=-x, y_value_float=0)
-        if y > 0:
-          # controller.release(Key.down)
-          gamepad.right_trigger_float(value_float=y)
-        elif y < 0:
-          # controller.press(Key.down)
-          gamepad.left_trigger_float(value_float=1)
-        gamepad.update()
-        gamepad.reset()
-        
-        if debug:
-          print(x, y)
+          
+
+        #### GAMEPAD ####
+        if  mode == "Gamepad": 
+          gamepad.left_joystick_float(x_value_float=-x, y_value_float=0)
+          if y > 0:
+            # controller.release(Key.down)
+            gamepad.right_trigger_float(value_float=y)
+          elif y < 0:
+            # controller.press(Key.down)
+            gamepad.left_trigger_float(value_float=1)
+          gamepad.update()
+          gamepad.reset()
+
 
         #### ARROWS ####
-        # nose_arrows_sensibility = 0.015
-        # if  (temp_nose[0] - nose_last[0] > nose_arrows_sensibility):
-        #   controller.press(Key.left)
-        #   # print("NOSE left")
-        # else:
-        #   controller.release(Key.left)
-
-        # if (nose_last[0] - temp_nose[0] > nose_arrows_sensibility):
-        #   controller.press(Key.right)
-        #   # print("NOSE right")
-        # else:
-        #   controller.release(Key.right)
-
-        # if  (nose_last[1] - temp_nose[1] > nose_arrows_sensibility):
-        #   controller.press(Key.down)
-        #   # print("NOSE down")
-        # else:
-        #   controller.release(Key.down)
-
-        # if (temp_nose[1] - nose_last[1] > nose_arrows_sensibility):
-        #   controller.press(Key.up)
-        #   # print("NOSE up")
-        # else:
-        #   controller.release(Key.up)
+        if mode == "Arrows":
+          if (x < -0.5):
+            controller.press(Key.left)
+            if debug:
+              print("NOSE left")
+          else:
+            controller.release(Key.left)            
+          if (x > 0.5):
+            controller.press(Key.right)
+            if debug:
+              print("NOSE right")
+          else:
+            controller.release(Key.right)
+          if  (y > 0.5):
+            controller.press(Key.down)
+            if debug:
+              print("NOSE down")
+          else:
+            controller.release(Key.down)
+          if (y < -0.5):
+            controller.press(Key.up)
+            if debug:
+              print("NOSE up")
+          else:
+            controller.release(Key.up)
         
 
-      # print(temp_nose)
+        #### MOUSE ####
+        if mode == "Mouse":
+          pyautogui.moveTo(-x * 100, y * 100)
+
+
+        # print(temp_nose)
+        if debug:
+          print(x, y)
 
 ###############################
 ###############################
