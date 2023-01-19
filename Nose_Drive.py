@@ -5,12 +5,10 @@
 nose_horizontal_sensibility = 15 # suggested values between 0 and 30
 nose_vertical_sensibility = 30 # suggested values between 0 and 30
 
-use_shoulders = True # set this to True or False whether you want to track the shoulders or not
+use_shoulders = False # set this to True or False whether you want to track the shoulders or not
 shoulders_sensibility = 0.05 # suggested values between 0.02 and 0.07
 
 calibration_time = 5 # in seconds
-
-mode = "Drive" # can be "Drive", "Analog", "Mouse" or "Arrows"
 
 
 
@@ -40,25 +38,11 @@ debug = False
 if len(args) > 1:
   debug = args[1] == "debug"
 
-# Init Keyboard controller
-if mode == "Arrows":
-  import keyboard as board
-  from pynput.keyboard import Key, Controller
-  from pynput import keyboard
-  controller = Controller()
 
 # Init Gamepad controller
-if mode == "Drive" or mode == "Analog":
-  import vgamepad as vg # https://pypi.org/project/vgamepad/   https://github.com/ViGEm/ViGEmBus
-  gamepad = vg.VX360Gamepad()
+import vgamepad as vg # https://pypi.org/project/vgamepad/   https://github.com/ViGEm/ViGEmBus
+gamepad = vg.VX360Gamepad()
 
-# Init Mouse controller
-width, height = (0, 0)
-if mode == "Mouse":
-  import pyautogui
-  pyautogui.FAILSAFE = False
-  width, height = pyautogui.size()
-  print("Screen resolution:", width, "x", height)
 
 # Init variables
 left_shoulder_last = 0
@@ -111,7 +95,7 @@ with mp_pose.Pose(
 
 
 ###############################
-# BUTTONS LOGIC
+# CALIBRATION
 ###############################
 
     if results.pose_landmarks != None:
@@ -122,7 +106,6 @@ with mp_pose.Pose(
           start_time = time.time()
           print("Calibrating... - Stay still wait " + str(calibration_time) + " seconds")
           message = True
-        # if board.is_pressed('q'):
         if time.time() - start_time > calibration_time:        
           left_shoulder_last = temp_left
           right_shoulder_last = temp_right
@@ -131,9 +114,6 @@ with mp_pose.Pose(
           print("Calibration done. Now Tracking.")
       else:
 
-        # if (board.is_pressed('c')):
-        #   calibrated = False
-        #   message = False
         
 
 #################
@@ -154,66 +134,17 @@ with mp_pose.Pose(
           
 
         #### GAMEPAD ####
-        if  mode == "Drive":
-          gamepad.left_joystick_float(x_value_float=-x, y_value_float=0)
-          if y > 0:
-            # controller.release(Key.down)
-            gamepad.right_trigger_float(value_float=y)
-          elif y < 0:
-            # controller.press(Key.down)
-            gamepad.left_trigger_float(value_float=1)
-          gamepad.update()
-          gamepad.reset()
+        gamepad.left_joystick_float(x_value_float=-x, y_value_float=0)
+        if y > 0:
+          # controller.release(Key.down)
+          gamepad.right_trigger_float(value_float=y)
+        elif y < 0:
+          # controller.press(Key.down)
+          gamepad.left_trigger_float(value_float=1)
+        gamepad.update()
+        gamepad.reset()
 
-
-        elif mode == "Analog":
-          gamepad.left_joystick_float(x_value_float=-x, y_value_float=y)
-          gamepad.update()
-          gamepad.reset()
-
-
-        #### ARROWS ####
-        elif mode == "Arrows":
-          
-          if (x > 0.5):
-            controller.press(Key.left)
-            if debug:
-              print("NOSE left")
-          else:
-            controller.release(Key.left)            
-          
-          if (x < -0.5):
-            controller.press(Key.right)
-            if debug:
-              print("NOSE right")
-          else:
-            controller.release(Key.right)
-          
-          if  (y > 0.5):
-            controller.press(Key.down)
-            if debug:
-              print("NOSE down")
-          else:
-            controller.release(Key.down)
-          
-          if (y < -0.5):
-            controller.press(Key.up)
-            if debug:
-              print("NOSE up")
-          else:
-            controller.release(Key.up)
         
-
-        #### MOUSE ####
-        elif mode == "Mouse":
-          mouse_x = ((-x + 1) / 2) * width
-          mouse_y = ((y + 1) / 2) * height
-          pyautogui.moveTo(mouse_x, mouse_y)
-
-        # print(temp_nose)
-        if debug:
-          print(x, y)
-
 
 #################
 # SHOULDERS #
@@ -222,40 +153,18 @@ with mp_pose.Pose(
           trigger_left = delta_left > shoulders_sensibility
           if trigger_left and debug:
             print("LEFT: " + str(delta_left))
-          if mode == "Drive" or mode == "Analog":
-            if (trigger_left):
-              gamepad.press_button(button=vg.XUSB_BUTTON.XUSB_GAMEPAD_A)  # Xbox360 A Button
-            else:
-              gamepad.release_button(button=vg.XUSB_BUTTON.XUSB_GAMEPAD_A)  # Xbox360 A button
-          elif mode == "Arrows":
-            if (trigger_left):
-              controller.press(Key.ctrl) # press Keyboard LEFT ARROW
-            else:
-              controller.release(Key.ctrl) # release Keyboard LEFT ARROW
-          elif mode == "Mouse":
-            if (trigger_left):
-              pass
-            else:
-              pass
+          if (trigger_left):
+            gamepad.press_button(button=vg.XUSB_BUTTON.XUSB_GAMEPAD_A)  # Xbox360 A Button
+          else:
+            gamepad.release_button(button=vg.XUSB_BUTTON.XUSB_GAMEPAD_A)  # Xbox360 A button        
 
           trigger_right = delta_right > shoulders_sensibility
           if trigger_right and debug:
               print("RIGHT: " + str(delta_right))
-          if mode == "Drive" or mode == "Analog":
-            if (trigger_right):
-              gamepad.press_button(button=vg.XUSB_BUTTON.XUSB_GAMEPAD_B)  # Xbox360 B Button
-            else:
-              gamepad.release_button(button=vg.XUSB_BUTTON.XUSB_GAMEPAD_B)  # Xbox360 B button
-          elif mode == "Arrows":
-            if (trigger_right):
-              controller.press(Key.alt) # press Keyboard RIGHT ARROW
-            else:
-              controller.release(Key.alt) # release Keyboard RIGHT ARROW
-          elif mode == "Mouse":
-            if (trigger_right):
-              pass
-            else:
-              pass
+          if (trigger_right):
+            gamepad.press_button(button=vg.XUSB_BUTTON.XUSB_GAMEPAD_B)  # Xbox360 B Button
+          else:
+            gamepad.release_button(button=vg.XUSB_BUTTON.XUSB_GAMEPAD_B)  # Xbox360 B button
 
 
 
