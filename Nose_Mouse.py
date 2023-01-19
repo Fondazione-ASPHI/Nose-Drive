@@ -39,7 +39,10 @@ def nose(x, y):
 # SHOULDERS #
 #################
 def shoulders(trigger_left, trigger_right):
-  pass
+  if trigger_left:
+    pyautogui.click(button='left')
+  elif trigger_right:
+    pyautogui.click(button='right')
 
 
 
