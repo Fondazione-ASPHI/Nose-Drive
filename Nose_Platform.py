@@ -39,11 +39,10 @@ if len(args) > 1:
   debug = args[1] == "debug"
 
 # Init Keyboard controller
-if mode == "Arrows":
-  import keyboard as board
-  from pynput.keyboard import Key, Controller
-  from pynput import keyboard
-  controller = Controller()
+import keyboard as board
+from pynput.keyboard import Key, Controller
+from pynput import keyboard
+controller = Controller()
 
 
 # Init variables
