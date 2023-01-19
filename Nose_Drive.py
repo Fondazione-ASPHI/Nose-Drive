@@ -10,7 +10,7 @@ shoulders_sensibility = 0.05 # suggested values between 0.02 and 0.07
 
 calibration_time = 5 # in seconds
 
-mode = "Analog" # can be "Drive", "Mouse" or "Arrows"
+mode = "Drive" # can be "Drive", "Analog", "Mouse" or "Arrows"
 
 
 
