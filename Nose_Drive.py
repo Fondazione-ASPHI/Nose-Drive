@@ -175,14 +175,14 @@ with mp_pose.Pose(
         #### ARROWS ####
         elif mode == "Arrows":
           
-          if (x < -0.5):
+          if (x > 0.5):
             controller.press(Key.left)
             if debug:
               print("NOSE left")
           else:
             controller.release(Key.left)            
           
-          if (x > 0.5):
+          if (x < -0.5):
             controller.press(Key.right)
             if debug:
               print("NOSE right")
@@ -229,9 +229,9 @@ with mp_pose.Pose(
               gamepad.release_button(button=vg.XUSB_BUTTON.XUSB_GAMEPAD_A)  # Xbox360 A button
           elif mode == "Arrows":
             if (trigger_left):
-              controller.press(Key.left) # press Keyboard LEFT ARROW
+              controller.press(Key.ctrl) # press Keyboard LEFT ARROW
             else:
-              controller.release(Key.left) # release Keyboard LEFT ARROW
+              controller.release(Key.ctrl) # release Keyboard LEFT ARROW
           elif mode == "Mouse":
             if (trigger_left):
               pass
@@ -248,9 +248,9 @@ with mp_pose.Pose(
               gamepad.release_button(button=vg.XUSB_BUTTON.XUSB_GAMEPAD_B)  # Xbox360 B button
           elif mode == "Arrows":
             if (trigger_right):
-              controller.press(Key.right) # press Keyboard RIGHT ARROW
+              controller.press(Key.alt) # press Keyboard RIGHT ARROW
             else:
-              controller.release(Key.right) # release Keyboard RIGHT ARROW
+              controller.release(Key.alt) # release Keyboard RIGHT ARROW
           elif mode == "Mouse":
             if (trigger_right):
               pass
