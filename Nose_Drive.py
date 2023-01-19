@@ -10,7 +10,7 @@ shoulders_sensibility = 0.05 # suggested values between 0.02 and 0.07
 
 calibration_time = 5 # in seconds
 
-mode = "Gamepad" # can be "Gamepad", "Mouse" or "Arrows"
+mode = "Analog" # can be "Drive", "Mouse" or "Arrows"
 
 
 
@@ -48,7 +48,7 @@ if mode == "Arrows":
   controller = Controller()
 
 # Init Gamepad controller
-if mode == "Gamepad":
+if mode == "Drive" or mode == "Analog":
   import vgamepad as vg # https://pypi.org/project/vgamepad/   https://github.com/ViGEm/ViGEmBus
   gamepad = vg.VX360Gamepad()
 
@@ -154,7 +154,7 @@ with mp_pose.Pose(
           
 
         #### GAMEPAD ####
-        if  mode == "Gamepad":
+        if  mode == "Drive":
           gamepad.left_joystick_float(x_value_float=-x, y_value_float=0)
           if y > 0:
             # controller.release(Key.down)
@@ -162,6 +162,12 @@ with mp_pose.Pose(
           elif y < 0:
             # controller.press(Key.down)
             gamepad.left_trigger_float(value_float=1)
+          gamepad.update()
+          gamepad.reset()
+
+
+        elif mode == "Analog":
+          gamepad.left_joystick_float(x_value_float=-x, y_value_float=y)
           gamepad.update()
           gamepad.reset()
 
@@ -216,7 +222,7 @@ with mp_pose.Pose(
           trigger_left = delta_left > shoulders_sensibility
           if trigger_left and debug:
             print("LEFT: " + str(delta_left))
-          if mode == "Gamepad":
+          if mode == "Drive" or mode == "Analog":
             if (trigger_left):
               gamepad.press_button(button=vg.XUSB_BUTTON.XUSB_GAMEPAD_A)  # Xbox360 A Button
             else:
@@ -235,7 +241,7 @@ with mp_pose.Pose(
           trigger_right = delta_right > shoulders_sensibility
           if trigger_right and debug:
               print("RIGHT: " + str(delta_right))
-          if mode == "Gamepad":
+          if mode == "Drive" or mode == "Analog":
             if (trigger_right):
               gamepad.press_button(button=vg.XUSB_BUTTON.XUSB_GAMEPAD_B)  # Xbox360 B Button
             else:
