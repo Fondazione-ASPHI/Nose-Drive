@@ -137,10 +137,9 @@ with mp_pose.Pose(
 
         
         #### MOUSE ####
-        elif mode == "Mouse":
-          mouse_x = ((-x + 1) / 2) * width
-          mouse_y = ((y + 1) / 2) * height
-          pyautogui.moveTo(mouse_x, mouse_y)
+        mouse_x = ((-x + 1) / 2) * width
+        mouse_y = ((y + 1) / 2) * height
+        pyautogui.moveTo(mouse_x, mouse_y)
 
 
 

@@ -134,36 +134,34 @@ with mp_pose.Pose(
           y = -1
           
 
-        #### ARROWS ####
-        elif mode == "Arrows":
-          
-          if (x > 0.5):
-            controller.press(Key.left)
-            if debug:
-              print("NOSE left")
-          else:
-            controller.release(Key.left)            
-          
-          if (x < -0.5):
-            controller.press(Key.right)
-            if debug:
-              print("NOSE right")
-          else:
-            controller.release(Key.right)
-          
-          if  (y > 0.5):
-            controller.press(Key.down)
-            if debug:
-              print("NOSE down")
-          else:
-            controller.release(Key.down)
-          
-          if (y < -0.5):
-            controller.press(Key.up)
-            if debug:
-              print("NOSE up")
-          else:
-            controller.release(Key.up)
+        #### ARROWS ####          
+        if (x > 0.5):
+          controller.press(Key.left)
+          if debug:
+            print("NOSE left")
+        else:
+          controller.release(Key.left)            
+        
+        if (x < -0.5):
+          controller.press(Key.right)
+          if debug:
+            print("NOSE right")
+        else:
+          controller.release(Key.right)
+        
+        if  (y > 0.5):
+          controller.press(Key.down)
+          if debug:
+            print("NOSE down")
+        else:
+          controller.release(Key.down)
+        
+        if (y < -0.5):
+          controller.press(Key.up)
+          if debug:
+            print("NOSE up")
+        else:
+          controller.release(Key.up)
 
 
 
