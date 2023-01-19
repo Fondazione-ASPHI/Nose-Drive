@@ -34,7 +34,7 @@ def nose(x, y):
     gamepad.right_trigger_float(value_float=y)
   elif y < 0:
     # controller.press(Key.down)
-    gamepad.left_trigger_float(value_float=1)
+    gamepad.left_trigger_float(value_float=1) # value_float=-y if you want analog brake
   gamepad.update()
   gamepad.reset()
         
