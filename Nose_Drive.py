@@ -16,7 +16,6 @@ calibration_time = 5 # in seconds
 # DON'T EDIT BELOW THIS LINE (unless you know what you are doing)
 ############################
 
-import Nose_Tracker
 from Nose_Tracker import track_nose
 
 
