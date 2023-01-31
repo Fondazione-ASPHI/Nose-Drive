@@ -4,6 +4,28 @@ import numpy
 import time
 
 
+
+def missing_logic(x, y):
+  pass
+
+
+def get_xy_value(temp_landmark, landmark_last, horizontal_sensibility, vertical_sensibility):
+  x = (temp_landmark[0] - landmark_last[0]) * horizontal_sensibility
+  if x > 1:
+    x = 1
+  elif x < -1:
+    x = -1
+  y = (temp_landmark[1] - landmark_last[1]) * vertical_sensibility
+  if y > 1:
+    y = 1
+  elif y < -1:
+    y = -1
+  
+  return x, y
+
+
+
+
 def track_nose(nose_logic, shoulders_logic, nose_horizontal_sensibility, nose_vertical_sensibility, use_shoulders, shoulders_sensibility, calibration_time):
 
   mp_drawing = mp.solutions.drawing_utils
@@ -134,7 +156,7 @@ def track_nose(nose_logic, shoulders_logic, nose_horizontal_sensibility, nose_ve
 
 
 
-def track_face(nose_logic, nose_horizontal_sensibility, nose_vertical_sensibility, calibration_time):
+def track_face(options):
 
   import cv2
   import mediapipe as mp
@@ -149,18 +171,48 @@ def track_face(nose_logic, nose_horizontal_sensibility, nose_vertical_sensibilit
 
   # Init variables
   nose_last = 0
+  mouth_last = 0
   pressTime = 0.1
   last_input_time = time.time()
   min_interval = 1
   message = False
   startTime = 0
   calibrated = False
-  temp_left = 0
-  temp_right = 0
   temp_nose = 0
-  delta_left = 0
-  delta_right = 0
+  temp_mouth = 0
   delta_nose = 0
+  delta_mouth = 0
+  nose_logic = None
+  mouth_logic = None
+  end_frame_logic = None
+  nose_horizontal_sensibility = 0
+  nose_vertical_sensibility = 0
+  mouth_horizontal_sensibility = 0
+  mouth_vertical_sensibility = 0
+  calibration_time = 0
+
+  if "nose logic" in options:
+    nose_logic = options["nose logic"]
+    nose_horizontal_sensibility = options["nose horizontal sensibility"]
+    nose_vertical_sensibility = options["nose vertical sensibility"]
+  else:
+    nose_logic = missing_logic
+  
+  if "mouth logic" in options:
+    mouth_logic = options["mouth logic"]
+    mouth_horizontal_sensibility = options["mouth horizontal sensibility"]
+    mouth_vertical_sensibility = options["mouth vertical sensibility"]
+  else:
+    mouth_logic = missing_logic
+
+  if "end frame logic" in options:
+    end_frame_logic = options["end frame logic"]
+  else:
+    end_frame_logic = missing_logic
+
+  if "calibration time" in options:
+    calibration_time = options["calibration time"]
+
 
   ###############################
   ###############################
@@ -196,7 +248,9 @@ def track_face(nose_logic, nose_horizontal_sensibility, nose_vertical_sensibilit
         # Create landmarks vectors
         # print(results.multi_face_landmarks[0].landmark[0].x)
         temp_nose = numpy.array([results.multi_face_landmarks[0].landmark[0].x, results.multi_face_landmarks[0].landmark[0].y])
+        temp_mouth = numpy.array([results.multi_face_landmarks[0].landmark[14].x, results.multi_face_landmarks[0].landmark[14].y])
         delta_nose = numpy.linalg.norm(temp_nose - nose_last)
+        delta_mouth = numpy.linalg.norm(temp_mouth - mouth_last)
 
 
         ###############################
@@ -207,31 +261,21 @@ def track_face(nose_logic, nose_horizontal_sensibility, nose_vertical_sensibilit
             start_time = time.time()
             print("Calibrating... - Stay still wait " + str(calibration_time) + " seconds")
             message = True
-          if time.time() - start_time > calibration_time:        
-            left_shoulder_last = temp_left
-            right_shoulder_last = temp_right
+          if time.time() - start_time > calibration_time:
             nose_last = temp_nose
+            mouth_last = temp_mouth
             calibrated = True
             print("Calibration done. Now Tracking.")
         else:
 
           #################
-          # NOSE #
+          # LANDMARKS LOGICS #
           #################
-
-          #### Get X and Y values ####
-          x = (temp_nose[0] - nose_last[0]) * nose_horizontal_sensibility
-          if x > 1:
-            x = 1
-          elif x < -1:
-            x = -1
-          y = (temp_nose[1] - nose_last[1]) * nose_vertical_sensibility
-          if y > 1:
-            y = 1
-          elif y < -1:
-            y = -1
-
-          nose_logic(x, y)  
+          nose_x, nose_y = get_xy_value(temp_nose, nose_last, nose_horizontal_sensibility, nose_vertical_sensibility)
+          mouth_x, mouth_y = get_xy_value(temp_mouth, mouth_last, mouth_horizontal_sensibility, mouth_vertical_sensibility)
+          nose_logic(nose_x, nose_y)
+          mouth_logic(mouth_x, mouth_y)
+          end_frame_logic()
 
 
 

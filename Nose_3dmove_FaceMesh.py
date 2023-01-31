@@ -5,6 +5,9 @@
 nose_horizontal_sensibility = 15 # suggested values between 0 and 30
 nose_vertical_sensibility = 30 # suggested values between 0 and 30
 
+mouth_horizontal_sensibility = 20 # suggested values between 0 and 30
+mouth_vertical_sensibility = 35 # suggested values between 0 and 30
+
 calibration_time = 5 # in seconds
 
 
@@ -24,14 +27,15 @@ gamepad = vg.VX360Gamepad()
 #################
 # NOSE #
 #################
-def nose(x, y):
-  gamepad.left_joystick_float(x_value_float=-x, y_value_float=0)
-  if y > 0:
-    # controller.release(Key.down)
-    gamepad.right_trigger_float(value_float=y)
-  elif y < 0:
-    # controller.press(Key.down)
-    gamepad.left_trigger_float(value_float=1) # value_float=-y if you want analog brake
+def nose(x, y):  
+  gamepad.left_joystick_float(x_value_float=-x, y_value_float=y)
+
+
+def mouth(x, y):
+  gamepad.right_joystick_float(x_value_float=-x, y_value_float=y)
+  
+
+def endframe():
   gamepad.update()
   gamepad.reset()
 
@@ -42,13 +46,14 @@ def nose(x, y):
 
 options = {
   "nose logic": nose,
-  "mouth logic": None,
-  "frame end logic": None,
+  "mouth logic": mouth,
+  "end frame logic": endframe,
   "nose horizontal sensibility": nose_horizontal_sensibility,
   "nose vertical sensibility": nose_vertical_sensibility,
-  "mouth horizontal sensibility": None,
-  "mouth vertical sensibility": None,
+  "mouth horizontal sensibility": mouth_horizontal_sensibility,
+  "mouth vertical sensibility": mouth_vertical_sensibility,
   "calibration time": calibration_time
 }
+
 
 track_face(options)
