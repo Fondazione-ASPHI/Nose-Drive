@@ -186,10 +186,7 @@ def track_face(options):
   delta_nose = 0
   delta_mouth = 0
   delta_eyebrows = 0
-  nose_logic = None
-  mouth_logic = None
-  eyebrows_logic = None
-  end_frame_logic = None
+  logic = None
   nose_horizontal_sensibility = 0
   nose_vertical_sensibility = 0
   mouth_horizontal_sensibility = 0
@@ -197,31 +194,19 @@ def track_face(options):
   eyebrows_sensibility = 0
   calibration_time = 0
 
-  if "nose logic" in options:
-    nose_logic = options["nose logic"]
+
+  # Get options
+  logic = options["logic"]  
+  if "nose horizontal sensibility" in options:
     nose_horizontal_sensibility = options["nose horizontal sensibility"]
-    nose_vertical_sensibility = options["nose vertical sensibility"]
-  else:
-    nose_logic = missing_logic
-  
-  if "mouth logic" in options:
-    mouth_logic = options["mouth logic"]
+  if "nose vertical sensibility" in options:
+    nose_horizontal_sensibility = options["nose vertical sensibility"]
+  if "mouth horizontal sensibility" in options:
     mouth_horizontal_sensibility = options["mouth horizontal sensibility"]
-    mouth_vertical_sensibility = options["mouth vertical sensibility"]
-  else:
-    mouth_logic = missing_logic
-
-  if "eyebrows logic" in options:
-    eyebrows_logic = options["eyebrows logic"]
+  if "mouth vertical sensibility" in options:
+    mouth_horizontal_sensibility = options["mouth vertical sensibility"]
+  if "eyebrows sensibility" in options:
     eyebrows_sensibility = options["eyebrows sensibility"]
-  else:
-    eyebrows_logic = missing_logic
-
-  if "end frame logic" in options:
-    end_frame_logic = options["end frame logic"]
-  else:
-    end_frame_logic = missing_logic
-
   if "calibration time" in options:
     calibration_time = options["calibration time"]
 
@@ -293,11 +278,14 @@ def track_face(options):
           #################
           nose_x, nose_y = get_xy_value(temp_nose, nose_last, nose_horizontal_sensibility, nose_vertical_sensibility)
           mouth_x, mouth_y = get_xy_value(temp_mouth, mouth_last, mouth_horizontal_sensibility, mouth_vertical_sensibility)
-          nose_logic(nose_x, nose_y)
-          mouth_logic(nose_x - mouth_x, nose_y - mouth_y + nose_mouth_distance)
-          eyebrows_logic(delta_eyebrows > eyebrows_sensibility)
-          end_frame_logic()
-
+          
+          logic(
+            nose_x,
+            nose_y,
+            nose_x - mouth_x,
+            nose_y - mouth_y + nose_mouth_distance,
+            delta_eyebrows > eyebrows_sensibility
+            )
 
 
         for face_landmarks in results.multi_face_landmarks:

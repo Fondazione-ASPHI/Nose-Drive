@@ -20,42 +20,40 @@ calibration_time = 5 # in seconds
 
 from Nose_Tracker import track_face
 
-
 # Init Gamepad controller
 import vgamepad as vg # https://pypi.org/project/vgamepad/   https://github.com/ViGEm/ViGEmBus
 gamepad = vg.VX360Gamepad()
 
 
 #################
-# BUTTONS #
+# CUSTOM LOGIC #
 #################
-def nose(x, y):  
-  gamepad.left_joystick_float(x_value_float=0, y_value_float=y)
-  gamepad.right_joystick_float(x_value_float=-x, y_value_float=0)
 
-
-def mouth(x, y):
-  if (x > 0.5):
+def logic(nose_x, nose_y, mouth_x, mouth_y, trigger_eyebrows):  
+  
+  # Move forward or backward with Vertical Nose
+  gamepad.left_joystick_float(x_value_float=0, y_value_float=nose_y)
+  
+  # Rotate Right-Left with Horizontal Nose and Up-Down with Vertical Mouth
+  gamepad.right_joystick_float(x_value_float=-nose_x, y_value_float=mouth_y)
+  
+  # Mouth Right or Left to trigger A or B buttons
+  if (mouth_x > 0.75):
     gamepad.press_button(button=vg.XUSB_BUTTON.XUSB_GAMEPAD_A)  # Xbox360 A Button
   else:
-    gamepad.release_button(button=vg.XUSB_BUTTON.XUSB_GAMEPAD_A)  # Xbox360 A button
-  
-  if (x < -0.5):
+    gamepad.release_button(button=vg.XUSB_BUTTON.XUSB_GAMEPAD_A)  # Xbox360 A button  
+  if (mouth_x < -0.75):
     gamepad.press_button(button=vg.XUSB_BUTTON.XUSB_GAMEPAD_B)  # Xbox360 B Button
   else:
     gamepad.release_button(button=vg.XUSB_BUTTON.XUSB_GAMEPAD_B)  # Xbox360 B button
 
-  # gamepad.right_joystick_float(y_value_float=y)
-
-
-def eyebrows(trigger_eyebrows):
+  # Right Trigger with Eyebrows
   if (trigger_eyebrows):
     gamepad.right_trigger_float(value_float=1)
   else:
     gamepad.right_trigger_float(value_float=0)
 
-
-def endframe():
+  # Update gamepad
   gamepad.update()
   gamepad.reset()
 
@@ -64,11 +62,9 @@ def endframe():
 ###############################
 ###############################
 
+
 options = {
-  "nose logic": nose,
-  "mouth logic": mouth,
-  "eyebrows logic": eyebrows,
-  "end frame logic": endframe,
+  "logic": logic,
   "nose horizontal sensibility": nose_horizontal_sensibility,
   "nose vertical sensibility": nose_vertical_sensibility,
   "mouth horizontal sensibility": mouth_horizontal_sensibility,
@@ -76,6 +72,5 @@ options = {
   "eyebrows sensibility": eyebrows_sensibility,
   "calibration time": calibration_time
 }
-
 
 track_face(options)
