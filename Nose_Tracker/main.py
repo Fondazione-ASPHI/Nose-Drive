@@ -246,25 +246,30 @@ def track_face(options):
       image = cv2.cvtColor(image, cv2.COLOR_RGB2BGR)
       if results.multi_face_landmarks:
 
-        # Nose        
+        # Nose
         nose = numpy.array([results.multi_face_landmarks[0].landmark[1].x, results.multi_face_landmarks[0].landmark[1].y, results.multi_face_landmarks[0].landmark[1].z])
         
         # Mouth Centroid
-        mouth_centroid_x = (results.multi_face_landmarks[0].landmark[13].x + results.multi_face_landmarks[0].landmark[181].x + results.multi_face_landmarks[0].landmark[405].x) / 3
-        mouth_centroid_y = (results.multi_face_landmarks[0].landmark[13].y + results.multi_face_landmarks[0].landmark[181].y + results.multi_face_landmarks[0].landmark[405].y) / 3
-        mouth_centroid_z = (results.multi_face_landmarks[0].landmark[13].z + results.multi_face_landmarks[0].landmark[181].z + results.multi_face_landmarks[0].landmark[405].z) / 3
+        mouth_point_1, mouth_point_2, mouth_point_3 = results.multi_face_landmarks[0].landmark[13], results.multi_face_landmarks[0].landmark[181], results.multi_face_landmarks[0].landmark[405]
+        mouth_centroid_x = (mouth_point_1.x + mouth_point_2.x + mouth_point_3.x) / 3
+        mouth_centroid_y = (mouth_point_1.y + mouth_point_2.y + mouth_point_3.y) / 3
+        mouth_centroid_z = (mouth_point_1.z + mouth_point_2.z + mouth_point_3.z) / 3
         mouth = numpy.array([mouth_centroid_x, mouth_centroid_y, mouth_centroid_z])
         
         # Left Eye Centroid
-        eye_centroid_x = (results.multi_face_landmarks[0].landmark[362].x + results.multi_face_landmarks[0].landmark[386].x + results.multi_face_landmarks[0].landmark[263].x + results.multi_face_landmarks[0].landmark[374].x) / 4
-        eye_centroid_y = (results.multi_face_landmarks[0].landmark[362].y + results.multi_face_landmarks[0].landmark[386].y + results.multi_face_landmarks[0].landmark[263].y + results.multi_face_landmarks[0].landmark[374].y) / 4
-        eye_centroid_z = (results.multi_face_landmarks[0].landmark[362].z + results.multi_face_landmarks[0].landmark[386].z + results.multi_face_landmarks[0].landmark[263].z + results.multi_face_landmarks[0].landmark[374].z) / 4
-        eye_centroid = numpy.array([eye_centroid_x, eye_centroid_y, eye_centroid_z])
+        eye_point_1, eye_point_2, eye_point_3, eye_point_4  = results.multi_face_landmarks[0].landmark[362], results.multi_face_landmarks[0].landmark[386], results.multi_face_landmarks[0].landmark[263], results.multi_face_landmarks[0].landmark[374]
+        eye_centroid_x = (eye_point_1.x + eye_point_2.x + eye_point_3.x + eye_point_4.x) / 4
+        eye_centroid_y = (eye_point_1.y + eye_point_2.y + eye_point_3.y + eye_point_4.y) / 4
+        eye_centroid_z = (eye_point_1.z + eye_point_2.z + eye_point_3.z + eye_point_4.z) / 4
+        left_eye = numpy.array([eye_centroid_x, eye_centroid_y, eye_centroid_z])
         
         # Left Eyebrow
         eyebrow = numpy.array([results.multi_face_landmarks[0].landmark[282].x, results.multi_face_landmarks[0].landmark[282].y, results.multi_face_landmarks[0].landmark[282].z])     
-        eyebrows = magnitude(eyebrow - eye_centroid)
+        eyebrows = magnitude(eyebrow - left_eye)
         
+        # Head Tilt around Z axis
+
+
         # Deltas
         # delta_nose = numpy.linalg.norm(nose - nose_base)
         # delta_mouth = numpy.linalg.norm(mouth - mouth_base)
