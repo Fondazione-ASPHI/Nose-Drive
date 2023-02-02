@@ -200,11 +200,11 @@ def track_face(options):
   if "nose horizontal sensibility" in options:
     nose_horizontal_sensibility = options["nose horizontal sensibility"]
   if "nose vertical sensibility" in options:
-    nose_horizontal_sensibility = options["nose vertical sensibility"]
+    nose_vertical_sensibility = options["nose vertical sensibility"]
   if "mouth horizontal sensibility" in options:
     mouth_horizontal_sensibility = options["mouth horizontal sensibility"]
   if "mouth vertical sensibility" in options:
-    mouth_horizontal_sensibility = options["mouth vertical sensibility"]
+    mouth_vertical_sensibility = options["mouth vertical sensibility"]
   if "eyebrows sensibility" in options:
     eyebrows_sensibility = options["eyebrows sensibility"]
   if "calibration time" in options:

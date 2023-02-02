@@ -35,7 +35,7 @@ def logic(nose_x, nose_y, mouth_x, mouth_y, trigger_eyebrows):
   gamepad.left_joystick_float(x_value_float=0, y_value_float=nose_y)
   
   # Rotate Right-Left with Horizontal Nose and Up-Down with Vertical Mouth
-  gamepad.right_joystick_float(x_value_float=-nose_x, y_value_float=mouth_y)
+  gamepad.right_joystick_float(x_value_float=-nose_x, y_value_float=0)
   
   # Mouth Right or Left to trigger A or B buttons
   if (mouth_x > 0.75):
