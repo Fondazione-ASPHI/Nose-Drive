@@ -13,7 +13,7 @@ def missing_logic(x, y):
 def magnitude(vector):
   return math.sqrt(sum(pow(element, 2) for element in vector))
 
-def get_xy_value(temp_landmark, landmark_last, horizontal_sensibility, vertical_sensibility):
+def get_analog_xy(temp_landmark, landmark_last, horizontal_sensibility, vertical_sensibility):
   x = (temp_landmark[0] - landmark_last[0]) * horizontal_sensibility
   if x > 1:
     x = 1
@@ -45,7 +45,7 @@ def track_nose(nose_logic, shoulders_logic, nose_horizontal_sensibility, nose_ve
   # Init variables
   left_shoulder_last = 0
   right_shoulder_last = 0
-  nose_last = 0
+  nose_base = 0
   pressTime = 0.1
   last_input_time = time.time()
   min_interval = 1
@@ -54,7 +54,7 @@ def track_nose(nose_logic, shoulders_logic, nose_horizontal_sensibility, nose_ve
   calibrated = False
   temp_left = 0
   temp_right = 0
-  temp_nose = 0
+  nose = 0
   delta_left = 0
   delta_right = 0
   delta_nose = 0
@@ -90,10 +90,10 @@ def track_nose(nose_logic, shoulders_logic, nose_horizontal_sensibility, nose_ve
       if results.pose_landmarks != None:
         temp_left = numpy.array([results.pose_landmarks.landmark[mp_pose.PoseLandmark.LEFT_SHOULDER].x, results.pose_landmarks.landmark[mp_pose.PoseLandmark.LEFT_SHOULDER].y])
         temp_right = numpy.array([results.pose_landmarks.landmark[mp_pose.PoseLandmark.RIGHT_SHOULDER].x, results.pose_landmarks.landmark[mp_pose.PoseLandmark.RIGHT_SHOULDER].y])
-        temp_nose = numpy.array([results.pose_landmarks.landmark[mp_pose.PoseLandmark.NOSE].x, results.pose_landmarks.landmark[mp_pose.PoseLandmark.NOSE].y])
+        nose = numpy.array([results.pose_landmarks.landmark[mp_pose.PoseLandmark.NOSE].x, results.pose_landmarks.landmark[mp_pose.PoseLandmark.NOSE].y])
         delta_left = numpy.linalg.norm(temp_left - left_shoulder_last)
         delta_right = numpy.linalg.norm(temp_right - right_shoulder_last)
-        delta_nose = numpy.linalg.norm(temp_nose - nose_last)
+        delta_nose = numpy.linalg.norm(nose - nose_base)
 
         if not calibrated:
           if not message:
@@ -103,7 +103,7 @@ def track_nose(nose_logic, shoulders_logic, nose_horizontal_sensibility, nose_ve
           if time.time() - start_time > calibration_time:        
             left_shoulder_last = temp_left
             right_shoulder_last = temp_right
-            nose_last = temp_nose
+            nose_base = nose
             calibrated = True
             print("Calibration done. Now Tracking.")
         else:
@@ -115,12 +115,12 @@ def track_nose(nose_logic, shoulders_logic, nose_horizontal_sensibility, nose_ve
           #################
 
           #### Get X and Y values ####
-          x = (temp_nose[0] - nose_last[0]) * nose_horizontal_sensibility
+          x = (nose[0] - nose_base[0]) * nose_horizontal_sensibility
           if x > 1:
             x = 1
           elif x < -1:
             x = -1
-          y = (temp_nose[1] - nose_last[1]) * nose_vertical_sensibility
+          y = (nose[1] - nose_base[1]) * nose_vertical_sensibility
           if y > 1:
             y = 1
           elif y < -1:
@@ -174,19 +174,19 @@ def track_face(options):
   ###############################
 
   # Init variables
-  nose_last = 0
-  mouth_last = 0
-  eyebrows_last = 0
+  nose_base = 0
+  mouth_base = 0
+  eyebrows_base = 0
   pressTime = 0.1
   last_input_time = time.time()
   min_interval = 1
   message = False
   startTime = 0
   calibrated = False
-  temp_nose = 0
-  temp_mouth = 0
+  nose = 0
+  mouth = 0
   nose_mouth_distance = 0
-  temp_eyebrows = 0
+  eyebrows = 0
   delta_nose = 0
   delta_mouth = 0
   delta_eyebrows = 0
@@ -209,8 +209,8 @@ def track_face(options):
     mouth_horizontal_sensibility = options["mouth horizontal sensibility"]
   if "mouth vertical sensibility" in options:
     mouth_vertical_sensibility = options["mouth vertical sensibility"]
-  if "eyebrows sensibility" in options:
-    eyebrows_sensibility = options["eyebrows sensibility"]
+  if "eyebrows threshold" in options:
+    eyebrows_threshold = options["eyebrows threshold"]
   if "calibration time" in options:
     calibration_time = options["calibration time"]
 
@@ -247,28 +247,28 @@ def track_face(options):
       if results.multi_face_landmarks:
 
         # Nose        
-        temp_nose = numpy.array([results.multi_face_landmarks[0].landmark[1].x, results.multi_face_landmarks[0].landmark[1].y, results.multi_face_landmarks[0].landmark[1].z])
+        nose = numpy.array([results.multi_face_landmarks[0].landmark[1].x, results.multi_face_landmarks[0].landmark[1].y, results.multi_face_landmarks[0].landmark[1].z])
         
         # Mouth Centroid
         mouth_centroid_x = (results.multi_face_landmarks[0].landmark[13].x + results.multi_face_landmarks[0].landmark[181].x + results.multi_face_landmarks[0].landmark[405].x) / 3
         mouth_centroid_y = (results.multi_face_landmarks[0].landmark[13].y + results.multi_face_landmarks[0].landmark[181].y + results.multi_face_landmarks[0].landmark[405].y) / 3
         mouth_centroid_z = (results.multi_face_landmarks[0].landmark[13].z + results.multi_face_landmarks[0].landmark[181].z + results.multi_face_landmarks[0].landmark[405].z) / 3
-        temp_mouth = numpy.array([mouth_centroid_x, mouth_centroid_y, mouth_centroid_z])
+        mouth = numpy.array([mouth_centroid_x, mouth_centroid_y, mouth_centroid_z])
         
         # Left Eye Centroid
-        eye_x = (results.multi_face_landmarks[0].landmark[362].x + results.multi_face_landmarks[0].landmark[386].x + results.multi_face_landmarks[0].landmark[263].x + results.multi_face_landmarks[0].landmark[374].x) / 4
-        eye_y = (results.multi_face_landmarks[0].landmark[362].y + results.multi_face_landmarks[0].landmark[386].y + results.multi_face_landmarks[0].landmark[263].y + results.multi_face_landmarks[0].landmark[374].y) / 4
-        eye_z = (results.multi_face_landmarks[0].landmark[362].z + results.multi_face_landmarks[0].landmark[386].z + results.multi_face_landmarks[0].landmark[263].z + results.multi_face_landmarks[0].landmark[374].z) / 4
-        eye_centroid = numpy.array([eye_x, eye_y, eye_z])
+        eye_centroid_x = (results.multi_face_landmarks[0].landmark[362].x + results.multi_face_landmarks[0].landmark[386].x + results.multi_face_landmarks[0].landmark[263].x + results.multi_face_landmarks[0].landmark[374].x) / 4
+        eye_centroid_y = (results.multi_face_landmarks[0].landmark[362].y + results.multi_face_landmarks[0].landmark[386].y + results.multi_face_landmarks[0].landmark[263].y + results.multi_face_landmarks[0].landmark[374].y) / 4
+        eye_centroid_z = (results.multi_face_landmarks[0].landmark[362].z + results.multi_face_landmarks[0].landmark[386].z + results.multi_face_landmarks[0].landmark[263].z + results.multi_face_landmarks[0].landmark[374].z) / 4
+        eye_centroid = numpy.array([eye_centroid_x, eye_centroid_y, eye_centroid_z])
         
         # Left Eyebrow
         eyebrow = numpy.array([results.multi_face_landmarks[0].landmark[282].x, results.multi_face_landmarks[0].landmark[282].y, results.multi_face_landmarks[0].landmark[282].z])     
-        temp_eyebrows = magnitude(eyebrow - eye_centroid)
+        eyebrows = magnitude(eyebrow - eye_centroid)
         
         # Deltas
-        # delta_nose = numpy.linalg.norm(temp_nose - nose_last)
-        # delta_mouth = numpy.linalg.norm(temp_mouth - mouth_last)
-        delta_eyebrows = temp_eyebrows - eyebrows_last
+        # delta_nose = numpy.linalg.norm(nose - nose_base)
+        # delta_mouth = numpy.linalg.norm(mouth - mouth_base)
+        delta_eyebrows = eyebrows - eyebrows_base
 
 
         ###############################
@@ -280,10 +280,10 @@ def track_face(options):
             print("Calibrating... - Stay still wait " + str(calibration_time) + " seconds")
             message = True
           if time.time() - start_time > calibration_time:
-            nose_last = temp_nose
-            mouth_last = temp_mouth
-            nose_mouth_distance = magnitude(nose_last - mouth_last)
-            eyebrows_last = temp_eyebrows
+            nose_base = nose
+            mouth_base = mouth
+            nose_mouth_distance = magnitude(nose_base - mouth_base)
+            eyebrows_base = eyebrows
             calibrated = True
             print("Calibration done. Now Tracking.")
         else:
@@ -291,8 +291,8 @@ def track_face(options):
           #################
           # LANDMARKS LOGICS #
           #################
-          nose_x, nose_y = get_xy_value(temp_nose, nose_last, nose_horizontal_sensibility, nose_vertical_sensibility)
-          mouth_x, mouth_y = get_xy_value(temp_mouth, mouth_last, mouth_horizontal_sensibility, mouth_vertical_sensibility)
+          nose_x, nose_y = get_analog_xy(nose, nose_base, nose_horizontal_sensibility, nose_vertical_sensibility)
+          mouth_x, mouth_y = get_analog_xy(mouth, mouth_base, mouth_horizontal_sensibility, mouth_vertical_sensibility)
           
           logic(
             nose_x,

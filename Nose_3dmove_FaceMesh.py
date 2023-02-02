@@ -8,7 +8,7 @@ nose_vertical_sensibility = 30 # suggested values between 0 and 30
 mouth_horizontal_sensibility = 50 # suggested values between 0 and 30
 mouth_vertical_sensibility = 50 # suggested values between 0 and 30
 
-eyebrows_sensibility = 0.01
+eyebrows_threshold = 0.01
 
 calibration_time = 5 # in seconds
 
@@ -69,7 +69,7 @@ options = {
   "nose vertical sensibility": nose_vertical_sensibility,
   "mouth horizontal sensibility": mouth_horizontal_sensibility,
   "mouth vertical sensibility": mouth_vertical_sensibility,
-  "eyebrows sensibility": eyebrows_sensibility,
+  "eyebrows threshold": eyebrows_threshold,
   "calibration time": calibration_time
 }
 
