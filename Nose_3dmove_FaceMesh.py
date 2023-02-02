@@ -2,8 +2,8 @@
 # You can EDIT the following values
 ############################
 
-nose_horizontal_sensibility = 15 # suggested values between 0 and 30
-nose_vertical_sensibility = 8 # suggested values between 0 and 30
+nose_horizontal_sensibility = 10 # suggested values between 0 and 30
+nose_vertical_sensibility = 30 # suggested values between 0 and 30
 
 mouth_horizontal_sensibility = 50 # suggested values between 0 and 30
 mouth_vertical_sensibility = 50 # suggested values between 0 and 30
