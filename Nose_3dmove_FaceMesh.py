@@ -39,11 +39,11 @@ def logic(nose_x, nose_y, mouth_x, mouth_y, trigger_eyebrows, trigger_mouth_open
   gamepad.right_joystick_float(x_value_float=-nose_x, y_value_float=0)
   
   # Mouth Right or Left to trigger A or B buttons
-  if (mouth_x > 0.75):
+  if (mouth_x > 0.01):
     gamepad.press_button(button=vg.XUSB_BUTTON.XUSB_GAMEPAD_A)  # Xbox360 A Button
   else:
     gamepad.release_button(button=vg.XUSB_BUTTON.XUSB_GAMEPAD_A)  # Xbox360 A button  
-  if (mouth_x < -0.75):
+  if (mouth_x < -0.01):
     gamepad.press_button(button=vg.XUSB_BUTTON.XUSB_GAMEPAD_B)  # Xbox360 B Button
   else:
     gamepad.release_button(button=vg.XUSB_BUTTON.XUSB_GAMEPAD_B)  # Xbox360 B button

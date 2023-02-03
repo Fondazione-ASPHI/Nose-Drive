@@ -314,19 +314,19 @@ def track_face(options):
           #################
           nose_x, nose_y = get_analog_xy(nose, nose_base, nose_horizontal_sensibility, nose_vertical_sensibility)
           
-          # mouth_x = magnitude(numpy.array([nose[0], mouth[1], mouth[2]]) - mouth)
-          # if (nose[0] > mouth[0]):
-          #   mouth_x *= -1
-          # mouth_y = magnitude(nose - numpy.array([nose[0], mouth[1], mouth[2]]))
+          mouth_x = magnitude(numpy.array([nose[0], mouth[1], mouth[2]]) - mouth)
+          if (nose[0] > mouth[0]):
+            mouth_x *= -1
+          mouth_y = magnitude(nose - numpy.array([nose[0], mouth[1], mouth[2]]))
           
-          mouth_x, mouth_y = get_analog_xy(mouth, mouth_base, mouth_horizontal_sensibility, mouth_vertical_sensibility)
+          # mouth_x, mouth_y = get_analog_xy(mouth, mouth_base, mouth_horizontal_sensibility, mouth_vertical_sensibility)
           
 
           logic(
             nose_x,
             nose_y,
-            nose_x - mouth_x,
-            nose_y - mouth_y,
+            mouth_x,
+            mouth_y,
             delta_eyebrows > eyebrows_threshold,
             delta_mouth_open > mouth_open_threshold
             )
