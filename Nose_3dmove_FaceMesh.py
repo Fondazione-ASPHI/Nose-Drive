@@ -9,6 +9,7 @@ mouth_horizontal_sensibility = 50 # suggested values between 0 and 30
 mouth_vertical_sensibility = 50 # suggested values between 0 and 30
 
 eyebrows_threshold = 0.01
+mouth_open_threshold = 0.5
 
 calibration_time = 5 # in seconds
 
@@ -29,7 +30,7 @@ gamepad = vg.VX360Gamepad()
 # CUSTOM LOGIC #
 #################
 
-def logic(nose_x, nose_y, mouth_x, mouth_y, trigger_eyebrows):  
+def logic(nose_x, nose_y, mouth_x, mouth_y, trigger_eyebrows, trigger_mouth_open):  
   
   # Move forward or backward with Vertical Nose
   gamepad.left_joystick_float(x_value_float=0, y_value_float=nose_y)
@@ -53,6 +54,12 @@ def logic(nose_x, nose_y, mouth_x, mouth_y, trigger_eyebrows):
   else:
     gamepad.right_trigger_float(value_float=0)
 
+  # Left Trigger with Mouth Open
+  if (trigger_mouth_open):
+    gamepad.left_trigger_float(value_float=1)
+  else:
+    gamepad.left_trigger_float(value_float=0)
+
   # Update gamepad
   gamepad.update()
   gamepad.reset()
@@ -70,6 +77,7 @@ options = {
   "mouth horizontal sensibility": mouth_horizontal_sensibility,
   "mouth vertical sensibility": mouth_vertical_sensibility,
   "eyebrows threshold": eyebrows_threshold,
+  "mouth open threshold": mouth_open_threshold,
   "calibration time": calibration_time
 }
 
