@@ -265,12 +265,19 @@ def track_face(logic, options):
         mouth = numpy.array([mouth_centroid_x, mouth_centroid_y, mouth_centroid_z])
         
         # Left Eye Centroid
-        eye_point_1, eye_point_2, eye_point_3, eye_point_4  = facepoints[362], facepoints[386], facepoints[263], facepoints[374]
-        eye_centroid_x = (eye_point_1.x + eye_point_2.x + eye_point_3.x + eye_point_4.x) / 4
-        eye_centroid_y = (eye_point_1.y + eye_point_2.y + eye_point_3.y + eye_point_4.y) / 4
-        eye_centroid_z = (eye_point_1.z + eye_point_2.z + eye_point_3.z + eye_point_4.z) / 4
-        left_eye = numpy.array([eye_centroid_x, eye_centroid_y, eye_centroid_z])
+        L_eye_point_1, L_eye_point_2, L_eye_point_3, L_eye_point_4  = facepoints[362], facepoints[386], facepoints[263], facepoints[374]
+        L_eye_centroid_x = (L_eye_point_1.x + L_eye_point_2.x + L_eye_point_3.x + L_eye_point_4.x) / 4
+        L_eye_centroid_y = (L_eye_point_1.y + L_eye_point_2.y + L_eye_point_3.y + L_eye_point_4.y) / 4
+        L_eye_centroid_z = (L_eye_point_1.z + L_eye_point_2.z + L_eye_point_3.z + L_eye_point_4.z) / 4
+        left_eye = numpy.array([L_eye_centroid_x, L_eye_centroid_y, L_eye_centroid_z])
         
+        # Right Eye Centroid
+        R_eye_point_1, R_eye_point_2, R_eye_point_3, R_eye_point_4  = facepoints[33], facepoints[159], facepoints[133], facepoints[145]
+        R_eye_centroid_x = (R_eye_point_1.x + R_eye_point_2.x + R_eye_point_3.x + R_eye_point_4.x) / 4
+        R_eye_centroid_y = (R_eye_point_1.y + R_eye_point_2.y + R_eye_point_3.y + R_eye_point_4.y) / 4
+        R_eye_centroid_z = (R_eye_point_1.z + R_eye_point_2.z + R_eye_point_3.z + R_eye_point_4.z) / 4
+        right_eye = numpy.array([R_eye_centroid_x, R_eye_centroid_y, R_eye_centroid_z])
+
         # Left left_eyebrow
         left_eyebrow_point = facepoints[282]
         left_eyebrow = numpy.array([left_eyebrow_point.x, left_eyebrow_point.y, left_eyebrow_point.z])     
@@ -318,15 +325,17 @@ def track_face(logic, options):
           if (nose[0] > mouth[0]):
             mouth_x *= -1
           mouth_y = magnitude(nose - numpy.array([nose[0], mouth[1], mouth[2]]))
-          
           # mouth_x, mouth_y = get_analog_xy(mouth, mouth_base, mouth_horizontal_sensibility, mouth_vertical_sensibility)
           
+          head_tilt = L_eye_centroid_y - R_eye_centroid_y
+
 
           logic(
             nose_x,
             nose_y,
             mouth_x,
             mouth_y,
+            head_tilt,
             delta_eyebrows > eyebrows_threshold,
             delta_mouth_open > mouth_open_threshold
             )
