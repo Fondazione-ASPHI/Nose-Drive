@@ -1,0 +1,9 @@
+{
+    "nose horizontal sensibility": 15,
+    "nose vertical sensibility": 30,
+    "mouth horizontal sensibility": 50,
+    "mouth vertical sensibility": 50,
+    "eyebrows threshold": 0.01,
+    "mouth open threshold": 0.01,
+    "calibration time": 5
+  }
