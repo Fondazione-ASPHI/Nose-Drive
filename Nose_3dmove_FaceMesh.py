@@ -2,16 +2,7 @@
 # You can EDIT the following values
 ############################
 
-nose_horizontal_sensibility = 10 # suggested values between 0 and 30
-nose_vertical_sensibility = 30 # suggested values between 0 and 30
-
-mouth_horizontal_sensibility = 50 # suggested values between 0 and 30
-mouth_vertical_sensibility = 50 # suggested values between 0 and 30
-
-eyebrows_threshold = 0.01
-mouth_open_threshold = 0.01
-
-calibration_time = 5 # in seconds
+options_file_name = "options.json"
 
 
 
@@ -19,6 +10,7 @@ calibration_time = 5 # in seconds
 # DON'T EDIT BELOW THIS LINE (unless you know what you are doing)
 ############################
 
+import json
 from Nose_Tracker import track_face
 
 # Init Gamepad controller
@@ -29,7 +21,6 @@ gamepad = vg.VX360Gamepad()
 #################
 # CUSTOM LOGIC #
 #################
-
 def logic(nose_x, nose_y, mouth_x, mouth_y, trigger_eyebrows, trigger_mouth_open):  
   
   # Move forward or backward with Vertical Nose
@@ -65,20 +56,15 @@ def logic(nose_x, nose_y, mouth_x, mouth_y, trigger_eyebrows, trigger_mouth_open
   gamepad.reset()
 
 
-###############################
-###############################
-###############################
+#################
+# IMPORT OPTIONS #
+#################
+options_file = open(options_file_name) # Opening JSON file
+options = json.load(options_file) # returns JSON object as a dictionary
+options_file.close() # Closing file
 
 
-options = {
-  "logic": logic,
-  "nose horizontal sensibility": nose_horizontal_sensibility,
-  "nose vertical sensibility": nose_vertical_sensibility,
-  "mouth horizontal sensibility": mouth_horizontal_sensibility,
-  "mouth vertical sensibility": mouth_vertical_sensibility,
-  "eyebrows threshold": eyebrows_threshold,
-  "mouth open threshold": mouth_open_threshold,
-  "calibration time": calibration_time
-}
-
-track_face(options)
+#################
+# START TRACKING #
+#################
+track_face(logic, options)

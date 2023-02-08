@@ -6,9 +6,6 @@ import math
 
 
 
-def missing_logic(x, y):
-  pass
-
 # function definition to compute magnitude o f the vector
 def magnitude(vector):
   return math.sqrt(sum(pow(element, 2) for element in vector))
@@ -26,7 +23,6 @@ def get_analog_xy(temp_landmark, landmark_last, horizontal_sensibility, vertical
     y = -1
   
   return x, y
-
 
 
 
@@ -160,40 +156,38 @@ def track_nose(nose_logic, shoulders_logic, nose_horizontal_sensibility, nose_ve
 
 
 
-def track_face(options):
+def track_face(logic, options):
 
-  import cv2
-  import mediapipe as mp
   mp_drawing = mp.solutions.drawing_utils
   mp_drawing_styles = mp.solutions.drawing_styles
   mp_face_mesh = mp.solutions.face_mesh
 
 
+
   ###############################
-  # BUTTONS LOGIC
+  # INITIALIZE VARIABLES
   ###############################
 
-  # Init variables
+  # Base landmark positions
   nose_base = 0
   mouth_base = 0
   eyebrows_base = 0
   mouth_open_base = 0
-  pressTime = 0.1
-  last_input_time = time.time()
-  min_interval = 1
-  message = False
-  startTime = 0
-  calibrated = False
+
+  # Updated landmark positions
   nose = 0
   mouth = 0
   nose_mouth_distance = 0
   eyebrows = 0
   mouth_open = 0
+
+  # Deltas
   delta_nose = 0
   delta_mouth = 0
   delta_eyebrows = 0
   delta_mouth_open = 0
-  logic = None
+
+  # Sensibility values
   nose_horizontal_sensibility = 0
   nose_vertical_sensibility = 0
   mouth_horizontal_sensibility = 0
@@ -202,9 +196,15 @@ def track_face(options):
   mouth_open_threshold = 0
   calibration_time = 0
 
+  # Misc variables
+  # pressTime = 0.1
+  # last_input_time = time.time()
+  # min_interval = 1
+  message = False
+  startTime = 0
+  calibrated = False
 
   # Get options
-  logic = options["logic"]  
   if "nose horizontal sensibility" in options:
     nose_horizontal_sensibility = options["nose horizontal sensibility"]
   if "nose vertical sensibility" in options:
@@ -221,10 +221,10 @@ def track_face(options):
     calibration_time = options["calibration time"]
 
 
-  ###############################
-  ###############################
-  ###############################
 
+  ###############################
+  # TRACKING
+  ###############################
 
   # For webcam input:
   drawing_spec = mp_drawing.DrawingSpec(thickness=1, circle_radius=1)
@@ -310,7 +310,7 @@ def track_face(options):
         else:
 
           #################
-          # LANDMARKS LOGICS #
+          # LANDMARKS LOGIC #
           #################
           nose_x, nose_y = get_analog_xy(nose, nose_base, nose_horizontal_sensibility, nose_vertical_sensibility)
           
@@ -332,6 +332,9 @@ def track_face(options):
             )
 
 
+        #################
+        # DRAWINGS #
+        #################
         for face_landmarks in results.multi_face_landmarks:
           # print(face_landmarks)
           mp_drawing.draw_landmarks(
