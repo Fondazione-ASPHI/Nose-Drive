@@ -9,7 +9,7 @@ mouth_horizontal_sensibility = 50 # suggested values between 0 and 30
 mouth_vertical_sensibility = 50 # suggested values between 0 and 30
 
 eyebrows_threshold = 0.01
-mouth_open_threshold = 0.5
+mouth_open_threshold = 0.01
 
 calibration_time = 5 # in seconds
 
