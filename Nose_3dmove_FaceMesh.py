@@ -55,11 +55,11 @@ def logic(nose_x, nose_y, mouth_x, mouth_y, head_tilt, trigger_eyebrows, trigger
     gamepad.release_button(button=vg.XUSB_BUTTON.XUSB_GAMEPAD_B)  # Xbox360 B button
 
   # Head Tilt
-  if head_tilt > 0.03:
+  if head_tilt > 0.9:
     gamepad.press_button(button=vg.XUSB_BUTTON.XUSB_GAMEPAD_X)  # Xbox360 X Button
   else:
     gamepad.release_button(button=vg.XUSB_BUTTON.XUSB_GAMEPAD_X)  # Xbox360 X button
-  if head_tilt < -0.03:
+  if head_tilt < -0.9:
     gamepad.press_button(button=vg.XUSB_BUTTON.XUSB_GAMEPAD_Y)  # Xbox360 Y Button
   else:
     gamepad.release_button(button=vg.XUSB_BUTTON.XUSB_GAMEPAD_Y)  # Xbox360 Y button

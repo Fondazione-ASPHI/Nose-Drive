@@ -27,8 +27,8 @@ namespace NoseDrive_Settings
             options.mouth_horizontal_sensibility = trackBar2.Value;
             options.mouth_vertical_sensibility = trackBar3.Value;
             options.head_tilt_sensibility = trackBar5.Value;
-            options.mouth_open_threshold = trackBar7.Value;
-            options.eyebrows_threshold = trackBar6.Value;
+            options.eyebrows_sensibility = trackBar6.Value;
+            options.mouth_open_sensibility = trackBar7.Value;
             options.calibration_time = (float)numericUpDown1.Value;
         }
 
@@ -112,6 +112,11 @@ namespace NoseDrive_Settings
         {
             ValueChanged();
         }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 
 
@@ -123,8 +128,8 @@ namespace NoseDrive_Settings
         public float mouth_horizontal_sensibility { get; set; }
         public float mouth_vertical_sensibility { get; set; }
         public float head_tilt_sensibility { get; set; }
-        public float eyebrows_threshold { get; set; }
-        public float mouth_open_threshold { get; set; }
+        public float eyebrows_sensibility { get; set; }
+        public float mouth_open_sensibility { get; set; }
         public float calibration_time { get; set; }
     }
 }

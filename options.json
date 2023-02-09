@@ -3,8 +3,8 @@
     "nose_vertical_sensibility": 30,
     "mouth_horizontal_sensibility": 50,
     "mouth_vertical_sensibility": 50,
-    "head_tilt_sensibility": 75,
-    "eyebrows_threshold": 0.01,
-    "mouth_open_threshold": 0.01,
+    "head_tilt_sensibility": 40,
+    "eyebrows_sensibility": 100,
+    "mouth_open_sensibility": 100,
     "calibration_time": 5
-  }
+}

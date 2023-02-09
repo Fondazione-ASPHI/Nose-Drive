@@ -180,8 +180,8 @@ def track_face(logic, options):
   mouth_horizontal_sensibility = 0
   mouth_vertical_sensibility = 0
   head_tilt_sensibility = 0
-  eyebrows_threshold = 0
-  mouth_open_threshold = 0
+  eyebrows_sensibility = 0
+  mouth_open_sensibility = 0
   calibration_time = 0
 
   # Misc variables
@@ -204,10 +204,10 @@ def track_face(logic, options):
     mouth_vertical_sensibility = options["mouth_vertical_sensibility"]
   if "head_tilt_sensibility" in options:
     head_tilt_sensibility = options["head_tilt_sensibility"]  
-  if "eyebrows_threshold" in options:
-    eyebrows_threshold = options["eyebrows_threshold"]
-  if "mouth_open_threshold" in options:
-    mouth_open_threshold = options["mouth_open_threshold"]
+  if "eyebrows_sensibility" in options:
+    eyebrows_sensibility = options["eyebrows_sensibility"]
+  if "mouth_open_sensibility" in options:
+    mouth_open_sensibility = options["mouth_open_sensibility"]
   if "calibration_time" in options:
     calibration_time = options["calibration_time"]
 
@@ -286,8 +286,8 @@ def track_face(logic, options):
         # Deltas
         # delta_nose = numpy.linalg.norm(nose - nose_base)
         # delta_mouth = numpy.linalg.norm(mouth - mouth_base)
-        delta_eyebrows = eyebrows - eyebrows_base
-        delta_mouth_open = mouth_open - mouth_open_base
+        delta_eyebrows = (eyebrows - eyebrows_base) * eyebrows_sensibility
+        delta_mouth_open = (mouth_open - mouth_open_base) * mouth_open_sensibility
 
 
         ###############################
@@ -346,8 +346,8 @@ def track_face(logic, options):
             mouth_x,
             mouth_y,
             head_tilt_value,
-            delta_eyebrows > eyebrows_threshold,
-            delta_mouth_open > mouth_open_threshold
+            delta_eyebrows > 1,
+            delta_mouth_open > 1
             )
 
 

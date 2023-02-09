@@ -110,9 +110,10 @@
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(18, 354);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(147, 21);
+            this.label6.Size = new System.Drawing.Size(150, 21);
             this.label6.TabIndex = 11;
-            this.label6.Text = "Eyebrows threshold";
+            this.label6.Text = "Eyebrows sensibility";
+            this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // trackBar1
             // 
@@ -161,30 +162,34 @@
             // trackBar5
             // 
             this.trackBar5.Location = new System.Drawing.Point(12, 262);
-            this.trackBar5.Maximum = 100;
-            this.trackBar5.Minimum = 25;
+            this.trackBar5.Maximum = 80;
+            this.trackBar5.Minimum = 10;
             this.trackBar5.Name = "trackBar5";
             this.trackBar5.Size = new System.Drawing.Size(193, 56);
             this.trackBar5.TabIndex = 16;
-            this.trackBar5.Value = 75;
+            this.trackBar5.Value = 40;
             this.trackBar5.Scroll += new System.EventHandler(this.trackBar5_Scroll);
             // 
             // trackBar6
             // 
             this.trackBar6.Location = new System.Drawing.Point(12, 388);
+            this.trackBar6.Maximum = 150;
+            this.trackBar6.Minimum = 50;
             this.trackBar6.Name = "trackBar6";
             this.trackBar6.Size = new System.Drawing.Size(193, 56);
             this.trackBar6.TabIndex = 17;
-            this.trackBar6.Value = 5;
+            this.trackBar6.Value = 100;
             this.trackBar6.Scroll += new System.EventHandler(this.trackBar6_Scroll);
             // 
             // trackBar7
             // 
             this.trackBar7.Location = new System.Drawing.Point(318, 255);
+            this.trackBar7.Maximum = 150;
+            this.trackBar7.Minimum = 50;
             this.trackBar7.Name = "trackBar7";
             this.trackBar7.Size = new System.Drawing.Size(193, 56);
             this.trackBar7.TabIndex = 19;
-            this.trackBar7.Value = 5;
+            this.trackBar7.Value = 100;
             this.trackBar7.Scroll += new System.EventHandler(this.trackBar7_Scroll);
             // 
             // label7
@@ -192,9 +197,9 @@
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(324, 221);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(165, 21);
+            this.label7.Size = new System.Drawing.Size(168, 21);
             this.label7.TabIndex = 18;
-            this.label7.Text = "Mouth open threshold";
+            this.label7.Text = "Mouth open sensibility";
             // 
             // label8
             // 
