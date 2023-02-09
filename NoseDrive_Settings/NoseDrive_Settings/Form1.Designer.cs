@@ -43,9 +43,9 @@
             this.trackBar7 = new System.Windows.Forms.TrackBar();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar3)).BeginInit();
@@ -123,6 +123,7 @@
             this.trackBar1.Size = new System.Drawing.Size(193, 56);
             this.trackBar1.TabIndex = 12;
             this.trackBar1.Value = 15;
+            this.trackBar1.Scroll += new System.EventHandler(this.trackBar1_Scroll);
             // 
             // trackBar2
             // 
@@ -133,6 +134,7 @@
             this.trackBar2.Size = new System.Drawing.Size(193, 56);
             this.trackBar2.TabIndex = 13;
             this.trackBar2.Value = 50;
+            this.trackBar2.Scroll += new System.EventHandler(this.trackBar2_Scroll);
             // 
             // trackBar3
             // 
@@ -143,6 +145,7 @@
             this.trackBar3.Size = new System.Drawing.Size(193, 56);
             this.trackBar3.TabIndex = 14;
             this.trackBar3.Value = 50;
+            this.trackBar3.Scroll += new System.EventHandler(this.trackBar3_Scroll);
             // 
             // trackBar4
             // 
@@ -153,6 +156,7 @@
             this.trackBar4.Size = new System.Drawing.Size(193, 56);
             this.trackBar4.TabIndex = 15;
             this.trackBar4.Value = 30;
+            this.trackBar4.Scroll += new System.EventHandler(this.trackBar4_Scroll);
             // 
             // trackBar5
             // 
@@ -163,6 +167,7 @@
             this.trackBar5.Size = new System.Drawing.Size(193, 56);
             this.trackBar5.TabIndex = 16;
             this.trackBar5.Value = 75;
+            this.trackBar5.Scroll += new System.EventHandler(this.trackBar5_Scroll);
             // 
             // trackBar6
             // 
@@ -171,6 +176,7 @@
             this.trackBar6.Size = new System.Drawing.Size(193, 56);
             this.trackBar6.TabIndex = 17;
             this.trackBar6.Value = 5;
+            this.trackBar6.Scroll += new System.EventHandler(this.trackBar6_Scroll);
             // 
             // trackBar7
             // 
@@ -179,6 +185,7 @@
             this.trackBar7.Size = new System.Drawing.Size(193, 56);
             this.trackBar7.TabIndex = 19;
             this.trackBar7.Value = 5;
+            this.trackBar7.Scroll += new System.EventHandler(this.trackBar7_Scroll);
             // 
             // label7
             // 
@@ -197,18 +204,6 @@
             this.label8.Size = new System.Drawing.Size(121, 21);
             this.label8.TabIndex = 20;
             this.label8.Text = "Calibration time";
-            // 
-            // numericUpDown1
-            // 
-            this.numericUpDown1.Location = new System.Drawing.Point(354, 375);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(50, 29);
-            this.numericUpDown1.TabIndex = 21;
-            this.numericUpDown1.Value = new decimal(new int[] {
-            5,
-            0,
-            0,
-            0});
             // 
             // button1
             // 
@@ -229,6 +224,19 @@
             this.button2.TabIndex = 23;
             this.button2.Text = "Cancel";
             this.button2.UseVisualStyleBackColor = true;
+            // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.Location = new System.Drawing.Point(354, 375);
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(50, 29);
+            this.numericUpDown1.TabIndex = 21;
+            this.numericUpDown1.Value = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.numericUpDown1.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
             // 
             // Form1
             // 
@@ -284,8 +292,8 @@
         private TrackBar trackBar7;
         private Label label7;
         private Label label8;
-        private NumericUpDown numericUpDown1;
         private Button button1;
         private Button button2;
+        private NumericUpDown numericUpDown1;
     }
 }
