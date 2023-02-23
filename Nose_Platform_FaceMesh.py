@@ -23,18 +23,27 @@ gamepad = vg.VX360Gamepad()
 #################
 def logic(nose_x, nose_y, mouth_x, mouth_y, head_tilt, trigger_eyebrows, trigger_mouth_open):  
   
+  mouth_left = False
+  mouth_right = False
+  mouth_open = False
+
   # Nose is left joystick
   gamepad.left_joystick_float(x_value_float=-nose_x, y_value_float=nose_y)
   
   # Mouth Right or Left to trigger A or B buttons
-  if mouth_x > 0.01:
-    gamepad.press_button(button=vg.XUSB_BUTTON.XUSB_GAMEPAD_A)  # Xbox360 A Button
-  else:
-    gamepad.release_button(button=vg.XUSB_BUTTON.XUSB_GAMEPAD_A)  # Xbox360 A button  
-  if mouth_x < -0.01:
-    gamepad.press_button(button=vg.XUSB_BUTTON.XUSB_GAMEPAD_X)  # Xbox360 X Button
-  else:
-    gamepad.release_button(button=vg.XUSB_BUTTON.XUSB_GAMEPAD_X)  # Xbox360 X button
+  if mouth_x > 0.9:
+    gamepad.press_button(button=vg.XUSB_BUTTON.XUSB_GAMEPAD_A)
+    mouth_right = True
+  elif mouth_right:
+    gamepad.release_button(button=vg.XUSB_BUTTON.XUSB_GAMEPAD_A)
+    mouth_right = False
+  
+  if mouth_x < -0.9:
+    gamepad.press_button(button=vg.XUSB_BUTTON.XUSB_GAMEPAD_X)
+    mouth_left = True
+  elif mouth_left:
+    gamepad.release_button(button=vg.XUSB_BUTTON.XUSB_GAMEPAD_X)
+    mouth_left = False
 
 
   # Right Trigger with Eyebrows
@@ -45,9 +54,9 @@ def logic(nose_x, nose_y, mouth_x, mouth_y, head_tilt, trigger_eyebrows, trigger
 
   # Left Trigger with Mouth Open
   if trigger_mouth_open:
-    gamepad.press_button(button=vg.XUSB_BUTTON.XUSB_GAMEPAD_Y)  # Xbox360 Y Button
+    gamepad.press_button(button=vg.XUSB_BUTTON.XUSB_GAMEPAD_Y)
   else:
-    gamepad.release_button(button=vg.XUSB_BUTTON.XUSB_GAMEPAD_Y)  # Xbox360 Y button
+    gamepad.release_button(button=vg.XUSB_BUTTON.XUSB_GAMEPAD_Y)
 
   # Update gamepad
   gamepad.update()

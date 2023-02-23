@@ -248,6 +248,9 @@ def track_face(logic, options):
         nose_point = facepoints[1]
         nose = numpy.array([nose_point.x, nose_point.y, nose_point.z])
         
+        # Head
+        head = facepoints[8]
+
         # Mouth Centroid (as a numpy array)
         mouth_point_1, mouth_point_2, mouth_point_3 = facepoints[13], facepoints[181], facepoints[405]
         mouth_centroid_x = (mouth_point_1.x + mouth_point_2.x + mouth_point_3.x) / 3
@@ -326,11 +329,25 @@ def track_face(logic, options):
             nose_y = -1
 
           # MOUTH
-          mouth_x = magnitude(numpy.array([nose[0], mouth[1], mouth[2]]) - mouth)
-          if (nose[0] > mouth[0]):
+          mouth_x = magnitude(numpy.array([head.x, mouth[1], mouth[2]]) - mouth)
+          if (head.x > mouth[0]):
             mouth_x *= -1
           mouth_y = magnitude(nose - numpy.array([nose[0], mouth[1], mouth[2]]))
-          
+          mouth_x *= mouth_horizontal_sensibility
+          mouth_y *= mouth_vertical_sensibility
+          # mouth_x = (mouth[0] - mouth_base[0]) * mouth_horizontal_sensibility
+          # mouth_y = (mouth[1] - mouth_base[1]) * mouth_vertical_sensibility
+          if mouth_x > 1:
+            mouth_x = 1
+          elif mouth_x < -1:
+            mouth_x = -1
+          if mouth_y > 1:
+            mouth_y = 1
+          elif mouth_y < -1:
+            mouth_y = -1
+          # print(mouth_x)
+
+
           # HEAD TILT
           head_tilt_value = (head_tilt - head_tilt_base) * head_tilt_sensibility
           if head_tilt_value > 1:
