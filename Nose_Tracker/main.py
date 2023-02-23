@@ -337,7 +337,7 @@ def track_face(logic, options):
             head_tilt_value = 1
           elif head_tilt_value < -1:
             head_tilt_value = -1
-          print(head_tilt_value)
+          # print(head_tilt_value)
 
 
           logic(
