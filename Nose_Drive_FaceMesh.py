@@ -2,10 +2,7 @@
 # You can EDIT the following values
 ############################
 
-nose_horizontal_sensibility = 15 # suggested values between 0 and 30
-nose_vertical_sensibility = 30 # suggested values between 0 and 30
-
-calibration_time = 5 # in seconds
+options_file_name = "drive.json"
 
 
 
@@ -13,6 +10,7 @@ calibration_time = 5 # in seconds
 # DON'T EDIT BELOW THIS LINE (unless you know what you are doing)
 ############################
 
+import json
 from Nose_Tracker import track_face
 
 
@@ -24,7 +22,7 @@ gamepad = vg.VX360Gamepad()
 #################
 # NOSE #
 #################
-def logic(nose_x, nose_y, mouth_x, mouth_y, trigger_eyebrows, trigger_mouth_open):
+def logic(nose_x, nose_y, mouth_x, mouth_y, head_tilt, trigger_eyebrows, trigger_mouth_open):
   gamepad.left_joystick_float(x_value_float=-nose_x, y_value_float=0)
   if nose_y > 0:
     # controller.release(Key.down)
@@ -36,15 +34,16 @@ def logic(nose_x, nose_y, mouth_x, mouth_y, trigger_eyebrows, trigger_mouth_open
   gamepad.reset()
 
 
-###############################
-###############################
-###############################
 
-options = {
-  "logic": logic,
-  "nose horizontal sensibility": nose_horizontal_sensibility,
-  "nose vertical sensibility": nose_vertical_sensibility,
-  "calibration time": calibration_time
-}
+#################
+# IMPORT OPTIONS #
+#################
+options_file = open(options_file_name) # Opening JSON file
+options = json.load(options_file) # returns JSON object as a dictionary
+options_file.close() # Closing file
 
-track_face(options)
+
+#################
+# START TRACKING #
+#################
+track_face(logic, options)
