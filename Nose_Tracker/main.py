@@ -12,7 +12,7 @@ def magnitude(vector):
 
 
 
-def track_nose(nose_logic, shoulders_logic, nose_horizontal_sensibility, nose_vertical_sensibility, use_shoulders, shoulders_sensibility, calibration_time):
+def track_pose(nose_logic, shoulders_logic, nose_horizontal_sensibility, nose_vertical_sensibility, use_shoulders, shoulders_sensibility, calibration_time):
 
   mp_drawing = mp.solutions.drawing_utils
   mp_drawing_styles = mp.solutions.drawing_styles
@@ -156,7 +156,7 @@ def track_face(logic, options):
 
   # Base landmark positions
   nose_base = 0
-  mouth_base = 0
+  mouth_x_base = 0
   head_tilt_base = 0
   eyebrows_base = 0
   mouth_open_base = 0
@@ -185,9 +185,6 @@ def track_face(logic, options):
   calibration_time = 0
 
   # Misc variables
-  # pressTime = 0.1
-  # last_input_time = time.time()
-  # min_interval = 1
   nose_mouth_distance = 0
   message = False
   startTime = 0
@@ -200,8 +197,6 @@ def track_face(logic, options):
     nose_vertical_sensibility = options["nose_vertical_sensibility"]
   if "mouth_horizontal_sensibility" in options:
     mouth_horizontal_sensibility = options["mouth_horizontal_sensibility"]
-  if "mouth_vertical_sensibility" in options:
-    mouth_vertical_sensibility = options["mouth_vertical_sensibility"]
   if "head_tilt_sensibility" in options:
     head_tilt_sensibility = options["head_tilt_sensibility"]  
   if "eyebrows_sensibility" in options:
@@ -246,18 +241,26 @@ def track_face(logic, options):
 
         # Nose
         nose_point = facepoints[1]
-        nose = numpy.array([nose_point.x, nose_point.y, nose_point.z])
+        # nose = numpy.array([nose_point.x, nose_point.y, nose_point.z])
         
         # Head
         head = facepoints[8]
 
+        # Pupils
+        pupils = facepoints[474]
+
         # Mouth Centroid (as a numpy array)
-        mouth_point_1, mouth_point_2, mouth_point_3 = facepoints[13], facepoints[181], facepoints[405]
-        mouth_centroid_x = (mouth_point_1.x + mouth_point_2.x + mouth_point_3.x) / 3
-        mouth_centroid_y = (mouth_point_1.y + mouth_point_2.y + mouth_point_3.y) / 3
-        mouth_centroid_z = (mouth_point_1.z + mouth_point_2.z + mouth_point_3.z) / 3
-        mouth = numpy.array([mouth_centroid_x, mouth_centroid_y, mouth_centroid_z])
-        
+        mouth_point = facepoints[13]
+        mouth_point_x, mouth_point_y, mouth_point_z = mouth_point.x, mouth_point.y, mouth_point.z
+        # mouth_point_1, mouth_point_2, mouth_point_3 = facepoints[13], facepoints[181], facepoints[405]
+        # mouth_centroid_x = (mouth_point_1.x + mouth_point_2.x + mouth_point_3.x) / 3
+        # mouth_centroid_y = (mouth_point_1.y + mouth_point_2.y + mouth_point_3.y) / 3
+        # mouth_centroid_z = (mouth_point_1.z + mouth_point_2.z + mouth_point_3.z) / 3
+        # mouth = numpy.array([mouth_centroid_x, mouth_centroid_y, mouth_centroid_z])
+        mouth_x = magnitude(numpy.array([head.x, mouth_point_y, mouth_point_z]) - numpy.array([mouth_point_x, mouth_point_y, mouth_point_z]))
+        if (head.x > mouth_point_x):
+            mouth_x *= -1
+
         # Left Eye Centroid (as a numpy array)
         L_eye_point_1, L_eye_point_2, L_eye_point_3, L_eye_point_4  = facepoints[362], facepoints[386], facepoints[263], facepoints[374]
         L_eye_centroid_x = (L_eye_point_1.x + L_eye_point_2.x + L_eye_point_3.x + L_eye_point_4.x) / 4
@@ -302,9 +305,9 @@ def track_face(logic, options):
             print("Calibrating... - Stay still wait " + str(calibration_time) + " seconds")
             message = True
           if time.time() - start_time > calibration_time:
-            nose_base = nose
-            mouth_base = mouth
-            nose_mouth_distance = magnitude(nose_base - mouth_base)
+            nose_base = nose_point
+            mouth_x_base = mouth_x
+            # nose_mouth_distance = magnitude(nose_base - mouth_base)
             head_tilt_base = head_tilt
             eyebrows_base = eyebrows
             mouth_open_base = mouth_open
@@ -317,43 +320,35 @@ def track_face(logic, options):
           #################
           
           # NOSE
-          nose_x = (nose[0] - nose_base[0]) * nose_horizontal_sensibility
+          nose_x = (nose_point.x - nose_base.x) * nose_horizontal_sensibility
           if nose_x > 1:
             nose_x = 1
           elif nose_x < -1:
             nose_x = -1
-          nose_y = (nose[1] - nose_base[1]) * nose_vertical_sensibility
+          nose_y = (nose_point.y - nose_base.y) * nose_vertical_sensibility
           if nose_y > 1:
             nose_y = 1
           elif nose_y < -1:
             nose_y = -1
+          print(nose_x, nose_y)
 
-          # MOUTH
-          mouth_x = magnitude(numpy.array([head.x, mouth[1], mouth[2]]) - mouth)
-          if (head.x > mouth[0]):
-            mouth_x *= -1
-          mouth_y = magnitude(nose - numpy.array([nose[0], mouth[1], mouth[2]]))
+
+          # MOUTH  
+          mouth_x -= mouth_x_base        
           mouth_x *= mouth_horizontal_sensibility
-          mouth_y *= mouth_vertical_sensibility
-          # mouth_x = (mouth[0] - mouth_base[0]) * mouth_horizontal_sensibility
-          # mouth_y = (mouth[1] - mouth_base[1]) * mouth_vertical_sensibility
           if mouth_x > 1:
             mouth_x = 1
           elif mouth_x < -1:
             mouth_x = -1
-          if mouth_y > 1:
-            mouth_y = 1
-          elif mouth_y < -1:
-            mouth_y = -1
           # print(mouth_x)
 
 
           # HEAD TILT
           head_tilt_value = (head_tilt - head_tilt_base) * head_tilt_sensibility
-          if head_tilt_value > 1:
-            head_tilt_value = 1
-          elif head_tilt_value < -1:
-            head_tilt_value = -1
+          if head_tilt_value > head_tilt_base + 1:
+            head_tilt_value = head_tilt_base + 1
+          elif head_tilt_value < head_tilt_base - 1:
+            head_tilt_value = head_tilt_base - 1
           # print(head_tilt_value)
 
 
@@ -361,7 +356,6 @@ def track_face(logic, options):
             nose_x,
             nose_y,
             mouth_x,
-            mouth_y,
             head_tilt_value,
             delta_eyebrows > 1,
             delta_mouth_open > 1

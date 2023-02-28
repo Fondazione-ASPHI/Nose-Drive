@@ -54,7 +54,6 @@ startTime = 0
 calibrated = False
 nose = 0
 nose_base = 0
-calibration_time = 0
 
 # For webcam input:
 drawing_spec = mp_drawing.DrawingSpec(thickness=1, circle_radius=1)

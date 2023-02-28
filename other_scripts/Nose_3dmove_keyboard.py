@@ -19,30 +19,45 @@ calibration_time = 5 # in seconds
 from Nose_Tracker import track_nose
 
 
+# Init Keyboard controller
+import keyboard as board
+from pynput.keyboard import Key, Controller
+from pynput import keyboard
+controller = Controller()
+
 # Init Mouse controller
-import pyautogui
-pyautogui.FAILSAFE = False
-width, height = pyautogui.size()
-print("Screen resolution:", width, "x", height)
+import mouse
 
 
 #################
 # NOSE #
 #################
-def nose(x, y):
-  mouse_x = ((-x + 1) / 2) * width
-  mouse_y = ((y + 1) / 2) * height
-  pyautogui.moveTo(mouse_x, mouse_y)
+def nose(x, y):  
+  if  (y > 0.5):
+    controller.press('w')
+  else:
+    controller.release('w')  
+  if (y < -0.5):
+    controller.press('s')
+  else:
+    controller.release('s')
 
+  if (x > 0.5):
+    mouse.move(-50, 0, absolute=False)
+  elif (x < -0.5):
+    mouse.move(50, 0, absolute=False)
+
+  
+        
 
 #################
 # SHOULDERS #
 #################
 def shoulders(trigger_left, trigger_right):
   if trigger_left:
-    pyautogui.click(button='left')
+    mouse.click(button='left')
   elif trigger_right:
-    pyautogui.click(button='right')
+    mouse.click(button='right')
 
 
 
@@ -50,7 +65,7 @@ def shoulders(trigger_left, trigger_right):
 ###############################
 ###############################
 
-track_nose(
+track_pose(
   nose,
   shoulders,
   nose_horizontal_sensibility,

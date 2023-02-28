@@ -19,40 +19,60 @@ calibration_time = 5 # in seconds
 from Nose_Tracker import track_nose
 
 
-# Init Gamepad controller
-import vgamepad as vg # https://pypi.org/project/vgamepad/   https://github.com/ViGEm/ViGEmBus
-gamepad = vg.VX360Gamepad()
+# Init Keyboard controller
+import keyboard as board
+from pynput.keyboard import Key, Controller
+from pynput import keyboard
+controller = Controller()
 
 
 #################
 # NOSE #
 #################
 def nose(x, y):
-  gamepad.left_joystick_float(x_value_float=-x, y_value_float=y)
-  gamepad.update()
-  gamepad.reset()
+
+  if (x > 0.5):
+    controller.press(Key.left)
+  else:
+    controller.release(Key.left)            
+  
+  if (x < -0.5):
+    controller.press(Key.right)
+  else:
+    controller.release(Key.right)
+  
+  if  (y > 0.5):
+    controller.press(Key.down)
+  else:
+    controller.release(Key.down)
+  
+  if (y < -0.5):
+    controller.press(Key.up)
+  else:
+    controller.release(Key.up)
         
 
 #################
 # SHOULDERS #
 #################
 def shoulders(trigger_left, trigger_right):
-  if (trigger_left):
-    gamepad.press_button(button=vg.XUSB_BUTTON.XUSB_GAMEPAD_A)  # Xbox360 A Button
+  if trigger_left:
+    controller.press(Key.ctrl) # press Keyboard LEFT ARROW
   else:
-    gamepad.release_button(button=vg.XUSB_BUTTON.XUSB_GAMEPAD_A)  # Xbox360 A button        
+    controller.release(Key.ctrl) # release Keyboard LEFT ARROW
 
-  if (trigger_right):
-    gamepad.press_button(button=vg.XUSB_BUTTON.XUSB_GAMEPAD_B)  # Xbox360 B Button
+  if trigger_right:
+    controller.press(Key.alt) # press Keyboard RIGHT ARROW
   else:
-    gamepad.release_button(button=vg.XUSB_BUTTON.XUSB_GAMEPAD_B)  # Xbox360 B button
+    controller.release(Key.alt) # release Keyboard RIGHT ARROW
+
 
 
 ###############################
 ###############################
 ###############################
 
-track_nose(
+track_pose(
   nose,
   shoulders,
   nose_horizontal_sensibility,

@@ -18,35 +18,19 @@ calibration_time = 5 # in seconds
 
 from Nose_Tracker import track_nose
 
-
-# Init Keyboard controller
-import keyboard as board
-from pynput.keyboard import Key, Controller
-from pynput import keyboard
-controller = Controller()
-
-# Init Mouse controller
-import mouse
+# Init Gamepad controller
+import vgamepad as vg # https://pypi.org/project/vgamepad/   https://github.com/ViGEm/ViGEmBus
+gamepad = vg.VX360Gamepad()
 
 
 #################
 # NOSE #
 #################
 def nose(x, y):  
-  if  (y > 0.5):
-    controller.press('w')
-  else:
-    controller.release('w')  
-  if (y < -0.5):
-    controller.press('s')
-  else:
-    controller.release('s')
-
-  if (x > 0.5):
-    mouse.move(-50, 0, absolute=False)
-  elif (x < -0.5):
-    mouse.move(50, 0, absolute=False)
-
+  gamepad.left_joystick_float(x_value_float=0, y_value_float=y)
+  gamepad.right_joystick_float(x_value_float=-x, y_value_float=0)
+  gamepad.update()
+  gamepad.reset()
   
         
 
@@ -54,10 +38,15 @@ def nose(x, y):
 # SHOULDERS #
 #################
 def shoulders(trigger_left, trigger_right):
-  if trigger_left:
-    mouse.click(button='left')
-  elif trigger_right:
-    mouse.click(button='right')
+  if (trigger_left):
+    gamepad.press_button(button=vg.XUSB_BUTTON.XUSB_GAMEPAD_A)  # Xbox360 A Button
+  else:
+    gamepad.release_button(button=vg.XUSB_BUTTON.XUSB_GAMEPAD_A)  # Xbox360 A button        
+
+  if (trigger_right):
+    gamepad.press_button(button=vg.XUSB_BUTTON.XUSB_GAMEPAD_B)  # Xbox360 B Button
+  else:
+    gamepad.release_button(button=vg.XUSB_BUTTON.XUSB_GAMEPAD_B)  # Xbox360 B button
 
 
 
@@ -65,7 +54,7 @@ def shoulders(trigger_left, trigger_right):
 ###############################
 ###############################
 
-track_nose(
+track_pose(
   nose,
   shoulders,
   nose_horizontal_sensibility,

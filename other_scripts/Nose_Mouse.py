@@ -18,35 +18,31 @@ calibration_time = 5 # in seconds
 
 from Nose_Tracker import track_nose
 
-# Init Gamepad controller
-import vgamepad as vg # https://pypi.org/project/vgamepad/   https://github.com/ViGEm/ViGEmBus
-gamepad = vg.VX360Gamepad()
+
+# Init Mouse controller
+import pyautogui
+pyautogui.FAILSAFE = False
+width, height = pyautogui.size()
+print("Screen resolution:", width, "x", height)
 
 
 #################
 # NOSE #
 #################
-def nose(x, y):  
-  gamepad.left_joystick_float(x_value_float=0, y_value_float=y)
-  gamepad.right_joystick_float(x_value_float=-x, y_value_float=0)
-  gamepad.update()
-  gamepad.reset()
-  
-        
+def nose(x, y):
+  mouse_x = ((-x + 1) / 2) * width
+  mouse_y = ((y + 1) / 2) * height
+  pyautogui.moveTo(mouse_x, mouse_y)
+
 
 #################
 # SHOULDERS #
 #################
 def shoulders(trigger_left, trigger_right):
-  if (trigger_left):
-    gamepad.press_button(button=vg.XUSB_BUTTON.XUSB_GAMEPAD_A)  # Xbox360 A Button
-  else:
-    gamepad.release_button(button=vg.XUSB_BUTTON.XUSB_GAMEPAD_A)  # Xbox360 A button        
-
-  if (trigger_right):
-    gamepad.press_button(button=vg.XUSB_BUTTON.XUSB_GAMEPAD_B)  # Xbox360 B Button
-  else:
-    gamepad.release_button(button=vg.XUSB_BUTTON.XUSB_GAMEPAD_B)  # Xbox360 B button
+  if trigger_left:
+    pyautogui.click(button='left')
+  elif trigger_right:
+    pyautogui.click(button='right')
 
 
 
@@ -54,7 +50,7 @@ def shoulders(trigger_left, trigger_right):
 ###############################
 ###############################
 
-track_nose(
+track_pose(
   nose,
   shoulders,
   nose_horizontal_sensibility,

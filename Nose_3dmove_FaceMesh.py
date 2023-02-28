@@ -21,14 +21,9 @@ gamepad = vg.VX360Gamepad()
 #################
 # CUSTOM LOGIC #
 #################
-def logic(nose_x, nose_y, mouth_x, mouth_y, head_tilt, trigger_eyebrows, trigger_mouth_open):  
+def logic(nose_x, nose_y, mouth_x, head_tilt, trigger_eyebrows, trigger_mouth_open):  
   
-  A_pressed = False
-  B_pressed = False
-  X_pressed = False
-  Y_pressed = False
-  RT_pressed = False
-  LT_pressed = False
+  nose_y_pressed = False
 
   # Move forward with Vertical Nose
   if nose_y > 0:
@@ -36,10 +31,8 @@ def logic(nose_x, nose_y, mouth_x, mouth_y, head_tilt, trigger_eyebrows, trigger
   
   if nose_y <= -0.5:
     gamepad.press_button(button=vg.XUSB_BUTTON.XUSB_GAMEPAD_START)
-    X_pressed = True
-  elif (nose_y > -0.5 and nose_y < 0 and X_pressed):
+  elif (nose_y > -0.5 and nose_y < 0):
     gamepad.release_button(button=vg.XUSB_BUTTON.XUSB_GAMEPAD_START)
-    X_pressed = False 
 
   # Rotate Right-Left with Horizontal Nose and Up-Down with Vertical Mouth
   gamepad.right_joystick_float(x_value_float=-nose_x, y_value_float=0)
