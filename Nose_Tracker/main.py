@@ -244,12 +244,12 @@ def track_face(logic, options):
         # nose = numpy.array([nose_point.x, nose_point.y, nose_point.z])
         
         # Head
-        head = facepoints[8]
+        head_point = facepoints[8]
 
         # Pupils
-        pupils = facepoints[474]
+        pupils_point = facepoints[474]
 
-        # Mouth Centroid (as a numpy array)
+        # Mouth Centroid
         mouth_point = facepoints[13]
         mouth_point_x, mouth_point_y, mouth_point_z = mouth_point.x, mouth_point.y, mouth_point.z
         # mouth_point_1, mouth_point_2, mouth_point_3 = facepoints[13], facepoints[181], facepoints[405]
@@ -257,43 +257,40 @@ def track_face(logic, options):
         # mouth_centroid_y = (mouth_point_1.y + mouth_point_2.y + mouth_point_3.y) / 3
         # mouth_centroid_z = (mouth_point_1.z + mouth_point_2.z + mouth_point_3.z) / 3
         # mouth = numpy.array([mouth_centroid_x, mouth_centroid_y, mouth_centroid_z])
-        mouth_x = magnitude(numpy.array([head.x, mouth_point_y, mouth_point_z]) - numpy.array([mouth_point_x, mouth_point_y, mouth_point_z]))
-        if (head.x > mouth_point_x):
+        mouth_x = magnitude(numpy.array([head_point.x, mouth_point_y, mouth_point_z]) - numpy.array([mouth_point_x, mouth_point_y, mouth_point_z]))
+        if (head_point.x > mouth_point_x):
             mouth_x *= -1
 
-        # Left Eye Centroid (as a numpy array)
-        L_eye_point_1, L_eye_point_2, L_eye_point_3, L_eye_point_4  = facepoints[362], facepoints[386], facepoints[263], facepoints[374]
-        L_eye_centroid_x = (L_eye_point_1.x + L_eye_point_2.x + L_eye_point_3.x + L_eye_point_4.x) / 4
-        L_eye_centroid_y = (L_eye_point_1.y + L_eye_point_2.y + L_eye_point_3.y + L_eye_point_4.y) / 4
-        L_eye_centroid_z = (L_eye_point_1.z + L_eye_point_2.z + L_eye_point_3.z + L_eye_point_4.z) / 4
-        left_eye = numpy.array([L_eye_centroid_x, L_eye_centroid_y, L_eye_centroid_z])
+        # Left Eye Centroid
+        left_eye_point = facepoints[263]
+        left_eye = numpy.array([left_eye_point.x, left_eye_point.y, left_eye_point.z])
+        # L_eye_point_1, L_eye_point_2, L_eye_point_3, L_eye_point_4  = facepoints[362], facepoints[386], facepoints[263], facepoints[374]
+        # L_eye_centroid_x = (L_eye_point_1.x + L_eye_point_2.x + L_eye_point_3.x + L_eye_point_4.x) / 4
+        # L_eye_centroid_y = (L_eye_point_1.y + L_eye_point_2.y + L_eye_point_3.y + L_eye_point_4.y) / 4
+        # L_eye_centroid_z = (L_eye_point_1.z + L_eye_point_2.z + L_eye_point_3.z + L_eye_point_4.z) / 4
+        # left_eye = numpy.array([L_eye_centroid_x, L_eye_centroid_y, L_eye_centroid_z])
         
-        # Right Eye Centroid (as a numpy array)
-        R_eye_point_1, R_eye_point_2, R_eye_point_3, R_eye_point_4  = facepoints[33], facepoints[159], facepoints[133], facepoints[145]
-        R_eye_centroid_x = (R_eye_point_1.x + R_eye_point_2.x + R_eye_point_3.x + R_eye_point_4.x) / 4
-        R_eye_centroid_y = (R_eye_point_1.y + R_eye_point_2.y + R_eye_point_3.y + R_eye_point_4.y) / 4
-        R_eye_centroid_z = (R_eye_point_1.z + R_eye_point_2.z + R_eye_point_3.z + R_eye_point_4.z) / 4
-        right_eye = numpy.array([R_eye_centroid_x, R_eye_centroid_y, R_eye_centroid_z])
+        # Right Eye Centroid
+        right_eye_point = facepoints[33]
+        right_eye = numpy.array([right_eye_point.x, right_eye_point.y, right_eye_point.z])
+        # R_eye_point_1, R_eye_point_2, R_eye_point_3, R_eye_point_4  = facepoints[33], facepoints[159], facepoints[133], facepoints[145]
+        # R_eye_centroid_x = (R_eye_point_1.x + R_eye_point_2.x + R_eye_point_3.x + R_eye_point_4.x) / 4
+        # R_eye_centroid_y = (R_eye_point_1.y + R_eye_point_2.y + R_eye_point_3.y + R_eye_point_4.y) / 4
+        # R_eye_centroid_z = (R_eye_point_1.z + R_eye_point_2.z + R_eye_point_3.z + R_eye_point_4.z) / 4
+        # right_eye = numpy.array([R_eye_centroid_x, R_eye_centroid_y, R_eye_centroid_z])
 
-        # Left left_eyebrow (as a magnitude value)
+        # Left left_eyebrow
         left_eyebrow_point = facepoints[282]
         left_eyebrow = numpy.array([left_eyebrow_point.x, left_eyebrow_point.y, left_eyebrow_point.z])     
         eyebrows = magnitude(left_eyebrow - left_eye)
         
-        # Open Mouth (as a magnitude value)
+        # Open Mouth
         mouth_upper_point, mouth_lower_point = facepoints[11], facepoints[16]
         mouth_upper, mouth_lower = numpy.array([mouth_upper_point.x, mouth_upper_point.y, mouth_upper_point.z]), numpy.array([mouth_lower_point.x, mouth_lower_point.y, mouth_lower_point.z])
         mouth_open = magnitude(mouth_upper - mouth_lower)
 
-        # Head Tilt around Z axis (as a numpy array)
-        head_tilt = L_eye_centroid_y - R_eye_centroid_y
-
-
-        # Deltas
-        # delta_nose = numpy.linalg.norm(nose - nose_base)
-        # delta_mouth = numpy.linalg.norm(mouth - mouth_base)
-        delta_eyebrows = (eyebrows - eyebrows_base) * eyebrows_sensibility
-        delta_mouth_open = (mouth_open - mouth_open_base) * mouth_open_sensibility
+        # Head Tilt around Z axis
+        head_tilt = left_eye_point.y - right_eye_point.y
 
 
         ###############################
@@ -330,12 +327,11 @@ def track_face(logic, options):
             nose_y = 1
           elif nose_y < -1:
             nose_y = -1
-          print(nose_x, nose_y)
+          # print(nose_x, nose_y)
 
 
           # MOUTH  
-          mouth_x -= mouth_x_base        
-          mouth_x *= mouth_horizontal_sensibility
+          mouth_x = (mouth_x - mouth_x_base) * mouth_horizontal_sensibility
           if mouth_x > 1:
             mouth_x = 1
           elif mouth_x < -1:
@@ -344,21 +340,27 @@ def track_face(logic, options):
 
 
           # HEAD TILT
-          head_tilt_value = (head_tilt - head_tilt_base) * head_tilt_sensibility
-          if head_tilt_value > head_tilt_base + 1:
-            head_tilt_value = head_tilt_base + 1
-          elif head_tilt_value < head_tilt_base - 1:
-            head_tilt_value = head_tilt_base - 1
-          # print(head_tilt_value)
+          head_tilt = (head_tilt - head_tilt_base) * head_tilt_sensibility
+          if head_tilt > 1:
+            head_tilt = 1
+          elif head_tilt < -1:
+            head_tilt = -1
+          # print(head_tilt)
+
+          # EYEBROWS
+          eyebrows = (eyebrows - eyebrows_base) * eyebrows_sensibility
+          
+          # MOUTH OPEN
+          mouth_open = (mouth_open - mouth_open_base) * mouth_open_sensibility
 
 
           logic(
             nose_x,
             nose_y,
             mouth_x,
-            head_tilt_value,
-            delta_eyebrows > 1,
-            delta_mouth_open > 1
+            head_tilt,
+            eyebrows > 1,
+            mouth_open > 1
             )
 
 

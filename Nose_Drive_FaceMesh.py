@@ -22,7 +22,7 @@ gamepad = vg.VX360Gamepad()
 #################
 # NOSE #
 #################
-def logic(nose_x, nose_y, mouth_x, mouth_y, head_tilt, trigger_eyebrows, trigger_mouth_open):
+def logic(nose_x, nose_y, mouth_x, head_tilt, trigger_eyebrows, trigger_mouth_open):
   gamepad.left_joystick_float(x_value_float=-nose_x, y_value_float=0)
   if nose_y > 0:
     # controller.release(Key.down)
