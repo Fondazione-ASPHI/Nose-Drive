@@ -1,0 +1,1 @@
+.\python_310\python.exe .\Nose_Drive_FaceMesh.py
