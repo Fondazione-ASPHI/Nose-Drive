@@ -20,17 +20,11 @@ Core commands:
 * NOSE UP: gamepad Left-Trigger (brake)
 * NOSE RIGHT and LEFT: gamepad Left Analog Horizontal Axis (steer left and right)
 
-Optionally:
-* RIGHT SHOULDER UP: press gamepad Button A
-* LEFT SHOULDER UP: press gamepad Button B (could be handbrake)
-
 ## Advanced customization ##
 The software and its releases are plain python code that can be modified.
 
-In the first lines of the [Nose_Drive.py](https://github.com/Fondazione-ASPHI/Nose-Drive/blob/main/Nose_Drive.py) file you can modify:
-* sensibility values for nose horizontal and vertical inputs
-* whether to use shoulders or not
-* sensibility value for shoulders input
+In the [drive.json](https://github.com/Fondazione-ASPHI/Nose-Drive/blob/main/drive.json) file you can modify:
+* sensibility values for inputs
 * how many seconds to wait, after the webcam image shows up, before the program takes your actual position as the base position (the pressure of the keys is based on the deviation from this base position)
 
 ## Mediapipe Pose Documentation ##
