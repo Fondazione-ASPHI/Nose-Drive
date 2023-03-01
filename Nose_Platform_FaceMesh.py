@@ -17,11 +17,13 @@ from Nose_Tracker import track_face
 import vgamepad as vg # https://pypi.org/project/vgamepad/   https://github.com/ViGEm/ViGEmBus
 gamepad = vg.VX360Gamepad()
 
+import keyboard
+
 
 #################
 # CUSTOM LOGIC #
 #################
-def logic(nose_x, nose_y, mouth_x, mouth_y, head_tilt, trigger_eyebrows, trigger_mouth_open):  
+def logic(nose_x, nose_y, mouth_x, head_tilt, trigger_eyebrows, trigger_mouth_open):  
   
   mouth_left = False
   mouth_right = False
@@ -62,6 +64,10 @@ def logic(nose_x, nose_y, mouth_x, mouth_y, head_tilt, trigger_eyebrows, trigger
   gamepad.update()
   gamepad.reset()
 
+  # Convert KEYBOARD to Controller
+  if keyboard.is_pressed('space'):
+    print("pressing space")
+  
 
 #################
 # IMPORT OPTIONS #
