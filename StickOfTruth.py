@@ -12,8 +12,11 @@ options_file_name = "options.json"
 
 import json
 from Nose_Tracker import track_face
-from pynput.keyboard import Key, Controller
-import pyautogui
+import pynput
+from pynput.keyboard import Key
+from pynput.mouse import Button
+keyboard = pynput.keyboard.Controller()
+mouse = pynput.mouse.Controller()
 
 
 #################
@@ -25,31 +28,33 @@ def logic(nose_x, nose_y, mouth_x, head_tilt, trigger_eyebrows, trigger_mouth_op
 
   # Nose is left joystick
   if nose_x > 0.5:
-    controller.press(Key.left)
+    keyboard.press(Key.left)
   else:
-    controller.release(Key.left)
+    keyboard.release(Key.left)
   if nose_x < -0.5:
-    controller.press(Key.right)
+    keyboard.press(Key.right)
   else:
-    controller.release(Key.right)
+    keyboard.release(Key.right)
 
   if nose_y > 0.5:
-    controller.press(Key.up)
+    keyboard.press(Key.up)
   else:
-    controller.release(Key.up)
+    keyboard.release(Key.up)
   if nose_y < -0.5:
-    controller.press(Key.down)
+    keyboard.press(Key.down)
   else:
-    controller.release(Key.down)
+    keyboard.release(Key.down)
   
   
   # Mouth Right or Left to trigger A or B buttons
   if mouth_x > 0.9:
-    pyautogui.click(button='left')  
-  if mouth_x < -0.9:
-    controller.press('w')
+    mouse.press(Button.left)
   else:
-    controller.release('w')
+    mouse.release(Button.left)
+  if mouth_x < -0.9:
+    keyboard.press('w')
+  else:
+    keyboard.release('w')
 
   
 
