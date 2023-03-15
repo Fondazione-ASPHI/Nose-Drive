@@ -29,9 +29,16 @@ def logic(nose_x, nose_y, mouth_x, head_tilt, trigger_eyebrows, trigger_mouth_op
   gamepad.left_joystick_float(x_value_float=0, y_value_float=nose_y)  
 
   # Rotate Right-Left with Horizontal Nose
-  # Mouth Right or Left to trigger A or B buttons
-  gamepad.right_joystick_float(x_value_float=-nose_x, y_value_float=mouth_x)
-    
+  # Mouth Right or Left  
+  mx = 0
+  if mouth_x > 0.9:
+    mx = 0.75
+  elif mouth_x < -0.9:
+    mx = -0.75
+  else:
+    mx = 0
+  gamepad.right_joystick_float(x_value_float=-nose_x, y_value_float=mx)
+
   # Head Tilt
   # if head_tilt > 0.9:
   #   gamepad.left_trigger_float(value_float=1)
@@ -70,7 +77,31 @@ def logic(nose_x, nose_y, mouth_x, head_tilt, trigger_eyebrows, trigger_mouth_op
   if keyboard.is_pressed('o'):
     gamepad.press_button(button=vg.XUSB_BUTTON.XUSB_GAMEPAD_A)
   else:
-    gamepad.release_button(button=vg.XUSB_BUTTON.XUSB_GAMEPAD_A)  
+    gamepad.release_button(button=vg.XUSB_BUTTON.XUSB_GAMEPAD_A)
+  if keyboard.is_pressed('u'):
+    gamepad.right_trigger_float(value_float=1)
+  else:
+    gamepad.right_trigger_float(value_float=0)
+  if keyboard.is_pressed('i'):
+    gamepad.left_trigger_float(value_float=1)
+  else:
+    gamepad.left_trigger_float(value_float=0)
+  if keyboard.is_pressed('d'):
+    gamepad.press_button(button=vg.XUSB_BUTTON.XUSB_GAMEPAD_DPAD_RIGHT)
+  else:
+    gamepad.release_button(button=vg.XUSB_BUTTON.XUSB_GAMEPAD_DPAD_RIGHT)
+  if keyboard.is_pressed('w'):
+    gamepad.press_button(button=vg.XUSB_BUTTON.XUSB_GAMEPAD_DPAD_UP)
+  else:
+    gamepad.release_button(button=vg.XUSB_BUTTON.XUSB_GAMEPAD_DPAD_UP)
+  if keyboard.is_pressed('s'):
+    gamepad.press_button(button=vg.XUSB_BUTTON.XUSB_GAMEPAD_DPAD_DOWN)
+  else:
+    gamepad.release_button(button=vg.XUSB_BUTTON.XUSB_GAMEPAD_DPAD_DOWN)
+  if keyboard.is_pressed('a'):
+    gamepad.press_button(button=vg.XUSB_BUTTON.XUSB_GAMEPAD_DPAD_LEFT)
+  else:
+    gamepad.release_button(button=vg.XUSB_BUTTON.XUSB_GAMEPAD_DPAD_LEFT)
 
 
 #################
