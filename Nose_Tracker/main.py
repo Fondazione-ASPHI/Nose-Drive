@@ -3,6 +3,7 @@ import mediapipe as mp
 import numpy
 import time
 import math
+import keyboard as kb
 
 
 
@@ -296,10 +297,10 @@ def track_face(logic, options):
         ###############################
         # CALIBRATION
         ###############################
-        if not calibrated:
+        if not calibrated or kb.is_pressed("o"):
           if not message:
             start_time = time.time()
-            print("Calibrating... - Stay still wait " + str(calibration_time) + " seconds")
+            print("Saving base position... - Stay still, wait " + str(calibration_time) + " seconds")
             message = True
           if time.time() - start_time > calibration_time:
             nose_base = nose_point
@@ -309,7 +310,8 @@ def track_face(logic, options):
             eyebrows_base = eyebrows
             mouth_open_base = mouth_open
             calibrated = True
-            print("Calibration done. Now Tracking.")
+            print("Base position saved. Press 'O' to reset base position.")
+            print("Now Tracking.")
         else:
 
           #################
