@@ -297,7 +297,7 @@ def track_face(logic, options):
         ###############################
         # CALIBRATION
         ###############################
-        if not calibrated or kb.is_pressed("o"):
+        if not calibrated or kb.is_pressed("n"):
           if not message:
             start_time = time.time()
             print("Saving base position... - Stay still, wait " + str(calibration_time) + " seconds")
@@ -310,7 +310,7 @@ def track_face(logic, options):
             eyebrows_base = eyebrows
             mouth_open_base = mouth_open
             calibrated = True
-            print("Base position saved. Press 'O' to reset base position.")
+            print("Base position saved. Press 'N' to reset base position.")
             print("Now Tracking.")
         else:
 
