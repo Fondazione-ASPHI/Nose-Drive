@@ -13,12 +13,14 @@ AUTHORS: [Fondazione ASPHI Onlus](https://asphi.it/)
 * Wait for your webcam image to show up
 * Stand still in front of the webcam in your base position for 5 seconds (can be edited)
 * Start playing your games
+* The "N" key on the keyboard can always be pressed to reset the base position to the actual position
+* If the program does not run, try to install the [Visual C++ redistributable package](https://learn.microsoft.com/it-it/cpp/windows/latest-supported-vc-redist?view=msvc-170#visual-studio-2015-2017-2019-and-2022)
 
 ## Inputs
 Core commands:
 * NOSE DOWN: gamepad analog Right-Trigger (accelerator)
 * NOSE UP: gamepad Left-Trigger (brake)
-* NOSE RIGHT and LEFT: gamepad Left Analog Horizontal Axis (steer left and right)
+* NOSE RIGHT and LEFT: gamepad Left Analog Horizontal Axis (steer left and right) 
 
 ## Advanced customization ##
 The software and its releases are plain python code that can be modified.
