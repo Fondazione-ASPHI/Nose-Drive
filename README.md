@@ -1,5 +1,5 @@
 # Nose Drive #
-Simulate Xbox360 controller inputs using [Mediapipe Pose](https://google.github.io/mediapipe/solutions/pose.html) tracking of Nose and Shoulders joints.
+Simulate Xbox360 controller inputs using [Mediapipe](https://developers.google.com/mediapipe/solutions/guide) tracking of Face and (optionally) Shoulders joints.
 
 AUTHORS: [Fondazione ASPHI Onlus](https://asphi.it/)
 
@@ -43,7 +43,7 @@ In the [drive.json](https://github.com/Fondazione-ASPHI/Nose-Drive/blob/main/dri
 # Credits #
 A big "Thank you!" goes to
 * the authors of [ViGEmBus](https://github.com/ViGEm/ViGEmBus) driver
-* the authors of [Mediapipe Pose](https://google.github.io/mediapipe/solutions/pose.html) high-fidelity body pose tracking solution
+* the authors of [Mediapipe](https://developers.google.com/mediapipe/) high-fidelity body pose tracking solution
 * the authors of [vgamepad](https://pypi.org/project/vgamepad/) python library
 * the authors of [keyboard](https://github.com/boppreh/keyboard) python library
 * the authors of [pynput](https://pypi.org/project/pynput/) python library
