@@ -29,8 +29,8 @@ In the [drive.json](https://github.com/Fondazione-ASPHI/Nose-Drive/blob/main/dri
 * sensibility values for inputs
 * how many seconds to wait, after the webcam image shows up, before the program takes your actual position as the base position (the pressure of the keys is based on the deviation from this base position)
 
-## Mediapipe Pose Documentation ##
-[Python API examples](https://google.github.io/mediapipe/solutions/pose#python-solution-api)
+## Mediapipe Documentation ##
+[Python API examples](https://developers.google.com/mediapipe/solutions/vision/face_landmarker/python)
 
 ## Videogames Controller ##
 ### Driver ###
