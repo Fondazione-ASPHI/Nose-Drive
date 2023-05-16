@@ -5,5 +5,6 @@
     "head_tilt_sensibility": 40,
     "eyebrows_sensibility": 100,
     "mouth_open_sensibility": 100,
-    "calibration_time": 5
+    "calibration_time": 5,
+    "camera": 0
 }
