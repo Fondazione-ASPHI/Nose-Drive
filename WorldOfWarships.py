@@ -45,7 +45,7 @@ def logic(nose_x, nose_y, mouth_x, head_tilt, trigger_eyebrows, trigger_mouth_op
   #   mx = -0.75
   # else:
   #   mx = 0
-  gamepad.right_joystick_float(x_value_float=-nose_x, y_value_float=nose_y)
+  gamepad.right_joystick_float(x_value_float=-nose_x, y_value_float=-nose_y)
 
   # Eyebrows
   if trigger_eyebrows and not mouse_left_down:
