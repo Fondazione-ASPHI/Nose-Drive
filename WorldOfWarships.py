@@ -31,7 +31,8 @@ mouse = pynput.mouse.Controller()
 mouse_left_down = False
 
 def logic(nose_x, nose_y, mouth_x, head_tilt, trigger_eyebrows, trigger_mouth_open):  
-  
+  global mouse_left_down
+
   # Move forward backward with Vertical Nose
   gamepad.left_joystick_float(x_value_float=0, y_value_float=nose_y)  
 
