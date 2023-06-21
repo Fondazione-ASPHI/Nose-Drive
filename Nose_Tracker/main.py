@@ -190,6 +190,7 @@ def track_face(logic, options):
   message = False
   startTime = 0
   calibrated = False
+  camera = 0
 
   # Get options
   if "nose_horizontal_sensibility" in options:
@@ -206,6 +207,8 @@ def track_face(logic, options):
     mouth_open_sensibility = options["mouth_open_sensibility"]
   if "calibration_time" in options:
     calibration_time = options["calibration_time"]
+  if "camera" in options:
+    camera = options["camera"]
 
 
 
@@ -215,7 +218,7 @@ def track_face(logic, options):
 
   # For webcam input:
   drawing_spec = mp_drawing.DrawingSpec(thickness=1, circle_radius=1)
-  cap = cv2.VideoCapture(0)
+  cap = cv2.VideoCapture(camera)
   with mp_face_mesh.FaceMesh(
       max_num_faces=1,
       refine_landmarks=True,
