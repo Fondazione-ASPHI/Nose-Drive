@@ -1,9 +1,9 @@
 {
-    "nose_horizontal_sensibility": 5,
-    "nose_vertical_sensibility": 10,
+    "nose_horizontal_sensibility": 20,
+    "nose_vertical_sensibility": 30,
     "mouth_horizontal_sensibility": 50,
     "head_tilt_sensibility": 25,
-    "eyebrows_sensibility": 100,
+    "eyebrows_sensibility": 100, 
     "mouth_open_sensibility": 100,
     "calibration_time": 5,
     "camera": 1

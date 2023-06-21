@@ -31,21 +31,21 @@ def logic(nose_x, nose_y, mouth_x, head_tilt, trigger_eyebrows, trigger_mouth_op
   #   keyboard.release("b")
 
   # Left Right Arrows
-  # if nose_x < -0.5:
-  #   keyboard.press(Key.right)
-  # else:
-  #   keyboard.release(Key.right)
-  # if nose_x > 0.5:
-  #   keyboard.press(Key.left)
-  # else:
-  #   keyboard.release(Key.left)
+  if nose_x < -0.5:
+    keyboard.press(Key.right)
+  else:
+    keyboard.release(Key.right)
+  if nose_x > 0.5:
+    keyboard.press(Key.left)
+  else:
+    keyboard.release(Key.left)
 
   # Up Down Arrows
   # if nose_y < -0.5:
   #   keyboard.press(Key.up)
   # else:
   #   keyboard.release(Key.up)
-  if nose_y > 0.2:
+  if nose_y > 0.1:
     keyboard.press(Key.down)
   else:
     keyboard.release(Key.down)
@@ -66,14 +66,14 @@ def logic(nose_x, nose_y, mouth_x, head_tilt, trigger_eyebrows, trigger_mouth_op
     keyboard.release(Key.space)
 
   # Head Tilt
-  if head_tilt > 0.6:
-    keyboard.press(Key.left)
-  else:
-    keyboard.release(Key.left)
-  if head_tilt < -0.6:
-    keyboard.press(Key.right)
-  else:
-    keyboard.release(Key.right)
+  # if head_tilt > 0.5:
+  #   keyboard.press(Key.left)
+  # else:
+  #   keyboard.release(Key.left)
+  # if head_tilt < -0.5:
+  #   keyboard.press(Key.right)
+  # else:
+  #   keyboard.release(Key.right)
     
   # Eyebrows
   # if trigger_eyebrows:
