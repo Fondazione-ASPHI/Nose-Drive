@@ -1,7 +1,7 @@
 # Nose Drive #
-Simulate Xbox360 controller inputs using [Mediapipe](https://developers.google.com/mediapipe/solutions/guide) tracking of Face and (optionally) Shoulders joints.
+Simulate Xbox360 controller or mouse/keyboard inputs using [Mediapipe](https://developers.google.com/mediapipe/solutions/guide) tracking of Face joints.
 
-AUTHORS: [Fondazione ASPHI Onlus](https://asphi.it/)
+AUTHORS: [Fondazione ASPHI Onlus](https://asphi.it/games)
 
 ## Demo video ##
 [![YouTube sample video](https://img.youtube.com/vi/r1LHRb9G_eM/0.jpg)](https://www.youtube.com/watch?v=r1LHRb9G_eM)
@@ -23,7 +23,7 @@ Core commands:
 * NOSE RIGHT and LEFT: gamepad Left Analog Horizontal Axis (steer left and right) 
 
 ## Advanced customization ##
-The software and its releases are plain python code that can be modified.
+The software and its releases are plain Python code that can be modified.
 
 In the [drive.json](https://github.com/Fondazione-ASPHI/Nose-Drive/blob/main/drive.json) file you can modify:
 * sensibility values for inputs
