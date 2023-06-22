@@ -1,14 +1,5 @@
-############################
-# You can EDIT the following values
-############################
-
-options_file_name = "low_sensibility.json"
-
-
-
-############################
-# DON'T EDIT BELOW THIS LINE (unless you know what you are doing)
-############################
+import sys
+options_file_name = sys.argv[1]
 
 import json
 from Nose_Tracker import track_face
@@ -32,23 +23,23 @@ def logic(nose_x, nose_y, mouth_x, head_tilt, trigger_eyebrows, trigger_mouth_op
 
   # Left Right Arrows
   if nose_x < -0.5:
-    keyboard.press(Key.space)
+    keyboard.press(Key.right)
   else:
-    keyboard.release(Key.space)
+    keyboard.release(Key.right)
   if nose_x > 0.5:
-    keyboard.press(Key.space)
+    keyboard.press(Key.left)
   else:
-    keyboard.release(Key.space)
+    keyboard.release(Key.left)
 
   # Up Down Arrows
-  if nose_y < -0.5:
-    keyboard.press(Key.space)
+  # if nose_y < -0.5:
+  #   keyboard.press(Key.up)
+  # else:
+  #   keyboard.release(Key.up)
+  if nose_y > 0.1:
+    keyboard.press(Key.down)
   else:
-    keyboard.release(Key.space)
-  if nose_y > 0.5:
-    keyboard.press(Key.space)
-  else:
-    keyboard.release(Key.space)
+    keyboard.release(Key.down)
 
   # # Mouth Right or Left
   # if mouth_x > 0.9:
@@ -60,15 +51,20 @@ def logic(nose_x, nose_y, mouth_x, head_tilt, trigger_eyebrows, trigger_mouth_op
   # else:
   #   keyboard.release("e")
 
+  if trigger_mouth_open:
+    keyboard.press(Key.space)
+  else:
+    keyboard.release(Key.space)
+
   # Head Tilt
-  # if head_tilt > 0.9:
-  #   gamepad.left_trigger_float(value_float=1)
+  # if head_tilt > 0.5:
+  #   keyboard.press(Key.left)
   # else:
-  #   gamepad.left_trigger_float(value_float=0)
-  # if head_tilt < -0.9:
-  #   gamepad.press_button(button=vg.XUSB_BUTTON.XUSB_GAMEPAD_X)
+  #   keyboard.release(Key.left)
+  # if head_tilt < -0.5:
+  #   keyboard.press(Key.right)
   # else:
-  #   gamepad.release_button(button=vg.XUSB_BUTTON.XUSB_GAMEPAD_X)
+  #   keyboard.release(Key.right)
     
   # Eyebrows
   # if trigger_eyebrows:

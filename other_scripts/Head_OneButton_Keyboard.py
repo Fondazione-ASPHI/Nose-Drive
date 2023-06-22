@@ -1,14 +1,5 @@
-############################
-# You can EDIT the following values
-############################
-
-options_file_name = "options.json"
-
-
-
-############################
-# DON'T EDIT BELOW THIS LINE (unless you know what you are doing)
-############################
+import sys
+options_file_name = sys.argv[1]
 
 import json
 from Nose_Tracker import track_face
@@ -25,30 +16,30 @@ mouse = pynput.mouse.Controller()
 def logic(nose_x, nose_y, mouth_x, head_tilt, trigger_eyebrows, trigger_mouth_open):  
   
 
-  if trigger_mouth_open:
-    keyboard.press("b")
+  # if trigger_mouth_open:
+  #   keyboard.press("b")
+  # else:
+  #   keyboard.release("b")
+
+  # Left Right Arrows
+  if nose_x < -0.5:
+    keyboard.press(Key.space)
   else:
-    keyboard.release("b")
+    keyboard.release(Key.space)
+  if nose_x > 0.5:
+    keyboard.press(Key.space)
+  else:
+    keyboard.release(Key.space)
 
-  # # Left Right Camera
-  # if nose_x < -0.5:
-  #   keyboard.press("k")
-  # else:
-  #   keyboard.release("k")
-  # if nose_x > 0.5:
-  #   keyboard.press("j")
-  # else:
-  #   keyboard.release("j")
-
-  # # Forward backward movement
-  # if nose_y < -0.5:
-  #   keyboard.press("w")
-  # else:
-  #   keyboard.release("w")
-  # if nose_y > 0.5:
-  #   keyboard.press("s")
-  # else:
-  #   keyboard.release("s")
+  # Up Down Arrows
+  if nose_y < -0.5:
+    keyboard.press(Key.space)
+  else:
+    keyboard.release(Key.space)
+  if nose_y > 0.5:
+    keyboard.press(Key.space)
+  else:
+    keyboard.release(Key.space)
 
   # # Mouth Right or Left
   # if mouth_x > 0.9:
