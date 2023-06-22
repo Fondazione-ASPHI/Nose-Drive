@@ -1,14 +1,5 @@
-############################
-# You can EDIT the following values
-############################
-
-options_file_name = "low_sensibility.json"
-
-
-
-############################
-# DON'T EDIT BELOW THIS LINE (unless you know what you are doing)
-############################
+import sys
+options_file_name = sys.argv[1]
 
 import json
 from Nose_Tracker import track_face
@@ -25,30 +16,30 @@ mouse = pynput.mouse.Controller()
 def logic(nose_x, nose_y, mouth_x, head_tilt, trigger_eyebrows, trigger_mouth_open):  
   
 
-  # if trigger_mouth_open:
-  #   keyboard.press("b")
+  if trigger_mouth_open:
+    keyboard.press("b")
+  else:
+    keyboard.release("b")
+
+  # # Left Right Camera
+  # if nose_x < -0.5:
+  #   keyboard.press("k")
   # else:
-  #   keyboard.release("b")
+  #   keyboard.release("k")
+  # if nose_x > 0.5:
+  #   keyboard.press("j")
+  # else:
+  #   keyboard.release("j")
 
-  # Left Right Arrows
-  if nose_x < -0.5:
-    keyboard.press(Key.right)
-  else:
-    keyboard.release(Key.right)
-  if nose_x > 0.5:
-    keyboard.press(Key.left)
-  else:
-    keyboard.release(Key.left)
-
-  # Up Down Arrows
+  # # Forward backward movement
   # if nose_y < -0.5:
-  #   keyboard.press(Key.up)
+  #   keyboard.press("w")
   # else:
-  #   keyboard.release(Key.up)
-  if nose_y > 0.1:
-    keyboard.press(Key.down)
-  else:
-    keyboard.release(Key.down)
+  #   keyboard.release("w")
+  # if nose_y > 0.5:
+  #   keyboard.press("s")
+  # else:
+  #   keyboard.release("s")
 
   # # Mouth Right or Left
   # if mouth_x > 0.9:
@@ -60,20 +51,15 @@ def logic(nose_x, nose_y, mouth_x, head_tilt, trigger_eyebrows, trigger_mouth_op
   # else:
   #   keyboard.release("e")
 
-  if trigger_mouth_open:
-    keyboard.press(Key.space)
-  else:
-    keyboard.release(Key.space)
-
   # Head Tilt
-  # if head_tilt > 0.5:
-  #   keyboard.press(Key.left)
+  # if head_tilt > 0.9:
+  #   gamepad.left_trigger_float(value_float=1)
   # else:
-  #   keyboard.release(Key.left)
-  # if head_tilt < -0.5:
-  #   keyboard.press(Key.right)
+  #   gamepad.left_trigger_float(value_float=0)
+  # if head_tilt < -0.9:
+  #   gamepad.press_button(button=vg.XUSB_BUTTON.XUSB_GAMEPAD_X)
   # else:
-  #   keyboard.release(Key.right)
+  #   gamepad.release_button(button=vg.XUSB_BUTTON.XUSB_GAMEPAD_X)
     
   # Eyebrows
   # if trigger_eyebrows:

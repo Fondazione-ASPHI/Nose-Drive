@@ -1,14 +1,5 @@
-############################
-# You can EDIT the following values
-############################
-
-options_file_name = "low_sensibility.json"
-
-
-
-############################
-# DON'T EDIT BELOW THIS LINE (unless you know what you are doing)
-############################
+import sys
+options_file_name = sys.argv[1]
 
 import json
 from Nose_Tracker import track_face
