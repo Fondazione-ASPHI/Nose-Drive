@@ -9,26 +9,32 @@ import vgamepad as vg # https://pypi.org/project/vgamepad/   https://github.com/
 gamepad = vg.VX360Gamepad()
 
 import keyboard
-
+mode = "move"
 
 #################
 # CUSTOM LOGIC #
 #################
 def logic(nose_x, nose_y, mouth_x, head_tilt, trigger_eyebrows, trigger_mouth_open):  
-  
-  # Move forward backward with Vertical Nose
-  gamepad.left_joystick_float(x_value_float=0, y_value_float=nose_y)  
+  global mode
 
-  # Rotate Right-Left with Horizontal Nose
-  # Mouth Right or Left  
-  mx = 0
-  if mouth_x > 0.9:
-    mx = 0.75
-  elif mouth_x < -0.9:
-    mx = -0.75
-  else:
+  if mode == "move":
+    # Move forward backward with Vertical Nose
+    gamepad.left_joystick_float(x_value_float=0, y_value_float=nose_y)  
+
+    # Rotate Right-Left with Horizontal Nose
+    # Mouth Right or Left  
     mx = 0
-  gamepad.right_joystick_float(x_value_float=-nose_x, y_value_float=mx)
+    if mouth_x > 0.9:
+      mx = 0.75
+    elif mouth_x < -0.9:
+      mx = -0.75
+    else:
+      mx = 0
+    gamepad.right_joystick_float(x_value_float=-nose_x, y_value_float=mx)
+
+  elif mode == "aim":x
+    gamepad.left_joystick_float(x_value_float=-nose_x, y_value_float=-nose_y)
+
 
   # Head Tilt
   # if head_tilt > 0.9:
