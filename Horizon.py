@@ -17,6 +17,11 @@ mode = "move"
 def logic(nose_x, nose_y, mouth_x, head_tilt, trigger_eyebrows, trigger_mouth_open):  
   global mode
 
+  if keyboard.is_pressed('m'):
+    mode = "aim"
+  elif keyboard.is_pressed('n'):
+    mode == "move"
+
   if mode == "move":
     # Move forward backward with Vertical Nose
     gamepad.left_joystick_float(x_value_float=0, y_value_float=nose_y)  
