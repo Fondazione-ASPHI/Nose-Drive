@@ -19,8 +19,10 @@ def logic(nose_x, nose_y, mouth_x, head_tilt, trigger_eyebrows, trigger_mouth_op
 
   if keyboard.is_pressed('m'):
     mode = "aim"
-  elif keyboard.is_pressed('n'):
-    mode == "move"
+    print(mode)
+  if keyboard.is_pressed('b'):
+    mode = "move"
+    print(mode)
 
   if mode == "move":
     # Move forward backward with Vertical Nose
@@ -37,8 +39,8 @@ def logic(nose_x, nose_y, mouth_x, head_tilt, trigger_eyebrows, trigger_mouth_op
       mx = 0
     gamepad.right_joystick_float(x_value_float=-nose_x, y_value_float=mx)
 
-  elif mode == "aim":x
-    gamepad.left_joystick_float(x_value_float=-nose_x, y_value_float=-nose_y)
+  elif mode == "aim":
+    gamepad.right_joystick_float(x_value_float=-nose_x, y_value_float=-nose_y)
 
 
   # Head Tilt
@@ -58,78 +60,83 @@ def logic(nose_x, nose_y, mouth_x, head_tilt, trigger_eyebrows, trigger_mouth_op
     gamepad.right_trigger_float(value_float=0)
 
 
-  # Convert KEYBOARD to Controller (for Vocal Commands)
-  if keyboard.is_pressed('space'):
-    gamepad.press_button(button=vg.XUSB_BUTTON.XUSB_GAMEPAD_Y)
+  # Convert KEYBOARD to Controller (for Vocal Commands)  
+  if keyboard.is_pressed('0'):
+    gamepad.press_button(button=vg.XUSB_BUTTON.XUSB_GAMEPAD_A)
   else:
-    gamepad.release_button(button=vg.XUSB_BUTTON.XUSB_GAMEPAD_Y)
+    gamepad.release_button(button=vg.XUSB_BUTTON.XUSB_GAMEPAD_A)
 
-  if keyboard.is_pressed('x'):
-    gamepad.press_button(button=vg.XUSB_BUTTON.XUSB_GAMEPAD_X)
-  else:
-    gamepad.release_button(button=vg.XUSB_BUTTON.XUSB_GAMEPAD_X) 
-  
-  if keyboard.is_pressed('escape'):
-    gamepad.press_button(button=vg.XUSB_BUTTON.XUSB_GAMEPAD_START)
-  else:
-    gamepad.release_button(button=vg.XUSB_BUTTON.XUSB_GAMEPAD_START)  
-  
-  if keyboard.is_pressed('p'):
+  if keyboard.is_pressed('1'):
     gamepad.press_button(button=vg.XUSB_BUTTON.XUSB_GAMEPAD_B)
   else:
     gamepad.release_button(button=vg.XUSB_BUTTON.XUSB_GAMEPAD_B)
   
-  if keyboard.is_pressed('o') or keyboard.is_pressed('q'):
-    gamepad.press_button(button=vg.XUSB_BUTTON.XUSB_GAMEPAD_A)
+  if keyboard.is_pressed('2'):
+    gamepad.press_button(button=vg.XUSB_BUTTON.XUSB_GAMEPAD_X)
   else:
-    gamepad.release_button(button=vg.XUSB_BUTTON.XUSB_GAMEPAD_A)
-  
-  if keyboard.is_pressed('u'):
+    gamepad.release_button(button=vg.XUSB_BUTTON.XUSB_GAMEPAD_X) 
+
+  if keyboard.is_pressed('3'):
+    gamepad.press_button(button=vg.XUSB_BUTTON.XUSB_GAMEPAD_Y)
+  else:
+    gamepad.release_button(button=vg.XUSB_BUTTON.XUSB_GAMEPAD_Y) 
+
+  if keyboard.is_pressed('4'):
+    gamepad.press_button(button=vg.XUSB_BUTTON.XUSB_GAMEPAD_START)
+  else:
+    gamepad.release_button(button=vg.XUSB_BUTTON.XUSB_GAMEPAD_START)
+
+  if keyboard.is_pressed('5'):
+    gamepad.press_button(button=vg.XUSB_BUTTON.XUSB_GAMEPAD_BACK)
+  else:
+    gamepad.release_button(button=vg.XUSB_BUTTON.XUSB_GAMEPAD_BACK)
+
+  if keyboard.is_pressed('6'):
     gamepad.right_trigger_float(value_float=1)
   else:
     gamepad.right_trigger_float(value_float=0)
 
-  if keyboard.is_pressed('i'):
+  if keyboard.is_pressed('7'):
     gamepad.left_trigger_float(value_float=1)
   else:
     gamepad.left_trigger_float(value_float=0)
 
-  if keyboard.is_pressed('y'):
+  if keyboard.is_pressed('8'):
     gamepad.press_button(button=vg.XUSB_BUTTON.XUSB_GAMEPAD_RIGHT_SHOULDER)
   else:
     gamepad.release_button(button=vg.XUSB_BUTTON.XUSB_GAMEPAD_RIGHT_SHOULDER)
   
-  if keyboard.is_pressed('t'):
+  if keyboard.is_pressed('9'):
     gamepad.press_button(button=vg.XUSB_BUTTON.XUSB_GAMEPAD_LEFT_SHOULDER)
   else:
     gamepad.release_button(button=vg.XUSB_BUTTON.XUSB_GAMEPAD_LEFT_SHOULDER)
 
-  if keyboard.is_pressed('r'):
+  if keyboard.is_pressed('+'):
     gamepad.press_button(button=vg.XUSB_BUTTON.XUSB_GAMEPAD_LEFT_THUMB)
   else:
     gamepad.release_button(button=vg.XUSB_BUTTON.XUSB_GAMEPAD_LEFT_THUMB)
 
-  if keyboard.is_pressed('e'):
+  if keyboard.is_pressed('-'):
     gamepad.press_button(button=vg.XUSB_BUTTON.XUSB_GAMEPAD_RIGHT_THUMB)
   else:
     gamepad.release_button(button=vg.XUSB_BUTTON.XUSB_GAMEPAD_RIGHT_THUMB)
 
-  if keyboard.is_pressed('d'):
+  if keyboard.is_pressed('right'):
     gamepad.press_button(button=vg.XUSB_BUTTON.XUSB_GAMEPAD_DPAD_RIGHT)
   else:
     gamepad.release_button(button=vg.XUSB_BUTTON.XUSB_GAMEPAD_DPAD_RIGHT)
   
-  if keyboard.is_pressed('w'):
+  if keyboard.is_pressed('up'):
     gamepad.press_button(button=vg.XUSB_BUTTON.XUSB_GAMEPAD_DPAD_UP)
   else:
     gamepad.release_button(button=vg.XUSB_BUTTON.XUSB_GAMEPAD_DPAD_UP)
   
-  if keyboard.is_pressed('s'):
+  if keyboard.is_pressed('down'):
     gamepad.press_button(button=vg.XUSB_BUTTON.XUSB_GAMEPAD_DPAD_DOWN)
   else:
     gamepad.release_button(button=vg.XUSB_BUTTON.XUSB_GAMEPAD_DPAD_DOWN)
   
-  if keyboard.is_pressed('a'):
+  if keyboard.is_pressed('left'):
     gamepad.press_button(button=vg.XUSB_BUTTON.XUSB_GAMEPAD_DPAD_LEFT)
   else:
     gamepad.release_button(button=vg.XUSB_BUTTON.XUSB_GAMEPAD_DPAD_LEFT)
