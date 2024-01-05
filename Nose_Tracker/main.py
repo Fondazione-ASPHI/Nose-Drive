@@ -191,6 +191,7 @@ def track_face(logic, options):
   startTime = 0
   calibrated = False
   camera = 0
+  paused = False
 
   # Get options
   if "nose_horizontal_sensibility" in options:
@@ -225,6 +226,14 @@ def track_face(logic, options):
       min_detection_confidence=0.5,
       min_tracking_confidence=0.5) as face_mesh:
     while cap.isOpened():
+      if kb.is_pressed("p"):
+        paused = not paused
+        print("PAUSE: " + str(paused))        
+        while kb.is_pressed("p"):
+          cap.read()
+          pass
+      if paused:
+        continue
       success, image = cap.read()
       if not success:
         print("Ignoring empty camera frame.")
