@@ -4,7 +4,7 @@ Simulate Xbox360 controller or mouse/keyboard inputs using [Mediapipe](https://d
 AUTHORS: [Fondazione ASPHI Onlus](https://asphi.it/games)
 
 ## Demo video ##
-[![YouTube sample video](https://img.youtube.com/vi/r1LHRb9G_eM/0.jpg)](https://www.youtube.com/watch?v=r1LHRb9G_eM)
+[![YouTube sample video](Nose_Drive.png)](https://youtube.com/playlist?list=PLFr79ayA5ASsFJidifoh-_BYXApgLFIkx&si=cHLuuedKiLudvU_A)
 
 ## Setup Instructions ##
 * Install the [ViGEmBus driver](https://github.com/ViGEm/ViGEmBus/releases)
