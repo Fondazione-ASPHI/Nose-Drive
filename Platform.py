@@ -32,10 +32,10 @@ def logic(nose_x, nose_y, mouth_x, head_tilt, trigger_eyebrows, trigger_mouth_op
     mouth_right = False
   
   if mouth_x < -0.9:
-    gamepad.press_button(button=vg.XUSB_BUTTON.XUSB_GAMEPAD_X)
+    gamepad.press_button(button=vg.XUSB_BUTTON.XUSB_GAMEPAD_B)
     mouth_left = True
   elif mouth_left:
-    gamepad.release_button(button=vg.XUSB_BUTTON.XUSB_GAMEPAD_X)
+    gamepad.release_button(button=vg.XUSB_BUTTON.XUSB_GAMEPAD_B)
     mouth_left = False
 
 
@@ -46,10 +46,10 @@ def logic(nose_x, nose_y, mouth_x, head_tilt, trigger_eyebrows, trigger_mouth_op
     gamepad.right_trigger_float(value_float=0)
 
   # Left Trigger with Mouth Open
-  if trigger_mouth_open:
-    gamepad.press_button(button=vg.XUSB_BUTTON.XUSB_GAMEPAD_Y)
-  else:
-    gamepad.release_button(button=vg.XUSB_BUTTON.XUSB_GAMEPAD_Y)
+  # if trigger_mouth_open:
+  #   gamepad.press_button(button=vg.XUSB_BUTTON.XUSB_GAMEPAD_Y)
+  # else:
+  #   gamepad.release_button(button=vg.XUSB_BUTTON.XUSB_GAMEPAD_Y)
 
   # Update gamepad
   gamepad.update()
