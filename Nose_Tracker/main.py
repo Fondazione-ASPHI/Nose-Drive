@@ -192,6 +192,8 @@ def track_face(logic, options):
   calibrated = False
   camera = 0
   paused = False
+  reset_pos_key = "n"
+  pause_key = "p"
 
   # Get options
   if "nose_horizontal_sensibility" in options:
@@ -210,6 +212,10 @@ def track_face(logic, options):
     calibration_time = options["calibration_time"]
   if "camera" in options:
     camera = options["camera"]
+  if "reset_pos" in options:
+    reset_pos_key = options["reset_pos"]
+  if "pause" in options:
+    pause_key = options["pause"]
 
 
 
@@ -226,10 +232,10 @@ def track_face(logic, options):
       min_detection_confidence=0.5,
       min_tracking_confidence=0.5) as face_mesh:
     while cap.isOpened():
-      if kb.is_pressed("p"):
+      if kb.is_pressed(pause_key):
         paused = not paused
         print("PAUSE: " + str(paused))        
-        while kb.is_pressed("p"):
+        while kb.is_pressed(pause_key):
           cap.read()
           pass
       if paused:
@@ -309,7 +315,7 @@ def track_face(logic, options):
         ###############################
         # CALIBRATION
         ###############################
-        if not calibrated or kb.is_pressed("n"):
+        if not calibrated or kb.is_pressed(reset_pos_key):
           if not message:
             start_time = time.time()
             print("Saving base position... - Stay still, wait " + str(calibration_time) + " seconds")

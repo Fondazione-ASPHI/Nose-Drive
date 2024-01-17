@@ -6,5 +6,7 @@
     "eyebrows_sensibility": 100,
     "mouth_open_sensibility": 100,
     "calibration_time": 5,
-    "camera": 0
+    "camera": 0,
+    "reset_pos" : "n",
+    "pause" : "p"
 }
