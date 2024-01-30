@@ -4,7 +4,7 @@
 #     https://www.atlassian.com/git/tutorials/saving-changes/gitignore
 
 python_310/
-
+eyeware_beam/eyeware
 
 # Node artifact files
 node_modules/
