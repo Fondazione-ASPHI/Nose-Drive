@@ -55,9 +55,10 @@ while True:
   yaw_deg = np.degrees(yaw)
   roll_deg = np.degrees(roll)
 
-  print(f"Pitch: {pitch_deg} degrees")
-  print(f"Yaw: {yaw_deg} degrees")
-  print(f"Roll: {roll_deg} degrees")
+  # print(f"Pitch: {pitch_deg} degrees")
+  # print(f"Yaw: {yaw_deg} degrees")
+  # print(f"Roll: {roll_deg} degrees")
+  print(pitch_deg)
 
 
   gamepad.update()

@@ -12,10 +12,6 @@ tracker = TrackerClient()
 
 # Make sure that the connection with the tracker server (Eyeware application) is up and running.
 
-
-
-
-
 # Init Gamepad controller
 import vgamepad as vg # https://pypi.org/project/vgamepad/   https://github.com/ViGEm/ViGEmBus
 gamepad = vg.VX360Gamepad()
@@ -23,9 +19,8 @@ gamepad = vg.VX360Gamepad()
 import pyautogui
 screen_width, screen_height = pyautogui.size()
 
-#################
-# NOSE #
-#################
+
+# MAIN LOOP
 while True:
   if not tracker.connected:
     continue
