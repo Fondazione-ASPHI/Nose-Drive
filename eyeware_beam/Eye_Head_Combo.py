@@ -30,13 +30,8 @@ while True:
   # HEAD
   head_pose = tracker.get_head_pose_info()
   head_is_lost = head_pose.is_lost
-  R = head_pose.transform.rotation
-  pitch = np.arcsin(-R[1, 2])
-  yaw = np.arctan2(R[0, 2], R[2, 2])
-  roll = np.arctan2(R[1, 0], R[1, 1])
-  pitch_deg = np.degrees(pitch) / 20 - 0.5
-  yaw_deg = np.degrees(yaw)
-  roll_deg = np.degrees(roll)
+  head_x = head_pose.transform.translation[0] * 10
+  head_y = head_pose.transform.translation[1] * 30 + 3
 
   # print (pitch_deg)
   
@@ -44,9 +39,9 @@ while True:
   # LOGIC
   if not screen_gaze_is_lost and not head_is_lost:
 
-    gamepad.left_joystick_float(x_value_float=0, y_value_float=pitch_deg)
-    gamepad.right_joystick_float(x_value_float=gaze_x, y_value_float=-gaze_y)
-
+    gamepad.left_joystick_float(x_value_float=0, y_value_float=head_y)
+    gamepad.right_joystick_float(x_value_float=head_x, y_value_float=0)
+    pyautogui.moveTo(screen_gaze.x, screen_gaze.y)
 
     gamepad.update()
     gamepad.reset()

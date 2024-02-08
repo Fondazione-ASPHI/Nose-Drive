@@ -2,30 +2,21 @@ from eyeware.client import TrackerClient
 import time
 import numpy as np
 
-# Build tracker client, to establish a communication with the tracker server (an Eyeware application).
-#
-# Constructing the tracker client object without arguments sets a default server hostname and port which
-# work fine in many configurations.
-# However, it is possible to set a specific hostname and port, depending on your setup and network.
-# See the TrackerClient API reference for further information.
 tracker = TrackerClient()
 
-# Make sure that the connection with the tracker server (Eyeware application) is up and running.
+
+# Function to normalize an angle in radians to a -1 to 1 scale
+def normalize_pitch_to_unit_range(pitch_deg):
+  pitch_rad = np.radians(pitch_deg)
+  # Assuming the pitch range is -π/2 to π/2 (-90 to 90 degrees)
+  # Normalize the pitch to a -1 to 1 range
+  normalized_value = pitch_rad / (np.pi / 2)
+  # Ensure the value is clamped between -1 and 1 to handle any outliers
+  normalized_value = np.clip(normalized_value, -1, 1)
+  return normalized_value
 
 
 
-
-
-# Init Gamepad controller
-import vgamepad as vg # https://pypi.org/project/vgamepad/   https://github.com/ViGEm/ViGEmBus
-gamepad = vg.VX360Gamepad()
-
-import pyautogui
-screen_width, screen_height = pyautogui.size()
-
-#################
-# NOSE #
-#################
 while True:
   if not tracker.connected:
     continue
@@ -33,8 +24,6 @@ while True:
   
   head_pose = tracker.get_head_pose_info()
   head_is_lost = head_pose.is_lost
-  halfscreen_x = screen_width / 2
-  halfscreen_y = screen_height / 2
 
   # print(head_pose.transform.rotation)
   # Assuming R is your 3x3 rotation matrix
@@ -58,10 +47,10 @@ while True:
   # print(f"Pitch: {pitch_deg} degrees")
   # print(f"Yaw: {yaw_deg} degrees")
   # print(f"Roll: {roll_deg} degrees")
-  print(pitch_deg)
+  head_x = head_pose.transform.translation[0] * 10
+  head_y = head_pose.transform.translation[1] * 30 + 3
+  print(head_x, head_y)
 
 
-  gamepad.update()
-  gamepad.reset()
   # print(gaze_x, gaze_y)
   # time.sleep(1 / 30)
