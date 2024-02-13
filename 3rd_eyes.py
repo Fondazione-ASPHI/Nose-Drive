@@ -44,21 +44,23 @@ def logic(nose_x, nose_y, mouth_x, head_tilt, trigger_eyebrows, trigger_mouth_op
 
 
   # Nose and Eyes for camera
+  camx = 0
   camy = 0
-  if gaze_y < -0.8:
-    camy = -1
-  elif gaze_y > 0.8:
-    camy = 1
-  gamepad.right_joystick_float(x_value_float=-nose_x, y_value_float=-camy)
+  if gaze_y < -0.5 or gaze_y > 0.5:
+    camy = gaze_y * 0.75
+  if gaze_x < -0.5 or gaze_x > 0.5:
+    camx = gaze_x * 0.9
+
+  gamepad.right_joystick_float(x_value_float=camx, y_value_float=-camy)
 
 
   # Rotate Right-Left with Horizontal Nose
   # Mouth Right or Left  
-  if mouth_x > 0.75:
+  if mouth_x > 0.9:
     gamepad.press_button(button=vg.XUSB_BUTTON.XUSB_GAMEPAD_A)
   else:
     gamepad.release_button(button=vg.XUSB_BUTTON.XUSB_GAMEPAD_A)
-  if mouth_x < -0.75:
+  if mouth_x < -0.9:
     gamepad.press_button(button=vg.XUSB_BUTTON.XUSB_GAMEPAD_B)
   else:
     gamepad.release_button(button=vg.XUSB_BUTTON.XUSB_GAMEPAD_B)
