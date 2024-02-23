@@ -41,6 +41,15 @@ In the [drive.json](https://github.com/Fondazione-ASPHI/Nose-Drive/blob/main/dri
 * Read keyboard inputs: [keyboard](https://github.com/boppreh/keyboard#api)
 * Simulate keyboard inputs: [pynput](https://pypi.org/project/pynput/)
 
+## Working with Conda and Python ##
+* Install [Miniconda](https://docs.anaconda.com/free/miniconda/index.html)
+* (Optional) You can add Anaconda prompt to right click menu following [these steps](https://gist.github.com/jiewpeng/8ba446acf329b1801bf91db767d179ea)
+* Open Anaconda prompt and navigate to Nose Drive root folder
+* conda create -n py310 python=3.10
+* conda activate py310
+* pip install -r requirements.txt
+* Then you can execute every script with python, for example the command "python Drive.py drive_settings.json" will execute the Drive.py script with the settings defined in the file drive_settings.json
+
 # Credits #
 A big "Thank you!" goes to
 * the authors of [ViGEmBus](https://github.com/ViGEm/ViGEmBus) driver
