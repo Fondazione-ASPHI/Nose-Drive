@@ -20,7 +20,7 @@ def logic(nose_x, nose_y, mouth_x, head_tilt, trigger_eyebrows, trigger_mouth_op
   
   # Camera with HORIZONTAL NOSE
   x = 0
-  speed = 20
+  speed = 30
   if nose_x < -0.2 or nose_x > 0.2: # Left
     x = -nose_x*speed
   win32api.mouse_event(win32con.MOUSEEVENTF_MOVE, int(x), 0, 0, 0)

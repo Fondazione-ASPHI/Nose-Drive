@@ -26,7 +26,7 @@ def logic(nose_x, nose_y, mouth_x, head_tilt, trigger_eyebrows, trigger_mouth_op
 
   # NOSE MOUSE
   x, y = 0, 0
-  speed = 10
+  speed = 20
   if nose_x < -0.2 or nose_x > 0.2: # Left
     x = -nose_x*speed
   if nose_y < -0.2 or nose_y > 0.2: # Right
