@@ -1,3 +1,10 @@
+#####
+# THIS SCRIPT simply binds nose horizontal and vertical movement to keyboard arrows inputs
+# Other facial gestures such as raise eyebrows or mouth horizontal movement can be bound to
+# other keyboard or mouse actions
+#####
+
+
 import sys
 options_file_name = sys.argv[1]
 
