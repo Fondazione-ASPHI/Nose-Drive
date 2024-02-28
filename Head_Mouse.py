@@ -1,3 +1,9 @@
+####
+# THIS SCRIPT simulates mouse movement with nose position
+# It's a RELATIVE movement, not absolute
+###
+
+
 import sys
 options_file_name = sys.argv[1]
 

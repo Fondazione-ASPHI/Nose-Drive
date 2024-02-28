@@ -1,3 +1,11 @@
+####
+# THIS SCRIPT is aimed at moving a character in 3rd or 1st person videogames such as Skyrim.
+# Nose up down moves the character, Nose right left moves the camera
+# The rest is up to vocal commands
+# Alternatively you can use the "Head Mouse" script to move camera while moving the character with vocal commands
+###
+
+
 import sys
 options_file_name = sys.argv[1]
 
