@@ -11,17 +11,27 @@ import win32api, win32con
 #################
 def logic(nose_x, nose_y, mouth_x, head_tilt, trigger_eyebrows, trigger_mouth_open):  
   
-  # Left Right
-  if nose_x < -0.75:
-    win32api.mouse_event(win32con.MOUSEEVENTF_MOVE, 5, 0, 0, 0)
-  if nose_x > 0.75:
-    win32api.mouse_event(win32con.MOUSEEVENTF_MOVE, -5, 0, 0, 0)
+  # # Left Right
+  # if nose_x < -0.75:
+  #   win32api.mouse_event(win32con.MOUSEEVENTF_MOVE, 5, 0, 0, 0)
+  # if nose_x > 0.75:
+  #   win32api.mouse_event(win32con.MOUSEEVENTF_MOVE, -5, 0, 0, 0)
 
-  # Up Down
-  if nose_y < -0.75:
-    win32api.mouse_event(win32con.MOUSEEVENTF_MOVE, 0, -5, 0, 0)
-  if nose_y > 0.75:
-    win32api.mouse_event(win32con.MOUSEEVENTF_MOVE, 0, 5, 0, 0)
+  # # Up Down
+  # if nose_y < -0.75:
+  #   win32api.mouse_event(win32con.MOUSEEVENTF_MOVE, 0, -5, 0, 0)
+  # if nose_y > 0.75:
+  #   win32api.mouse_event(win32con.MOUSEEVENTF_MOVE, 0, 5, 0, 0)
+
+
+  # NOSE MOUSE
+  x, y = 0, 0
+  speed = 10
+  if nose_x < -0.2 or nose_x > 0.2: # Left
+    x = -nose_x*speed
+  if nose_y < -0.2 or nose_y > 0.2: # Right
+    y = nose_y*speed
+  win32api.mouse_event(win32con.MOUSEEVENTF_MOVE, int(x), int(y), 0, 0)
 
 
 
