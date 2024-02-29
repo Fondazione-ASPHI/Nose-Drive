@@ -14,6 +14,7 @@ AUTHORS: [Fondazione ASPHI Onlus](https://asphi.it/games)
 * Stand still in front of the webcam in your base position for 5 seconds (can be edited)
 * Start playing your games
 * The "N" key on the keyboard can always be pressed to reset the base position to the actual position
+* The "P" key pauses and resumes inputs simulation
 * If the program does not run, try to install the [Visual C++ redistributable package](https://learn.microsoft.com/it-it/cpp/windows/latest-supported-vc-redist?view=msvc-170#visual-studio-2015-2017-2019-and-2022)
 
 ## Inputs
