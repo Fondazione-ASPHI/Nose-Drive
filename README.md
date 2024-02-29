@@ -50,6 +50,11 @@ In the [drive.json](https://github.com/Fondazione-ASPHI/Nose-Drive/blob/main/dri
 * pip install -r requirements.txt
 * Then you can execute every script with python, for example the command "python Drive.py drive_settings.json" will execute the Drive.py script with the settings defined in the file drive_settings.json
 
+## Eye-Tracking ##
+Thanks to [BEAM EYE TRACKER](https://beam.eyeware.tech/) we are now able to simulate gamepad and mouse/keyboard inputs by moving our eyes!
+* The scripts starting with "Eye" in their name makes use of this amazing feature.
+* Of course, it is possible to combine mediapipe tracking of facial joints with the Eye gaze tracking to achieve even more customization!
+
 # Credits #
 A big "Thank you!" goes to
 * the authors of [ViGEmBus](https://github.com/ViGEm/ViGEmBus) driver
