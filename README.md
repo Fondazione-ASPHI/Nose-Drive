@@ -72,10 +72,4 @@ A big "Thank you!" goes to
 * the authors of [keyboard](https://github.com/boppreh/keyboard) python library
 * the authors of [pynput](https://pypi.org/project/pynput/) python library
 
-on whose work our solution relies.
-
-Also thanks to:
-* [VoiceAttack](https://voiceattack.com/)
-* [Beam Eye Tracker](https://beam.eyeware.tech/)
-
-whose features complement the Nose-Drive very effectively allowing even more possibilities and customization!
+on whose work our solution relies
