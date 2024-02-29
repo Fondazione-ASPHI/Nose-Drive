@@ -21,7 +21,10 @@ packaging==23.2
 pefile==2023.2.7
 Pillow==9.2.0
 protobuf==3.20.3
+PyAudio==0.2.14
 PyAutoGUI==0.9.54
+pydub==0.25.1
+pygame==2.5.2
 PyGetWindow==0.0.9
 pyinstaller==6.4.0
 pyinstaller-hooks-contrib==2024.1
