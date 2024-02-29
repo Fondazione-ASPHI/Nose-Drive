@@ -4,7 +4,7 @@ import numpy
 import time
 import math
 import keyboard as kb
-
+from pynput import keyboard
 
 
 # function definition to compute magnitude o f the vector
@@ -12,144 +12,12 @@ def magnitude(vector):
   return math.sqrt(sum(pow(element, 2) for element in vector))
 
 
-
-def track_pose(nose_logic, shoulders_logic, nose_horizontal_sensibility, nose_vertical_sensibility, use_shoulders, shoulders_sensibility, calibration_time):
-
-  mp_drawing = mp.solutions.drawing_utils
-  mp_drawing_styles = mp.solutions.drawing_styles
-  mp_pose = mp.solutions.pose
-
-
-  ###############################
-  # BUTTONS LOGIC
-  ###############################
-
-
-  # Init variables
-  left_shoulder_last = 0
-  right_shoulder_last = 0
-  nose_base = 0
-  pressTime = 0.1
-  last_input_time = time.time()
-  min_interval = 1
-  message = False
-  startTime = 0
-  calibrated = False
-  temp_left = 0
-  temp_right = 0
-  nose = 0
-  delta_left = 0
-  delta_right = 0
-  delta_nose = 0
-
-
-  ###############################
-  ###############################
-  ###############################
-
-  cap = cv2.VideoCapture(0)
-  with mp_pose.Pose(
-      min_detection_confidence=0.5,
-      min_tracking_confidence=0.5) as pose:
-    while cap.isOpened():
-      success, image = cap.read()
-      if not success:
-        print("Ignoring empty camera frame.")
-        # If loading a video, use 'break' instead of 'continue'.
-        continue
-
-      # To improve performance, optionally mark the image as not writeable to
-      # pass by reference.
-      image.flags.writeable = False
-      image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
-      results = pose.process(image)
-
-
-
-      ###############################
-      # CALIBRATION
-      ###############################
-
-      if results.pose_landmarks != None:
-        temp_left = numpy.array([results.pose_landmarks.landmark[mp_pose.PoseLandmark.LEFT_SHOULDER].x, results.pose_landmarks.landmark[mp_pose.PoseLandmark.LEFT_SHOULDER].y])
-        temp_right = numpy.array([results.pose_landmarks.landmark[mp_pose.PoseLandmark.RIGHT_SHOULDER].x, results.pose_landmarks.landmark[mp_pose.PoseLandmark.RIGHT_SHOULDER].y])
-        nose = numpy.array([results.pose_landmarks.landmark[mp_pose.PoseLandmark.NOSE].x, results.pose_landmarks.landmark[mp_pose.PoseLandmark.NOSE].y])
-        delta_left = numpy.linalg.norm(temp_left - left_shoulder_last)
-        delta_right = numpy.linalg.norm(temp_right - right_shoulder_last)
-        delta_nose = numpy.linalg.norm(nose - nose_base)
-
-        if not calibrated:
-          if not message:
-            start_time = time.time()
-            print("Calibrating... - Stay still wait " + str(calibration_time) + " seconds")
-            message = True
-          if time.time() - start_time > calibration_time:        
-            left_shoulder_last = temp_left
-            right_shoulder_last = temp_right
-            nose_base = nose
-            calibrated = True
-            print("Calibration done. Now Tracking.")
-        else:
-
-
-
-          #################
-          # NOSE #
-          #################
-
-          #### Get X and Y values ####
-          x = (nose[0] - nose_base[0]) * nose_horizontal_sensibility
-          if x > 1:
-            x = 1
-          elif x < -1:
-            x = -1
-          y = (nose[1] - nose_base[1]) * nose_vertical_sensibility
-          if y > 1:
-            y = 1
-          elif y < -1:
-            y = -1
-
-          nose_logic(x, y)
-          
-
-          #################
-          # SHOULDERS #
-          #################
-          if use_shoulders:
-            trigger_left = delta_left > shoulders_sensibility
-            trigger_right = delta_right > shoulders_sensibility
-            
-            shoulders_logic(trigger_left, trigger_right)
-            
-
-
-  ###############################
-  ###############################
-  ###############################
-
-      # Draw the pose annotation on the image.
-      image.flags.writeable = True
-      image = cv2.cvtColor(image, cv2.COLOR_RGB2BGR)
-      mp_drawing.draw_landmarks(
-          image,
-          results.pose_landmarks,
-          mp_pose.POSE_CONNECTIONS,
-          landmark_drawing_spec=mp_drawing_styles.get_default_pose_landmarks_style())
-      # Flip the image horizontally for a selfie-view display.
-      cv2.imshow('MediaPipe Pose', cv2.flip(image, 1))
-      if cv2.waitKey(5) & 0xFF == 27:
-        break
-  cap.release()
-
-
-
+paused = False
 def track_face(logic, options):
-
+  global paused
   mp_drawing = mp.solutions.drawing_utils
   mp_drawing_styles = mp.solutions.drawing_styles
   mp_face_mesh = mp.solutions.face_mesh
-
-
 
   ###############################
   # INITIALIZE VARIABLES
@@ -189,9 +57,8 @@ def track_face(logic, options):
   nose_mouth_distance = 0
   message = False
   startTime = 0
-  calibrated = False
-  camera = 0
-  paused = False
+  calibrated = False  
+  camera = 0  
   reset_pos_key = "n"
   pause_key = "p"
 
@@ -216,7 +83,21 @@ def track_face(logic, options):
     reset_pos_key = options["reset_pos"]
   if "pause" in options:
     pause_key = options["pause"]
+  
+  
+  def on_press(key):
+    pass
 
+  def on_release(key):
+    global paused
+    if key.char == pause_key:
+      paused = not paused
+      print("Paused: " + str(paused))
+
+  listener = keyboard.Listener(
+      on_press=on_press,
+      on_release=on_release)
+  listener.start()
 
 
   ###############################
@@ -231,15 +112,7 @@ def track_face(logic, options):
       refine_landmarks=True,
       min_detection_confidence=0.5,
       min_tracking_confidence=0.5) as face_mesh:
-    while cap.isOpened():
-      if kb.is_pressed(pause_key):
-        paused = not paused
-        print("PAUSE: " + str(paused))        
-        while kb.is_pressed(pause_key):
-          cap.read()
-          pass
-      if paused:
-        continue
+    while cap.isOpened():      
       success, image = cap.read()
       if not success:
         print("Ignoring empty camera frame.")
@@ -374,14 +247,15 @@ def track_face(logic, options):
           mouth_open = (mouth_open - mouth_open_base) * mouth_open_sensibility
 
 
-          logic(
-            nose_x,
-            nose_y,
-            mouth_x,
-            head_tilt,
-            eyebrows > 1,
-            mouth_open > 1
-            )
+          if not paused:
+            logic(
+              nose_x,
+              nose_y,
+              mouth_x,
+              head_tilt,
+              eyebrows > 1,
+              mouth_open > 1
+              )
 
 
         #################
