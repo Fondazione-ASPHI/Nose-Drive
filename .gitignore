@@ -4,8 +4,10 @@
 #     https://www.atlassian.com/git/tutorials/saving-changes/gitignore
 
 python_310/
-eyeware_beam/eyeware
+
 *.dll
+!libsodium.dll
+
 *.spec
 
 # Node artifact files
@@ -18,6 +20,8 @@ build/
 
 # Compiled Python bytecode
 *.py[cod]
+!eyeware/client.cp36-win_amd64.pyd
+!eyeware/client.cp310-win_amd64.pyd
 
 # Log files
 *.log
