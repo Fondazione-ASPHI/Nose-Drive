@@ -6,6 +6,7 @@
 python_310/
 eyeware_beam/eyeware
 *.dll
+*.spec
 
 # Node artifact files
 node_modules/
