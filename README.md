@@ -57,7 +57,7 @@ In the [drive.json](https://github.com/Fondazione-ASPHI/Nose-Drive/blob/main/dri
 # Eye-Tracking #
 Thanks to [BEAM EYE TRACKER](https://beam.eyeware.tech/) we are now able to simulate gamepad and mouse/keyboard inputs by moving our eyes!
 * The scripts starting with "Eye" in their name makes use of this amazing feature.
-* Of course, it is possible to combine mediapipe tracking of facial joints with the Eye gaze tracking to achieve even more customization!
+* Of course, it is possible to combine mediapipe tracking of facial joints with the Eye gaze tracking to achieve even more customization! Note that in order to execute this kind of scripts (for example [Eye_3rd_Gamepad.py](Eye_3rd_Gamepad.py)) a software like "[Split Cam](https://splitcam.com/)" is required, because the webcam image should go to both Beam Eyetracker software and Python CV2 library at the same time.
 
 # License #
 Exept where otherwise stated, the files in this repository were created by [Fondazione ASPHI Onlus](https://asphi.it/) and are licensed under a GNU GENERAL PUBLIC LICENSE.
