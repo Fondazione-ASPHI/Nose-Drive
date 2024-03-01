@@ -1,6 +1,8 @@
 # Nose Drive #
 Simulate Xbox360 controller or mouse/keyboard inputs using [Mediapipe](https://developers.google.com/mediapipe/solutions/guide) tracking of Face joints.
 
+This project is realized by the non-profit "Fondazione ASPHI Onlus" and its main purpose is to help people with complex motor disabilities play videogames with alternative and highly-customizable inputs solutions.
+
 AUTHORS: [Fondazione ASPHI Onlus](https://asphi.it/games)
 
 ## Demo video ##
