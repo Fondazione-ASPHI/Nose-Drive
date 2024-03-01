@@ -12,6 +12,7 @@ options_file_name = sys.argv[1]
 import json
 from Nose_Tracker import track_face
 import win32api, win32con
+import keyboard as kb
 import pynput
 from pynput.keyboard import Key
 keyboard = pynput.keyboard.Controller()
@@ -23,30 +24,44 @@ keyboard = pynput.keyboard.Controller()
 w_pressed = False
 s_pressed = False
 threshold = 0.5
+mode = "Move" # or "Aim"
+
 def logic(nose_x, nose_y, mouth_x, head_tilt, trigger_eyebrows, trigger_mouth_open):  
-  global w_pressed, s_pressed, threshold
-  
-  # Camera with HORIZONTAL NOSE
-  x = 0
+  global w_pressed, s_pressed, threshold, mode  
+  x, y = 0, 0
   speed = 30
-  if nose_x < -0.2 or nose_x > 0.2: # Left
-    x = -nose_x*speed
-  win32api.mouse_event(win32con.MOUSEEVENTF_MOVE, int(x), 0, 0, 0)
 
-  # Movement with VERTICAL NOSE
-  if nose_y > threshold and not w_pressed:
-    keyboard.press("w")
-    w_pressed = True
-  elif nose_y < -threshold and not s_pressed:
-    keyboard.press("s")
-    s_pressed = True
-  elif nose_y < threshold and w_pressed:
-    keyboard.release("w")
-    w_pressed = False
-  elif nose_y > -threshold and s_pressed:
-    keyboard.release("s")
-    s_pressed = False
+  if kb.is_pressed("8"):
+    mode = "Move"
+  elif kb.is_pressed("9"):
+    mode = "Aim"
 
+  if mode == "Move":
+    # Camera with HORIZONTAL NOSE
+    if nose_x < -0.2 or nose_x > 0.2: # Left
+      x = -nose_x*speed
+    win32api.mouse_event(win32con.MOUSEEVENTF_MOVE, int(x), 0, 0, 0)
+
+    # Movement with VERTICAL NOSE
+    if nose_y > threshold and not w_pressed:
+      keyboard.press("w")
+      w_pressed = True
+    elif nose_y < -threshold and not s_pressed:
+      keyboard.press("s")
+      s_pressed = True
+    elif nose_y < threshold and w_pressed:
+      keyboard.release("w")
+      w_pressed = False
+    elif nose_y > -threshold and s_pressed:
+      keyboard.release("s")
+      s_pressed = False
+
+  elif mode == "Aim":    
+    if nose_x < -0.2 or nose_x > 0.2: # Left
+      x = -nose_x*speed
+    if nose_y < -0.2 or nose_y > 0.2: # Right
+      y = nose_y*speed
+    win32api.mouse_event(win32con.MOUSEEVENTF_MOVE, int(x), int(y), 0, 0)
 
 
 
