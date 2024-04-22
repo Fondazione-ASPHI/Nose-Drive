@@ -35,14 +35,18 @@ while True:
     if gaze_x > dead_zone and not looking_right:
       looking_right = True      
       keyboard.press(Key.down)
-    else:
+      print("looking right")
+    elif gaze_x < dead_zone and looking_right:
       looking_right = False
       keyboard.release(Key.down)
+      print("NOT looking right")
       
     if gaze_x < -dead_zone and not looking_left:      
       looking_left = True
       keyboard.press("x")
-    else:
+      print("looking left")
+    elif gaze_x > -dead_zone and looking_left:
       looking_left = False
       keyboard.release("x")
+      print("NOT looking left")
 
