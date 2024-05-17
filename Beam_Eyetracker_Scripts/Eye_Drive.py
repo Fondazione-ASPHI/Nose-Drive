@@ -33,7 +33,7 @@ while True:
   gaze_x = (screen_gaze.x - halfscreen_x)/halfscreen_x
   gaze_y = (screen_gaze.y - halfscreen_y)/halfscreen_y
   if not screen_gaze_is_lost:  
-    gamepad.left_joystick_float(x_value_float=gaze_x*2, y_value_float=0)
+    gamepad.left_joystick_float(x_value_float=gaze_x, y_value_float=0)
     if gaze_y < 0:
       # controller.release(Key.down)
       gamepad.right_trigger_float(value_float=1)

@@ -34,7 +34,7 @@ while True:
   gaze_y = (screen_gaze.y - halfscreen_y)/halfscreen_y
   
   if not screen_gaze_is_lost:  
-    gamepad.left_joystick_float(x_value_float=gaze_x*2, y_value_float=0)
+    gamepad.left_joystick_float(x_value_float=gaze_x, y_value_float=0)
   
   gamepad.update()
   gamepad.reset()
