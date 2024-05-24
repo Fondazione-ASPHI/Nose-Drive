@@ -5,4 +5,4 @@ Thanks to [BEAM EYE TRACKER](https://beam.eyeware.tech/) we are now able to simu
 
 # BUILD instructions
 To compile these files:
-pyinstaller --onefile --paths eyeware\libsodium.dll Eye_Drive_Horizontal.py
+pyinstaller -F --add-data ViGEmClient.dll;. Eye_Drive.py
