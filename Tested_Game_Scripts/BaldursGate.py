@@ -21,16 +21,20 @@ mouse = pynput.mouse.Controller()
 def logic(nose_x, nose_y, mouth_x, head_tilt, trigger_eyebrows, trigger_mouth_open):
 
   # Rotate Camera Left
-  if nose_x < -0.5:
+  if nose_x > 0.5:
     keyboard.press("e")
   else:
     keyboard.release("e")
 
   # Rotate Camera Right
-  if nose_x > 0.5:
+  if nose_x < -0.5:
     keyboard.press("q")
   else:
     keyboard.release("q")
+
+  # Click
+  if trigger_eyebrows:
+    mouse.click(Button.left)
 
 
 
