@@ -5,7 +5,7 @@ namespace NoseDrive_Settings
     public partial class Form1 : Form
     {
         public Options options;
-        public string fileName = "options.json";
+        public string fileName = "default_settings.json";
 
         public Form1()
         {
