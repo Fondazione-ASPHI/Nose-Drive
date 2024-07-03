@@ -28,72 +28,76 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.SuspendLayout();
+            Script = new Button();
+            Settings = new Button();
+            Start = new Button();
+            label1 = new Label();
+            SuspendLayout();
             // 
-            // button1
+            // Script
             // 
-            this.button1.Location = new System.Drawing.Point(140, 86);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(169, 29);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Select Script";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            Script.Location = new Point(175, 108);
+            Script.Margin = new Padding(4);
+            Script.Name = "Script";
+            Script.Size = new Size(211, 36);
+            Script.TabIndex = 0;
+            Script.Text = "Select Script";
+            Script.UseVisualStyleBackColor = true;
+            Script.Click += select_script;
             // 
-            // button2
+            // Settings
             // 
-            this.button2.Location = new System.Drawing.Point(112, 171);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(217, 29);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "Select settings file";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            Settings.Location = new Point(140, 214);
+            Settings.Margin = new Padding(4);
+            Settings.Name = "Settings";
+            Settings.Size = new Size(271, 36);
+            Settings.TabIndex = 1;
+            Settings.Text = "Select settings file";
+            Settings.UseVisualStyleBackColor = true;
+            Settings.Click += settings;
             // 
-            // button3
+            // Start
             // 
-            this.button3.Location = new System.Drawing.Point(130, 303);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(190, 71);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "START";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            Start.Location = new Point(162, 379);
+            Start.Margin = new Padding(4);
+            Start.Name = "Start";
+            Start.Size = new Size(238, 89);
+            Start.TabIndex = 2;
+            Start.Text = "START";
+            Start.UseVisualStyleBackColor = true;
+            Start.Click += start_button;
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(50, 20);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "label1";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+            label1.AutoSize = true;
+            label1.Location = new Point(15, 11);
+            label1.Margin = new Padding(4, 0, 4, 0);
+            label1.Name = "label1";
+            label1.Size = new Size(59, 25);
+            label1.TabIndex = 3;
+            label1.Text = "label1";
+            label1.Click += label1_Click;
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(449, 450);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Name = "Form1";
-            this.Text = "Form1";
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(561, 562);
+            Controls.Add(label1);
+            Controls.Add(Start);
+            Controls.Add(Settings);
+            Controls.Add(Script);
+            Margin = new Padding(4);
+            Name = "Form1";
+            Text = "Form1";
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
-        private Button button1;
-        private Button button2;
-        private Button button3;
+        private Button Script;
+        private Button Settings;
+        private Button Start;
         private Label label1;
     }
 }

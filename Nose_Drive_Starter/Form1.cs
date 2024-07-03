@@ -35,21 +35,21 @@ namespace Nose_Drive_Starter
             };
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void select_script(object sender, EventArgs e)
         {
             openFileDialog1.ShowDialog();
             scriptPath = openFileDialog1.FileName;
             label1.Text = openFileDialog1.FileName;
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void settings(object sender, EventArgs e)
         {
             openFileDialog2.ShowDialog();
             settingsPath = openFileDialog2.FileName;
             label1.Text = openFileDialog2.FileName;
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void start_button(object sender, EventArgs e)
         {
             label1.Text = scriptPath + " " + settingsPath;
 
