@@ -4,11 +4,12 @@
 #     https://www.atlassian.com/git/tutorials/saving-changes/gitignore
 
 python_310/
+Compiled/
 
 *.dll
 !libsodium.dll
 
-*.spec
+# *.spec
 
 # Node artifact files
 node_modules/
