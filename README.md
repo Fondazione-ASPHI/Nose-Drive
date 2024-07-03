@@ -28,7 +28,7 @@ Core commands:
 ## Advanced customization ##
 The software and its releases are plain Python code that can be modified.
 
-In the [drive.json](https://github.com/Fondazione-ASPHI/Nose-Drive/blob/main/drive.json) file you can modify:
+In the [drive_settings.json](https://github.com/Fondazione-ASPHI/Nose-Drive/blob/main/drive_settings.json) file you can modify:
 * sensibility values for inputs
 * how many seconds to wait, after the webcam image shows up, before the program takes your actual position as the base position (the pressure of the keys is based on the deviation from this base position)
 * the index of the camera that should be used for tracking, if more than one cameras are connected (default is 0)
