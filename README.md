@@ -32,6 +32,7 @@ In the [drive_settings.json](https://github.com/Fondazione-ASPHI/Nose-Drive/blob
 * sensibility values for inputs
 * how many seconds to wait, after the webcam image shows up, before the program takes your actual position as the base position (the pressure of the keys is based on the deviation from this base position)
 * the index of the camera that should be used for tracking, if more than one cameras are connected (default is 0)
+* the keyboard keys to trigger reset of base position or to pause the program
 
 ## Mediapipe Documentation ##
 [Python API examples](https://developers.google.com/mediapipe/solutions/vision/face_landmarker/python)
