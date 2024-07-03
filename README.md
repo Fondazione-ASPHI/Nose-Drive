@@ -53,7 +53,7 @@ In the [drive.json](https://github.com/Fondazione-ASPHI/Nose-Drive/blob/main/dri
 * pip install -r requirements.txt
 * Then you can execute every script with python, for example the command "python Drive.py drive_settings.json" will execute the Drive.py script with the settings defined in the file drive_settings.json
 
-# Build instructions#
+## Build instructions ##
 * .\python_310\Scripts\pyinstaller.exe .\Builder.spec
 * Change line 6 of Builder.spec to match the .py script you want to build
 * Execute compiled binaries with ".\dist\main\main.exe .\your_settings.json"
