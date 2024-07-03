@@ -1,5 +1,5 @@
 {
-    "nose_horizontal_sensibility": 20,
+    "nose_horizontal_sensibility": 10,
     "nose_vertical_sensibility": 20,
     "mouth_horizontal_sensibility": 50,
     "head_tilt_sensibility": 25,
