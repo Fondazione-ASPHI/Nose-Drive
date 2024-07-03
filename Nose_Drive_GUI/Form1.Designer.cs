@@ -74,6 +74,7 @@
             button1 = new Button();
             label20 = new Label();
             button3 = new Button();
+            label21 = new Label();
             tabControl1.SuspendLayout();
             tabPage2.SuspendLayout();
             tabPage3.SuspendLayout();
@@ -344,6 +345,7 @@
             // tabPage3
             // 
             tabPage3.BackColor = Color.Black;
+            tabPage3.Controls.Add(label21);
             tabPage3.Controls.Add(label19);
             tabPage3.Controls.Add(button2);
             tabPage3.Controls.Add(Script);
@@ -610,6 +612,16 @@
             button3.TabIndex = 40;
             button3.UseVisualStyleBackColor = true;
             // 
+            // label21
+            // 
+            label21.AutoSize = true;
+            label21.Location = new Point(41, 419);
+            label21.Name = "label21";
+            label21.Size = new Size(489, 174);
+            label21.TabIndex = 25;
+            label21.Text = "Spiegazione di come funziona\r\nSelezionare lo script .py\r\nPoi cliccare su START\r\n\r\nIl pulsante Build è opzionale, compila lo\r\nscript selezionato per migliorare la performance.";
+            label21.Click += label21_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
@@ -625,6 +637,7 @@
             Margin = new Padding(4);
             Name = "Form1";
             Text = "Form1";
+            Load += Form1_Load;
             tabControl1.ResumeLayout(false);
             tabPage2.ResumeLayout(false);
             tabPage2.PerformLayout();
@@ -692,5 +705,6 @@
         private Button button1;
         private Label label20;
         private Button button3;
+        private Label label21;
     }
 }
