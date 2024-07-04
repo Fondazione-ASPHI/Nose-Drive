@@ -1,4 +1,4 @@
-namespace Nose_Drive_Starter
+namespace Nose_Drive_GUI
 {
     internal static class Program
     {

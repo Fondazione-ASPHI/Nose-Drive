@@ -1,6 +1,6 @@
 using System.Diagnostics;
 
-namespace Nose_Drive_Starter
+namespace Nose_Drive_GUI
 {
     public partial class Form1 : Form
     {
@@ -12,13 +12,15 @@ namespace Nose_Drive_Starter
         OpenFileDialog openFileDialog1;
         OpenFileDialog openFileDialog2;
 
+        int lockedPage = 0;
+
 
         public Form1()
         {
             InitializeComponent();
 
             currentPath = Directory.GetCurrentDirectory();
-            label1.Text = currentPath;
+            label1.Text = currentPath;            
 
             openFileDialog1 = new OpenFileDialog()
             {
@@ -62,6 +64,23 @@ namespace Nose_Drive_Starter
               }
             };
             process.Start();
+        }
+
+        private void remove_script(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form2 frm2 = new Form2();
+            frm2.ShowDialog();
+        }
+
+        private void logictab_selecting(object sender, TabControlCancelEventArgs e)
+        {
+            if (lockedPage >= 0 && e.TabPageIndex != lockedPage) e.Cancel = true;
+
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -129,12 +148,17 @@ namespace Nose_Drive_Starter
 
         }
 
-        private void loadScriptToolStripMenuItem_Click(object sender, EventArgs e)
+        private void label17_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
+        private void checkBox2_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tabPage1_Click_1(object sender, EventArgs e)
         {
 
         }

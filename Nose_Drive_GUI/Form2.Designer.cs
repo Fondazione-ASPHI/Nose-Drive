@@ -45,7 +45,7 @@
             // tabControl3
             // 
             tabControl3.Controls.Add(tabPage5);
-            tabControl3.Location = new Point(50, 12);
+            tabControl3.Location = new Point(27, 22);
             tabControl3.Name = "tabControl3";
             tabControl3.SelectedIndex = 0;
             tabControl3.Size = new Size(538, 472);
@@ -61,13 +61,14 @@
             tabPage5.Controls.Add(label13);
             tabPage5.Controls.Add(numericUpDown1);
             tabPage5.Controls.Add(label12);
+            tabPage5.Font = new Font("Calibri", 12F, FontStyle.Bold, GraphicsUnit.Point);
             tabPage5.ForeColor = SystemColors.ButtonFace;
             tabPage5.Location = new Point(4, 34);
             tabPage5.Name = "tabPage5";
             tabPage5.Padding = new Padding(3);
             tabPage5.Size = new Size(530, 434);
             tabPage5.TabIndex = 0;
-            tabPage5.Text = "tabPage5";
+            tabPage5.Text = "Settings";
             // 
             // label20
             // 
@@ -107,6 +108,7 @@
             label8.Size = new Size(147, 39);
             label8.TabIndex = 42;
             label8.Text = "Pause Key";
+            label8.Click += label8_Click;
             // 
             // label13
             // 

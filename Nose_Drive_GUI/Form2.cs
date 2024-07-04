@@ -21,5 +21,10 @@ namespace Nose_Drive_GUI
         {
 
         }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
