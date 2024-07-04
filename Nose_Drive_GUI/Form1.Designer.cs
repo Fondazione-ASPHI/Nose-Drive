@@ -142,7 +142,7 @@
             tabPage2.Controls.Add(comboBox2);
             tabPage2.Controls.Add(label2);
             tabPage2.Controls.Add(comboBox1);
-            tabPage2.Font = new Font("Calibri", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            tabPage2.Font = new Font("Calibri", 16F, FontStyle.Regular, GraphicsUnit.Point);
             tabPage2.ForeColor = SystemColors.ButtonFace;
             tabPage2.Location = new Point(4, 48);
             tabPage2.Name = "tabPage2";
@@ -180,7 +180,7 @@
             comboBox5.Items.AddRange(new object[] { "A", "B", "LT", "RT", "L Analog Left", "L Analog Right", "L Analog Up", "L Analog Down" });
             comboBox5.Location = new Point(255, 500);
             comboBox5.Name = "comboBox5";
-            comboBox5.Size = new Size(182, 37);
+            comboBox5.Size = new Size(182, 47);
             comboBox5.TabIndex = 17;
             // 
             // label7
@@ -200,7 +200,7 @@
             comboBox6.Items.AddRange(new object[] { "A", "B", "LT", "RT", "L Analog Left", "L Analog Right", "L Analog Up", "L Analog Down" });
             comboBox6.Location = new Point(255, 440);
             comboBox6.Name = "comboBox6";
-            comboBox6.Size = new Size(182, 37);
+            comboBox6.Size = new Size(182, 47);
             comboBox6.TabIndex = 15;
             // 
             // comboBox7
@@ -209,7 +209,7 @@
             comboBox7.Items.AddRange(new object[] { "A", "B", "LT", "RT", "L Analog Left", "L Analog Right", "L Analog Up", "L Analog Down" });
             comboBox7.Location = new Point(255, 320);
             comboBox7.Name = "comboBox7";
-            comboBox7.Size = new Size(182, 37);
+            comboBox7.Size = new Size(182, 47);
             comboBox7.TabIndex = 13;
             // 
             // label4
@@ -230,7 +230,7 @@
             comboBox3.Items.AddRange(new object[] { "A", "B", "LT", "RT", "L Analog Left", "L Analog Right", "L Analog Up", "L Analog Down" });
             comboBox3.Location = new Point(255, 210);
             comboBox3.Name = "comboBox3";
-            comboBox3.Size = new Size(182, 37);
+            comboBox3.Size = new Size(182, 47);
             comboBox3.TabIndex = 11;
             // 
             // label5
@@ -250,7 +250,7 @@
             comboBox4.Items.AddRange(new object[] { "A", "B", "LT", "RT", "L Analog Left", "L Analog Right", "L Analog Up", "L Analog Down" });
             comboBox4.Location = new Point(255, 150);
             comboBox4.Name = "comboBox4";
-            comboBox4.Size = new Size(182, 37);
+            comboBox4.Size = new Size(182, 47);
             comboBox4.TabIndex = 9;
             // 
             // label3
@@ -270,7 +270,7 @@
             comboBox2.Items.AddRange(new object[] { "A", "B", "LT", "RT", "L Analog Left", "L Analog Right", "L Analog Up", "L Analog Down" });
             comboBox2.Location = new Point(255, 90);
             comboBox2.Name = "comboBox2";
-            comboBox2.Size = new Size(182, 37);
+            comboBox2.Size = new Size(182, 47);
             comboBox2.TabIndex = 7;
             comboBox2.SelectedIndexChanged += comboBox2_SelectedIndexChanged;
             // 
@@ -292,7 +292,7 @@
             comboBox1.Items.AddRange(new object[] { "A", "B", "LT", "RT", "L Analog Left", "L Analog Right", "L Analog Up", "L Analog Down" });
             comboBox1.Location = new Point(255, 30);
             comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(182, 37);
+            comboBox1.Size = new Size(182, 47);
             comboBox1.TabIndex = 5;
             comboBox1.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
             // 
@@ -306,7 +306,7 @@
             tabPage3.Location = new Point(4, 48);
             tabPage3.Name = "tabPage3";
             tabPage3.Padding = new Padding(3);
-            tabPage3.Size = new Size(465, 554);
+            tabPage3.Size = new Size(465, 575);
             tabPage3.TabIndex = 2;
             // 
             // label21
@@ -323,10 +323,10 @@
             // 
             tabControl2.Controls.Add(tabPage1);
             tabControl2.Font = new Font("Calibri", 14F, FontStyle.Bold, GraphicsUnit.Point);
-            tabControl2.Location = new Point(652, 144);
+            tabControl2.Location = new Point(691, 144);
             tabControl2.Name = "tabControl2";
             tabControl2.SelectedIndex = 0;
-            tabControl2.Size = new Size(381, 627);
+            tabControl2.Size = new Size(292, 627);
             tabControl2.TabIndex = 5;
             // 
             // tabPage1
@@ -345,7 +345,7 @@
             tabPage1.Location = new Point(4, 44);
             tabPage1.Name = "tabPage1";
             tabPage1.Padding = new Padding(3);
-            tabPage1.Size = new Size(373, 579);
+            tabPage1.Size = new Size(284, 579);
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Sensibility";
             tabPage1.Click += tabPage1_Click_1;
@@ -479,7 +479,7 @@
             menuStrip1.Items.AddRange(new ToolStripItem[] { loadScriptToolStripMenuItem, settingsToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(1096, 37);
+            menuStrip1.Size = new Size(1127, 37);
             menuStrip1.TabIndex = 43;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -502,7 +502,7 @@
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1096, 1000);
+            ClientSize = new Size(1127, 1000);
             Controls.Add(checkBox2);
             Controls.Add(checkBox1);
             Controls.Add(button3);
