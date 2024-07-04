@@ -359,7 +359,7 @@
             trackBar6.Name = "trackBar6";
             trackBar6.Size = new Size(214, 69);
             trackBar6.TabIndex = 35;
-            trackBar6.Value = 5;
+            trackBar6.Value = 3;
             // 
             // trackBar4
             // 
@@ -370,7 +370,7 @@
             trackBar4.Name = "trackBar4";
             trackBar4.Size = new Size(214, 69);
             trackBar4.TabIndex = 34;
-            trackBar4.Value = 5;
+            trackBar4.Value = 3;
             // 
             // trackBar2
             // 
@@ -381,7 +381,7 @@
             trackBar2.Name = "trackBar2";
             trackBar2.Size = new Size(214, 69);
             trackBar2.TabIndex = 33;
-            trackBar2.Value = 5;
+            trackBar2.Value = 3;
             // 
             // trackBar1
             // 
@@ -392,7 +392,7 @@
             trackBar1.Name = "trackBar1";
             trackBar1.Size = new Size(214, 69);
             trackBar1.TabIndex = 32;
-            trackBar1.Value = 5;
+            trackBar1.Value = 3;
             // 
             // label14
             // 
@@ -493,8 +493,9 @@
             // 
             // settingsToolStripMenuItem
             // 
+            settingsToolStripMenuItem.Font = new Font("Calibri", 12F, FontStyle.Regular, GraphicsUnit.Point);
             settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
-            settingsToolStripMenuItem.Size = new Size(92, 33);
+            settingsToolStripMenuItem.Size = new Size(106, 33);
             settingsToolStripMenuItem.Text = "Settings";
             settingsToolStripMenuItem.Click += settingsToolStripMenuItem_Click;
             // 
