@@ -118,5 +118,25 @@ namespace Nose_Drive_Starter
         {
 
         }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void loadScriptToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

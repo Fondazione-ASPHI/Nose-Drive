@@ -33,7 +33,6 @@
             label1 = new Label();
             tabControl1 = new TabControl();
             tabPage2 = new TabPage();
-            label18 = new Label();
             label11 = new Label();
             label10 = new Label();
             label9 = new Label();
@@ -51,8 +50,7 @@
             label2 = new Label();
             comboBox1 = new ComboBox();
             tabPage3 = new TabPage();
-            label19 = new Label();
-            button2 = new Button();
+            label21 = new Label();
             tabControl2 = new TabControl();
             tabPage1 = new TabPage();
             trackBar6 = new TrackBar();
@@ -63,18 +61,12 @@
             label15 = new Label();
             label16 = new Label();
             label17 = new Label();
-            label8 = new Label();
-            label12 = new Label();
-            numericUpDown1 = new NumericUpDown();
-            label13 = new Label();
-            tabControl3 = new TabControl();
-            tabPage5 = new TabPage();
-            textBox2 = new TextBox();
-            textBox1 = new TextBox();
-            button1 = new Button();
-            label20 = new Label();
             button3 = new Button();
-            label21 = new Label();
+            checkBox1 = new CheckBox();
+            checkBox2 = new CheckBox();
+            menuStrip1 = new MenuStrip();
+            loadScriptToolStripMenuItem = new ToolStripMenuItem();
+            settingsToolStripMenuItem = new ToolStripMenuItem();
             tabControl1.SuspendLayout();
             tabPage2.SuspendLayout();
             tabPage3.SuspendLayout();
@@ -84,9 +76,7 @@
             ((System.ComponentModel.ISupportInitialize)trackBar4).BeginInit();
             ((System.ComponentModel.ISupportInitialize)trackBar2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)trackBar1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown1).BeginInit();
-            tabControl3.SuspendLayout();
-            tabPage5.SuspendLayout();
+            menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // Script
@@ -97,7 +87,7 @@
             Script.Name = "Script";
             Script.Size = new Size(388, 119);
             Script.TabIndex = 0;
-            Script.Text = "Select Script";
+            Script.Text = "Remove Script";
             Script.UseVisualStyleBackColor = true;
             Script.Click += select_script;
             // 
@@ -106,7 +96,7 @@
             Start.BackColor = Color.FromArgb(242, 101, 34);
             Start.Font = new Font("Calibri", 24F, FontStyle.Bold, GraphicsUnit.Point);
             Start.ForeColor = Color.White;
-            Start.Location = new Point(826, 806);
+            Start.Location = new Point(496, 782);
             Start.Margin = new Padding(4);
             Start.Name = "Start";
             Start.Size = new Size(238, 89);
@@ -118,7 +108,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(57, 720);
+            label1.Location = new Point(16, 744);
             label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
             label1.Size = new Size(59, 25);
@@ -130,8 +120,8 @@
             // 
             tabControl1.Controls.Add(tabPage2);
             tabControl1.Controls.Add(tabPage3);
-            tabControl1.Font = new Font("Calibri", 14F, FontStyle.Bold, GraphicsUnit.Point);
-            tabControl1.Location = new Point(12, 3);
+            tabControl1.Font = new Font("Calibri", 16F, FontStyle.Bold, GraphicsUnit.Point);
+            tabControl1.Location = new Point(12, 46);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
             tabControl1.Size = new Size(573, 695);
@@ -140,7 +130,6 @@
             // tabPage2
             // 
             tabPage2.BackColor = Color.Black;
-            tabPage2.Controls.Add(label18);
             tabPage2.Controls.Add(label11);
             tabPage2.Controls.Add(label10);
             tabPage2.Controls.Add(label9);
@@ -159,24 +148,13 @@
             tabPage2.Controls.Add(comboBox1);
             tabPage2.Font = new Font("Calibri", 12F, FontStyle.Regular, GraphicsUnit.Point);
             tabPage2.ForeColor = SystemColors.ButtonFace;
-            tabPage2.Location = new Point(4, 44);
+            tabPage2.Location = new Point(4, 48);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new Padding(3);
-            tabPage2.Size = new Size(565, 647);
+            tabPage2.Size = new Size(565, 643);
             tabPage2.TabIndex = 1;
-            tabPage2.Text = "Basic";
+            tabPage2.Text = "Logic";
             tabPage2.Click += tabPage2_Click;
-            // 
-            // label18
-            // 
-            label18.AutoSize = true;
-            label18.Font = new Font("Calibri", 24F, FontStyle.Bold, GraphicsUnit.Point);
-            label18.Location = new Point(202, 9);
-            label18.Name = "label18";
-            label18.Size = new Size(145, 59);
-            label18.TabIndex = 23;
-            label18.Text = "LOGIC";
-            label18.Click += label18_Click;
             // 
             // label11
             // 
@@ -346,47 +324,33 @@
             // 
             tabPage3.BackColor = Color.Black;
             tabPage3.Controls.Add(label21);
-            tabPage3.Controls.Add(label19);
-            tabPage3.Controls.Add(button2);
             tabPage3.Controls.Add(Script);
             tabPage3.Font = new Font("Calibri", 12F, FontStyle.Regular, GraphicsUnit.Point);
             tabPage3.ForeColor = SystemColors.ButtonFace;
-            tabPage3.Location = new Point(4, 44);
+            tabPage3.Location = new Point(4, 48);
             tabPage3.Name = "tabPage3";
             tabPage3.Padding = new Padding(3);
-            tabPage3.Size = new Size(565, 647);
+            tabPage3.Size = new Size(565, 643);
             tabPage3.TabIndex = 2;
-            tabPage3.Text = "Advanced";
             // 
-            // label19
+            // label21
             // 
-            label19.AutoSize = true;
-            label19.Font = new Font("Calibri", 24F, FontStyle.Bold, GraphicsUnit.Point);
-            label19.Location = new Point(202, 9);
-            label19.Name = "label19";
-            label19.Size = new Size(145, 59);
-            label19.TabIndex = 24;
-            label19.Text = "LOGIC";
-            // 
-            // button2
-            // 
-            button2.ForeColor = SystemColors.ActiveCaptionText;
-            button2.Location = new Point(404, 19);
-            button2.Margin = new Padding(4);
-            button2.Name = "button2";
-            button2.Size = new Size(143, 49);
-            button2.TabIndex = 1;
-            button2.Text = "Build Script";
-            button2.UseVisualStyleBackColor = true;
+            label21.AutoSize = true;
+            label21.Location = new Point(41, 419);
+            label21.Name = "label21";
+            label21.Size = new Size(489, 174);
+            label21.TabIndex = 25;
+            label21.Text = "Spiegazione di come funziona\r\nSelezionare lo script .py\r\nPoi cliccare su START\r\n\r\nIl pulsante Build è opzionale, compila lo\r\nscript selezionato per migliorare la performance.";
+            label21.Click += label21_Click;
             // 
             // tabControl2
             // 
             tabControl2.Controls.Add(tabPage1);
             tabControl2.Font = new Font("Calibri", 14F, FontStyle.Bold, GraphicsUnit.Point);
-            tabControl2.Location = new Point(617, 12);
+            tabControl2.Location = new Point(618, 46);
             tabControl2.Name = "tabControl2";
             tabControl2.SelectedIndex = 0;
-            tabControl2.Size = new Size(567, 686);
+            tabControl2.Size = new Size(567, 695);
             tabControl2.TabIndex = 5;
             // 
             // tabPage1
@@ -400,12 +364,12 @@
             tabPage1.Controls.Add(label15);
             tabPage1.Controls.Add(label16);
             tabPage1.Controls.Add(label17);
-            tabPage1.Font = new Font("Calibri", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            tabPage1.Font = new Font("Calibri", 16F, FontStyle.Regular, GraphicsUnit.Point);
             tabPage1.ForeColor = SystemColors.ButtonFace;
             tabPage1.Location = new Point(4, 44);
             tabPage1.Name = "tabPage1";
             tabPage1.Padding = new Padding(3);
-            tabPage1.Size = new Size(559, 638);
+            tabPage1.Size = new Size(559, 647);
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Sensibility";
             // 
@@ -442,7 +406,7 @@
             // 
             // trackBar1
             // 
-            trackBar1.Location = new Point(58, 47);
+            trackBar1.Location = new Point(58, 62);
             trackBar1.Margin = new Padding(3, 4, 3, 4);
             trackBar1.Maximum = 50;
             trackBar1.Minimum = 1;
@@ -454,154 +418,46 @@
             // label14
             // 
             label14.AutoSize = true;
-            label14.Font = new Font("Calibri", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label14.Font = new Font("Calibri", 16F, FontStyle.Regular, GraphicsUnit.Point);
             label14.ForeColor = SystemColors.ButtonFace;
             label14.Location = new Point(53, 494);
             label14.Name = "label14";
-            label14.Size = new Size(211, 29);
+            label14.Size = new Size(278, 39);
             label14.TabIndex = 31;
             label14.Text = "Eyebrows sensibility";
             // 
             // label15
             // 
             label15.AutoSize = true;
-            label15.Font = new Font("Calibri", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label15.Font = new Font("Calibri", 16F, FontStyle.Regular, GraphicsUnit.Point);
             label15.ForeColor = SystemColors.ButtonFace;
             label15.Location = new Point(53, 332);
             label15.Name = "label15";
-            label15.Size = new Size(290, 29);
+            label15.Size = new Size(380, 39);
             label15.TabIndex = 30;
             label15.Text = "Mouth horizontal sensibility";
             // 
             // label16
             // 
             label16.AutoSize = true;
-            label16.Font = new Font("Calibri", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label16.Font = new Font("Calibri", 16F, FontStyle.Regular, GraphicsUnit.Point);
             label16.ForeColor = SystemColors.ButtonFace;
             label16.Location = new Point(53, 142);
             label16.Name = "label16";
-            label16.Size = new Size(244, 29);
+            label16.Size = new Size(186, 39);
             label16.TabIndex = 29;
-            label16.Text = "Nose vertical sensibility";
+            label16.Text = "Nose vertical";
             // 
             // label17
             // 
             label17.AutoSize = true;
-            label17.Font = new Font("Calibri", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label17.Font = new Font("Calibri", 16F, FontStyle.Regular, GraphicsUnit.Point);
             label17.ForeColor = SystemColors.ButtonFace;
             label17.Location = new Point(58, 19);
             label17.Name = "label17";
-            label17.Size = new Size(272, 29);
+            label17.Size = new Size(222, 39);
             label17.TabIndex = 28;
-            label17.Text = "Nose horizontal sensibility";
-            // 
-            // label8
-            // 
-            label8.AutoSize = true;
-            label8.Font = new Font("Calibri", 16F, FontStyle.Regular, GraphicsUnit.Point);
-            label8.Location = new Point(76, 56);
-            label8.Name = "label8";
-            label8.Size = new Size(147, 39);
-            label8.TabIndex = 42;
-            label8.Text = "Pause Key";
-            // 
-            // label12
-            // 
-            label12.AutoSize = true;
-            label12.Font = new Font("Calibri", 16F, FontStyle.Regular, GraphicsUnit.Point);
-            label12.Location = new Point(76, 151);
-            label12.Name = "label12";
-            label12.Size = new Size(255, 39);
-            label12.TabIndex = 40;
-            label12.Text = "Reset position Key";
-            // 
-            // numericUpDown1
-            // 
-            numericUpDown1.Font = new Font("Calibri", 16F, FontStyle.Regular, GraphicsUnit.Point);
-            numericUpDown1.Location = new Point(85, 300);
-            numericUpDown1.Margin = new Padding(3, 4, 3, 4);
-            numericUpDown1.Name = "numericUpDown1";
-            numericUpDown1.Size = new Size(56, 47);
-            numericUpDown1.TabIndex = 37;
-            numericUpDown1.Value = new decimal(new int[] { 5, 0, 0, 0 });
-            // 
-            // label13
-            // 
-            label13.AutoSize = true;
-            label13.Font = new Font("Calibri", 16F, FontStyle.Regular, GraphicsUnit.Point);
-            label13.Location = new Point(76, 271);
-            label13.Name = "label13";
-            label13.Size = new Size(224, 39);
-            label13.TabIndex = 36;
-            label13.Text = "Calibration time";
-            // 
-            // tabControl3
-            // 
-            tabControl3.Controls.Add(tabPage5);
-            tabControl3.Location = new Point(1222, 12);
-            tabControl3.Name = "tabControl3";
-            tabControl3.SelectedIndex = 0;
-            tabControl3.Size = new Size(500, 686);
-            tabControl3.TabIndex = 39;
-            // 
-            // tabPage5
-            // 
-            tabPage5.BackColor = Color.Black;
-            tabPage5.Controls.Add(label20);
-            tabPage5.Controls.Add(textBox2);
-            tabPage5.Controls.Add(textBox1);
-            tabPage5.Controls.Add(label8);
-            tabPage5.Controls.Add(label13);
-            tabPage5.Controls.Add(numericUpDown1);
-            tabPage5.Controls.Add(label12);
-            tabPage5.ForeColor = SystemColors.ButtonFace;
-            tabPage5.Location = new Point(4, 34);
-            tabPage5.Name = "tabPage5";
-            tabPage5.Padding = new Padding(3);
-            tabPage5.Size = new Size(492, 648);
-            tabPage5.TabIndex = 0;
-            tabPage5.Text = "tabPage5";
-            // 
-            // textBox2
-            // 
-            textBox2.Font = new Font("Calibri", 16F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox2.Location = new Point(85, 193);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(44, 47);
-            textBox2.TabIndex = 44;
-            textBox2.Text = "N";
-            // 
-            // textBox1
-            // 
-            textBox1.Font = new Font("Calibri", 16F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox1.Location = new Point(85, 98);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(44, 47);
-            textBox1.TabIndex = 43;
-            textBox1.Text = "P";
-            // 
-            // button1
-            // 
-            button1.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point);
-            button1.Location = new Point(57, 770);
-            button1.Margin = new Padding(3, 4, 3, 4);
-            button1.Name = "button1";
-            button1.Size = new Size(116, 55);
-            button1.TabIndex = 38;
-            button1.Text = "SAVE";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
-            // 
-            // label20
-            // 
-            label20.AutoSize = true;
-            label20.Font = new Font("Calibri", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label20.ForeColor = SystemColors.ButtonFace;
-            label20.Location = new Point(147, 318);
-            label20.Name = "label20";
-            label20.Size = new Size(92, 29);
-            label20.TabIndex = 36;
-            label20.Text = "seconds";
+            label17.Text = "Nose horizontal";
             // 
             // button3
             // 
@@ -612,28 +468,66 @@
             button3.TabIndex = 40;
             button3.UseVisualStyleBackColor = true;
             // 
-            // label21
+            // checkBox1
             // 
-            label21.AutoSize = true;
-            label21.Location = new Point(41, 419);
-            label21.Name = "label21";
-            label21.Size = new Size(489, 174);
-            label21.TabIndex = 25;
-            label21.Text = "Spiegazione di come funziona\r\nSelezionare lo script .py\r\nPoi cliccare su START\r\n\r\nIl pulsante Build è opzionale, compila lo\r\nscript selezionato per migliorare la performance.";
-            label21.Click += label21_Click;
+            checkBox1.AutoSize = true;
+            checkBox1.Location = new Point(752, 842);
+            checkBox1.Name = "checkBox1";
+            checkBox1.Size = new Size(77, 29);
+            checkBox1.TabIndex = 41;
+            checkBox1.Text = "Build";
+            checkBox1.UseVisualStyleBackColor = true;
+            checkBox1.CheckedChanged += checkBox1_CheckedChanged;
+            // 
+            // checkBox2
+            // 
+            checkBox2.AutoSize = true;
+            checkBox2.Location = new Point(847, 842);
+            checkBox2.Name = "checkBox2";
+            checkBox2.Size = new Size(171, 29);
+            checkBox2.TabIndex = 42;
+            checkBox2.Text = "Force re-compile";
+            checkBox2.UseVisualStyleBackColor = true;
+            checkBox2.Visible = false;
+            // 
+            // menuStrip1
+            // 
+            menuStrip1.ImageScalingSize = new Size(24, 24);
+            menuStrip1.Items.AddRange(new ToolStripItem[] { loadScriptToolStripMenuItem, settingsToolStripMenuItem });
+            menuStrip1.Location = new Point(0, 0);
+            menuStrip1.Name = "menuStrip1";
+            menuStrip1.Size = new Size(1201, 33);
+            menuStrip1.TabIndex = 43;
+            menuStrip1.Text = "menuStrip1";
+            // 
+            // loadScriptToolStripMenuItem
+            // 
+            loadScriptToolStripMenuItem.Name = "loadScriptToolStripMenuItem";
+            loadScriptToolStripMenuItem.Size = new Size(117, 29);
+            loadScriptToolStripMenuItem.Text = "Load Script";
+            loadScriptToolStripMenuItem.Click += loadScriptToolStripMenuItem_Click;
+            // 
+            // settingsToolStripMenuItem
+            // 
+            settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
+            settingsToolStripMenuItem.Size = new Size(92, 29);
+            settingsToolStripMenuItem.Text = "Settings";
+            settingsToolStripMenuItem.Click += settingsToolStripMenuItem_Click;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1828, 955);
+            ClientSize = new Size(1201, 897);
+            Controls.Add(checkBox2);
+            Controls.Add(checkBox1);
             Controls.Add(button3);
-            Controls.Add(tabControl3);
             Controls.Add(tabControl2);
             Controls.Add(label1);
             Controls.Add(tabControl1);
             Controls.Add(Start);
-            Controls.Add(button1);
+            Controls.Add(menuStrip1);
+            MainMenuStrip = menuStrip1;
             Margin = new Padding(4);
             Name = "Form1";
             Text = "Form1";
@@ -650,10 +544,8 @@
             ((System.ComponentModel.ISupportInitialize)trackBar4).EndInit();
             ((System.ComponentModel.ISupportInitialize)trackBar2).EndInit();
             ((System.ComponentModel.ISupportInitialize)trackBar1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown1).EndInit();
-            tabControl3.ResumeLayout(false);
-            tabPage5.ResumeLayout(false);
-            tabPage5.PerformLayout();
+            menuStrip1.ResumeLayout(false);
+            menuStrip1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -677,16 +569,11 @@
         private ComboBox comboBox3;
         private Label label5;
         private ComboBox comboBox4;
-        private TabPage tabPage3;
         private Label label9;
         private Label label11;
         private Label label10;
         private TabControl tabControl2;
         private TabPage tabPage1;
-        private Label label8;
-        private Label label12;
-        private NumericUpDown numericUpDown1;
-        private Label label13;
         private TrackBar trackBar6;
         private TrackBar trackBar4;
         private TrackBar trackBar2;
@@ -695,16 +582,13 @@
         private Label label15;
         private Label label16;
         private Label label17;
-        private Button button2;
-        private TabControl tabControl3;
-        private TabPage tabPage5;
-        private TextBox textBox2;
-        private TextBox textBox1;
-        private Label label18;
-        private Label label19;
-        private Button button1;
-        private Label label20;
         private Button button3;
         private Label label21;
+        private CheckBox checkBox1;
+        private CheckBox checkBox2;
+        private MenuStrip menuStrip1;
+        private ToolStripMenuItem loadScriptToolStripMenuItem;
+        private ToolStripMenuItem settingsToolStripMenuItem;
+        public TabPage tabPage3;
     }
 }
