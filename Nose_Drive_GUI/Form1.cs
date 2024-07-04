@@ -20,7 +20,7 @@ namespace Nose_Drive_GUI
             InitializeComponent();
 
             currentPath = Directory.GetCurrentDirectory();
-            label1.Text = currentPath;            
+            label1.Text = currentPath;
 
             openFileDialog1 = new OpenFileDialog()
             {
@@ -68,7 +68,7 @@ namespace Nose_Drive_GUI
 
         private void remove_script(object sender, EventArgs e)
         {
-            
+
         }
 
         private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -140,7 +140,7 @@ namespace Nose_Drive_GUI
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
-
+            checkBox2.Visible = checkBox1.Checked;
         }
 
         private void toolStripMenuItem1_Click(object sender, EventArgs e)
@@ -159,6 +159,11 @@ namespace Nose_Drive_GUI
         }
 
         private void tabPage1_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
         {
 
         }

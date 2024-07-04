@@ -91,10 +91,10 @@
             // 
             // Start
             // 
-            Start.BackColor = Color.FromArgb(242, 101, 34);
+            Start.BackColor = Color.FromArgb(235, 90, 10);
             Start.Font = new Font("Calibri", 24F, FontStyle.Bold, GraphicsUnit.Point);
             Start.ForeColor = Color.White;
-            Start.Location = new Point(391, 680);
+            Start.Location = new Point(524, 850);
             Start.Margin = new Padding(4);
             Start.Name = "Start";
             Start.Size = new Size(238, 89);
@@ -106,7 +106,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(16, 655);
+            label1.Location = new Point(143, 40);
             label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
             label1.Size = new Size(59, 25);
@@ -119,15 +119,15 @@
             tabControl1.Controls.Add(tabPage2);
             tabControl1.Controls.Add(tabPage3);
             tabControl1.Font = new Font("Calibri", 16F, FontStyle.Bold, GraphicsUnit.Point);
-            tabControl1.Location = new Point(12, 46);
+            tabControl1.Location = new Point(114, 144);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(473, 606);
+            tabControl1.Size = new Size(473, 627);
             tabControl1.TabIndex = 4;
             // 
             // tabPage2
             // 
-            tabPage2.BackColor = Color.Black;
+            tabPage2.BackColor = Color.FromArgb(31, 29, 40);
             tabPage2.Controls.Add(label11);
             tabPage2.Controls.Add(label6);
             tabPage2.Controls.Add(comboBox5);
@@ -147,7 +147,7 @@
             tabPage2.Location = new Point(4, 48);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new Padding(3);
-            tabPage2.Size = new Size(465, 554);
+            tabPage2.Size = new Size(465, 575);
             tabPage2.TabIndex = 1;
             tabPage2.Text = "Logic";
             tabPage2.Click += tabPage2_Click;
@@ -157,7 +157,7 @@
             label11.AutoSize = true;
             label11.Font = new Font("Calibri", 16F, FontStyle.Regular, GraphicsUnit.Point);
             label11.ForeColor = SystemColors.ButtonFace;
-            label11.Location = new Point(25, 300);
+            label11.Location = new Point(25, 320);
             label11.Name = "label11";
             label11.Size = new Size(142, 39);
             label11.TabIndex = 22;
@@ -168,7 +168,7 @@
             label6.AutoSize = true;
             label6.Font = new Font("Calibri", 16F, FontStyle.Regular, GraphicsUnit.Point);
             label6.ForeColor = SystemColors.ButtonFace;
-            label6.Location = new Point(25, 496);
+            label6.Location = new Point(25, 500);
             label6.Name = "label6";
             label6.Size = new Size(156, 39);
             label6.TabIndex = 18;
@@ -178,7 +178,7 @@
             // 
             comboBox5.FormattingEnabled = true;
             comboBox5.Items.AddRange(new object[] { "A", "B", "LT", "RT", "L Analog Left", "L Analog Right", "L Analog Up", "L Analog Down" });
-            comboBox5.Location = new Point(255, 491);
+            comboBox5.Location = new Point(255, 500);
             comboBox5.Name = "comboBox5";
             comboBox5.Size = new Size(182, 37);
             comboBox5.TabIndex = 17;
@@ -188,7 +188,7 @@
             label7.AutoSize = true;
             label7.Font = new Font("Calibri", 16F, FontStyle.Regular, GraphicsUnit.Point);
             label7.ForeColor = SystemColors.ButtonFace;
-            label7.Location = new Point(28, 446);
+            label7.Location = new Point(25, 440);
             label7.Name = "label7";
             label7.Size = new Size(174, 39);
             label7.TabIndex = 16;
@@ -198,7 +198,7 @@
             // 
             comboBox6.FormattingEnabled = true;
             comboBox6.Items.AddRange(new object[] { "A", "B", "LT", "RT", "L Analog Left", "L Analog Right", "L Analog Up", "L Analog Down" });
-            comboBox6.Location = new Point(255, 441);
+            comboBox6.Location = new Point(255, 440);
             comboBox6.Name = "comboBox6";
             comboBox6.Size = new Size(182, 37);
             comboBox6.TabIndex = 15;
@@ -207,7 +207,7 @@
             // 
             comboBox7.FormattingEnabled = true;
             comboBox7.Items.AddRange(new object[] { "A", "B", "LT", "RT", "L Analog Left", "L Analog Right", "L Analog Up", "L Analog Down" });
-            comboBox7.Location = new Point(255, 295);
+            comboBox7.Location = new Point(255, 320);
             comboBox7.Name = "comboBox7";
             comboBox7.Size = new Size(182, 37);
             comboBox7.TabIndex = 13;
@@ -217,17 +217,18 @@
             label4.AutoSize = true;
             label4.Font = new Font("Calibri", 16F, FontStyle.Regular, GraphicsUnit.Point);
             label4.ForeColor = SystemColors.ButtonFace;
-            label4.Location = new Point(19, 192);
+            label4.Location = new Point(25, 210);
             label4.Name = "label4";
             label4.Size = new Size(165, 39);
             label4.TabIndex = 12;
             label4.Text = "Nose down";
+            label4.Click += label4_Click;
             // 
             // comboBox3
             // 
             comboBox3.FormattingEnabled = true;
             comboBox3.Items.AddRange(new object[] { "A", "B", "LT", "RT", "L Analog Left", "L Analog Right", "L Analog Up", "L Analog Down" });
-            comboBox3.Location = new Point(255, 187);
+            comboBox3.Location = new Point(255, 210);
             comboBox3.Name = "comboBox3";
             comboBox3.Size = new Size(182, 37);
             comboBox3.TabIndex = 11;
@@ -237,7 +238,7 @@
             label5.AutoSize = true;
             label5.Font = new Font("Calibri", 16F, FontStyle.Regular, GraphicsUnit.Point);
             label5.ForeColor = SystemColors.ButtonFace;
-            label5.Location = new Point(19, 149);
+            label5.Location = new Point(25, 150);
             label5.Name = "label5";
             label5.Size = new Size(125, 39);
             label5.TabIndex = 10;
@@ -247,7 +248,7 @@
             // 
             comboBox4.FormattingEnabled = true;
             comboBox4.Items.AddRange(new object[] { "A", "B", "LT", "RT", "L Analog Left", "L Analog Right", "L Analog Up", "L Analog Down" });
-            comboBox4.Location = new Point(255, 144);
+            comboBox4.Location = new Point(255, 150);
             comboBox4.Name = "comboBox4";
             comboBox4.Size = new Size(182, 37);
             comboBox4.TabIndex = 9;
@@ -257,7 +258,7 @@
             label3.AutoSize = true;
             label3.Font = new Font("Calibri", 16F, FontStyle.Regular, GraphicsUnit.Point);
             label3.ForeColor = SystemColors.ButtonFace;
-            label3.Location = new Point(19, 107);
+            label3.Location = new Point(25, 90);
             label3.Name = "label3";
             label3.Size = new Size(134, 39);
             label3.TabIndex = 8;
@@ -267,7 +268,7 @@
             // 
             comboBox2.FormattingEnabled = true;
             comboBox2.Items.AddRange(new object[] { "A", "B", "LT", "RT", "L Analog Left", "L Analog Right", "L Analog Up", "L Analog Down" });
-            comboBox2.Location = new Point(255, 102);
+            comboBox2.Location = new Point(255, 90);
             comboBox2.Name = "comboBox2";
             comboBox2.Size = new Size(182, 37);
             comboBox2.TabIndex = 7;
@@ -278,7 +279,7 @@
             label2.AutoSize = true;
             label2.Font = new Font("Calibri", 16F, FontStyle.Regular, GraphicsUnit.Point);
             label2.ForeColor = SystemColors.ButtonFace;
-            label2.Location = new Point(19, 66);
+            label2.Location = new Point(25, 30);
             label2.Name = "label2";
             label2.Size = new Size(152, 39);
             label2.TabIndex = 6;
@@ -289,7 +290,7 @@
             // 
             comboBox1.FormattingEnabled = true;
             comboBox1.Items.AddRange(new object[] { "A", "B", "LT", "RT", "L Analog Left", "L Analog Right", "L Analog Up", "L Analog Down" });
-            comboBox1.Location = new Point(255, 61);
+            comboBox1.Location = new Point(255, 30);
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Size(182, 37);
             comboBox1.TabIndex = 5;
@@ -322,15 +323,15 @@
             // 
             tabControl2.Controls.Add(tabPage1);
             tabControl2.Font = new Font("Calibri", 14F, FontStyle.Bold, GraphicsUnit.Point);
-            tabControl2.Location = new Point(550, 46);
+            tabControl2.Location = new Point(652, 144);
             tabControl2.Name = "tabControl2";
             tabControl2.SelectedIndex = 0;
-            tabControl2.Size = new Size(381, 606);
+            tabControl2.Size = new Size(381, 627);
             tabControl2.TabIndex = 5;
             // 
             // tabPage1
             // 
-            tabPage1.BackColor = Color.Black;
+            tabPage1.BackColor = Color.FromArgb(31, 29, 40);
             tabPage1.Controls.Add(trackBar6);
             tabPage1.Controls.Add(trackBar4);
             tabPage1.Controls.Add(trackBar2);
@@ -344,16 +345,17 @@
             tabPage1.Location = new Point(4, 44);
             tabPage1.Name = "tabPage1";
             tabPage1.Padding = new Padding(3);
-            tabPage1.Size = new Size(373, 558);
+            tabPage1.Size = new Size(373, 579);
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Sensibility";
             tabPage1.Click += tabPage1_Click_1;
             // 
             // trackBar6
             // 
-            trackBar6.Location = new Point(61, 461);
+            trackBar6.Location = new Point(25, 345);
             trackBar6.Margin = new Padding(3, 4, 3, 4);
             trackBar6.Maximum = 5;
+            trackBar6.Minimum = 1;
             trackBar6.Name = "trackBar6";
             trackBar6.Size = new Size(214, 69);
             trackBar6.TabIndex = 35;
@@ -361,9 +363,10 @@
             // 
             // trackBar4
             // 
-            trackBar4.Location = new Point(61, 220);
+            trackBar4.Location = new Point(25, 210);
             trackBar4.Margin = new Padding(3, 4, 3, 4);
             trackBar4.Maximum = 5;
+            trackBar4.Minimum = 1;
             trackBar4.Name = "trackBar4";
             trackBar4.Size = new Size(214, 69);
             trackBar4.TabIndex = 34;
@@ -371,9 +374,10 @@
             // 
             // trackBar2
             // 
-            trackBar2.Location = new Point(61, 345);
+            trackBar2.Location = new Point(25, 480);
             trackBar2.Margin = new Padding(3, 4, 3, 4);
             trackBar2.Maximum = 5;
+            trackBar2.Minimum = 1;
             trackBar2.Name = "trackBar2";
             trackBar2.Size = new Size(214, 69);
             trackBar2.TabIndex = 33;
@@ -381,9 +385,10 @@
             // 
             // trackBar1
             // 
-            trackBar1.Location = new Point(61, 104);
+            trackBar1.Location = new Point(25, 75);
             trackBar1.Margin = new Padding(3, 4, 3, 4);
             trackBar1.Maximum = 5;
+            trackBar1.Minimum = 1;
             trackBar1.Name = "trackBar1";
             trackBar1.Size = new Size(214, 69);
             trackBar1.TabIndex = 32;
@@ -394,7 +399,7 @@
             label14.AutoSize = true;
             label14.Font = new Font("Calibri", 16F, FontStyle.Regular, GraphicsUnit.Point);
             label14.ForeColor = SystemColors.ButtonFace;
-            label14.Location = new Point(61, 418);
+            label14.Location = new Point(25, 300);
             label14.Name = "label14";
             label14.Size = new Size(142, 39);
             label14.TabIndex = 31;
@@ -405,7 +410,7 @@
             label15.AutoSize = true;
             label15.Font = new Font("Calibri", 16F, FontStyle.Regular, GraphicsUnit.Point);
             label15.ForeColor = SystemColors.ButtonFace;
-            label15.Location = new Point(61, 293);
+            label15.Location = new Point(25, 435);
             label15.Name = "label15";
             label15.Size = new Size(244, 39);
             label15.TabIndex = 30;
@@ -416,7 +421,7 @@
             label16.AutoSize = true;
             label16.Font = new Font("Calibri", 16F, FontStyle.Regular, GraphicsUnit.Point);
             label16.ForeColor = SystemColors.ButtonFace;
-            label16.Location = new Point(61, 177);
+            label16.Location = new Point(25, 165);
             label16.Name = "label16";
             label16.Size = new Size(186, 39);
             label16.TabIndex = 29;
@@ -427,7 +432,7 @@
             label17.AutoSize = true;
             label17.Font = new Font("Calibri", 16F, FontStyle.Regular, GraphicsUnit.Point);
             label17.ForeColor = SystemColors.ButtonFace;
-            label17.Location = new Point(61, 70);
+            label17.Location = new Point(25, 30);
             label17.Name = "label17";
             label17.Size = new Size(222, 39);
             label17.TabIndex = 28;
@@ -436,10 +441,10 @@
             // 
             // button3
             // 
-            button3.BackgroundImage = Properties.Resources.ASP_logo;
-            button3.Location = new Point(1595, 758);
+            button3.BackgroundImage = Properties.Resources.path1;
+            button3.Location = new Point(12, 40);
             button3.Name = "button3";
-            button3.Size = new Size(221, 185);
+            button3.Size = new Size(94, 94);
             button3.TabIndex = 40;
             button3.UseVisualStyleBackColor = true;
             // 
@@ -447,7 +452,7 @@
             // 
             checkBox1.AutoSize = true;
             checkBox1.Font = new Font("Calibri", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            checkBox1.Location = new Point(646, 720);
+            checkBox1.Location = new Point(779, 887);
             checkBox1.Name = "checkBox1";
             checkBox1.Size = new Size(90, 33);
             checkBox1.TabIndex = 41;
@@ -459,7 +464,7 @@
             // 
             checkBox2.AutoSize = true;
             checkBox2.Font = new Font("Calibri", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            checkBox2.Location = new Point(646, 746);
+            checkBox2.Location = new Point(779, 926);
             checkBox2.Name = "checkBox2";
             checkBox2.Size = new Size(204, 33);
             checkBox2.TabIndex = 42;
@@ -474,7 +479,7 @@
             menuStrip1.Items.AddRange(new ToolStripItem[] { loadScriptToolStripMenuItem, settingsToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(948, 37);
+            menuStrip1.Size = new Size(1096, 37);
             menuStrip1.TabIndex = 43;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -497,7 +502,7 @@
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(948, 788);
+            ClientSize = new Size(1096, 1000);
             Controls.Add(checkBox2);
             Controls.Add(checkBox1);
             Controls.Add(button3);
