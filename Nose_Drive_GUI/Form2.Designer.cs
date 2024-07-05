@@ -46,7 +46,7 @@
             // 
             tabControl3.Controls.Add(tabPage5);
             tabControl3.Location = new Point(22, 18);
-            tabControl3.Margin = new Padding(2, 2, 2, 2);
+            tabControl3.Margin = new Padding(2);
             tabControl3.Name = "tabControl3";
             tabControl3.SelectedIndex = 0;
             tabControl3.Size = new Size(430, 378);
@@ -65,9 +65,9 @@
             tabPage5.Font = new Font("Calibri", 12F, FontStyle.Bold, GraphicsUnit.Point);
             tabPage5.ForeColor = SystemColors.ButtonFace;
             tabPage5.Location = new Point(4, 29);
-            tabPage5.Margin = new Padding(2, 2, 2, 2);
+            tabPage5.Margin = new Padding(2);
             tabPage5.Name = "tabPage5";
-            tabPage5.Padding = new Padding(2, 2, 2, 2);
+            tabPage5.Padding = new Padding(2);
             tabPage5.Size = new Size(422, 345);
             tabPage5.TabIndex = 0;
             tabPage5.Text = "Settings";
@@ -88,7 +88,7 @@
             // 
             textBox2.Font = new Font("Calibri", 16F, FontStyle.Regular, GraphicsUnit.Point);
             textBox2.Location = new Point(68, 155);
-            textBox2.Margin = new Padding(2, 2, 2, 2);
+            textBox2.Margin = new Padding(2);
             textBox2.Name = "textBox2";
             textBox2.Size = new Size(36, 40);
             textBox2.TabIndex = 44;
@@ -98,7 +98,7 @@
             // 
             textBox1.Font = new Font("Calibri", 16F, FontStyle.Regular, GraphicsUnit.Point);
             textBox1.Location = new Point(68, 66);
-            textBox1.Margin = new Padding(2, 2, 2, 2);
+            textBox1.Margin = new Padding(2);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(36, 40);
             textBox1.TabIndex = 43;
@@ -138,6 +138,7 @@
             numericUpDown1.Size = new Size(45, 40);
             numericUpDown1.TabIndex = 37;
             numericUpDown1.Value = new decimal(new int[] { 5, 0, 0, 0 });
+            numericUpDown1.ValueChanged += numericUpDown1_ValueChanged;
             // 
             // label12
             // 
@@ -157,7 +158,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(494, 426);
             Controls.Add(tabControl3);
-            Margin = new Padding(2, 2, 2, 2);
+            Margin = new Padding(2);
             Name = "Form2";
             Text = "Form2";
             Load += Form2_Load;

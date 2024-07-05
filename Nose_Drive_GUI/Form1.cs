@@ -1,4 +1,6 @@
 using System.Diagnostics;
+using System.Text.Json;
+using System.Windows.Forms;
 
 namespace Nose_Drive_GUI
 {
@@ -12,7 +14,12 @@ namespace Nose_Drive_GUI
         OpenFileDialog openFileDialog1;
         OpenFileDialog openFileDialog2;
 
-        int lockedPage = 0;
+        public Settings options;
+        public Logic logic;
+        public string settingsFile = "settings.json";
+        public string logicFile = "logic.json";
+
+        Form2 frm2;
 
 
         public Form1()
@@ -35,6 +42,38 @@ namespace Nose_Drive_GUI
                 Title = "Open JSON file",
                 InitialDirectory = currentPath
             };
+
+
+            options = ReadSettingsFile("settings.json");
+            logic = ReadLogicFile("logic.json");
+        }
+
+        void UpdateSettings()
+        {
+            options.NoseHorizontalHensibility = trackBar1.Value;
+            options.NoseVerticalSensibility = trackBar4.Value;
+            options.MouthHorizontalSensibility = trackBar2.Value;
+            options.EyebrowsSensibility = trackBar6.Value;
+            //options.CalibrationTime = (float)frm2.num.Value;
+        }
+
+        Settings ReadSettingsFile(string fileName)
+        {
+            string jsonString = File.ReadAllText(fileName);
+            return JsonSerializer.Deserialize<Settings>(jsonString);
+        }
+
+        Logic ReadLogicFile(string fileName)
+        {
+            string jsonString = File.ReadAllText(fileName);
+            return JsonSerializer.Deserialize<Logic>(jsonString);
+        }
+
+        private void SaveFile(string fileName)
+        {
+            UpdateSettings();
+            string jsonString = JsonSerializer.Serialize(options);
+            File.WriteAllText(fileName, jsonString);
         }
 
         private void select_script(object sender, EventArgs e)
@@ -73,13 +112,17 @@ namespace Nose_Drive_GUI
 
         private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Form2 frm2 = new Form2();
+            frm2 = new Form2();
             frm2.ShowDialog();
+        }
+
+        private void build_Checked(object sender, EventArgs e)
+        {
+            checkBox2.Visible = checkBox1.Checked;
         }
 
         private void logictab_selecting(object sender, TabControlCancelEventArgs e)
         {
-            if (lockedPage >= 0 && e.TabPageIndex != lockedPage) e.Cancel = true;
 
         }
 
@@ -136,12 +179,7 @@ namespace Nose_Drive_GUI
         private void Form1_Load(object sender, EventArgs e)
         {
 
-        }
-
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
-        {
-            checkBox2.Visible = checkBox1.Checked;
-        }
+        }        
 
         private void toolStripMenuItem1_Click(object sender, EventArgs e)
         {
@@ -167,5 +205,30 @@ namespace Nose_Drive_GUI
         {
 
         }
+    }
+
+
+    [System.Serializable]
+    public class Settings
+    {
+        public float NoseHorizontalHensibility { get; set; }
+        public float NoseVerticalSensibility { get; set; }
+        public float MouthHorizontalSensibility { get; set; }
+        public float EyebrowsSensibility { get; set; }
+        public string PauseKey { get; set; }
+        public string ResetPosKey { get; set; }
+        public int CalibrationTime { get; set; }
+    }
+
+    [System.Serializable]
+    public class Logic
+    {
+        public string NoseRight { get; set; }
+        public string NoseLeft { get; set; }
+        public string NoseUp { get; set; }
+        public string NoseDown { get; set; }
+        public string Eyebrows { get; set; }
+        public string MouthRight { get; set; }
+        public string MouthLeft { get; set; }
     }
 }

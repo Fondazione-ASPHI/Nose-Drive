@@ -26,5 +26,10 @@ namespace Nose_Drive_GUI
         {
 
         }
+
+        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

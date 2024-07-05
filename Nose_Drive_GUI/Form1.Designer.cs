@@ -357,7 +357,7 @@
             checkBox1.TabIndex = 41;
             checkBox1.Text = "Build";
             checkBox1.UseVisualStyleBackColor = true;
-            checkBox1.CheckedChanged += checkBox1_CheckedChanged;
+            checkBox1.CheckedChanged += build_Checked;
             // 
             // checkBox2
             // 
