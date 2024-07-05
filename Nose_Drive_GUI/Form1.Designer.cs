@@ -52,7 +52,6 @@
             label15 = new Label();
             label16 = new Label();
             label17 = new Label();
-            button3 = new Button();
             checkBox1 = new CheckBox();
             checkBox2 = new CheckBox();
             menuStrip1 = new MenuStrip();
@@ -60,6 +59,7 @@
             settingsToolStripMenuItem = new ToolStripMenuItem();
             groupBox1 = new GroupBox();
             groupBox2 = new GroupBox();
+            pictureBox1 = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)trackBar6).BeginInit();
             ((System.ComponentModel.ISupportInitialize)trackBar4).BeginInit();
             ((System.ComponentModel.ISupportInitialize)trackBar2).BeginInit();
@@ -67,6 +67,7 @@
             menuStrip1.SuspendLayout();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // Start
@@ -74,7 +75,7 @@
             Start.BackColor = Color.FromArgb(235, 90, 10);
             Start.Font = new Font("Calibri", 24F, FontStyle.Bold, GraphicsUnit.Point);
             Start.ForeColor = Color.White;
-            Start.Location = new Point(419, 680);
+            Start.Location = new Point(464, 728);
             Start.Name = "Start";
             Start.Size = new Size(190, 71);
             Start.TabIndex = 2;
@@ -85,7 +86,8 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(114, 32);
+            label1.ForeColor = SystemColors.ButtonFace;
+            label1.Location = new Point(153, 45);
             label1.Name = "label1";
             label1.Size = new Size(50, 20);
             label1.TabIndex = 3;
@@ -343,22 +345,12 @@
             label17.Text = "Nose horizontal";
             label17.Click += label17_Click;
             // 
-            // button3
-            // 
-            button3.BackgroundImage = Properties.Resources.path1;
-            button3.Location = new Point(10, 32);
-            button3.Margin = new Padding(2);
-            button3.Name = "button3";
-            button3.Size = new Size(75, 75);
-            button3.TabIndex = 40;
-            button3.UseVisualStyleBackColor = true;
-            // 
             // checkBox1
             // 
             checkBox1.AutoSize = true;
             checkBox1.Font = new Font("Calibri", 12F, FontStyle.Regular, GraphicsUnit.Point);
             checkBox1.ForeColor = Color.White;
-            checkBox1.Location = new Point(623, 710);
+            checkBox1.Location = new Point(668, 758);
             checkBox1.Margin = new Padding(2);
             checkBox1.Name = "checkBox1";
             checkBox1.Size = new Size(75, 28);
@@ -372,7 +364,7 @@
             checkBox2.AutoSize = true;
             checkBox2.Font = new Font("Calibri", 12F, FontStyle.Regular, GraphicsUnit.Point);
             checkBox2.ForeColor = Color.White;
-            checkBox2.Location = new Point(623, 741);
+            checkBox2.Location = new Point(668, 789);
             checkBox2.Margin = new Padding(2);
             checkBox2.Name = "checkBox2";
             checkBox2.Size = new Size(171, 28);
@@ -389,7 +381,7 @@
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Padding = new Padding(5, 2, 0, 2);
-            menuStrip1.Size = new Size(902, 32);
+            menuStrip1.Size = new Size(919, 32);
             menuStrip1.TabIndex = 43;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -427,7 +419,7 @@
             groupBox1.Controls.Add(comboBox3);
             groupBox1.Font = new Font("Calibri", 16.2F, FontStyle.Bold, GraphicsUnit.Point);
             groupBox1.ForeColor = Color.White;
-            groupBox1.Location = new Point(99, 115);
+            groupBox1.Location = new Point(144, 171);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(378, 502);
             groupBox1.TabIndex = 44;
@@ -446,24 +438,33 @@
             groupBox2.Controls.Add(label14);
             groupBox2.Font = new Font("Calibri", 16.2F, FontStyle.Bold, GraphicsUnit.Point);
             groupBox2.ForeColor = Color.White;
-            groupBox2.Location = new Point(530, 115);
+            groupBox2.Location = new Point(575, 171);
             groupBox2.Name = "groupBox2";
             groupBox2.Size = new Size(264, 502);
             groupBox2.TabIndex = 45;
             groupBox2.TabStop = false;
-            groupBox2.Text = "LOGIC";
+            groupBox2.Text = "SENSIBILITY";
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.BackgroundImage = Properties.Resources.path14;
+            pictureBox1.Location = new Point(0, 32);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(120, 120);
+            pictureBox1.TabIndex = 46;
+            pictureBox1.TabStop = false;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.FromArgb(31, 29, 40);
-            ClientSize = new Size(902, 800);
+            BackColor = Color.FromArgb(44, 39, 53);
+            ClientSize = new Size(919, 846);
+            Controls.Add(pictureBox1);
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
             Controls.Add(checkBox2);
             Controls.Add(checkBox1);
-            Controls.Add(button3);
             Controls.Add(label1);
             Controls.Add(Start);
             Controls.Add(menuStrip1);
@@ -481,6 +482,7 @@
             groupBox1.PerformLayout();
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -510,7 +512,6 @@
         private Label label15;
         private Label label16;
         private Label label17;
-        private Button button3;
         private CheckBox checkBox1;
         private CheckBox checkBox2;
         private MenuStrip menuStrip1;
@@ -518,5 +519,6 @@
         private ToolStripMenuItem settingsToolStripMenuItem;
         private GroupBox groupBox1;
         private GroupBox groupBox2;
+        private PictureBox pictureBox1;
     }
 }
