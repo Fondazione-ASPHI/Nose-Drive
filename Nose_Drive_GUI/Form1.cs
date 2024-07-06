@@ -15,8 +15,8 @@ namespace Nose_Drive_GUI
         OpenFileDialog openFileDialog1;
         OpenFileDialog openFileDialog2;
 
-        public Settings settingsData;
-        public Logic logicData;
+        public SettingsData settingsData;
+        public LogicData logicData;
 
         public string settingsFile = "settings.json";
         FileInfo settingsFileInfo;
@@ -89,23 +89,37 @@ namespace Nose_Drive_GUI
             logicData.mouth_left = mouthLeftDropdown.Text;
         }
 
-        Settings ReadSettingsFile(string fileName)
+        SettingsData ReadSettingsFile(string fileName)
         {
             string jsonString = File.ReadAllText(fileName);
-            return JsonSerializer.Deserialize<Settings>(jsonString);
+            return JsonSerializer.Deserialize<SettingsData>(jsonString);
         }
 
-        Logic ReadLogicFile(string fileName)
+        LogicData ReadLogicFile(string fileName)
         {
             string jsonString = File.ReadAllText(fileName);
-            return JsonSerializer.Deserialize<Logic>(jsonString);
+            return JsonSerializer.Deserialize<LogicData>(jsonString);
         }
 
-        private void SaveFile(string fileName)
+        //private void SaveFile<DataType>(string fileName, JsonData jsonData) where DataType : JsonData
+        //{
+        //    UpdateSettings();
+        //    string jsonString = JsonSerializer.Serialize<DataType>(jsonData);
+        //    File.WriteAllText(fileName, jsonString);
+        //}
+
+        private void SaveSettingsFile()
         {
             UpdateSettings();
             string jsonString = JsonSerializer.Serialize(settingsData);
-            File.WriteAllText(fileName, jsonString);
+            File.WriteAllText(settingsFile, jsonString);
+        }
+
+        private void SaveLogicFile()
+        {
+            UpdateSettings();
+            string jsonString = JsonSerializer.Serialize(logicData);
+            File.WriteAllText(logicFile, jsonString);
         }
 
         private void select_script(object sender, EventArgs e)
@@ -134,7 +148,13 @@ namespace Nose_Drive_GUI
                   Arguments = scriptPath + " " + settingsPath
               }
             };
-            process.Start();
+
+            UpdateSettings();
+            SaveSettingsFile();
+            UpdateLogic();
+            SaveLogicFile();
+
+            //process.Start();
         }
 
         private void remove_script(object sender, EventArgs e)
@@ -239,9 +259,13 @@ namespace Nose_Drive_GUI
         }
     }
 
+    public abstract class JsonData
+    {
+
+    }
 
     [System.Serializable]
-    public class Settings
+    public class SettingsData : JsonData
     {
         public float nose_horizontal_sensibility { get; set; }
         public float nose_vertical_sensibility { get; set; }
@@ -253,7 +277,7 @@ namespace Nose_Drive_GUI
     }
 
     [System.Serializable]
-    public class Logic
+    public class LogicData : JsonData
     {
         public string nose_right { get; set; }
         public string nose_left { get; set; }
