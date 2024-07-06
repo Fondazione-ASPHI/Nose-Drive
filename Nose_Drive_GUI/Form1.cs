@@ -1,4 +1,5 @@
 using System.Diagnostics;
+using System.Reflection.Emit;
 using System.Text.Json;
 using System.Windows.Forms;
 
@@ -14,10 +15,16 @@ namespace Nose_Drive_GUI
         OpenFileDialog openFileDialog1;
         OpenFileDialog openFileDialog2;
 
-        public Settings options;
-        public Logic logic;
+        public Settings settingsData;
+        public Logic logicData;
+
         public string settingsFile = "settings.json";
+        FileInfo settingsFileInfo;
+        string settingsFilePath;
+
         public string logicFile = "logic.json";
+        FileInfo logicFileInfo;
+        string logicFilePath;
 
         Form2 frm2;
 
@@ -25,17 +32,22 @@ namespace Nose_Drive_GUI
         public Form1()
         {
             InitializeComponent();
+            FormBorderStyle = FormBorderStyle.FixedDialog;
 
             currentPath = Directory.GetCurrentDirectory();
-            label1.Text = currentPath;
+            label1.Text = currentPath; // A debug label
+            #if DEBUG
+                label1.Visible = true;
+            #endif
 
+            // Creating object for file picking .py
             openFileDialog1 = new OpenFileDialog()
             {
                 Filter = "Python files (*.py)|*.py",
                 Title = "Open Python script",
                 InitialDirectory = currentPath
             };
-
+            // Creating object for file picking .json
             openFileDialog2 = new OpenFileDialog()
             {
                 Filter = "Json files (*.json)|*.json",
@@ -43,18 +55,38 @@ namespace Nose_Drive_GUI
                 InitialDirectory = currentPath
             };
 
+            // Initialize settings data
+            settingsData = ReadSettingsFile(settingsFile);            
+            settingsFileInfo = new FileInfo(settingsFile);
+            settingsFilePath = settingsFileInfo.FullName;
 
-            options = ReadSettingsFile("settings.json");
-            logic = ReadLogicFile("logic.json");
+            // Initialize logic data data
+            logicData = ReadLogicFile(logicFile);
+            logicFileInfo = new FileInfo(logicFile);
+            logicFilePath = logicFileInfo.FullName;
         }
 
         void UpdateSettings()
         {
-            options.NoseHorizontalHensibility = trackBar1.Value;
-            options.NoseVerticalSensibility = trackBar4.Value;
-            options.MouthHorizontalSensibility = trackBar2.Value;
-            options.EyebrowsSensibility = trackBar6.Value;
+            // Trackbars in main window
+            settingsData.nose_horizontal_sensibility = trackBar1.Value;
+            settingsData.nose_vertical_sensibility = trackBar4.Value;
+            settingsData.mouth_horizontal_sensibility = trackBar2.Value;
+            settingsData.eyebrows_sensibility = trackBar6.Value;
+
+            // Options in Form2
             //options.CalibrationTime = (float)frm2.num.Value;
+        }
+
+        void UpdateLogic()
+        {
+            logicData.nose_right = noseRightDropdown.Text;
+            logicData.nose_left = noseLeftDropdown.Text;
+            logicData.nose_up = noseUpDropdown.Text;
+            logicData.nose_down = noseDownDropdown.Text;
+            logicData.eyebrows = eyebrowsDropdown.Text;
+            logicData.mouth_right = mouthRightDropdown.Text;
+            logicData.mouth_left = mouthLeftDropdown.Text;
         }
 
         Settings ReadSettingsFile(string fileName)
@@ -72,7 +104,7 @@ namespace Nose_Drive_GUI
         private void SaveFile(string fileName)
         {
             UpdateSettings();
-            string jsonString = JsonSerializer.Serialize(options);
+            string jsonString = JsonSerializer.Serialize(settingsData);
             File.WriteAllText(fileName, jsonString);
         }
 
@@ -211,24 +243,24 @@ namespace Nose_Drive_GUI
     [System.Serializable]
     public class Settings
     {
-        public float NoseHorizontalHensibility { get; set; }
-        public float NoseVerticalSensibility { get; set; }
-        public float MouthHorizontalSensibility { get; set; }
-        public float EyebrowsSensibility { get; set; }
-        public string PauseKey { get; set; }
-        public string ResetPosKey { get; set; }
-        public int CalibrationTime { get; set; }
+        public float nose_horizontal_sensibility { get; set; }
+        public float nose_vertical_sensibility { get; set; }
+        public float mouth_horizontal_sensibility { get; set; }
+        public float eyebrows_sensibility { get; set; }
+        public string pause_key { get; set; }
+        public string reset_pos_key { get; set; }
+        public int calibration_time { get; set; }
     }
 
     [System.Serializable]
     public class Logic
     {
-        public string NoseRight { get; set; }
-        public string NoseLeft { get; set; }
-        public string NoseUp { get; set; }
-        public string NoseDown { get; set; }
-        public string Eyebrows { get; set; }
-        public string MouthRight { get; set; }
-        public string MouthLeft { get; set; }
+        public string nose_right { get; set; }
+        public string nose_left { get; set; }
+        public string nose_up { get; set; }
+        public string nose_down { get; set; }
+        public string eyebrows { get; set; }
+        public string mouth_right { get; set; }
+        public string mouth_left { get; set; }
     }
 }
