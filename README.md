@@ -59,10 +59,12 @@ In the [drive_settings.json](https://github.com/Fondazione-ASPHI/Nose-Drive/blob
 * Change line 6 of Builder.spec to match the .py script you want to build
 * Execute compiled binaries with ".\dist\main\main.exe .\your_settings.json"
 
-# Voice Controls #
+# Integrations #
+
+## Voice Controls ##
 [VOICE ATTACK](https://voiceattack.com/) software provides voice-activated control to simulate mouse/keyboard inputs and much more! This feature complements the nose drive very effectively, allowing to play many games that require a large number of inputs.
 
-# Eye-Tracking #
+## Eye-Tracking ##
 Thanks to [BEAM EYE TRACKER](https://beam.eyeware.tech/) we are now able to simulate gamepad and mouse/keyboard inputs by moving our eyes!
 * [The scripts in this folder](Beam_Eyetracker_Scripts) make use of this amazing feature.
 * Of course, it is possible to combine mediapipe tracking of facial joints with the Eye gaze tracking to achieve even more customization! Note that in order to execute this kind of scripts (for example [Eye_3rd_Gamepad.py](Beam_Eyetracker_Scripts/Eye_3rd_Gamepad.py)) a software like "[Split Cam](https://splitcam.com/)" is required, because the webcam image should go to both Beam Eyetracker software and Python CV2 library at the same time.
