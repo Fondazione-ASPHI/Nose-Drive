@@ -1,14 +1,16 @@
 # Nose Drive #
 Simulate Xbox360 controller or mouse/keyboard inputs using [Mediapipe](https://developers.google.com/mediapipe/solutions/guide) tracking of Face joints.
 
-This project is realized by the non-profit "Fondazione ASPHI Onlus" and its main purpose is to help people with complex motor disabilities play videogames through alternative and highly-customizable inputs solutions.
+This project is realized by the non-profit "ASPHI Onlus" and its main purpose is to help people with complex motor disabilities play videogames through alternative and highly-customizable inputs solutions.
 
-AUTHORS: [Fondazione ASPHI Onlus](https://asphi.it/games)
+Nose Drive provides a Python library that can be used to easily bind face movements to gamepad/keyboard/mouse buttons pressed by a virtual device.
+
+AUTHORS: [ASPHI Onlus](https://asphi.it/games)
 
 ## Demo video ##
-[![YouTube sample video](Nose_Drive.png)](https://youtube.com/playlist?list=PLFr79ayA5ASsFJidifoh-_BYXApgLFIkx&si=cHLuuedKiLudvU_A)
+[![YouTube sample video](Images/Nose_Drive.png)](https://youtube.com/playlist?list=PLFr79ayA5ASsFJidifoh-_BYXApgLFIkx&si=cHLuuedKiLudvU_A)
 
-## Setup Instructions ##
+## EASY Setup Instructions ##
 * Install the [ViGEmBus driver](https://github.com/ViGEm/ViGEmBus/releases)
 * Download and extract our [latest release ZIP file](https://github.com/Fondazione-ASPHI/Nose-Drive/releases)
 * Double click on the "START.bat" file
@@ -19,14 +21,14 @@ AUTHORS: [Fondazione ASPHI Onlus](https://asphi.it/games)
 * The "P" key pauses and resumes inputs simulation
 * If the program does not run, try to install the [Visual C++ redistributable package](https://learn.microsoft.com/it-it/cpp/windows/latest-supported-vc-redist?view=msvc-170#visual-studio-2015-2017-2019-and-2022)
 
-## Inputs
+### Inputs ###
 Core commands:
 * NOSE DOWN: gamepad analog Right-Trigger (accelerator)
 * NOSE UP: gamepad Left-Trigger (brake)
 * NOSE RIGHT and LEFT: gamepad Left Analog Horizontal Axis (steer left and right) 
 
 ## Advanced customization ##
-The software and its releases are plain Python code that can be modified.
+Using the Nose Drive Python library it is possible to create custom scripts to customize control of different kind of videogames. Examples of such scripts can be found inside the [test](tests/) folder.
 
 In the [drive_settings.json](https://github.com/Fondazione-ASPHI/Nose-Drive/blob/main/drive_settings.json) file you can modify:
 * sensibility values for inputs
