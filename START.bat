@@ -1,1 +1,0 @@
-.\python_310\python.exe .\Drive.py .\drive_settings.json

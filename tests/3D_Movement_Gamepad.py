@@ -9,7 +9,7 @@ import sys
 options_file_name = sys.argv[1]
 
 import json
-from Nose_Tracker import track_face
+from nosedrive import track_face
 import keyboard as kb
 
 # Init Gamepad controller
