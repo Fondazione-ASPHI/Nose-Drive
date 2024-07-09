@@ -2,7 +2,7 @@ import sys
 options_file_name = sys.argv[1]
 
 import json
-from Nose_Tracker import track_face
+from nosedrive import track_face
 
 # Init Gamepad controller
 import vgamepad as vg # https://pypi.org/project/vgamepad/   https://github.com/ViGEm/ViGEmBus

@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "nosedrive"
+version = "0.0.1"
+authors = [
+  { name="ASPHI Onlus", email="supporto@asphi.it" },
+]
+description = "Simulate gamepad or mouse/keyboard inputs using Mediapipe tracking of Face joints."
+readme = "README.md"
+requires-python = ">=3.10"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+Homepage = "https://github.com/Fondazione-ASPHI/Nose-Drive"
+Issues = "https://github.com/Fondazione-ASPHI/Nose-Drive/issues"
