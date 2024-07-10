@@ -6,4 +6,5 @@ src/nosedrive/main.py
 src/nosedrive.egg-info/PKG-INFO
 src/nosedrive.egg-info/SOURCES.txt
 src/nosedrive.egg-info/dependency_links.txt
+src/nosedrive.egg-info/requires.txt
 src/nosedrive.egg-info/top_level.txt

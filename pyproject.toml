@@ -4,13 +4,26 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "nosedrive"
-version = "0.0.1"
+version = "0.0.2"
 authors = [
   { name="ASPHI Onlus", email="supporto@asphi.it" },
 ]
 description = "Simulate gamepad or mouse/keyboard inputs using Mediapipe tracking of Face joints."
 readme = "README.md"
 requires-python = ">=3.10"
+dependencies = [
+        "mediapipe>=0.8.11",
+        "numpy>=1.23.4",
+        "opencv-contrib-python>=4.6.0.66",
+        "Pillow>=9.2.0",
+        "pynput>=1.7.6",
+        "scipy>=1.12.0",
+        "vgamepad>=0.0.8",
+        "keyboard>=0.13.5",
+        "pywin32>=306",
+        "pywin32-ctypes>=0.2.2",
+        "pyinstaller>=6.4.0" 
+        ]
 classifiers = [
     "Programming Language :: Python :: 3",
     "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
