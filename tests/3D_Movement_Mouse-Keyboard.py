@@ -39,7 +39,7 @@ def logic(nose_x, nose_y, mouth_x, head_tilt, trigger_eyebrows, trigger_mouth_op
   if mode == "Move":
     # Camera with HORIZONTAL NOSE
     if nose_x < -0.2 or nose_x > 0.2: # Left
-      x = -nose_x*speed
+      x = nose_x*speed
     win32api.mouse_event(win32con.MOUSEEVENTF_MOVE, int(x), 0, 0, 0)
 
     # Movement with VERTICAL NOSE
@@ -58,7 +58,7 @@ def logic(nose_x, nose_y, mouth_x, head_tilt, trigger_eyebrows, trigger_mouth_op
 
   elif mode == "Aim":    
     if nose_x < -0.2 or nose_x > 0.2: # Left
-      x = -nose_x*speed
+      x = nose_x*speed
     if nose_y < -0.2 or nose_y > 0.2: # Right
       y = nose_y*speed
     win32api.mouse_event(win32con.MOUSEEVENTF_MOVE, int(x), int(y), 0, 0)

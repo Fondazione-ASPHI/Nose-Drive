@@ -248,7 +248,7 @@ def track_face(logic, options):
 
           if not paused:
             logic(
-              nose_x,
+              -nose_x,
               nose_y,
               mouth_x,
               head_tilt,

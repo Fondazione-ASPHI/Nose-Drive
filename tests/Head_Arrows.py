@@ -30,13 +30,13 @@ def logic(nose_x, nose_y, mouth_x, head_tilt, trigger_eyebrows, trigger_mouth_op
 
   # Left Right Arrows
   if nose_x < -0.5:
-    keyboard.press(Key.right)
-  else:
-    keyboard.release(Key.right)
-  if nose_x > 0.5:
     keyboard.press(Key.left)
   else:
     keyboard.release(Key.left)
+  if nose_x > 0.5:
+    keyboard.press(Key.right)
+  else:
+    keyboard.release(Key.right)
 
   # Up Down Arrows
   if nose_y < -0.5:

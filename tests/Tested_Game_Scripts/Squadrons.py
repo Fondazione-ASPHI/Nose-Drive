@@ -15,7 +15,7 @@ gamepad = vg.VX360Gamepad()
 def logic(nose_x, nose_y, mouth_x, head_tilt, trigger_eyebrows, trigger_mouth_open):  
   
   # Movement
-  gamepad.right_joystick_float(x_value_float=-nose_x, y_value_float=-nose_y)
+  gamepad.right_joystick_float(x_value_float=nose_x, y_value_float=-nose_y)
 
   # Head Tilt
   gamepad.left_joystick_float(x_value_float=-head_tilt, y_value_float=mouth_x)

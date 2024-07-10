@@ -15,7 +15,7 @@ gamepad = vg.VX360Gamepad()
 def logic(nose_x, nose_y, mouth_x, head_tilt, trigger_eyebrows, trigger_mouth_open):  
   
   # Movement
-  gamepad.left_joystick_float(x_value_float=-nose_x, y_value_float=-nose_y)
+  gamepad.left_joystick_float(x_value_float=nose_x, y_value_float=-nose_y)
   
   # Mouth Right or Left to trigger A or B buttons
   if trigger_mouth_open:

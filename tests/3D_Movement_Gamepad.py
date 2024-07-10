@@ -34,14 +34,14 @@ def logic(nose_x, nose_y, mouth_x, head_tilt, trigger_eyebrows, trigger_mouth_op
   if mode == "Move":
     # Camera with HORIZONTAL NOSE
     if nose_x < -0.2 or nose_x > 0.2: # Left
-      gamepad.right_joystick_float(x_value_float=-nose_x, y_value_float=0)
+      gamepad.right_joystick_float(x_value_float=nose_x, y_value_float=0)
 
     # Movement with VERTICAL NOSE
     gamepad.left_joystick_float(x_value_float=0, y_value_float=nose_y)
 
   elif mode == "Aim":    
     if nose_x < -0.2 or nose_x > 0.2: # Left
-      x = -nose_x
+      x = nose_x
     if nose_y < -0.2 or nose_y > 0.2: # Right
       y = nose_y
     gamepad.right_joystick_float(x_value_float=x, y_value_float=y)
