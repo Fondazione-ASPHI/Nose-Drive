@@ -56,6 +56,8 @@
             checkBox2 = new CheckBox();
             menuStrip1 = new MenuStrip();
             saveToolStripMenuItem = new ToolStripMenuItem();
+            presetToolStripMenuItem1 = new ToolStripMenuItem();
+            sensibilityValuesToolStripMenuItem = new ToolStripMenuItem();
             loadScriptToolStripMenuItem = new ToolStripMenuItem();
             presetToolStripMenuItem = new ToolStripMenuItem();
             scriptToolStripMenuItem = new ToolStripMenuItem();
@@ -64,6 +66,7 @@
             comboBox1 = new ComboBox();
             groupBox2 = new GroupBox();
             pictureBox1 = new PictureBox();
+            sensibilityToolStripMenuItem = new ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)trackBar6).BeginInit();
             ((System.ComponentModel.ISupportInitialize)trackBar4).BeginInit();
             ((System.ComponentModel.ISupportInitialize)trackBar2).BeginInit();
@@ -404,15 +407,28 @@
             // 
             // saveToolStripMenuItem
             // 
+            saveToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { presetToolStripMenuItem1, sensibilityValuesToolStripMenuItem });
             saveToolStripMenuItem.Font = new Font("Calibri", 12F, FontStyle.Regular, GraphicsUnit.Point);
             saveToolStripMenuItem.Name = "saveToolStripMenuItem";
             saveToolStripMenuItem.Size = new Size(75, 33);
             saveToolStripMenuItem.Text = "Save";
-            saveToolStripMenuItem.Click += save_preset;
+            // 
+            // presetToolStripMenuItem1
+            // 
+            presetToolStripMenuItem1.Name = "presetToolStripMenuItem1";
+            presetToolStripMenuItem1.Size = new Size(287, 38);
+            presetToolStripMenuItem1.Text = "Preset";
+            presetToolStripMenuItem1.Click += save_preset;
+            // 
+            // sensibilityValuesToolStripMenuItem
+            // 
+            sensibilityValuesToolStripMenuItem.Name = "sensibilityValuesToolStripMenuItem";
+            sensibilityValuesToolStripMenuItem.Size = new Size(287, 38);
+            sensibilityValuesToolStripMenuItem.Text = "Sensibility Values";
             // 
             // loadScriptToolStripMenuItem
             // 
-            loadScriptToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { presetToolStripMenuItem, scriptToolStripMenuItem });
+            loadScriptToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { presetToolStripMenuItem, sensibilityToolStripMenuItem, scriptToolStripMenuItem });
             loadScriptToolStripMenuItem.Font = new Font("Calibri", 12F, FontStyle.Regular, GraphicsUnit.Point);
             loadScriptToolStripMenuItem.Name = "loadScriptToolStripMenuItem";
             loadScriptToolStripMenuItem.Size = new Size(77, 33);
@@ -421,14 +437,14 @@
             // presetToolStripMenuItem
             // 
             presetToolStripMenuItem.Name = "presetToolStripMenuItem";
-            presetToolStripMenuItem.Size = new Size(177, 38);
+            presetToolStripMenuItem.Size = new Size(287, 38);
             presetToolStripMenuItem.Text = "Preset";
             presetToolStripMenuItem.Click += load_preset;
             // 
             // scriptToolStripMenuItem
             // 
             scriptToolStripMenuItem.Name = "scriptToolStripMenuItem";
-            scriptToolStripMenuItem.Size = new Size(177, 38);
+            scriptToolStripMenuItem.Size = new Size(287, 38);
             scriptToolStripMenuItem.Text = "Script";
             scriptToolStripMenuItem.Click += load_script;
             // 
@@ -514,6 +530,13 @@
             pictureBox1.TabIndex = 46;
             pictureBox1.TabStop = false;
             // 
+            // sensibilityToolStripMenuItem
+            // 
+            sensibilityToolStripMenuItem.Name = "sensibilityToolStripMenuItem";
+            sensibilityToolStripMenuItem.Size = new Size(287, 38);
+            sensibilityToolStripMenuItem.Text = "Sensibility Values";
+            sensibilityToolStripMenuItem.Click += load_settings;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
@@ -586,5 +609,8 @@
         private ToolStripMenuItem saveToolStripMenuItem;
         private ToolStripMenuItem presetToolStripMenuItem;
         private ToolStripMenuItem scriptToolStripMenuItem;
+        private ToolStripMenuItem presetToolStripMenuItem1;
+        private ToolStripMenuItem sensibilityValuesToolStripMenuItem;
+        private ToolStripMenuItem sensibilityToolStripMenuItem;
     }
 }

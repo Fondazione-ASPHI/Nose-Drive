@@ -117,7 +117,7 @@ namespace Nose_Drive_GUI
 
         private void SaveLogicFile()
         {
-            UpdateSettings();
+            UpdateLogic();
             string jsonString = JsonSerializer.Serialize(logicData);
             File.WriteAllText(logicFile, jsonString);
         }
@@ -132,16 +132,23 @@ namespace Nose_Drive_GUI
         // Save .nose file
         private void save_preset(object sender, EventArgs e)
         {
-
+            SaveLogicFile();
         }
 
         // Load .nose file
         private void load_preset(object sender, EventArgs e)
         {
-
+            openFileDialog2.ShowDialog();
+            logicFilePath = openFileDialog2.FileName;
+            label1.Text = openFileDialog2.FileName;
         }
 
-        private void settings(object sender, EventArgs e)
+        private void save_settings(object sender, EventArgs e)
+        {
+            SaveSettingsFile();
+        }
+
+        private void load_settings(object sender, EventArgs e)
         {
             openFileDialog2.ShowDialog();
             settingsPath = openFileDialog2.FileName;
