@@ -10,13 +10,12 @@ AUTHORS: [ASPHI Onlus](https://asphi.it/games)
 ## Demo video ##
 [![YouTube sample video](Images/Nose_Drive.png)](https://youtube.com/playlist?list=PLFr79ayA5ASsFJidifoh-_BYXApgLFIkx&si=cHLuuedKiLudvU_A)
 
-## EASY Setup Instructions ##
-* Install the [ViGEmBus driver](https://github.com/ViGEm/ViGEmBus/releases)
+## Quick start and configuration ##
 * Download and extract our [latest release ZIP file](https://github.com/Fondazione-ASPHI/Nose-Drive/releases)
 * Double click on the "START.bat" file
 * Wait for your webcam image to show up
 * Stand still in front of the webcam in your base position for 5 seconds (can be edited)
-* Start playing your games
+* Start playing your game
 * The "N" key on the keyboard can always be pressed to reset the base position to the actual position
 * The "P" key pauses and resumes inputs simulation
 * If the program does not run, try to install the [Visual C++ redistributable package](https://learn.microsoft.com/it-it/cpp/windows/latest-supported-vc-redist?view=msvc-170#visual-studio-2015-2017-2019-and-2022)
@@ -25,16 +24,17 @@ AUTHORS: [ASPHI Onlus](https://asphi.it/games)
 Core commands:
 * NOSE DOWN: gamepad analog Right-Trigger (accelerator)
 * NOSE UP: gamepad Left-Trigger (brake)
-* NOSE RIGHT and LEFT: gamepad Left Analog Horizontal Axis (steer left and right) 
+* NOSE RIGHT and LEFT: gamepad Left Analog Horizontal Axis (steer left and right)
 
-## Advanced customization ##
-Using the Nose Drive Python library it is possible to create custom scripts to customize control of different kind of videogames. Examples of such scripts can be found inside the [test](tests/) folder.
-
+### Settings ###
 In the [drive_settings.json](https://github.com/Fondazione-ASPHI/Nose-Drive/blob/main/drive_settings.json) file you can modify:
 * sensibility values for inputs
 * how many seconds to wait, after the webcam image shows up, before the program takes your actual position as the base position (the pressure of the keys is based on the deviation from this base position)
 * the index of the camera that should be used for tracking, if more than one cameras are connected (default is 0)
 * the keyboard keys to trigger reset of base position or to pause the program
+
+## Advanced customization ##
+Using the Nose Drive Python library it is possible to create custom scripts to customize control of different kind of videogames (Platforms, 3D movement, ...). Examples of such scripts can be found inside the [test](tests/) folder.
 
 ## Mediapipe Documentation ##
 [Python API examples](https://developers.google.com/mediapipe/solutions/vision/face_landmarker/python)
