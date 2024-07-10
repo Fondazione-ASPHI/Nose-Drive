@@ -36,9 +36,9 @@ namespace Nose_Drive_GUI
 
             currentPath = Directory.GetCurrentDirectory();
             label1.Text = currentPath; // A debug label
-            #if DEBUG
-                label1.Visible = true;
-            #endif
+#if DEBUG
+            label1.Visible = true;
+#endif
 
             // Creating object for file picking .py
             openFileDialog1 = new OpenFileDialog()
@@ -56,7 +56,7 @@ namespace Nose_Drive_GUI
             };
 
             // Initialize settings data
-            settingsData = ReadSettingsFile(settingsFile);            
+            settingsData = ReadSettingsFile(settingsFile);
             settingsFileInfo = new FileInfo(settingsFile);
             settingsFilePath = settingsFileInfo.FullName;
 
@@ -122,11 +122,23 @@ namespace Nose_Drive_GUI
             File.WriteAllText(logicFile, jsonString);
         }
 
-        private void select_script(object sender, EventArgs e)
+        private void load_script(object sender, EventArgs e)
         {
             openFileDialog1.ShowDialog();
             scriptPath = openFileDialog1.FileName;
             label1.Text = openFileDialog1.FileName;
+        }
+
+        // Save .nose file
+        private void save_preset(object sender, EventArgs e)
+        {
+
+        }
+
+        // Load .nose file
+        private void load_preset(object sender, EventArgs e)
+        {
+
         }
 
         private void settings(object sender, EventArgs e)
@@ -231,7 +243,7 @@ namespace Nose_Drive_GUI
         private void Form1_Load(object sender, EventArgs e)
         {
 
-        }        
+        }
 
         private void toolStripMenuItem1_Click(object sender, EventArgs e)
         {
@@ -257,6 +269,11 @@ namespace Nose_Drive_GUI
         {
 
         }
+
+        private void comboBox1_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+
+        }        
     }
 
     public abstract class JsonData
