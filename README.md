@@ -11,6 +11,7 @@ AUTHORS: [ASPHI Onlus](https://asphi.it/games)
 [![YouTube sample video](Images/Nose_Drive.png)](https://youtube.com/playlist?list=PLFr79ayA5ASsFJidifoh-_BYXApgLFIkx&si=cHLuuedKiLudvU_A)
 
 ## Quick start and configuration ##
+* Install the [ViGEmBus driver](https://github.com/ViGEm/ViGEmBus/releases)
 * Download and extract our [latest release ZIP file](https://github.com/Fondazione-ASPHI/Nose-Drive/releases)
 * Double click on the "START.bat" file
 * Wait for your webcam image to show up
