@@ -34,8 +34,10 @@ In the [drive_settings.json](https://github.com/Fondazione-ASPHI/Nose-Drive/blob
 * the index of the camera that should be used for tracking, if more than one cameras are connected (default is 0)
 * the keyboard keys to trigger reset of base position or to pause the program
 
-## Advanced customization ##
+## Python library ##
 Using the Nose Drive Python library it is possible to create custom scripts to customize control of different kind of videogames (Platforms, 3D movement, ...). Examples of such scripts can be found inside the [test](tests/) folder.
+
+[In the wiki](https://github.com/Fondazione-ASPHI/Nose-Drive/wiki), a detailed tutorial and documentation can be found.
 
 ## Mediapipe Documentation ##
 [Python API examples](https://developers.google.com/mediapipe/solutions/vision/face_landmarker/python)
