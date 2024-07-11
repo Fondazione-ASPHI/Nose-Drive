@@ -168,10 +168,10 @@ namespace Nose_Drive_GUI
               }
             };
 
-            //UpdateSettings();
-            //SaveSettingsFile();
-            //UpdateLogic();
-            //SaveLogicFile();
+            UpdateSettings();
+            SaveSettingsFile();
+            UpdateLogic();
+            SaveLogicFile();
 
             process.Start();
         }
