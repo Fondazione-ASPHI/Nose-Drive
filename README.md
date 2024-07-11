@@ -60,6 +60,7 @@ Using the Nose Drive Python library it is possible to create custom scripts to c
 * Then you can execute every script with python, for example the command "python Drive.py drive_settings.json" will execute the Drive.py script with the settings defined in the file drive_settings.json
 
 ## Build instructions ##
+* Download this [Embedded Python](https://github.com/Fondazione-ASPHI/Nose-Drive/releases/download/Python_Embedded/python_310.zip) (already tested and working for builds).
 * .\python_310\Scripts\pyinstaller.exe .\Builder.spec
 * Change line 6 of Builder.spec to match the .py script you want to build
 * Execute compiled binaries with ".\dist\main\main.exe .\your_settings.json"
