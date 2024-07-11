@@ -64,7 +64,7 @@
             scriptToolStripMenuItem = new ToolStripMenuItem();
             settingsToolStripMenuItem = new ToolStripMenuItem();
             groupBox1 = new GroupBox();
-            comboBox1 = new ComboBox();
+            presetBox = new ComboBox();
             groupBox2 = new GroupBox();
             pictureBox1 = new PictureBox();
             openPythonFiles = new OpenFileDialog();
@@ -133,6 +133,7 @@
             // 
             // mouthLeftDropdown
             // 
+            mouthLeftDropdown.DropDownStyle = ComboBoxStyle.DropDownList;
             mouthLeftDropdown.Font = new Font("Calibri", 18F, FontStyle.Regular, GraphicsUnit.Pixel);
             mouthLeftDropdown.FormattingEnabled = true;
             mouthLeftDropdown.Items.AddRange(new object[] { "Left Joystick Right", "Left Joystick Left", "Left Joystick Up", "Left Joystick Down", "Right Joystick Right", "Right Joystick Left", "Right Joystick Up", "Right Joystick Down", "A", "B", "X", "Y", "LT", "RT", "LB", "RB", "Start", "Select", "Dpad Right", "Dpad Left", "Dpad Up", "Dpad Down", "Right Thumb", "Left Thumb", "Home" });
@@ -156,6 +157,7 @@
             // 
             // mouthRightDropdown
             // 
+            mouthRightDropdown.DropDownStyle = ComboBoxStyle.DropDownList;
             mouthRightDropdown.Font = new Font("Calibri", 18F, FontStyle.Regular, GraphicsUnit.Pixel);
             mouthRightDropdown.FormattingEnabled = true;
             mouthRightDropdown.Items.AddRange(new object[] { "Left Joystick Right", "Left Joystick Left", "Left Joystick Up", "Left Joystick Down", "Right Joystick Right", "Right Joystick Left", "Right Joystick Up", "Right Joystick Down", "A", "B", "X", "Y", "LT", "RT", "LB", "RB", "Start", "Select", "Dpad Right", "Dpad Left", "Dpad Up", "Dpad Down", "Right Thumb", "Left Thumb", "Home" });
@@ -167,6 +169,7 @@
             // 
             // eyebrowsDropdown
             // 
+            eyebrowsDropdown.DropDownStyle = ComboBoxStyle.DropDownList;
             eyebrowsDropdown.Font = new Font("Calibri", 18F, FontStyle.Regular, GraphicsUnit.Pixel);
             eyebrowsDropdown.FormattingEnabled = true;
             eyebrowsDropdown.Items.AddRange(new object[] { "Left Joystick Right", "Left Joystick Left", "Left Joystick Up", "Left Joystick Down", "Right Joystick Right", "Right Joystick Left", "Right Joystick Up", "Right Joystick Down", "A", "B", "X", "Y", "LT", "RT", "LB", "RB", "Start", "Select", "Dpad Right", "Dpad Left", "Dpad Up", "Dpad Down", "Right Thumb", "Left Thumb", "Home" });
@@ -191,6 +194,7 @@
             // 
             // noseDownDropdown
             // 
+            noseDownDropdown.DropDownStyle = ComboBoxStyle.DropDownList;
             noseDownDropdown.Font = new Font("Calibri", 18F, FontStyle.Regular, GraphicsUnit.Pixel);
             noseDownDropdown.FormattingEnabled = true;
             noseDownDropdown.Items.AddRange(new object[] { "Left Joystick Right", "Left Joystick Left", "Left Joystick Up", "Left Joystick Down", "Right Joystick Right", "Right Joystick Left", "Right Joystick Up", "Right Joystick Down", "A", "B", "X", "Y", "LT", "RT", "LB", "RB", "Start", "Select", "Dpad Right", "Dpad Left", "Dpad Up", "Dpad Down", "Right Thumb", "Left Thumb", "Home" });
@@ -214,6 +218,7 @@
             // 
             // noseUpDropdown
             // 
+            noseUpDropdown.DropDownStyle = ComboBoxStyle.DropDownList;
             noseUpDropdown.Font = new Font("Calibri", 18F, FontStyle.Regular, GraphicsUnit.Pixel);
             noseUpDropdown.FormattingEnabled = true;
             noseUpDropdown.Items.AddRange(new object[] { "Left Joystick Right", "Left Joystick Left", "Left Joystick Up", "Left Joystick Down", "Right Joystick Right", "Right Joystick Left", "Right Joystick Up", "Right Joystick Down", "A", "B", "X", "Y", "LT", "RT", "LB", "RB", "Start", "Select", "Dpad Right", "Dpad Left", "Dpad Up", "Dpad Down", "Right Thumb", "Left Thumb", "Home" });
@@ -237,6 +242,7 @@
             // 
             // noseLeftDropdown
             // 
+            noseLeftDropdown.DropDownStyle = ComboBoxStyle.DropDownList;
             noseLeftDropdown.Font = new Font("Calibri", 18F, FontStyle.Regular, GraphicsUnit.Pixel);
             noseLeftDropdown.FormattingEnabled = true;
             noseLeftDropdown.Items.AddRange(new object[] { "Left Joystick Right", "Left Joystick Left", "Left Joystick Up", "Left Joystick Down", "Right Joystick Right", "Right Joystick Left", "Right Joystick Up", "Right Joystick Down", "A", "B", "X", "Y", "LT", "RT", "LB", "RB", "Start", "Select", "Dpad Right", "Dpad Left", "Dpad Up", "Dpad Down", "Right Thumb", "Left Thumb", "Home" });
@@ -262,6 +268,7 @@
             // 
             // noseRightDropdown
             // 
+            noseRightDropdown.DropDownStyle = ComboBoxStyle.DropDownList;
             noseRightDropdown.Font = new Font("Calibri", 18F, FontStyle.Regular, GraphicsUnit.Pixel);
             noseRightDropdown.FormattingEnabled = true;
             noseRightDropdown.Items.AddRange(new object[] { "Left Joystick Right", "Left Joystick Left", "Left Joystick Up", "Left Joystick Down", "Right Joystick Right", "Right Joystick Left", "Right Joystick Up", "Right Joystick Down", "A", "B", "X", "Y", "LT", "RT", "LB", "RB", "Start", "Select", "Dpad Right", "Dpad Left", "Dpad Up", "Dpad Down", "Right Thumb", "Left Thumb", "Home" });
@@ -323,48 +330,48 @@
             // label14
             // 
             label14.AutoSize = true;
-            label14.Font = new Font("Calibri", 16F, FontStyle.Regular, GraphicsUnit.Point);
+            label14.Font = new Font("Calibri", 24F, FontStyle.Regular, GraphicsUnit.Pixel);
             label14.ForeColor = Color.White;
             label14.Location = new Point(19, 346);
             label14.Margin = new Padding(2, 0, 2, 0);
             label14.Name = "label14";
-            label14.Size = new Size(142, 39);
+            label14.Size = new Size(107, 29);
             label14.TabIndex = 31;
             label14.Text = "Eyebrows";
             // 
             // label15
             // 
             label15.AutoSize = true;
-            label15.Font = new Font("Calibri", 16F, FontStyle.Regular, GraphicsUnit.Point);
+            label15.Font = new Font("Calibri", 24F, FontStyle.Regular, GraphicsUnit.Pixel);
             label15.ForeColor = Color.White;
             label15.Location = new Point(19, 481);
             label15.Margin = new Padding(2, 0, 2, 0);
             label15.Name = "label15";
-            label15.Size = new Size(244, 39);
+            label15.Size = new Size(186, 29);
             label15.TabIndex = 30;
             label15.Text = "Mouth horizontal";
             // 
             // label16
             // 
             label16.AutoSize = true;
-            label16.Font = new Font("Calibri", 16F, FontStyle.Regular, GraphicsUnit.Point);
+            label16.Font = new Font("Calibri", 24F, FontStyle.Regular, GraphicsUnit.Pixel);
             label16.ForeColor = Color.White;
             label16.Location = new Point(19, 211);
             label16.Margin = new Padding(2, 0, 2, 0);
             label16.Name = "label16";
-            label16.Size = new Size(186, 39);
+            label16.Size = new Size(140, 29);
             label16.TabIndex = 29;
             label16.Text = "Nose vertical";
             // 
             // label17
             // 
             label17.AutoSize = true;
-            label17.Font = new Font("Calibri", 16F, FontStyle.Regular, GraphicsUnit.Point);
+            label17.Font = new Font("Calibri", 24F, FontStyle.Regular, GraphicsUnit.Pixel);
             label17.ForeColor = Color.White;
             label17.Location = new Point(19, 76);
             label17.Margin = new Padding(2, 0, 2, 0);
             label17.Name = "label17";
-            label17.Size = new Size(222, 39);
+            label17.Size = new Size(168, 29);
             label17.TabIndex = 28;
             label17.Text = "Nose horizontal";
             label17.Click += label17_Click;
@@ -372,7 +379,7 @@
             // checkBox1
             // 
             checkBox1.AutoSize = true;
-            checkBox1.Font = new Font("Calibri", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            checkBox1.Font = new Font("Calibri", 24F, FontStyle.Regular, GraphicsUnit.Pixel);
             checkBox1.ForeColor = Color.White;
             checkBox1.Location = new Point(802, 880);
             checkBox1.Margin = new Padding(2);
@@ -386,7 +393,7 @@
             // checkBox2
             // 
             checkBox2.AutoSize = true;
-            checkBox2.Font = new Font("Calibri", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            checkBox2.Font = new Font("Calibri", 24F, FontStyle.Regular, GraphicsUnit.Pixel);
             checkBox2.ForeColor = Color.White;
             checkBox2.Location = new Point(802, 919);
             checkBox2.Margin = new Padding(2);
@@ -468,7 +475,7 @@
             // 
             // groupBox1
             // 
-            groupBox1.Controls.Add(comboBox1);
+            groupBox1.Controls.Add(presetBox);
             groupBox1.Controls.Add(label11);
             groupBox1.Controls.Add(label2);
             groupBox1.Controls.Add(label6);
@@ -494,20 +501,20 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "LOGIC";
             // 
-            // comboBox1
+            // presetBox
             // 
-            comboBox1.BackColor = Color.FromArgb(44, 39, 53);
-            comboBox1.Font = new Font("Calibri", 14F, FontStyle.Bold, GraphicsUnit.Point);
-            comboBox1.ForeColor = Color.White;
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Items.AddRange(new object[] { "Driving games", "3D Movement", "Platform", "Custom preset" });
-            comboBox1.Location = new Point(115, 76);
-            comboBox1.Margin = new Padding(2);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(212, 43);
-            comboBox1.TabIndex = 23;
-            comboBox1.Text = "Custom preset";
-            comboBox1.SelectedIndexChanged += comboBox1_SelectedIndexChanged_1;
+            presetBox.BackColor = Color.FromArgb(44, 39, 53);
+            presetBox.DropDownStyle = ComboBoxStyle.DropDownList;
+            presetBox.Font = new Font("Calibri", 32F, FontStyle.Regular, GraphicsUnit.Pixel);
+            presetBox.ForeColor = Color.White;
+            presetBox.FormattingEnabled = true;
+            presetBox.Items.AddRange(new object[] { "Driving games", "3D Movement", "Platform", "Custom preset" });
+            presetBox.Location = new Point(115, 76);
+            presetBox.Margin = new Padding(2);
+            presetBox.Name = "presetBox";
+            presetBox.Size = new Size(238, 47);
+            presetBox.TabIndex = 23;
+            presetBox.SelectedIndexChanged += comboBox1_SelectedIndexChanged_1;
             // 
             // groupBox2
             // 
@@ -624,7 +631,7 @@
         private GroupBox groupBox1;
         private GroupBox groupBox2;
         private PictureBox pictureBox1;
-        private ComboBox comboBox1;
+        private ComboBox presetBox;
         private ToolStripMenuItem saveToolStripMenuItem;
         private ToolStripMenuItem presetToolStripMenuItem;
         private ToolStripMenuItem scriptToolStripMenuItem;

@@ -48,6 +48,8 @@ namespace Nose_Drive_GUI
             logicFileInfo = new FileInfo(logicFile);
             logicFilePath = logicFileInfo.FullName;
             UpdateLogicGUI();
+
+            presetBox.SelectedIndex = 0;
         }
 
         void UpdateSettings()
