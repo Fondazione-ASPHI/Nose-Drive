@@ -41,23 +41,36 @@ namespace Nose_Drive_GUI
             settingsData = ReadSettingsFile(settingsFile);
             settingsFileInfo = new FileInfo(settingsFile);
             settingsFilePath = settingsFileInfo.FullName;
+            UpdateSettingsGUI();
 
             // Initialize logic data data
             logicData = ReadLogicFile(logicFile);
             logicFileInfo = new FileInfo(logicFile);
             logicFilePath = logicFileInfo.FullName;
+            UpdateLogicGUI();
         }
 
         void UpdateSettings()
         {
             // Trackbars in main window
-            settingsData.nose_horizontal_sensibility = trackBar1.Value * 10;
-            settingsData.nose_vertical_sensibility = trackBar4.Value * 10;
-            settingsData.mouth_horizontal_sensibility = trackBar2.Value * 15;
-            settingsData.eyebrows_sensibility = trackBar6.Value * 40;
+            settingsData.nose_horizontal_sensibility = noseHorBar.Value * 10;
+            settingsData.nose_vertical_sensibility = noseVerBar.Value * 10;
+            settingsData.mouth_horizontal_sensibility = mouthBar.Value * 15;
+            settingsData.eyebrows_sensibility = eyebrowsBar.Value * 40;
 
             // Options in Form2
             //options.CalibrationTime = (float)frm2.num.Value;
+        }
+
+        void UpdateSettingsGUI()
+        {
+            if (settingsData != null)
+            {
+                noseHorBar.Value = (int)(settingsData.nose_horizontal_sensibility / 10);
+                noseVerBar.Value = (int)(settingsData.nose_vertical_sensibility / 10);
+                mouthBar.Value = (int)(settingsData.mouth_horizontal_sensibility / 15);
+                eyebrowsBar.Value = (int)(settingsData.eyebrows_sensibility / 40);
+            }
         }
 
         void UpdateLogic()
@@ -69,6 +82,20 @@ namespace Nose_Drive_GUI
             logicData.eyebrows = eyebrowsDropdown.Text;
             logicData.mouth_right = mouthRightDropdown.Text;
             logicData.mouth_left = mouthLeftDropdown.Text;
+        }
+
+        void UpdateLogicGUI()
+        {
+            if (logicData != null)
+            {
+                noseRightDropdown.Text = logicData.nose_right;
+                noseLeftDropdown.Text = logicData.nose_left;
+                noseUpDropdown.Text = logicData.nose_up;
+                noseDownDropdown.Text = logicData.nose_down;
+                eyebrowsDropdown.Text = logicData.eyebrows;
+                mouthRightDropdown.Text = logicData.mouth_right;
+                mouthLeftDropdown.Text = logicData.mouth_left;
+            }
         }
 
         SettingsData ReadSettingsFile(string fileName)

@@ -44,10 +44,10 @@
             noseLeftDropdown = new ComboBox();
             label2 = new Label();
             noseRightDropdown = new ComboBox();
-            trackBar6 = new TrackBar();
-            trackBar4 = new TrackBar();
-            trackBar2 = new TrackBar();
-            trackBar1 = new TrackBar();
+            eyebrowsBar = new TrackBar();
+            noseVerBar = new TrackBar();
+            mouthBar = new TrackBar();
+            noseHorBar = new TrackBar();
             label14 = new Label();
             label15 = new Label();
             label16 = new Label();
@@ -69,10 +69,10 @@
             pictureBox1 = new PictureBox();
             openPythonFiles = new OpenFileDialog();
             openJSONFiles = new OpenFileDialog();
-            ((System.ComponentModel.ISupportInitialize)trackBar6).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)trackBar4).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)trackBar2).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)trackBar1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)eyebrowsBar).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)noseVerBar).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)mouthBar).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)noseHorBar).BeginInit();
             menuStrip1.SuspendLayout();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
@@ -272,53 +272,53 @@
             noseRightDropdown.TabIndex = 5;
             noseRightDropdown.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
             // 
-            // trackBar6
+            // eyebrowsBar
             // 
-            trackBar6.LargeChange = 1;
-            trackBar6.Location = new Point(19, 391);
-            trackBar6.Margin = new Padding(2, 4, 2, 4);
-            trackBar6.Maximum = 5;
-            trackBar6.Minimum = 1;
-            trackBar6.Name = "trackBar6";
-            trackBar6.Size = new Size(214, 69);
-            trackBar6.TabIndex = 35;
-            trackBar6.Value = 3;
+            eyebrowsBar.LargeChange = 1;
+            eyebrowsBar.Location = new Point(19, 391);
+            eyebrowsBar.Margin = new Padding(2, 4, 2, 4);
+            eyebrowsBar.Maximum = 5;
+            eyebrowsBar.Minimum = 1;
+            eyebrowsBar.Name = "eyebrowsBar";
+            eyebrowsBar.Size = new Size(214, 69);
+            eyebrowsBar.TabIndex = 35;
+            eyebrowsBar.Value = 3;
             // 
-            // trackBar4
+            // noseVerBar
             // 
-            trackBar4.LargeChange = 1;
-            trackBar4.Location = new Point(19, 256);
-            trackBar4.Margin = new Padding(2, 4, 2, 4);
-            trackBar4.Maximum = 5;
-            trackBar4.Minimum = 1;
-            trackBar4.Name = "trackBar4";
-            trackBar4.Size = new Size(214, 69);
-            trackBar4.TabIndex = 34;
-            trackBar4.Value = 3;
+            noseVerBar.LargeChange = 1;
+            noseVerBar.Location = new Point(19, 256);
+            noseVerBar.Margin = new Padding(2, 4, 2, 4);
+            noseVerBar.Maximum = 5;
+            noseVerBar.Minimum = 1;
+            noseVerBar.Name = "noseVerBar";
+            noseVerBar.Size = new Size(214, 69);
+            noseVerBar.TabIndex = 34;
+            noseVerBar.Value = 3;
             // 
-            // trackBar2
+            // mouthBar
             // 
-            trackBar2.LargeChange = 1;
-            trackBar2.Location = new Point(19, 526);
-            trackBar2.Margin = new Padding(2, 4, 2, 4);
-            trackBar2.Maximum = 5;
-            trackBar2.Minimum = 1;
-            trackBar2.Name = "trackBar2";
-            trackBar2.Size = new Size(214, 69);
-            trackBar2.TabIndex = 33;
-            trackBar2.Value = 3;
+            mouthBar.LargeChange = 1;
+            mouthBar.Location = new Point(19, 526);
+            mouthBar.Margin = new Padding(2, 4, 2, 4);
+            mouthBar.Maximum = 5;
+            mouthBar.Minimum = 1;
+            mouthBar.Name = "mouthBar";
+            mouthBar.Size = new Size(214, 69);
+            mouthBar.TabIndex = 33;
+            mouthBar.Value = 3;
             // 
-            // trackBar1
+            // noseHorBar
             // 
-            trackBar1.LargeChange = 1;
-            trackBar1.Location = new Point(19, 121);
-            trackBar1.Margin = new Padding(2, 4, 2, 4);
-            trackBar1.Maximum = 5;
-            trackBar1.Minimum = 1;
-            trackBar1.Name = "trackBar1";
-            trackBar1.Size = new Size(214, 69);
-            trackBar1.TabIndex = 32;
-            trackBar1.Value = 3;
+            noseHorBar.LargeChange = 1;
+            noseHorBar.Location = new Point(19, 121);
+            noseHorBar.Margin = new Padding(2, 4, 2, 4);
+            noseHorBar.Maximum = 5;
+            noseHorBar.Minimum = 1;
+            noseHorBar.Name = "noseHorBar";
+            noseHorBar.Size = new Size(214, 69);
+            noseHorBar.TabIndex = 32;
+            noseHorBar.Value = 3;
             // 
             // label14
             // 
@@ -511,13 +511,13 @@
             // 
             // groupBox2
             // 
-            groupBox2.Controls.Add(trackBar6);
+            groupBox2.Controls.Add(eyebrowsBar);
             groupBox2.Controls.Add(label17);
-            groupBox2.Controls.Add(trackBar4);
+            groupBox2.Controls.Add(noseVerBar);
             groupBox2.Controls.Add(label16);
-            groupBox2.Controls.Add(trackBar2);
+            groupBox2.Controls.Add(mouthBar);
             groupBox2.Controls.Add(label15);
-            groupBox2.Controls.Add(trackBar1);
+            groupBox2.Controls.Add(noseHorBar);
             groupBox2.Controls.Add(label14);
             groupBox2.Font = new Font("Calibri", 16.2F, FontStyle.Bold, GraphicsUnit.Point);
             groupBox2.ForeColor = Color.White;
@@ -576,10 +576,10 @@
             Name = "Form1";
             Text = "Nose Drive GUI";
             Load += Form1_Load;
-            ((System.ComponentModel.ISupportInitialize)trackBar6).EndInit();
-            ((System.ComponentModel.ISupportInitialize)trackBar4).EndInit();
-            ((System.ComponentModel.ISupportInitialize)trackBar2).EndInit();
-            ((System.ComponentModel.ISupportInitialize)trackBar1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)eyebrowsBar).EndInit();
+            ((System.ComponentModel.ISupportInitialize)noseVerBar).EndInit();
+            ((System.ComponentModel.ISupportInitialize)mouthBar).EndInit();
+            ((System.ComponentModel.ISupportInitialize)noseHorBar).EndInit();
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
             groupBox1.ResumeLayout(false);
@@ -608,10 +608,10 @@
         private Label label5;
         private ComboBox noseUpDropdown;
         private Label label11;
-        private TrackBar trackBar6;
-        private TrackBar trackBar4;
-        private TrackBar trackBar2;
-        private TrackBar trackBar1;
+        private TrackBar eyebrowsBar;
+        private TrackBar noseVerBar;
+        private TrackBar mouthBar;
+        private TrackBar noseHorBar;
         private Label label14;
         private Label label15;
         private Label label16;
