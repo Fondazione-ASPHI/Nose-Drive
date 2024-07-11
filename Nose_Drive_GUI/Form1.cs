@@ -69,10 +69,10 @@ namespace Nose_Drive_GUI
         void UpdateSettings()
         {
             // Trackbars in main window
-            settingsData.nose_horizontal_sensibility = trackBar1.Value;
-            settingsData.nose_vertical_sensibility = trackBar4.Value;
-            settingsData.mouth_horizontal_sensibility = trackBar2.Value;
-            settingsData.eyebrows_sensibility = trackBar6.Value;
+            settingsData.nose_horizontal_sensibility = trackBar1.Value * 10;
+            settingsData.nose_vertical_sensibility = trackBar4.Value * 10;
+            settingsData.mouth_horizontal_sensibility = trackBar2.Value * 15;
+            settingsData.eyebrows_sensibility = trackBar6.Value * 40;
 
             // Options in Form2
             //options.CalibrationTime = (float)frm2.num.Value;
@@ -168,12 +168,12 @@ namespace Nose_Drive_GUI
               }
             };
 
-            UpdateSettings();
-            SaveSettingsFile();
-            UpdateLogic();
-            SaveLogicFile();
+            //UpdateSettings();
+            //SaveSettingsFile();
+            //UpdateLogic();
+            //SaveLogicFile();
 
-            //process.Start();
+            process.Start();
         }
 
         private void remove_script(object sender, EventArgs e)
