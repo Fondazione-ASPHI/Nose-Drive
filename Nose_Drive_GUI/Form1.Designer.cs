@@ -67,6 +67,8 @@
             comboBox1 = new ComboBox();
             groupBox2 = new GroupBox();
             pictureBox1 = new PictureBox();
+            openPythonFiles = new OpenFileDialog();
+            openJSONFiles = new OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)trackBar6).BeginInit();
             ((System.ComponentModel.ISupportInitialize)trackBar4).BeginInit();
             ((System.ComponentModel.ISupportInitialize)trackBar2).BeginInit();
@@ -79,7 +81,7 @@
             // 
             // Start
             // 
-            Start.BackColor = Color.FromArgb(242, 81, 27);
+            Start.BackColor = Color.FromArgb(232, 93, 36);
             Start.Cursor = Cursors.Hand;
             Start.Font = new Font("Calibri", 24F, FontStyle.Bold, GraphicsUnit.Point);
             Start.ForeColor = Color.White;
@@ -540,6 +542,20 @@
             pictureBox1.TabStop = false;
             pictureBox1.Click += pictureBox1_Click;
             // 
+            // openPythonFiles
+            // 
+            openPythonFiles.FileName = "openFileDialog1";
+            openPythonFiles.Filter = "Python files (*.py)|*.py";
+            openPythonFiles.InitialDirectory = "currentPath";
+            openPythonFiles.Title = "\"Open Python script\"";
+            // 
+            // openJSONFiles
+            // 
+            openJSONFiles.FileName = "openFileDialog2";
+            openJSONFiles.Filter = "Json files (*.json)|*.json";
+            openJSONFiles.InitialDirectory = "currentPath";
+            openJSONFiles.Title = "Open JSON file";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
@@ -615,5 +631,7 @@
         private ToolStripMenuItem presetToolStripMenuItem1;
         private ToolStripMenuItem sensibilityValuesToolStripMenuItem;
         private ToolStripMenuItem sensibilityToolStripMenuItem;
+        private OpenFileDialog openPythonFiles;
+        private OpenFileDialog openJSONFiles;
     }
 }

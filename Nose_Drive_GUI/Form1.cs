@@ -12,9 +12,6 @@ namespace Nose_Drive_GUI
         public string settingsPath;
         public string currentPath;
 
-        OpenFileDialog openFileDialog1;
-        OpenFileDialog openFileDialog2;
-
         public SettingsData settingsData;
         public LogicData logicData;
 
@@ -39,21 +36,6 @@ namespace Nose_Drive_GUI
 #if DEBUG
             label1.Visible = true;
 #endif
-
-            // Creating object for file picking .py
-            openFileDialog1 = new OpenFileDialog()
-            {
-                Filter = "Python files (*.py)|*.py",
-                Title = "Open Python script",
-                InitialDirectory = currentPath
-            };
-            // Creating object for file picking .json
-            openFileDialog2 = new OpenFileDialog()
-            {
-                Filter = "Json files (*.json)|*.json",
-                Title = "Open JSON file",
-                InitialDirectory = currentPath
-            };
 
             // Initialize settings data
             settingsData = ReadSettingsFile(settingsFile);
@@ -124,9 +106,9 @@ namespace Nose_Drive_GUI
 
         private void load_script(object sender, EventArgs e)
         {
-            openFileDialog1.ShowDialog();
-            scriptPath = openFileDialog1.FileName;
-            label1.Text = openFileDialog1.FileName;
+            openPythonFiles.ShowDialog();
+            scriptPath = openPythonFiles.FileName;
+            label1.Text = openPythonFiles.FileName;
         }
 
         // Save .nose file
@@ -138,9 +120,9 @@ namespace Nose_Drive_GUI
         // Load .nose file
         private void load_preset(object sender, EventArgs e)
         {
-            openFileDialog2.ShowDialog();
-            logicFilePath = openFileDialog2.FileName;
-            label1.Text = openFileDialog2.FileName;
+            openJSONFiles.ShowDialog();
+            logicFilePath = openJSONFiles.FileName;
+            label1.Text = openJSONFiles.FileName;
         }
 
         private void save_settings(object sender, EventArgs e)
@@ -150,9 +132,9 @@ namespace Nose_Drive_GUI
 
         private void load_settings(object sender, EventArgs e)
         {
-            openFileDialog2.ShowDialog();
-            settingsPath = openFileDialog2.FileName;
-            label1.Text = openFileDialog2.FileName;
+            openJSONFiles.ShowDialog();
+            settingsPath = openJSONFiles.FileName;
+            label1.Text = openJSONFiles.FileName;
         }
 
         private void start_button(object sender, EventArgs e)
