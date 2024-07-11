@@ -280,7 +280,17 @@ namespace Nose_Drive_GUI
         private void comboBox1_SelectedIndexChanged_1(object sender, EventArgs e)
         {
 
-        }        
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            using (Process p = new Process())
+            {
+                p.StartInfo.FileName = "https://asphi.it/";
+                p.StartInfo.UseShellExecute = true;
+                p.Start();
+            }
+        }
     }
 
     public abstract class JsonData

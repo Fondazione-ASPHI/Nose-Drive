@@ -60,13 +60,13 @@
             sensibilityValuesToolStripMenuItem = new ToolStripMenuItem();
             loadScriptToolStripMenuItem = new ToolStripMenuItem();
             presetToolStripMenuItem = new ToolStripMenuItem();
+            sensibilityToolStripMenuItem = new ToolStripMenuItem();
             scriptToolStripMenuItem = new ToolStripMenuItem();
             settingsToolStripMenuItem = new ToolStripMenuItem();
             groupBox1 = new GroupBox();
             comboBox1 = new ComboBox();
             groupBox2 = new GroupBox();
             pictureBox1 = new PictureBox();
-            sensibilityToolStripMenuItem = new ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)trackBar6).BeginInit();
             ((System.ComponentModel.ISupportInitialize)trackBar4).BeginInit();
             ((System.ComponentModel.ISupportInitialize)trackBar2).BeginInit();
@@ -80,6 +80,7 @@
             // Start
             // 
             Start.BackColor = Color.FromArgb(242, 81, 27);
+            Start.Cursor = Cursors.Hand;
             Start.Font = new Font("Calibri", 24F, FontStyle.Bold, GraphicsUnit.Point);
             Start.ForeColor = Color.White;
             Start.Location = new Point(546, 843);
@@ -130,13 +131,13 @@
             // 
             // mouthLeftDropdown
             // 
-            mouthLeftDropdown.Font = new Font("Calibri", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            mouthLeftDropdown.Font = new Font("Calibri", 18F, FontStyle.Regular, GraphicsUnit.Pixel);
             mouthLeftDropdown.FormattingEnabled = true;
             mouthLeftDropdown.Items.AddRange(new object[] { "Left Joystick Right", "Left Joystick Left", "Left Joystick Up", "Left Joystick Down", "Right Joystick Right", "Right Joystick Left", "Right Joystick Up", "Right Joystick Down", "A", "B", "X", "Y", "LT", "RT", "LB", "RB", "Start", "Select", "Dpad Right", "Dpad Left", "Dpad Up", "Dpad Down", "Right Thumb", "Left Thumb", "Home" });
-            mouthLeftDropdown.Location = new Point(217, 533);
+            mouthLeftDropdown.Location = new Point(217, 541);
             mouthLeftDropdown.Margin = new Padding(2);
             mouthLeftDropdown.Name = "mouthLeftDropdown";
-            mouthLeftDropdown.Size = new Size(212, 37);
+            mouthLeftDropdown.Size = new Size(177, 30);
             mouthLeftDropdown.TabIndex = 17;
             // 
             // label7
@@ -153,24 +154,24 @@
             // 
             // mouthRightDropdown
             // 
-            mouthRightDropdown.Font = new Font("Calibri", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            mouthRightDropdown.Font = new Font("Calibri", 18F, FontStyle.Regular, GraphicsUnit.Pixel);
             mouthRightDropdown.FormattingEnabled = true;
             mouthRightDropdown.Items.AddRange(new object[] { "Left Joystick Right", "Left Joystick Left", "Left Joystick Up", "Left Joystick Down", "Right Joystick Right", "Right Joystick Left", "Right Joystick Up", "Right Joystick Down", "A", "B", "X", "Y", "LT", "RT", "LB", "RB", "Start", "Select", "Dpad Right", "Dpad Left", "Dpad Up", "Dpad Down", "Right Thumb", "Left Thumb", "Home" });
-            mouthRightDropdown.Location = new Point(217, 473);
+            mouthRightDropdown.Location = new Point(217, 481);
             mouthRightDropdown.Margin = new Padding(2);
             mouthRightDropdown.Name = "mouthRightDropdown";
-            mouthRightDropdown.Size = new Size(212, 37);
+            mouthRightDropdown.Size = new Size(177, 30);
             mouthRightDropdown.TabIndex = 15;
             // 
             // eyebrowsDropdown
             // 
-            eyebrowsDropdown.Font = new Font("Calibri", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            eyebrowsDropdown.Font = new Font("Calibri", 18F, FontStyle.Regular, GraphicsUnit.Pixel);
             eyebrowsDropdown.FormattingEnabled = true;
             eyebrowsDropdown.Items.AddRange(new object[] { "Left Joystick Right", "Left Joystick Left", "Left Joystick Up", "Left Joystick Down", "Right Joystick Right", "Right Joystick Left", "Right Joystick Up", "Right Joystick Down", "A", "B", "X", "Y", "LT", "RT", "LB", "RB", "Start", "Select", "Dpad Right", "Dpad Left", "Dpad Up", "Dpad Down", "Right Thumb", "Left Thumb", "Home" });
-            eyebrowsDropdown.Location = new Point(217, 413);
+            eyebrowsDropdown.Location = new Point(217, 421);
             eyebrowsDropdown.Margin = new Padding(2);
             eyebrowsDropdown.Name = "eyebrowsDropdown";
-            eyebrowsDropdown.Size = new Size(212, 37);
+            eyebrowsDropdown.Size = new Size(177, 30);
             eyebrowsDropdown.TabIndex = 13;
             // 
             // label4
@@ -188,13 +189,13 @@
             // 
             // noseDownDropdown
             // 
-            noseDownDropdown.Font = new Font("Calibri", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            noseDownDropdown.Font = new Font("Calibri", 18F, FontStyle.Regular, GraphicsUnit.Pixel);
             noseDownDropdown.FormattingEnabled = true;
             noseDownDropdown.Items.AddRange(new object[] { "Left Joystick Right", "Left Joystick Left", "Left Joystick Up", "Left Joystick Down", "Right Joystick Right", "Right Joystick Left", "Right Joystick Up", "Right Joystick Down", "A", "B", "X", "Y", "LT", "RT", "LB", "RB", "Start", "Select", "Dpad Right", "Dpad Left", "Dpad Up", "Dpad Down", "Right Thumb", "Left Thumb", "Home" });
-            noseDownDropdown.Location = new Point(217, 353);
+            noseDownDropdown.Location = new Point(217, 361);
             noseDownDropdown.Margin = new Padding(2);
             noseDownDropdown.Name = "noseDownDropdown";
-            noseDownDropdown.Size = new Size(212, 37);
+            noseDownDropdown.Size = new Size(177, 30);
             noseDownDropdown.TabIndex = 11;
             // 
             // label5
@@ -211,13 +212,13 @@
             // 
             // noseUpDropdown
             // 
-            noseUpDropdown.Font = new Font("Calibri", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            noseUpDropdown.Font = new Font("Calibri", 18F, FontStyle.Regular, GraphicsUnit.Pixel);
             noseUpDropdown.FormattingEnabled = true;
             noseUpDropdown.Items.AddRange(new object[] { "Left Joystick Right", "Left Joystick Left", "Left Joystick Up", "Left Joystick Down", "Right Joystick Right", "Right Joystick Left", "Right Joystick Up", "Right Joystick Down", "A", "B", "X", "Y", "LT", "RT", "LB", "RB", "Start", "Select", "Dpad Right", "Dpad Left", "Dpad Up", "Dpad Down", "Right Thumb", "Left Thumb", "Home" });
-            noseUpDropdown.Location = new Point(217, 293);
+            noseUpDropdown.Location = new Point(217, 301);
             noseUpDropdown.Margin = new Padding(2);
             noseUpDropdown.Name = "noseUpDropdown";
-            noseUpDropdown.Size = new Size(212, 37);
+            noseUpDropdown.Size = new Size(177, 30);
             noseUpDropdown.TabIndex = 9;
             // 
             // label3
@@ -234,13 +235,13 @@
             // 
             // noseLeftDropdown
             // 
-            noseLeftDropdown.Font = new Font("Calibri", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            noseLeftDropdown.Font = new Font("Calibri", 18F, FontStyle.Regular, GraphicsUnit.Pixel);
             noseLeftDropdown.FormattingEnabled = true;
             noseLeftDropdown.Items.AddRange(new object[] { "Left Joystick Right", "Left Joystick Left", "Left Joystick Up", "Left Joystick Down", "Right Joystick Right", "Right Joystick Left", "Right Joystick Up", "Right Joystick Down", "A", "B", "X", "Y", "LT", "RT", "LB", "RB", "Start", "Select", "Dpad Right", "Dpad Left", "Dpad Up", "Dpad Down", "Right Thumb", "Left Thumb", "Home" });
-            noseLeftDropdown.Location = new Point(217, 233);
+            noseLeftDropdown.Location = new Point(217, 241);
             noseLeftDropdown.Margin = new Padding(2);
             noseLeftDropdown.Name = "noseLeftDropdown";
-            noseLeftDropdown.Size = new Size(212, 37);
+            noseLeftDropdown.Size = new Size(177, 30);
             noseLeftDropdown.TabIndex = 7;
             noseLeftDropdown.SelectedIndexChanged += comboBox2_SelectedIndexChanged;
             // 
@@ -259,13 +260,13 @@
             // 
             // noseRightDropdown
             // 
-            noseRightDropdown.Font = new Font("Calibri", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            noseRightDropdown.Font = new Font("Calibri", 18F, FontStyle.Regular, GraphicsUnit.Pixel);
             noseRightDropdown.FormattingEnabled = true;
             noseRightDropdown.Items.AddRange(new object[] { "Left Joystick Right", "Left Joystick Left", "Left Joystick Up", "Left Joystick Down", "Right Joystick Right", "Right Joystick Left", "Right Joystick Up", "Right Joystick Down", "A", "B", "X", "Y", "LT", "RT", "LB", "RB", "Start", "Select", "Dpad Right", "Dpad Left", "Dpad Up", "Dpad Down", "Right Thumb", "Left Thumb", "Home" });
-            noseRightDropdown.Location = new Point(217, 173);
+            noseRightDropdown.Location = new Point(217, 181);
             noseRightDropdown.Margin = new Padding(2);
             noseRightDropdown.Name = "noseRightDropdown";
-            noseRightDropdown.Size = new Size(212, 37);
+            noseRightDropdown.Size = new Size(177, 30);
             noseRightDropdown.TabIndex = 5;
             noseRightDropdown.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
             // 
@@ -441,6 +442,13 @@
             presetToolStripMenuItem.Text = "Preset";
             presetToolStripMenuItem.Click += load_preset;
             // 
+            // sensibilityToolStripMenuItem
+            // 
+            sensibilityToolStripMenuItem.Name = "sensibilityToolStripMenuItem";
+            sensibilityToolStripMenuItem.Size = new Size(287, 38);
+            sensibilityToolStripMenuItem.Text = "Sensibility Values";
+            sensibilityToolStripMenuItem.Click += load_settings;
+            // 
             // scriptToolStripMenuItem
             // 
             scriptToolStripMenuItem.Name = "scriptToolStripMenuItem";
@@ -479,7 +487,7 @@
             groupBox1.Margin = new Padding(4);
             groupBox1.Name = "groupBox1";
             groupBox1.Padding = new Padding(4);
-            groupBox1.Size = new Size(458, 605);
+            groupBox1.Size = new Size(430, 605);
             groupBox1.TabIndex = 44;
             groupBox1.TabStop = false;
             groupBox1.Text = "LOGIC";
@@ -523,19 +531,14 @@
             // pictureBox1
             // 
             pictureBox1.BackgroundImage = Properties.Resources.path14;
+            pictureBox1.Cursor = Cursors.Hand;
             pictureBox1.Location = new Point(0, 40);
             pictureBox1.Margin = new Padding(4);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(120, 120);
             pictureBox1.TabIndex = 46;
             pictureBox1.TabStop = false;
-            // 
-            // sensibilityToolStripMenuItem
-            // 
-            sensibilityToolStripMenuItem.Name = "sensibilityToolStripMenuItem";
-            sensibilityToolStripMenuItem.Size = new Size(287, 38);
-            sensibilityToolStripMenuItem.Text = "Sensibility Values";
-            sensibilityToolStripMenuItem.Click += load_settings;
+            pictureBox1.Click += pictureBox1_Click;
             // 
             // Form1
             // 
