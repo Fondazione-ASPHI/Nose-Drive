@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             Start = new Button();
-            label1 = new Label();
+            debugLabel = new Label();
             label11 = new Label();
             label6 = new Label();
             mouthLeftDropdown = new ComboBox();
@@ -64,8 +64,8 @@
             scriptToolStripMenuItem = new ToolStripMenuItem();
             settingsToolStripMenuItem = new ToolStripMenuItem();
             logicBox = new GroupBox();
-            removeScriptButton = new Button();
             presetBox = new ComboBox();
+            removeScriptButton = new Button();
             groupBox2 = new GroupBox();
             pictureBox1 = new PictureBox();
             openPythonFiles = new OpenFileDialog();
@@ -95,18 +95,18 @@
             Start.UseVisualStyleBackColor = false;
             Start.Click += startButton_Click;
             // 
-            // label1
+            // debugLabel
             // 
-            label1.AutoSize = true;
-            label1.ForeColor = SystemColors.ButtonFace;
-            label1.Location = new Point(172, 49);
-            label1.Margin = new Padding(4, 0, 4, 0);
-            label1.Name = "label1";
-            label1.Size = new Size(54, 22);
-            label1.TabIndex = 3;
-            label1.Text = "label1";
-            label1.Visible = false;
-            label1.Click += label1_Click;
+            debugLabel.AutoSize = true;
+            debugLabel.ForeColor = SystemColors.ButtonFace;
+            debugLabel.Location = new Point(172, 49);
+            debugLabel.Margin = new Padding(4, 0, 4, 0);
+            debugLabel.Name = "debugLabel";
+            debugLabel.Size = new Size(80, 22);
+            debugLabel.TabIndex = 3;
+            debugLabel.Text = "debug log";
+            debugLabel.Visible = false;
+            debugLabel.Click += label1_Click;
             // 
             // label11
             // 
@@ -499,21 +499,6 @@
             logicBox.TabStop = false;
             logicBox.Text = "LOGIC";
             // 
-            // removeScriptButton
-            // 
-            removeScriptButton.BackColor = Color.FromArgb(242, 101, 34);
-            removeScriptButton.Cursor = Cursors.Hand;
-            removeScriptButton.Font = new Font("Calibri", 24F, FontStyle.Bold, GraphicsUnit.Pixel);
-            removeScriptButton.ForeColor = Color.White;
-            removeScriptButton.Location = new Point(258, 101);
-            removeScriptButton.Margin = new Padding(4);
-            removeScriptButton.Name = "removeScriptButton";
-            removeScriptButton.Size = new Size(194, 65);
-            removeScriptButton.TabIndex = 47;
-            removeScriptButton.Text = "Remove script";
-            removeScriptButton.UseVisualStyleBackColor = false;
-            removeScriptButton.Click += removeScript_Click;
-            // 
             // presetBox
             // 
             presetBox.BackColor = Color.FromArgb(44, 39, 53);
@@ -528,6 +513,21 @@
             presetBox.Size = new Size(244, 47);
             presetBox.TabIndex = 23;
             presetBox.SelectedIndexChanged += presetBox_SelectedIndexChanged_1;
+            // 
+            // removeScriptButton
+            // 
+            removeScriptButton.BackColor = Color.FromArgb(242, 101, 34);
+            removeScriptButton.Cursor = Cursors.Hand;
+            removeScriptButton.Font = new Font("Calibri", 24F, FontStyle.Bold, GraphicsUnit.Pixel);
+            removeScriptButton.ForeColor = Color.White;
+            removeScriptButton.Location = new Point(258, 101);
+            removeScriptButton.Margin = new Padding(4);
+            removeScriptButton.Name = "removeScriptButton";
+            removeScriptButton.Size = new Size(194, 65);
+            removeScriptButton.TabIndex = 47;
+            removeScriptButton.Text = "Remove script";
+            removeScriptButton.UseVisualStyleBackColor = false;
+            removeScriptButton.Click += removeScript_Click;
             // 
             // groupBox2
             // 
@@ -588,7 +588,7 @@
             Controls.Add(logicBox);
             Controls.Add(forceCompileCheck);
             Controls.Add(buildCheck);
-            Controls.Add(label1);
+            Controls.Add(debugLabel);
             Controls.Add(Start);
             Controls.Add(menuStrip1);
             Font = new Font("Calibri", 18F, FontStyle.Regular, GraphicsUnit.Pixel);
@@ -615,7 +615,7 @@
 
         #endregion
         private Button Start;
-        private Label label1;
+        private Label debugLabel;
         private ComboBox noseRightDropdown;
         private Label label2;
         private Label label3;

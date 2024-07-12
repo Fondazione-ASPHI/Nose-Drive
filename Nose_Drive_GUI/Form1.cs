@@ -9,10 +9,10 @@ namespace Nose_Drive_GUI
     {
         //public static string defaultScriptName = "Drive.py";
         public string scriptPath;
-        public string settingsPath = "./settings.json";
-        public string logicPath = "./logic.json";
-        public string customPath = "./custom.py";
-        public string toBuildPath = "./to_build.py";
+        public string settingsPath = ".\\settings.json";
+        public string logicPath = ".\\logic.json";
+        public string customPath = ".\\custom.py";
+        public string toBuildPath = ".\\to_build.py";
         public string currentPath;
 
         public SettingsData settingsData;
@@ -42,9 +42,9 @@ namespace Nose_Drive_GUI
             FormBorderStyle = FormBorderStyle.FixedDialog;
 
             currentPath = Directory.GetCurrentDirectory();
-            label1.Text = currentPath; // A debug label
+            debugLabel.Text = currentPath; // A debug label
 #if DEBUG
-            label1.Visible = true;
+            debugLabel.Visible = true;
 #endif
 
             // Initialize settings data
@@ -62,24 +62,6 @@ namespace Nose_Drive_GUI
 
 
             // Define Processes
-            startScript = new Process
-            {
-                StartInfo =
-              {
-                  FileName = @".\python_310\python.exe",
-                  Arguments = scriptPath + " " + settingsPath
-              }
-            };
-
-            startBuild = new Process
-            {
-                StartInfo =
-              {
-                  FileName = @".\dist\main\main.exe",
-                  Arguments = settingsPath
-              }
-            };
-
             getPip = new Process
             {
                 StartInfo =
@@ -201,10 +183,10 @@ namespace Nose_Drive_GUI
         {
             openPythonFiles.ShowDialog();
             scriptPath = openPythonFiles.FileName;
-            logicBox.Visible = scriptPath == "";
-            removeScriptButton.Visible = scriptPath != "";
+            logicBox.Visible = (scriptPath == "");
+            removeScriptButton.Visible = (scriptPath != "");
 
-            label1.Text = openPythonFiles.FileName;
+            debugLabel.Text = openPythonFiles.FileName;
         }
 
         // Save .nose file
@@ -219,7 +201,7 @@ namespace Nose_Drive_GUI
             openJSONFiles.ShowDialog();
             logicPath = openJSONFiles.FileName;
 
-            label1.Text = openJSONFiles.FileName;
+            debugLabel.Text = openJSONFiles.FileName;
         }
 
         private void saveSettings_Click(object sender, EventArgs e)
@@ -231,10 +213,13 @@ namespace Nose_Drive_GUI
         {
             openJSONFiles.ShowDialog();
             //settingsPath = openJSONFiles.FileName;
-            File.Copy(openJSONFiles.FileName, settingsPath, true);
-            UpdateSettingsGUI();
+            if (openJSONFiles.FileName != null)
+            {
+                File.Copy(openJSONFiles.FileName, settingsPath, true);
+                UpdateSettingsGUI();
 
-            label1.Text = openJSONFiles.FileName;
+                debugLabel.Text = openJSONFiles.FileName;
+            }            
         }
 
         private void startButton_Click(object sender, EventArgs e)
@@ -263,8 +248,16 @@ namespace Nose_Drive_GUI
                 pyInst2.WaitForExit();
 
                 buildProcess.Start();
-                buildProcess.WaitForExit();
+                buildProcess.WaitForExit();                
 
+                startBuild = new Process
+                {
+                    StartInfo =
+                  {
+                      FileName = @".\dist\main\main.exe",
+                      Arguments = settingsPath
+                  }
+                };
                 startBuild.Start();
                 startBuild.WaitForExit();
             }
@@ -274,8 +267,16 @@ namespace Nose_Drive_GUI
                 if (scriptPath == "")
                     scriptPath = customPath;
 
-                label1.Text = scriptPath + " " + settingsPath;
+                debugLabel.Text = "command: " + scriptPath + " " + settingsPath;
 
+                startScript = new Process
+                {
+                    StartInfo =
+                  {
+                      FileName = @".\python_310\python.exe",
+                      Arguments = scriptPath + " " + settingsPath
+                  }
+                };
                 startScript.Start();
                 startScript.WaitForExit();
             }
