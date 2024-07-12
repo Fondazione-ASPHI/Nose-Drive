@@ -427,9 +427,10 @@ namespace Nose_Drive_GUI
         public float nose_vertical_sensibility { get; set; }
         public float mouth_horizontal_sensibility { get; set; }
         public float eyebrows_sensibility { get; set; }
-        public string pause_key { get; set; }
-        public string reset_pos_key { get; set; }
+        public string pause { get; set; }
+        public string reset_pos { get; set; }
         public int calibration_time { get; set; }
+        public int camera { get; set; }
     }
 
     [System.Serializable]

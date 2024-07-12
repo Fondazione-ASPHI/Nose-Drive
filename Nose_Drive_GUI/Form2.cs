@@ -28,15 +28,13 @@ namespace Nose_Drive_GUI
             this.parent = parent;
 
             timeUpDown.Value = parent.settingsData.calibration_time;
-            resetKeyBox.Text = parent.settingsData.reset_pos_key;
-            pauseKeyBox.Text = parent.settingsData.pause_key;
-
-
+            resetKeyBox.Text = parent.settingsData.reset_pos;
+            pauseKeyBox.Text = parent.settingsData.pause;
         }
 
         private void Form2_Load(object sender, EventArgs e)
         {
-            capture = new VideoCapture(0,VideoCapture.API.DShow);            
+            capture = new VideoCapture((int)cameraIndex.Value, VideoCapture.API.DShow);
         }
 
         private void label8_Click(object sender, EventArgs e)
@@ -51,12 +49,12 @@ namespace Nose_Drive_GUI
 
         private void pauseKeyBox_TextChanged(object sender, EventArgs e)
         {
-            parent.settingsData.pause_key = pauseKeyBox.Text;
+            parent.settingsData.pause = pauseKeyBox.Text;
         }
 
         private void resetKeyBox_TextChanged(object sender, EventArgs e)
         {
-            parent.settingsData.reset_pos_key = resetKeyBox.Text;
+            parent.settingsData.reset_pos = resetKeyBox.Text;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -68,6 +66,17 @@ namespace Nose_Drive_GUI
         {
             Mat matImage = capture.QueryFrame();
             pictureBox1.Image = matImage.ToBitmap();
+        }
+
+        private void Form2_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            capture.Dispose();
+        }
+
+        private void cameraIndex_ValueChanged(object sender, EventArgs e)
+        {
+            capture.Dispose();
+            capture = new VideoCapture((int)cameraIndex.Value, VideoCapture.API.DShow);
         }
     }
 }

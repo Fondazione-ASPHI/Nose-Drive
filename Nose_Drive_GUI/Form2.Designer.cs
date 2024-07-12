@@ -37,8 +37,10 @@
             label13 = new Label();
             timeUpDown = new NumericUpDown();
             label12 = new Label();
+            cameraIndex = new NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)timeUpDown).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)cameraIndex).BeginInit();
             SuspendLayout();
             // 
             // previewButton
@@ -146,12 +148,21 @@
             label12.TabIndex = 40;
             label12.Text = "Reset position Key";
             // 
+            // cameraIndex
+            // 
+            cameraIndex.Location = new Point(565, 324);
+            cameraIndex.Name = "cameraIndex";
+            cameraIndex.Size = new Size(65, 29);
+            cameraIndex.TabIndex = 49;
+            cameraIndex.ValueChanged += cameraIndex_ValueChanged;
+            // 
             // Form2
             // 
             AutoScaleDimensions = new SizeF(9F, 22F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(44, 39, 53);
-            ClientSize = new Size(800, 453);
+            ClientSize = new Size(821, 389);
+            Controls.Add(cameraIndex);
             Controls.Add(previewButton);
             Controls.Add(pictureBox1);
             Controls.Add(label8);
@@ -165,9 +176,11 @@
             Margin = new Padding(2);
             Name = "Form2";
             Text = "Form2";
+            FormClosed += Form2_FormClosed;
             Load += Form2_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)timeUpDown).EndInit();
+            ((System.ComponentModel.ISupportInitialize)cameraIndex).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -182,5 +195,6 @@
         private Label label12;
         private PictureBox pictureBox1;
         private Button previewButton;
+        private NumericUpDown cameraIndex;
     }
 }
