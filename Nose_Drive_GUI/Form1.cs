@@ -244,6 +244,9 @@ namespace Nose_Drive_GUI
             // START BUILD
             if (buildCheck.Checked)
             {
+                if (scriptPath != "")
+                    File.Copy(scriptPath, "./to_build.py", true);
+
                 getPip.Start();
                 getPip.WaitForExit();
                 
