@@ -170,7 +170,7 @@ namespace Nose_Drive_GUI
         {
             label1.Text = scriptPath + " " + settingsPath;
 
-            var process = new Process
+            var mainProcess = new Process
             {
                 StartInfo =
               {
@@ -184,7 +184,59 @@ namespace Nose_Drive_GUI
             UpdateLogic();
             SaveLogicFile();
 
-            process.Start();
+
+            // Manage building
+            if (buildCheck.Checked)
+            {
+                Process getPip = new Process
+                {
+                    StartInfo =
+                  {
+                      FileName = @".\python_310\python.exe",
+                      Arguments = ".\\python_310\\get-pip.py"
+                  }
+                };
+                getPip.Start();
+                getPip.WaitForExit();
+
+                Process pyInst = new Process
+                {
+                    StartInfo =
+                  {
+                      FileName = @".\python_310\Scripts\pip.exe",
+                      Arguments = "uninstall -y pyinstaller"
+                  }
+                };
+                pyInst.Start();
+                pyInst.WaitForExit();
+
+                Process pyInst2 = new Process
+                {
+                    StartInfo =
+                  {
+                      FileName = @".\python_310\Scripts\pip.exe",
+                      Arguments = "install pyinstaller"
+                  }
+                };
+                pyInst2.Start();
+                pyInst2.WaitForExit();
+
+                Process buildProcess = new Process
+                {
+                    StartInfo =
+                  {
+                      FileName = @".\python_310\Scripts\pyinstaller.exe",
+                      Arguments = "Builder.spec"
+                  }
+                };
+                buildProcess.Start();
+                buildProcess.WaitForExit();
+            }
+
+
+
+            mainProcess.Start();
+            mainProcess.WaitForExit();
         }
 
         private void remove_script(object sender, EventArgs e)
@@ -200,7 +252,7 @@ namespace Nose_Drive_GUI
 
         private void build_Checked(object sender, EventArgs e)
         {
-            checkBox2.Visible = checkBox1.Checked;
+            forceCompileCheck.Visible = buildCheck.Checked;
         }
 
         private void logictab_selecting(object sender, TabControlCancelEventArgs e)

@@ -52,8 +52,8 @@
             label15 = new Label();
             label16 = new Label();
             label17 = new Label();
-            checkBox1 = new CheckBox();
-            checkBox2 = new CheckBox();
+            buildCheck = new CheckBox();
+            forceCompileCheck = new CheckBox();
             menuStrip1 = new MenuStrip();
             saveToolStripMenuItem = new ToolStripMenuItem();
             presetToolStripMenuItem1 = new ToolStripMenuItem();
@@ -83,7 +83,7 @@
             // 
             Start.BackColor = Color.FromArgb(232, 93, 36);
             Start.Cursor = Cursors.Hand;
-            Start.Font = new Font("Calibri", 24F, FontStyle.Bold, GraphicsUnit.Point);
+            Start.Font = new Font("Calibri", 38F, FontStyle.Bold, GraphicsUnit.Pixel);
             Start.ForeColor = Color.White;
             Start.Location = new Point(491, 742);
             Start.Margin = new Padding(4);
@@ -115,7 +115,7 @@
             label11.Location = new Point(14, 370);
             label11.Margin = new Padding(2, 0, 2, 0);
             label11.Name = "label11";
-            label11.Size = new Size(107, 29);
+            label11.Size = new Size(111, 31);
             label11.TabIndex = 22;
             label11.Text = "Eyebrows";
             // 
@@ -127,7 +127,7 @@
             label6.Location = new Point(14, 476);
             label6.Margin = new Padding(2, 0, 2, 0);
             label6.Name = "label6";
-            label6.Size = new Size(119, 29);
+            label6.Size = new Size(121, 31);
             label6.TabIndex = 18;
             label6.Text = "Mouth left";
             // 
@@ -151,7 +151,7 @@
             label7.Location = new Point(14, 423);
             label7.Margin = new Padding(2, 0, 2, 0);
             label7.Name = "label7";
-            label7.Size = new Size(132, 29);
+            label7.Size = new Size(136, 31);
             label7.TabIndex = 16;
             label7.Text = "Mouth right";
             // 
@@ -187,7 +187,7 @@
             label4.Location = new Point(14, 318);
             label4.Margin = new Padding(2, 0, 2, 0);
             label4.Name = "label4";
-            label4.Size = new Size(124, 29);
+            label4.Size = new Size(128, 31);
             label4.TabIndex = 12;
             label4.Text = "Nose down";
             label4.Click += label4_Click;
@@ -212,7 +212,7 @@
             label5.Location = new Point(14, 265);
             label5.Margin = new Padding(2, 0, 2, 0);
             label5.Name = "label5";
-            label5.Size = new Size(94, 29);
+            label5.Size = new Size(97, 31);
             label5.TabIndex = 10;
             label5.Text = "Nose up";
             // 
@@ -236,7 +236,7 @@
             label3.Location = new Point(14, 212);
             label3.Margin = new Padding(2, 0, 2, 0);
             label3.Name = "label3";
-            label3.Size = new Size(101, 29);
+            label3.Size = new Size(104, 31);
             label3.TabIndex = 8;
             label3.Text = "Nose left";
             // 
@@ -261,7 +261,7 @@
             label2.Location = new Point(14, 159);
             label2.Margin = new Padding(2, 0, 2, 0);
             label2.Name = "label2";
-            label2.Size = new Size(114, 29);
+            label2.Size = new Size(119, 31);
             label2.TabIndex = 6;
             label2.Text = "Nose right";
             label2.Click += label2_Click;
@@ -287,7 +287,7 @@
             eyebrowsBar.Maximum = 5;
             eyebrowsBar.Minimum = 1;
             eyebrowsBar.Name = "eyebrowsBar";
-            eyebrowsBar.Size = new Size(193, 69);
+            eyebrowsBar.Size = new Size(193, 56);
             eyebrowsBar.TabIndex = 35;
             eyebrowsBar.Value = 3;
             // 
@@ -299,7 +299,7 @@
             noseVerBar.Maximum = 5;
             noseVerBar.Minimum = 1;
             noseVerBar.Name = "noseVerBar";
-            noseVerBar.Size = new Size(193, 69);
+            noseVerBar.Size = new Size(193, 56);
             noseVerBar.TabIndex = 34;
             noseVerBar.Value = 3;
             // 
@@ -311,7 +311,7 @@
             mouthBar.Maximum = 5;
             mouthBar.Minimum = 1;
             mouthBar.Name = "mouthBar";
-            mouthBar.Size = new Size(193, 69);
+            mouthBar.Size = new Size(193, 56);
             mouthBar.TabIndex = 33;
             mouthBar.Value = 3;
             // 
@@ -323,7 +323,7 @@
             noseHorBar.Maximum = 5;
             noseHorBar.Minimum = 1;
             noseHorBar.Name = "noseHorBar";
-            noseHorBar.Size = new Size(193, 69);
+            noseHorBar.Size = new Size(193, 56);
             noseHorBar.TabIndex = 32;
             noseHorBar.Value = 3;
             // 
@@ -335,7 +335,7 @@
             label14.Location = new Point(23, 300);
             label14.Margin = new Padding(2, 0, 2, 0);
             label14.Name = "label14";
-            label14.Size = new Size(107, 29);
+            label14.Size = new Size(111, 31);
             label14.TabIndex = 31;
             label14.Text = "Eyebrows";
             // 
@@ -347,7 +347,7 @@
             label15.Location = new Point(23, 419);
             label15.Margin = new Padding(2, 0, 2, 0);
             label15.Name = "label15";
-            label15.Size = new Size(186, 29);
+            label15.Size = new Size(190, 31);
             label15.TabIndex = 30;
             label15.Text = "Mouth horizontal";
             // 
@@ -359,7 +359,7 @@
             label16.Location = new Point(23, 182);
             label16.Margin = new Padding(2, 0, 2, 0);
             label16.Name = "label16";
-            label16.Size = new Size(140, 29);
+            label16.Size = new Size(146, 31);
             label16.TabIndex = 29;
             label16.Text = "Nose vertical";
             // 
@@ -371,39 +371,39 @@
             label17.Location = new Point(23, 63);
             label17.Margin = new Padding(2, 0, 2, 0);
             label17.Name = "label17";
-            label17.Size = new Size(168, 29);
+            label17.Size = new Size(173, 31);
             label17.TabIndex = 28;
             label17.Text = "Nose horizontal";
             label17.Click += label17_Click;
             // 
-            // checkBox1
+            // buildCheck
             // 
-            checkBox1.AutoSize = true;
-            checkBox1.Font = new Font("Calibri", 24F, FontStyle.Regular, GraphicsUnit.Pixel);
-            checkBox1.ForeColor = Color.White;
-            checkBox1.Location = new Point(722, 774);
-            checkBox1.Margin = new Padding(2);
-            checkBox1.Name = "checkBox1";
-            checkBox1.Size = new Size(90, 33);
-            checkBox1.TabIndex = 41;
-            checkBox1.Text = "Build";
-            checkBox1.UseVisualStyleBackColor = true;
-            checkBox1.CheckedChanged += build_Checked;
+            buildCheck.AutoSize = true;
+            buildCheck.Font = new Font("Calibri", 24F, FontStyle.Regular, GraphicsUnit.Pixel);
+            buildCheck.ForeColor = Color.White;
+            buildCheck.Location = new Point(722, 774);
+            buildCheck.Margin = new Padding(2);
+            buildCheck.Name = "buildCheck";
+            buildCheck.Size = new Size(88, 35);
+            buildCheck.TabIndex = 41;
+            buildCheck.Text = "Build";
+            buildCheck.UseVisualStyleBackColor = true;
+            buildCheck.CheckedChanged += build_Checked;
             // 
-            // checkBox2
+            // forceCompileCheck
             // 
-            checkBox2.AutoSize = true;
-            checkBox2.Font = new Font("Calibri", 24F, FontStyle.Regular, GraphicsUnit.Pixel);
-            checkBox2.ForeColor = Color.White;
-            checkBox2.Location = new Point(722, 809);
-            checkBox2.Margin = new Padding(2);
-            checkBox2.Name = "checkBox2";
-            checkBox2.Size = new Size(204, 33);
-            checkBox2.TabIndex = 42;
-            checkBox2.Text = "Force re-compile";
-            checkBox2.UseVisualStyleBackColor = true;
-            checkBox2.Visible = false;
-            checkBox2.CheckedChanged += checkBox2_CheckedChanged;
+            forceCompileCheck.AutoSize = true;
+            forceCompileCheck.Font = new Font("Calibri", 24F, FontStyle.Regular, GraphicsUnit.Pixel);
+            forceCompileCheck.ForeColor = Color.White;
+            forceCompileCheck.Location = new Point(722, 809);
+            forceCompileCheck.Margin = new Padding(2);
+            forceCompileCheck.Name = "forceCompileCheck";
+            forceCompileCheck.Size = new Size(208, 35);
+            forceCompileCheck.TabIndex = 42;
+            forceCompileCheck.Text = "Force re-compile";
+            forceCompileCheck.UseVisualStyleBackColor = true;
+            forceCompileCheck.Visible = false;
+            forceCompileCheck.CheckedChanged += checkBox2_CheckedChanged;
             // 
             // menuStrip1
             // 
@@ -412,7 +412,7 @@
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Padding = new Padding(5, 2, 0, 2);
-            menuStrip1.Size = new Size(949, 37);
+            menuStrip1.Size = new Size(949, 32);
             menuStrip1.TabIndex = 43;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -421,20 +421,20 @@
             saveToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { presetToolStripMenuItem1, sensibilityValuesToolStripMenuItem });
             saveToolStripMenuItem.Font = new Font("Calibri", 12F, FontStyle.Regular, GraphicsUnit.Point);
             saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            saveToolStripMenuItem.Size = new Size(75, 33);
+            saveToolStripMenuItem.Size = new Size(62, 28);
             saveToolStripMenuItem.Text = "Save";
             // 
             // presetToolStripMenuItem1
             // 
             presetToolStripMenuItem1.Name = "presetToolStripMenuItem1";
-            presetToolStripMenuItem1.Size = new Size(287, 38);
+            presetToolStripMenuItem1.Size = new Size(238, 28);
             presetToolStripMenuItem1.Text = "Preset";
             presetToolStripMenuItem1.Click += save_preset;
             // 
             // sensibilityValuesToolStripMenuItem
             // 
             sensibilityValuesToolStripMenuItem.Name = "sensibilityValuesToolStripMenuItem";
-            sensibilityValuesToolStripMenuItem.Size = new Size(287, 38);
+            sensibilityValuesToolStripMenuItem.Size = new Size(238, 28);
             sensibilityValuesToolStripMenuItem.Text = "Sensibility Values";
             // 
             // loadScriptToolStripMenuItem
@@ -442,27 +442,27 @@
             loadScriptToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { presetToolStripMenuItem, sensibilityToolStripMenuItem, scriptToolStripMenuItem });
             loadScriptToolStripMenuItem.Font = new Font("Calibri", 12F, FontStyle.Regular, GraphicsUnit.Point);
             loadScriptToolStripMenuItem.Name = "loadScriptToolStripMenuItem";
-            loadScriptToolStripMenuItem.Size = new Size(77, 33);
+            loadScriptToolStripMenuItem.Size = new Size(64, 28);
             loadScriptToolStripMenuItem.Text = "Load";
             // 
             // presetToolStripMenuItem
             // 
             presetToolStripMenuItem.Name = "presetToolStripMenuItem";
-            presetToolStripMenuItem.Size = new Size(287, 38);
+            presetToolStripMenuItem.Size = new Size(238, 28);
             presetToolStripMenuItem.Text = "Preset";
             presetToolStripMenuItem.Click += load_preset;
             // 
             // sensibilityToolStripMenuItem
             // 
             sensibilityToolStripMenuItem.Name = "sensibilityToolStripMenuItem";
-            sensibilityToolStripMenuItem.Size = new Size(287, 38);
+            sensibilityToolStripMenuItem.Size = new Size(238, 28);
             sensibilityToolStripMenuItem.Text = "Sensibility Values";
             sensibilityToolStripMenuItem.Click += load_settings;
             // 
             // scriptToolStripMenuItem
             // 
             scriptToolStripMenuItem.Name = "scriptToolStripMenuItem";
-            scriptToolStripMenuItem.Size = new Size(287, 38);
+            scriptToolStripMenuItem.Size = new Size(238, 28);
             scriptToolStripMenuItem.Text = "Script";
             scriptToolStripMenuItem.Click += load_script;
             // 
@@ -470,7 +470,7 @@
             // 
             settingsToolStripMenuItem.Font = new Font("Calibri", 12F, FontStyle.Regular, GraphicsUnit.Point);
             settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
-            settingsToolStripMenuItem.Size = new Size(106, 33);
+            settingsToolStripMenuItem.Size = new Size(88, 28);
             settingsToolStripMenuItem.Text = "Settings";
             settingsToolStripMenuItem.Click += settingsToolStripMenuItem_Click;
             // 
@@ -573,8 +573,8 @@
             Controls.Add(pictureBox1);
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
-            Controls.Add(checkBox2);
-            Controls.Add(checkBox1);
+            Controls.Add(forceCompileCheck);
+            Controls.Add(buildCheck);
             Controls.Add(label1);
             Controls.Add(Start);
             Controls.Add(menuStrip1);
@@ -625,8 +625,8 @@
         private Label label15;
         private Label label16;
         private Label label17;
-        private CheckBox checkBox1;
-        private CheckBox checkBox2;
+        private CheckBox buildCheck;
+        private CheckBox forceCompileCheck;
         private MenuStrip menuStrip1;
         private ToolStripMenuItem loadScriptToolStripMenuItem;
         private ToolStripMenuItem settingsToolStripMenuItem;
