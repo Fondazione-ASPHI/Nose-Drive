@@ -509,13 +509,13 @@
             presetBox.Font = new Font("Calibri", 32F, FontStyle.Regular, GraphicsUnit.Pixel);
             presetBox.ForeColor = Color.White;
             presetBox.FormattingEnabled = true;
-            presetBox.Items.AddRange(new object[] { "Driving games", "3D Movement", "Platform", "Custom preset" });
+            presetBox.Items.AddRange(new object[] { "Custom preset", "Driving games", "3D Movement", "Platform" });
             presetBox.Location = new Point(111, 67);
             presetBox.Margin = new Padding(2);
             presetBox.Name = "presetBox";
             presetBox.Size = new Size(244, 47);
             presetBox.TabIndex = 23;
-            presetBox.SelectedIndexChanged += comboBox1_SelectedIndexChanged_1;
+            presetBox.SelectedIndexChanged += presetBox_SelectedIndexChanged_1;
             // 
             // groupBox2
             // 

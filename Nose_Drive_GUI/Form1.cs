@@ -25,6 +25,13 @@ namespace Nose_Drive_GUI
 
         Form2 frm2;
 
+        Process startScript;
+        Process startBuild;
+        Process getPip;
+        Process pyInst;
+        Process pyInst2;
+        Process buildProcess;
+
 
         public Form1()
         {
@@ -49,7 +56,63 @@ namespace Nose_Drive_GUI
             logicFilePath = logicFileInfo.FullName;
             UpdateLogicGUI();
 
-            presetBox.SelectedIndex = 0;
+            presetBox.SelectedIndex = 1;
+
+
+            // Define Processes
+            startScript = new Process
+            {
+                StartInfo =
+              {
+                  FileName = @".\python_310\python.exe",
+                  Arguments = scriptPath + " " + settingsPath
+              }
+            };
+
+            startBuild = new Process
+            {
+                StartInfo =
+              {
+                  FileName = @".\dist\main\main.exe",
+                  Arguments = settingsPath
+              }
+            };
+
+            getPip = new Process
+            {
+                StartInfo =
+                  {
+                      FileName = @".\python_310\python.exe",
+                      Arguments = ".\\python_310\\get-pip.py"
+                  }
+            };
+
+            pyInst = new Process
+            {
+                StartInfo =
+                  {
+                      FileName = @".\python_310\Scripts\pip.exe",
+                      Arguments = "uninstall -y pyinstaller"
+                  }
+            };
+
+            pyInst2 = new Process
+            {
+                StartInfo =
+                  {
+                      FileName = @".\python_310\Scripts\pip.exe",
+                      Arguments = "install pyinstaller"
+                  }
+            };
+
+            buildProcess = new Process
+            {
+                StartInfo =
+                  {
+                      FileName = @".\python_310\Scripts\pyinstaller.exe",
+                      Arguments = "Builder.spec"
+                  }
+            };
         }
 
         void UpdateSettings()
@@ -170,14 +233,7 @@ namespace Nose_Drive_GUI
         {
             label1.Text = scriptPath + " " + settingsPath;
 
-            Process mainProcess = new Process
-            {
-                StartInfo =
-              {
-                  FileName = @".\python_310\python.exe",
-                  Arguments = scriptPath + " " + settingsPath
-              }
-            };
+            
 
             UpdateSettings();
             SaveSettingsFile();
@@ -185,58 +241,30 @@ namespace Nose_Drive_GUI
             SaveLogicFile();
 
 
-            // Manage building
+            // START BUILD
             if (buildCheck.Checked)
             {
-                Process getPip = new Process
-                {
-                    StartInfo =
-                  {
-                      FileName = @".\python_310\python.exe",
-                      Arguments = ".\\python_310\\get-pip.py"
-                  }
-                };
                 getPip.Start();
                 getPip.WaitForExit();
-
-                Process pyInst = new Process
-                {
-                    StartInfo =
-                  {
-                      FileName = @".\python_310\Scripts\pip.exe",
-                      Arguments = "uninstall -y pyinstaller"
-                  }
-                };
+                
                 pyInst.Start();
                 pyInst.WaitForExit();
-
-                Process pyInst2 = new Process
-                {
-                    StartInfo =
-                  {
-                      FileName = @".\python_310\Scripts\pip.exe",
-                      Arguments = "install pyinstaller"
-                  }
-                };
+                
                 pyInst2.Start();
                 pyInst2.WaitForExit();
-
-                Process buildProcess = new Process
-                {
-                    StartInfo =
-                  {
-                      FileName = @".\python_310\Scripts\pyinstaller.exe",
-                      Arguments = "Builder.spec"
-                  }
-                };
+                
                 buildProcess.Start();
                 buildProcess.WaitForExit();
+
+                startBuild.Start();
+                startBuild.WaitForExit();
             }
-
-
-
-            mainProcess.Start();
-            mainProcess.WaitForExit();
+            // START SCRIPT
+            else
+            {
+                startScript.Start();
+                startScript.WaitForExit();
+            }            
         }
 
         private void remove_script(object sender, EventArgs e)
@@ -253,6 +281,20 @@ namespace Nose_Drive_GUI
         private void build_Checked(object sender, EventArgs e)
         {
             forceCompileCheck.Visible = buildCheck.Checked;
+            if (!buildCheck.Checked) { forceCompileCheck.Checked = false; }
+        }
+
+        private void presetBox_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            if (presetBox.SelectedIndex != 0)
+            {
+                buildCheck.Checked = false;
+                buildCheck.Visible = false;
+            }
+            else
+            {
+                buildCheck.Visible = true;
+            }
         }
 
         private void logictab_selecting(object sender, TabControlCancelEventArgs e)
@@ -338,12 +380,7 @@ namespace Nose_Drive_GUI
         private void label4_Click(object sender, EventArgs e)
         {
 
-        }
-
-        private void comboBox1_SelectedIndexChanged_1(object sender, EventArgs e)
-        {
-
-        }
+        }        
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
