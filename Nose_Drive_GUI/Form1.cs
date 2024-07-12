@@ -9,19 +9,22 @@ namespace Nose_Drive_GUI
     {
         //public static string defaultScriptName = "Drive.py";
         public string scriptPath;
-        public string settingsPath;
+        public string settingsPath = "./settings.json";
+        public string logicPath = "./logic.json";
+        public string customPath = "./custom.py";
+        public string toBuildPath = "./to_build.py";
         public string currentPath;
 
         public SettingsData settingsData;
         public LogicData logicData;
 
-        public string settingsFile = "settings.json";
-        FileInfo settingsFileInfo;
-        string settingsFilePath;
+        //public string settingsFile = "settings.json";
+        //FileInfo settingsFileInfo;
+        //string settingsFilePath;
 
-        public string logicFile = "logic.json";
-        FileInfo logicFileInfo;
-        string logicFilePath;
+        //public string logicFile = "logic.json";
+        //FileInfo logicFileInfo;
+        //string logicFilePath;
 
         Form2 frm2;
 
@@ -45,18 +48,17 @@ namespace Nose_Drive_GUI
 #endif
 
             // Initialize settings data
-            settingsData = ReadSettingsFile(settingsFile);
-            settingsFileInfo = new FileInfo(settingsFile);
-            settingsFilePath = settingsFileInfo.FullName;
+            //settingsFileInfo = new FileInfo(settingsFile);
+            //settingsFilePath = settingsFileInfo.FullName;
             UpdateSettingsGUI();
 
             // Initialize logic data data
-            logicData = ReadLogicFile(logicFile);
-            logicFileInfo = new FileInfo(logicFile);
-            logicFilePath = logicFileInfo.FullName;
+            //logicFileInfo = new FileInfo(logicFile);
+            //logicFilePath = logicFileInfo.FullName;
             UpdateLogicGUI();
 
             presetBox.SelectedIndex = 1;
+            removeScriptButton.Visible = false;
 
 
             // Define Processes
@@ -122,13 +124,11 @@ namespace Nose_Drive_GUI
             settingsData.nose_vertical_sensibility = noseVerBar.Value * 10;
             settingsData.mouth_horizontal_sensibility = mouthBar.Value * 15;
             settingsData.eyebrows_sensibility = eyebrowsBar.Value * 40;
-
-            // Options in Form2
-            //options.CalibrationTime = (float)frm2.num.Value;
         }
 
         void UpdateSettingsGUI()
         {
+            settingsData = ReadSettingsFile(settingsPath);
             if (settingsData != null)
             {
                 noseHorBar.Value = (int)(settingsData.nose_horizontal_sensibility / 10);
@@ -151,6 +151,7 @@ namespace Nose_Drive_GUI
 
         void UpdateLogicGUI()
         {
+            logicData = ReadLogicFile(logicPath);
             if (logicData != null)
             {
                 noseRightDropdown.Text = logicData.nose_right;
@@ -186,54 +187,59 @@ namespace Nose_Drive_GUI
         {
             UpdateSettings();
             string jsonString = JsonSerializer.Serialize(settingsData);
-            File.WriteAllText(settingsFile, jsonString);
+            File.WriteAllText(settingsPath, jsonString);
         }
 
         private void SaveLogicFile()
         {
             UpdateLogic();
             string jsonString = JsonSerializer.Serialize(logicData);
-            File.WriteAllText(logicFile, jsonString);
+            File.WriteAllText(logicPath, jsonString);
         }
 
-        private void load_script(object sender, EventArgs e)
+        private void loadScript_Click(object sender, EventArgs e)
         {
             openPythonFiles.ShowDialog();
             scriptPath = openPythonFiles.FileName;
+            logicBox.Visible = scriptPath == "";
+            removeScriptButton.Visible = scriptPath != "";
+
             label1.Text = openPythonFiles.FileName;
         }
 
         // Save .nose file
-        private void save_preset(object sender, EventArgs e)
+        private void savePreset_Click(object sender, EventArgs e)
         {
             SaveLogicFile();
         }
 
         // Load .nose file
-        private void load_preset(object sender, EventArgs e)
+        private void loadPreset_Click(object sender, EventArgs e)
         {
             openJSONFiles.ShowDialog();
-            logicFilePath = openJSONFiles.FileName;
+            logicPath = openJSONFiles.FileName;
+
             label1.Text = openJSONFiles.FileName;
         }
 
-        private void save_settings(object sender, EventArgs e)
+        private void saveSettings_Click(object sender, EventArgs e)
         {
             SaveSettingsFile();
         }
 
-        private void load_settings(object sender, EventArgs e)
+        private void loadSettings_Click(object sender, EventArgs e)
         {
             openJSONFiles.ShowDialog();
-            settingsPath = openJSONFiles.FileName;
+            //settingsPath = openJSONFiles.FileName;
+            File.Copy(openJSONFiles.FileName, settingsPath, true);
+            UpdateSettingsGUI();
+
             label1.Text = openJSONFiles.FileName;
         }
 
-        private void start_button(object sender, EventArgs e)
+        private void startButton_Click(object sender, EventArgs e)
         {
-            label1.Text = scriptPath + " " + settingsPath;
 
-            
 
             UpdateSettings();
             SaveSettingsFile();
@@ -245,17 +251,17 @@ namespace Nose_Drive_GUI
             if (buildCheck.Checked)
             {
                 if (scriptPath != "")
-                    File.Copy(scriptPath, "./to_build.py", true);
+                    File.Copy(scriptPath, toBuildPath, true);
 
                 getPip.Start();
                 getPip.WaitForExit();
-                
+
                 pyInst.Start();
                 pyInst.WaitForExit();
-                
+
                 pyInst2.Start();
                 pyInst2.WaitForExit();
-                
+
                 buildProcess.Start();
                 buildProcess.WaitForExit();
 
@@ -265,19 +271,26 @@ namespace Nose_Drive_GUI
             // START SCRIPT
             else
             {
+                if (scriptPath == "")
+                    scriptPath = customPath;
+
+                label1.Text = scriptPath + " " + settingsPath;
+
                 startScript.Start();
                 startScript.WaitForExit();
-            }            
+            }
         }
 
-        private void remove_script(object sender, EventArgs e)
+        private void removeScript_Click(object sender, EventArgs e)
         {
-
+            scriptPath = "";
+            removeScriptButton.Visible = false;
+            logicBox.Visible = true;
         }
 
-        private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
+        private void optionsForm_Click(object sender, EventArgs e)
         {
-            frm2 = new Form2();
+            frm2 = new Form2(this);
             frm2.ShowDialog();
         }
 
@@ -297,6 +310,16 @@ namespace Nose_Drive_GUI
             else
             {
                 buildCheck.Visible = true;
+            }
+        }
+
+        private void logoImage_Click(object sender, EventArgs e)
+        {
+            using (Process p = new Process())
+            {
+                p.StartInfo.FileName = "https://asphi.it/";
+                p.StartInfo.UseShellExecute = true;
+                p.Start();
             }
         }
 
@@ -383,16 +406,11 @@ namespace Nose_Drive_GUI
         private void label4_Click(object sender, EventArgs e)
         {
 
-        }        
+        }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
+        private void options_Click(object sender, EventArgs e)
         {
-            using (Process p = new Process())
-            {
-                p.StartInfo.FileName = "https://asphi.it/";
-                p.StartInfo.UseShellExecute = true;
-                p.Start();
-            }
+
         }
     }
 

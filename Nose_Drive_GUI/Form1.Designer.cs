@@ -63,7 +63,8 @@
             sensibilityToolStripMenuItem = new ToolStripMenuItem();
             scriptToolStripMenuItem = new ToolStripMenuItem();
             settingsToolStripMenuItem = new ToolStripMenuItem();
-            groupBox1 = new GroupBox();
+            logicBox = new GroupBox();
+            removeScriptButton = new Button();
             presetBox = new ComboBox();
             groupBox2 = new GroupBox();
             pictureBox1 = new PictureBox();
@@ -74,7 +75,7 @@
             ((System.ComponentModel.ISupportInitialize)mouthBar).BeginInit();
             ((System.ComponentModel.ISupportInitialize)noseHorBar).BeginInit();
             menuStrip1.SuspendLayout();
-            groupBox1.SuspendLayout();
+            logicBox.SuspendLayout();
             groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
@@ -92,7 +93,7 @@
             Start.TabIndex = 2;
             Start.Text = "START";
             Start.UseVisualStyleBackColor = false;
-            Start.Click += start_button;
+            Start.Click += startButton_Click;
             // 
             // label1
             // 
@@ -285,7 +286,6 @@
             eyebrowsBar.Location = new Point(23, 340);
             eyebrowsBar.Margin = new Padding(2, 4, 2, 4);
             eyebrowsBar.Maximum = 5;
-            eyebrowsBar.Minimum = 1;
             eyebrowsBar.Name = "eyebrowsBar";
             eyebrowsBar.Size = new Size(193, 56);
             eyebrowsBar.TabIndex = 35;
@@ -297,7 +297,6 @@
             noseVerBar.Location = new Point(23, 221);
             noseVerBar.Margin = new Padding(2, 4, 2, 4);
             noseVerBar.Maximum = 5;
-            noseVerBar.Minimum = 1;
             noseVerBar.Name = "noseVerBar";
             noseVerBar.Size = new Size(193, 56);
             noseVerBar.TabIndex = 34;
@@ -309,7 +308,6 @@
             mouthBar.Location = new Point(23, 459);
             mouthBar.Margin = new Padding(2, 4, 2, 4);
             mouthBar.Maximum = 5;
-            mouthBar.Minimum = 1;
             mouthBar.Name = "mouthBar";
             mouthBar.Size = new Size(193, 56);
             mouthBar.TabIndex = 33;
@@ -321,7 +319,6 @@
             noseHorBar.Location = new Point(23, 102);
             noseHorBar.Margin = new Padding(2, 4, 2, 4);
             noseHorBar.Maximum = 5;
-            noseHorBar.Minimum = 1;
             noseHorBar.Name = "noseHorBar";
             noseHorBar.Size = new Size(193, 56);
             noseHorBar.TabIndex = 32;
@@ -429,7 +426,7 @@
             presetToolStripMenuItem1.Name = "presetToolStripMenuItem1";
             presetToolStripMenuItem1.Size = new Size(238, 28);
             presetToolStripMenuItem1.Text = "Preset";
-            presetToolStripMenuItem1.Click += save_preset;
+            presetToolStripMenuItem1.Click += savePreset_Click;
             // 
             // sensibilityValuesToolStripMenuItem
             // 
@@ -450,57 +447,72 @@
             presetToolStripMenuItem.Name = "presetToolStripMenuItem";
             presetToolStripMenuItem.Size = new Size(238, 28);
             presetToolStripMenuItem.Text = "Preset";
-            presetToolStripMenuItem.Click += load_preset;
+            presetToolStripMenuItem.Click += loadPreset_Click;
             // 
             // sensibilityToolStripMenuItem
             // 
             sensibilityToolStripMenuItem.Name = "sensibilityToolStripMenuItem";
             sensibilityToolStripMenuItem.Size = new Size(238, 28);
             sensibilityToolStripMenuItem.Text = "Sensibility Values";
-            sensibilityToolStripMenuItem.Click += load_settings;
+            sensibilityToolStripMenuItem.Click += loadSettings_Click;
             // 
             // scriptToolStripMenuItem
             // 
             scriptToolStripMenuItem.Name = "scriptToolStripMenuItem";
             scriptToolStripMenuItem.Size = new Size(238, 28);
             scriptToolStripMenuItem.Text = "Script";
-            scriptToolStripMenuItem.Click += load_script;
+            scriptToolStripMenuItem.Click += loadScript_Click;
             // 
             // settingsToolStripMenuItem
             // 
             settingsToolStripMenuItem.Font = new Font("Calibri", 12F, FontStyle.Regular, GraphicsUnit.Point);
             settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
-            settingsToolStripMenuItem.Size = new Size(88, 28);
-            settingsToolStripMenuItem.Text = "Settings";
-            settingsToolStripMenuItem.Click += settingsToolStripMenuItem_Click;
+            settingsToolStripMenuItem.Size = new Size(89, 28);
+            settingsToolStripMenuItem.Text = "Options";
+            settingsToolStripMenuItem.Click += optionsForm_Click;
             // 
-            // groupBox1
+            // logicBox
             // 
-            groupBox1.Controls.Add(presetBox);
-            groupBox1.Controls.Add(label11);
-            groupBox1.Controls.Add(label2);
-            groupBox1.Controls.Add(label6);
-            groupBox1.Controls.Add(noseRightDropdown);
-            groupBox1.Controls.Add(mouthLeftDropdown);
-            groupBox1.Controls.Add(noseLeftDropdown);
-            groupBox1.Controls.Add(label7);
-            groupBox1.Controls.Add(label3);
-            groupBox1.Controls.Add(mouthRightDropdown);
-            groupBox1.Controls.Add(noseUpDropdown);
-            groupBox1.Controls.Add(eyebrowsDropdown);
-            groupBox1.Controls.Add(label5);
-            groupBox1.Controls.Add(label4);
-            groupBox1.Controls.Add(noseDownDropdown);
-            groupBox1.Font = new Font("Calibri", 32F, FontStyle.Bold, GraphicsUnit.Pixel);
-            groupBox1.ForeColor = Color.White;
-            groupBox1.Location = new Point(147, 154);
-            groupBox1.Margin = new Padding(4);
-            groupBox1.Name = "groupBox1";
-            groupBox1.Padding = new Padding(4);
-            groupBox1.Size = new Size(387, 532);
-            groupBox1.TabIndex = 44;
-            groupBox1.TabStop = false;
-            groupBox1.Text = "LOGIC";
+            logicBox.Controls.Add(presetBox);
+            logicBox.Controls.Add(label11);
+            logicBox.Controls.Add(label2);
+            logicBox.Controls.Add(label6);
+            logicBox.Controls.Add(noseRightDropdown);
+            logicBox.Controls.Add(mouthLeftDropdown);
+            logicBox.Controls.Add(noseLeftDropdown);
+            logicBox.Controls.Add(label7);
+            logicBox.Controls.Add(label3);
+            logicBox.Controls.Add(mouthRightDropdown);
+            logicBox.Controls.Add(noseUpDropdown);
+            logicBox.Controls.Add(eyebrowsDropdown);
+            logicBox.Controls.Add(label5);
+            logicBox.Controls.Add(label4);
+            logicBox.Controls.Add(noseDownDropdown);
+            logicBox.Font = new Font("Calibri", 32F, FontStyle.Bold, GraphicsUnit.Pixel);
+            logicBox.ForeColor = Color.White;
+            logicBox.Location = new Point(147, 154);
+            logicBox.Margin = new Padding(4);
+            logicBox.Name = "logicBox";
+            logicBox.Padding = new Padding(4);
+            logicBox.Size = new Size(387, 532);
+            logicBox.TabIndex = 44;
+            logicBox.TabStop = false;
+            logicBox.Text = "LOGIC";
+            // 
+            // removeScriptButton
+            // 
+            removeScriptButton.BackColor = Color.FromArgb(242, 101, 34);
+            removeScriptButton.Cursor = Cursors.Hand;
+            removeScriptButton.Font = new Font("Calibri", 24F, FontStyle.Bold, GraphicsUnit.Pixel);
+            removeScriptButton.ForeColor = Color.White;
+            removeScriptButton.Location = new Point(258, 101);
+            removeScriptButton.Margin = new Padding(4);
+            removeScriptButton.Name = "removeScriptButton";
+            removeScriptButton.Size = new Size(194, 65);
+            removeScriptButton.TabIndex = 47;
+            removeScriptButton.Text = "Remove script";
+            removeScriptButton.UseVisualStyleBackColor = false;
+            removeScriptButton.Click += removeScript_Click;
             // 
             // presetBox
             // 
@@ -548,7 +560,7 @@
             pictureBox1.Size = new Size(120, 120);
             pictureBox1.TabIndex = 46;
             pictureBox1.TabStop = false;
-            pictureBox1.Click += pictureBox1_Click;
+            pictureBox1.Click += logoImage_Click;
             // 
             // openPythonFiles
             // 
@@ -570,9 +582,10 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(44, 39, 53);
             ClientSize = new Size(949, 848);
+            Controls.Add(removeScriptButton);
             Controls.Add(pictureBox1);
             Controls.Add(groupBox2);
-            Controls.Add(groupBox1);
+            Controls.Add(logicBox);
             Controls.Add(forceCompileCheck);
             Controls.Add(buildCheck);
             Controls.Add(label1);
@@ -591,8 +604,8 @@
             ((System.ComponentModel.ISupportInitialize)noseHorBar).EndInit();
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
-            groupBox1.ResumeLayout(false);
-            groupBox1.PerformLayout();
+            logicBox.ResumeLayout(false);
+            logicBox.PerformLayout();
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
@@ -630,7 +643,7 @@
         private MenuStrip menuStrip1;
         private ToolStripMenuItem loadScriptToolStripMenuItem;
         private ToolStripMenuItem settingsToolStripMenuItem;
-        private GroupBox groupBox1;
+        private GroupBox logicBox;
         private GroupBox groupBox2;
         private PictureBox pictureBox1;
         private ComboBox presetBox;
@@ -642,5 +655,6 @@
         private ToolStripMenuItem sensibilityToolStripMenuItem;
         private OpenFileDialog openPythonFiles;
         private OpenFileDialog openJSONFiles;
+        private Button removeScriptButton;
     }
 }
