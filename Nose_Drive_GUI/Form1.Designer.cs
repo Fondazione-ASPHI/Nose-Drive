@@ -81,7 +81,7 @@
             // 
             // Start
             // 
-            Start.BackColor = Color.FromArgb(232, 93, 36);
+            Start.BackColor = Color.FromArgb(242, 101, 34);
             Start.Cursor = Cursors.Hand;
             Start.Font = new Font("Calibri", 38F, FontStyle.Bold, GraphicsUnit.Pixel);
             Start.ForeColor = Color.White;
@@ -542,7 +542,7 @@
             // 
             pictureBox1.BackgroundImage = Properties.Resources.path14;
             pictureBox1.Cursor = Cursors.Hand;
-            pictureBox1.Location = new Point(0, 41);
+            pictureBox1.Location = new Point(0, 36);
             pictureBox1.Margin = new Padding(4);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(120, 120);

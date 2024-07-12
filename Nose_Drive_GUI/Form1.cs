@@ -170,7 +170,7 @@ namespace Nose_Drive_GUI
         {
             label1.Text = scriptPath + " " + settingsPath;
 
-            var mainProcess = new Process
+            Process mainProcess = new Process
             {
                 StartInfo =
               {
