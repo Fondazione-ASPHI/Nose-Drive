@@ -7,11 +7,11 @@
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
     <PackageIcon>tracking_face.png</PackageIcon>
-    <ApplicationIcon>tracking_face.ico</ApplicationIcon>
+    <ApplicationIcon>Logo.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Include="tracking_face.ico" />
+    <Content Include="Logo.ico" />
   </ItemGroup>
 
   <ItemGroup>
