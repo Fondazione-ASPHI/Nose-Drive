@@ -13,6 +13,7 @@ namespace Nose_Drive_GUI
         public string logicPath = ".\\logic.json";
         public string customPath = ".\\custom.py";
         public string toBuildPath = ".\\to_build.py";
+        public string targetEmbeddedLogic = "";
         public string currentPath;
 
         public SettingsData settingsData;
@@ -29,11 +30,14 @@ namespace Nose_Drive_GUI
         Form2 frm2;
 
         Process startScript;
+        Process startEmbedded;
         Process startBuild;
         Process getPip;
         Process pyInst;
         Process pyInst2;
         Process buildProcess;
+
+        Dictionary<int, string> embeddedLogicsDictionary;
 
 
         public Form1()
@@ -56,8 +60,7 @@ namespace Nose_Drive_GUI
             //logicFileInfo = new FileInfo(logicFile);
             //logicFilePath = logicFileInfo.FullName;
             UpdateLogicGUI();
-
-            presetBox.SelectedIndex = 1;
+            
             removeScriptButton.Visible = false;
 
 
@@ -97,6 +100,17 @@ namespace Nose_Drive_GUI
                       Arguments = "Builder.spec"
                   }
             };
+
+            embeddedLogicsDictionary = new Dictionary<int, string>()
+            {
+                { 1, "Drive" },
+                { 2, "3D_Movement" },
+                { 3, "Platform" }
+            };
+
+
+            // Must be last init stuff:
+            presetBox.SelectedIndex = 1;
         }
 
         void UpdateSettings()
@@ -264,21 +278,40 @@ namespace Nose_Drive_GUI
             // START SCRIPT
             else
             {
-                if (scriptPath == "")
-                    scriptPath = customPath;
-
-                debugLabel.Text = "command: " + scriptPath + " " + settingsPath;
-
-                startScript = new Process
+                // Embedded pre-built default logics
+                if (presetBox.SelectedIndex != 0)
                 {
-                    StartInfo =
-                  {
-                      FileName = @".\python_310\python.exe",
-                      Arguments = scriptPath + " " + settingsPath
-                  }
-                };
-                startScript.Start();
-                startScript.WaitForExit();
+                    startEmbedded = new Process
+                    {
+                        StartInfo =
+                          {
+                              FileName = @".\dist\Embedded_Logics\main.exe",
+                              Arguments = settingsPath + " " + targetEmbeddedLogic
+                          }
+                    };
+                    startEmbedded.Start();
+                    startEmbedded.WaitForExit();
+                }
+                // External script or custom-preset script with GUI customized json
+                else
+                {
+                    if (scriptPath == "")
+                        scriptPath = customPath;
+
+
+                    debugLabel.Text = "command: " + scriptPath + " " + settingsPath;
+
+                    startScript = new Process
+                    {
+                        StartInfo =
+                          {
+                              FileName = @".\python_310\python.exe",
+                              Arguments = scriptPath + " " + settingsPath
+                          }
+                    };
+                    startScript.Start();
+                    startScript.WaitForExit();
+                }                
             }
         }
 
@@ -307,6 +340,9 @@ namespace Nose_Drive_GUI
             {
                 buildCheck.Checked = false;
                 buildCheck.Visible = false;
+                targetEmbeddedLogic = embeddedLogicsDictionary[presetBox.SelectedIndex];
+
+                debugLabel.Text = targetEmbeddedLogic;
             }
             else
             {
