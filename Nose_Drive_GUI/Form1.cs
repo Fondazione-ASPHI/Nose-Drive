@@ -199,6 +199,11 @@ namespace Nose_Drive_GUI
             scriptPath = openPythonFiles.FileName;
             logicBox.Visible = (scriptPath == "");
             removeScriptButton.Visible = (scriptPath != "");
+            if (scriptPath != "")
+            {
+                buildCheck.Visible = true;
+                presetBox.SelectedIndex = 0;
+            }
 
             debugLabel.Text = openPythonFiles.FileName;
         }
