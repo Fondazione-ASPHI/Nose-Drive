@@ -1,5 +1,5 @@
 # Packaging instructions
-The contento of this folder is meant to be edited and built with Visual Studio (last version used: 2022 community).
+The content of this folder is meant to be edited and built with Visual Studio (last version used: 2022 community).
 
 The following files must be put in the same directory alongside the "release" binaries built with Visual Studio, before packaging everything together with NSIS (the .nsi file can be found in the root directory of the repo):
 
@@ -10,3 +10,17 @@ The following files must be put in the same directory alongside the "release" bi
 * The "dist" folder with compiled "Embedded_Logics" inside
 * logic.json
 * settings.json
+
+
+## Packaging structure
+->parent directory:
+
+----->Nose-Drive.nsi
+
+----->Nose-Drive_End-User_License_Agreement.txt
+
+----->release directory:
+
+--------->compiled binaries
+
+--------->all the above mentioned files

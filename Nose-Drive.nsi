@@ -6,9 +6,12 @@
 ; there. 
 
 ;--------------------------------
-!define MUI_PRODUCT "Nose-Drive"
+!include "MUI.nsh"
 
-!insertmacro MUI_PAGE_LICENSE "License.txt"
+!insertmacro MUI_PAGE_LICENSE "Nose-Drive_End-User_License_Agreement.txt"
+
+
+!define MUI_PRODUCT "Nose-Drive"
 
 ; The name of the installer
 Name "${MUI_PRODUCT}.exe"
@@ -38,12 +41,12 @@ Section "" ;No components page, name is not important
   File /r "net6.0-windows\*"
 
 ;create desktop shortcut
-  CreateShortCut "$DESKTOP\${MUI_PRODUCT}.lnk" "$INSTDIR\${MUI_PRODUCT}.exe" "" "$INSTDIR\Nose_Drive_GUI.exe" 0
+  CreateShortCut "$DESKTOP\${MUI_PRODUCT}.lnk" "$INSTDIR\Nose_Drive_GUI.exe" "" "$INSTDIR\Nose_Drive_GUI.exe" 0
 
 ;create start-menu items
   CreateDirectory "$SMPROGRAMS\${MUI_PRODUCT}"
   CreateShortCut "$SMPROGRAMS\${MUI_PRODUCT}\Uninstall.lnk" "$INSTDIR\Uninstall.exe" "" "$INSTDIR\Uninstall.exe" 0
-  CreateShortCut "$SMPROGRAMS\${MUI_PRODUCT}\${MUI_PRODUCT}.lnk" "$INSTDIR\${MUI_PRODUCT}.exe" "" "$INSTDIR\Nose_Drive_GUI.exe.exe" 0
+  CreateShortCut "$SMPROGRAMS\${MUI_PRODUCT}\${MUI_PRODUCT}.lnk" "$INSTDIR\Nose_Drive_GUI.exe" "" "$INSTDIR\Nose_Drive_GUI.exe" 0
   
 ;write uninstall information to the registry
   WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${MUI_PRODUCT}" "DisplayName" "${MUI_PRODUCT} (remove only)"
