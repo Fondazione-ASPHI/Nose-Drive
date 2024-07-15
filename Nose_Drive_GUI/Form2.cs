@@ -11,6 +11,8 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
+using DirectShowLib;
+using System.Xml.Linq;
 
 
 namespace Nose_Drive_GUI
@@ -20,26 +22,46 @@ namespace Nose_Drive_GUI
         public Form1 parent;
 
         private VideoCapture capture;
+        Mat matImage;
 
+        private DsDevice[] directShowCameras;
 
         public Form2(Form1 parent)
         {
             InitializeComponent();
             this.parent = parent;
 
+            FormBorderStyle = FormBorderStyle.FixedDialog;
+
             timeUpDown.Value = parent.settingsData.calibration_time;
             resetKeyBox.Text = parent.settingsData.reset_pos;
             pauseKeyBox.Text = parent.settingsData.pause;
         }
 
-        private void Form2_Load(object sender, EventArgs e)
+        private void InitCamera()
         {
-            capture = new VideoCapture((int)cameraIndex.Value, VideoCapture.API.DShow);
+            capture = new VideoCapture((int)camerasBox.SelectedIndex, VideoCapture.API.DShow);
+            cameraNameLabel.Text = capture.CaptureSource.ToString();
+            capture.ImageGrabbed += Capture_ImageGrabbed;
+            capture.Start();
         }
 
-        private void label8_Click(object sender, EventArgs e)
+        private void Form2_Load(object sender, EventArgs e)
         {
+            directShowCameras = DsDevice.GetDevicesOfCat(FilterCategory.VideoInputDevice);
+            for (int i = 0; i < directShowCameras.Count(); i++)
+            {
+                camerasBox.Items.Add(directShowCameras[i].Name);
+            }
+        }
 
+        private void Capture_ImageGrabbed(object? sender, EventArgs e)
+        {
+            if (capture != null)
+            {
+                matImage = capture.QueryFrame();
+                pictureBox1.Image = matImage.ToBitmap();
+            }
         }
 
         private void timeUpDown_ValueChanged(object sender, EventArgs e)
@@ -57,26 +79,43 @@ namespace Nose_Drive_GUI
             parent.settingsData.reset_pos = resetKeyBox.Text;
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void preview_Click(object sender, EventArgs e)
         {
-            Mat matImage = capture.QueryFrame();
-            pictureBox1.Image = matImage.ToBitmap();
+            previewButton.Visible = false;
+            Cursor.Current = Cursors.WaitCursor;
+            InitCamera();
+            stopButton.Visible = true;
+        }
+
+        private void StopCamera()
+        {
+            capture.Stop();
+            capture.Dispose();
+        }
+
+        private void stopCamera_Click(object sender, EventArgs e)
+        {
+            stopButton.Visible = false;
+            Cursor.Current = Cursors.WaitCursor;
+            StopCamera();
+            previewButton.Visible = true;
         }
 
         private void Form2_FormClosed(object sender, FormClosedEventArgs e)
         {
-            capture.Dispose();
+            StopCamera();
         }
 
-        private void cameraIndex_ValueChanged(object sender, EventArgs e)
+        private void camerasBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            capture.Dispose();
-            capture = new VideoCapture((int)cameraIndex.Value, VideoCapture.API.DShow);
+            if (capture != null)
+            {
+                Cursor.Current = Cursors.WaitCursor;
+                StopCamera();
+                InitCamera();
+            }
+            else
+                InitCamera();
         }
     }
 }

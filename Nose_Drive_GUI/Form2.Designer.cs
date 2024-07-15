@@ -37,10 +37,11 @@
             label13 = new Label();
             timeUpDown = new NumericUpDown();
             label12 = new Label();
-            cameraIndex = new NumericUpDown();
+            stopButton = new Button();
+            cameraNameLabel = new Label();
+            camerasBox = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)timeUpDown).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)cameraIndex).BeginInit();
             SuspendLayout();
             // 
             // previewButton
@@ -49,20 +50,21 @@
             previewButton.Cursor = Cursors.Hand;
             previewButton.Font = new Font("Calibri", 24F, FontStyle.Bold, GraphicsUnit.Pixel);
             previewButton.ForeColor = Color.White;
-            previewButton.Location = new Point(656, 312);
+            previewButton.Location = new Point(656, 375);
             previewButton.Margin = new Padding(4);
             previewButton.Name = "previewButton";
             previewButton.Size = new Size(122, 41);
             previewButton.TabIndex = 48;
             previewButton.Text = "preview";
             previewButton.UseVisualStyleBackColor = false;
+            previewButton.Visible = false;
             previewButton.Click += preview_Click;
             // 
             // pictureBox1
             // 
             pictureBox1.Location = new Point(338, 31);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(440, 273);
+            pictureBox1.Size = new Size(440, 320);
             pictureBox1.TabIndex = 45;
             pictureBox1.TabStop = false;
             // 
@@ -74,7 +76,7 @@
             label20.Location = new Point(90, 322);
             label20.Margin = new Padding(2, 0, 2, 0);
             label20.Name = "label20";
-            label20.Size = new Size(77, 24);
+            label20.Size = new Size(92, 29);
             label20.TabIndex = 36;
             label20.Text = "seconds";
             // 
@@ -108,10 +110,9 @@
             label8.Location = new Point(30, 52);
             label8.Margin = new Padding(2, 0, 2, 0);
             label8.Name = "label8";
-            label8.Size = new Size(115, 31);
+            label8.Size = new Size(110, 29);
             label8.TabIndex = 42;
             label8.Text = "Pause Key";
-            label8.Click += label8_Click;
             // 
             // label13
             // 
@@ -121,7 +122,7 @@
             label13.Location = new Point(30, 273);
             label13.Margin = new Padding(2, 0, 2, 0);
             label13.Name = "label13";
-            label13.Size = new Size(176, 31);
+            label13.Size = new Size(171, 29);
             label13.TabIndex = 36;
             label13.Text = "Calibration time";
             // 
@@ -144,26 +145,60 @@
             label12.Location = new Point(30, 150);
             label12.Margin = new Padding(2, 0, 2, 0);
             label12.Name = "label12";
-            label12.Size = new Size(200, 31);
+            label12.Size = new Size(192, 29);
             label12.TabIndex = 40;
             label12.Text = "Reset position Key";
             // 
-            // cameraIndex
+            // stopButton
             // 
-            cameraIndex.Location = new Point(565, 324);
-            cameraIndex.Name = "cameraIndex";
-            cameraIndex.Size = new Size(65, 29);
-            cameraIndex.TabIndex = 49;
-            cameraIndex.ValueChanged += cameraIndex_ValueChanged;
+            stopButton.BackColor = Color.FromArgb(242, 101, 34);
+            stopButton.Cursor = Cursors.Hand;
+            stopButton.Font = new Font("Calibri", 24F, FontStyle.Bold, GraphicsUnit.Pixel);
+            stopButton.ForeColor = Color.White;
+            stopButton.Location = new Point(656, 375);
+            stopButton.Margin = new Padding(4);
+            stopButton.Name = "stopButton";
+            stopButton.Size = new Size(122, 41);
+            stopButton.TabIndex = 51;
+            stopButton.Text = "stop";
+            stopButton.UseVisualStyleBackColor = false;
+            stopButton.Visible = false;
+            stopButton.Click += stopCamera_Click;
+            // 
+            // cameraNameLabel
+            // 
+            cameraNameLabel.AutoSize = true;
+            cameraNameLabel.Font = new Font("Calibri", 24F, FontStyle.Regular, GraphicsUnit.Pixel);
+            cameraNameLabel.ForeColor = Color.White;
+            cameraNameLabel.Location = new Point(441, 28);
+            cameraNameLabel.Margin = new Padding(2, 0, 2, 0);
+            cameraNameLabel.Name = "cameraNameLabel";
+            cameraNameLabel.Size = new Size(89, 29);
+            cameraNameLabel.TabIndex = 52;
+            cameraNameLabel.Text = "Camera";
+            // 
+            // camerasBox
+            // 
+            camerasBox.BackColor = Color.FromArgb(44, 39, 53);
+            camerasBox.DropDownStyle = ComboBoxStyle.DropDownList;
+            camerasBox.Font = new Font("Calibri", 18F, FontStyle.Regular, GraphicsUnit.Pixel);
+            camerasBox.ForeColor = Color.White;
+            camerasBox.FormattingEnabled = true;
+            camerasBox.Location = new Point(534, 31);
+            camerasBox.Margin = new Padding(2);
+            camerasBox.Name = "camerasBox";
+            camerasBox.Size = new Size(244, 30);
+            camerasBox.TabIndex = 53;
+            camerasBox.SelectedIndexChanged += camerasBox_SelectedIndexChanged;
             // 
             // Form2
             // 
             AutoScaleDimensions = new SizeF(9F, 22F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(44, 39, 53);
-            ClientSize = new Size(821, 389);
-            Controls.Add(cameraIndex);
-            Controls.Add(previewButton);
+            ClientSize = new Size(821, 449);
+            Controls.Add(camerasBox);
+            Controls.Add(cameraNameLabel);
             Controls.Add(pictureBox1);
             Controls.Add(label8);
             Controls.Add(label20);
@@ -172,15 +207,17 @@
             Controls.Add(timeUpDown);
             Controls.Add(pauseKeyBox);
             Controls.Add(label13);
+            Controls.Add(previewButton);
+            Controls.Add(stopButton);
             Font = new Font("Calibri", 18F, FontStyle.Regular, GraphicsUnit.Pixel);
             Margin = new Padding(2);
+            MaximizeBox = false;
             Name = "Form2";
             Text = "Form2";
             FormClosed += Form2_FormClosed;
             Load += Form2_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)timeUpDown).EndInit();
-            ((System.ComponentModel.ISupportInitialize)cameraIndex).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -195,6 +232,8 @@
         private Label label12;
         private PictureBox pictureBox1;
         private Button previewButton;
-        private NumericUpDown cameraIndex;
+        private Button stopButton;
+        private Label cameraNameLabel;
+        private ComboBox camerasBox;
     }
 }
