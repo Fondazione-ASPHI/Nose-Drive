@@ -53,6 +53,8 @@ namespace Nose_Drive_GUI
             {
                 camerasBox.Items.Add(directShowCameras[i].Name);
             }
+
+            camerasBox.SelectedIndex = parent.settingsData.camera;
         }
 
         private void Capture_ImageGrabbed(object? sender, EventArgs e)
@@ -84,21 +86,16 @@ namespace Nose_Drive_GUI
             previewButton.Visible = false;
             Cursor.Current = Cursors.WaitCursor;
             InitCamera();
-            stopButton.Visible = true;
         }
 
         private void StopCamera()
         {
-            capture.Stop();
-            capture.Dispose();
-        }
-
-        private void stopCamera_Click(object sender, EventArgs e)
-        {
-            stopButton.Visible = false;
-            Cursor.Current = Cursors.WaitCursor;
-            StopCamera();
-            previewButton.Visible = true;
+            if (capture != null)
+            {
+                Cursor.Current = Cursors.WaitCursor;
+                capture.Stop();
+                capture.Dispose();
+            }
         }
 
         private void Form2_FormClosed(object sender, FormClosedEventArgs e)
@@ -114,8 +111,13 @@ namespace Nose_Drive_GUI
                 StopCamera();
                 InitCamera();
             }
-            else
-                InitCamera();
+
+            parent.settingsData.camera = camerasBox.SelectedIndex;
+        }
+
+        private void cameraNameLabel_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

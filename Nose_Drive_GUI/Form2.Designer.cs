@@ -37,7 +37,6 @@
             label13 = new Label();
             timeUpDown = new NumericUpDown();
             label12 = new Label();
-            stopButton = new Button();
             cameraNameLabel = new Label();
             camerasBox = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -50,19 +49,19 @@
             previewButton.Cursor = Cursors.Hand;
             previewButton.Font = new Font("Calibri", 24F, FontStyle.Bold, GraphicsUnit.Pixel);
             previewButton.ForeColor = Color.White;
-            previewButton.Location = new Point(656, 375);
+            previewButton.Location = new Point(490, 233);
             previewButton.Margin = new Padding(4);
             previewButton.Name = "previewButton";
-            previewButton.Size = new Size(122, 41);
+            previewButton.Size = new Size(185, 41);
             previewButton.TabIndex = 48;
-            previewButton.Text = "preview";
+            previewButton.Text = "start preview";
             previewButton.UseVisualStyleBackColor = false;
-            previewButton.Visible = false;
             previewButton.Click += preview_Click;
             // 
             // pictureBox1
             // 
-            pictureBox1.Location = new Point(338, 31);
+            pictureBox1.BackColor = Color.Black;
+            pictureBox1.Location = new Point(352, 84);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(440, 320);
             pictureBox1.TabIndex = 45;
@@ -149,33 +148,18 @@
             label12.TabIndex = 40;
             label12.Text = "Reset position Key";
             // 
-            // stopButton
-            // 
-            stopButton.BackColor = Color.FromArgb(242, 101, 34);
-            stopButton.Cursor = Cursors.Hand;
-            stopButton.Font = new Font("Calibri", 24F, FontStyle.Bold, GraphicsUnit.Pixel);
-            stopButton.ForeColor = Color.White;
-            stopButton.Location = new Point(656, 375);
-            stopButton.Margin = new Padding(4);
-            stopButton.Name = "stopButton";
-            stopButton.Size = new Size(122, 41);
-            stopButton.TabIndex = 51;
-            stopButton.Text = "stop";
-            stopButton.UseVisualStyleBackColor = false;
-            stopButton.Visible = false;
-            stopButton.Click += stopCamera_Click;
-            // 
             // cameraNameLabel
             // 
             cameraNameLabel.AutoSize = true;
             cameraNameLabel.Font = new Font("Calibri", 24F, FontStyle.Regular, GraphicsUnit.Pixel);
             cameraNameLabel.ForeColor = Color.White;
-            cameraNameLabel.Location = new Point(441, 28);
+            cameraNameLabel.Location = new Point(352, 52);
             cameraNameLabel.Margin = new Padding(2, 0, 2, 0);
             cameraNameLabel.Name = "cameraNameLabel";
             cameraNameLabel.Size = new Size(89, 29);
             cameraNameLabel.TabIndex = 52;
             cameraNameLabel.Text = "Camera";
+            cameraNameLabel.Click += cameraNameLabel_Click;
             // 
             // camerasBox
             // 
@@ -184,7 +168,7 @@
             camerasBox.Font = new Font("Calibri", 18F, FontStyle.Regular, GraphicsUnit.Pixel);
             camerasBox.ForeColor = Color.White;
             camerasBox.FormattingEnabled = true;
-            camerasBox.Location = new Point(534, 31);
+            camerasBox.Location = new Point(548, 84);
             camerasBox.Margin = new Padding(2);
             camerasBox.Name = "camerasBox";
             camerasBox.Size = new Size(244, 30);
@@ -197,6 +181,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(44, 39, 53);
             ClientSize = new Size(821, 449);
+            Controls.Add(previewButton);
             Controls.Add(camerasBox);
             Controls.Add(cameraNameLabel);
             Controls.Add(pictureBox1);
@@ -207,8 +192,6 @@
             Controls.Add(timeUpDown);
             Controls.Add(pauseKeyBox);
             Controls.Add(label13);
-            Controls.Add(previewButton);
-            Controls.Add(stopButton);
             Font = new Font("Calibri", 18F, FontStyle.Regular, GraphicsUnit.Pixel);
             Margin = new Padding(2);
             MaximizeBox = false;
@@ -232,7 +215,6 @@
         private Label label12;
         private PictureBox pictureBox1;
         private Button previewButton;
-        private Button stopButton;
         private Label cameraNameLabel;
         private ComboBox camerasBox;
     }
