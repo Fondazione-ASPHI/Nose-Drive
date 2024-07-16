@@ -4,6 +4,7 @@ import numpy
 import time
 import math
 import keyboard as kb
+import platform
 
 
 
@@ -96,7 +97,13 @@ def track_face(logic, options):
 
   # For webcam input:
   drawing_spec = mp_drawing.DrawingSpec(thickness=1, circle_radius=1)
-  cap = cv2.VideoCapture(camera)
+  
+  cap = None
+  if platform.system() == "Windows":
+    cap = cv2.VideoCapture(camera, cv2.CAP_DSHOW)
+  else:
+    cap = cv2.VideoCapture(camera)
+
   with mp_face_mesh.FaceMesh(
       max_num_faces=1,
       refine_landmarks=True,
