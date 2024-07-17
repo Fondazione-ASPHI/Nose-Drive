@@ -254,26 +254,40 @@ namespace Nose_Drive_GUI
             // START BUILD
             if (buildCheck.Checked)
             {
+                string buildName = "custom";
                 if (scriptPath != "")
+                {
                     File.Copy(scriptPath, toBuildPath, true);
+                    buildName = new FileInfo(scriptPath).Name.Split('.')[0];
+
+                    debugLabel.Text = buildName;
+                }
+                else
+                {
+                    File.Copy(customPath, toBuildPath, true);
+                }
 
                 getPip.Start();
                 getPip.WaitForExit();
-
                 pyInst.Start();
                 pyInst.WaitForExit();
-
                 pyInst2.Start();
                 pyInst2.WaitForExit();
-
                 buildProcess.Start();
-                buildProcess.WaitForExit();                
+                buildProcess.WaitForExit();
+
+                string buildDir = @".\dist\" + buildName;
+                if (Directory.Exists(buildDir))
+                {
+                    Directory.Delete(buildDir);
+                }
+                Directory.Move(@".\dist\main", buildDir);
 
                 startBuild = new Process
                 {
                     StartInfo =
                   {
-                      FileName = @".\dist\main\main.exe",
+                      FileName = @".\dist\" + buildName + @"\main.exe",
                       Arguments = settingsPath
                   }
                 };
