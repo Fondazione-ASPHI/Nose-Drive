@@ -8,7 +8,7 @@ namespace Nose_Drive_GUI
     public partial class Form1 : Form
     {
         //public static string defaultScriptName = "Drive.py";
-        public string scriptPath;
+        public string scriptPath = "";
         public string settingsPath = ".\\settings.json";
         public string logicPath = ".\\logic.json";
         public string customPath = ".\\custom.py";
@@ -54,12 +54,12 @@ namespace Nose_Drive_GUI
             // Initialize settings data
             //settingsFileInfo = new FileInfo(settingsFile);
             //settingsFilePath = settingsFileInfo.FullName;
-            UpdateSettingsGUI();
+            UpdateSettingsGUI(ReadSettingsFile(settingsPath));
 
             // Initialize logic data data
             //logicFileInfo = new FileInfo(logicFile);
             //logicFilePath = logicFileInfo.FullName;
-            UpdateLogicGUI();
+            UpdateLogicGUI(ReadLogicFile(logicPath));
             
             removeScriptButton.Visible = false;
 
@@ -122,9 +122,8 @@ namespace Nose_Drive_GUI
             settingsData.eyebrows_sensibility = eyebrowsBar.Value * 40;
         }
 
-        void UpdateSettingsGUI()
+        void UpdateSettingsGUI(SettingsData settingsData)
         {
-            settingsData = ReadSettingsFile(settingsPath);
             if (settingsData != null)
             {
                 noseHorBar.Value = (int)(settingsData.nose_horizontal_sensibility / 10);
@@ -145,9 +144,9 @@ namespace Nose_Drive_GUI
             logicData.mouth_left = mouthLeftDropdown.Text;
         }
 
-        void UpdateLogicGUI()
+       
+        void UpdateLogicGUI(LogicData logicData)
         {
-            logicData = ReadLogicFile(logicPath);
             if (logicData != null)
             {
                 noseRightDropdown.Text = logicData.nose_right;
@@ -218,9 +217,14 @@ namespace Nose_Drive_GUI
         private void loadPreset_Click(object sender, EventArgs e)
         {
             openJSONFiles.ShowDialog();
-            logicPath = openJSONFiles.FileName;
+            //logicPath = openJSONFiles.FileName;
+            if (openJSONFiles.FileName != null)
+            {
+                File.Copy(openJSONFiles.FileName, logicPath, true);
+                UpdateLogicGUI(ReadLogicFile(logicPath));
 
-            debugLabel.Text = openJSONFiles.FileName;
+                debugLabel.Text = openJSONFiles.FileName;
+            }
         }
 
         private void saveSettings_Click(object sender, EventArgs e)
@@ -235,7 +239,7 @@ namespace Nose_Drive_GUI
             if (openJSONFiles.FileName != null)
             {
                 File.Copy(openJSONFiles.FileName, settingsPath, true);
-                UpdateSettingsGUI();
+                UpdateSettingsGUI(ReadSettingsFile(settingsPath));
 
                 debugLabel.Text = openJSONFiles.FileName;
             }            
@@ -362,7 +366,8 @@ namespace Nose_Drive_GUI
             {
                 buildCheck.Checked = false;
                 buildCheck.Visible = false;
-                targetEmbeddedLogic = embeddedLogicsDictionary[presetBox.SelectedIndex];
+                targetEmbeddedLogic = embeddedLogicsDictionary[presetBox.SelectedIndex];                ;
+                UpdateLogicGUI(ReadLogicFile(@"default_logics/" + targetEmbeddedLogic + @".json"));
 
                 debugLabel.Text = targetEmbeddedLogic;
             }
