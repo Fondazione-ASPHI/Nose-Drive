@@ -16,8 +16,8 @@ namespace Nose_Drive_GUI
         public string targetEmbeddedLogic = "";
         public string currentPath;
 
-        public SettingsData settingsData;
-        public LogicData logicData;
+        public SettingsData settingsData = new SettingsData();
+        public LogicData logicData = new LogicData();
 
         //public string settingsFile = "settings.json";
         //FileInfo settingsFileInfo;
@@ -55,12 +55,14 @@ namespace Nose_Drive_GUI
             // Initialize settings data
             //settingsFileInfo = new FileInfo(settingsFile);
             //settingsFilePath = settingsFileInfo.FullName;
-            UpdateSettingsGUI(ReadSettingsFile(settingsPath));
+            settingsData = ReadSettingsFile(settingsPath);
+            UpdateSettingsGUI(settingsData);
 
             // Initialize logic data data
             //logicFileInfo = new FileInfo(logicFile);
             //logicFilePath = logicFileInfo.FullName;
-            UpdateLogicGUI(ReadLogicFile(logicPath));
+            logicData = ReadLogicFile(logicPath);
+            UpdateLogicGUI(logicData);
             
             removeScriptButton.Visible = false;
 
@@ -255,8 +257,6 @@ namespace Nose_Drive_GUI
 
         private void startButton_Click(object sender, EventArgs e)
         {
-
-
             UpdateSettings();
             SaveSettingsFile();
             UpdateLogic();
@@ -329,18 +329,17 @@ namespace Nose_Drive_GUI
                 // External script or custom-preset script with GUI customized json
                 else
                 {
-                    if (scriptPath == "")
-                        scriptPath = customPath;
-
-
-                    debugLabel.Text = "command: " + scriptPath + " " + settingsPath;
+                    string args = scriptPath + " " + settingsPath;
+                    if (scriptPath == "") // case custom preset
+                        args = customPath + " " + settingsPath + " " + logicPath;
+                    debugLabel.Text = "args: " + args;
 
                     startScript = new Process
                     {
                         StartInfo =
                           {
                               FileName = @".\python_310\python.exe",
-                              Arguments = scriptPath + " " + settingsPath
+                              Arguments = args
                           }
                     };
                     startScript.Start();
