@@ -120,12 +120,28 @@
   <metadata name="menuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <data name="driveLabel.Text" xml:space="preserve">
+    <value>This logic is meant for driving games,
+using the Left Joystick to steer and the Right
+and Left Triggers to accelerate and brake.
+
+NOSE DOWN: Right-Trigger (accelerator)
+NOSE UP: Left-Trigger (brake)
+NOSE RIGHT and LEFT: steer left and right</value>
+  </data>
   <metadata name="openPythonFiles.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>175, 17</value>
   </metadata>
   <metadata name="openJSONFiles.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>371, 17</value>
   </metadata>
+  <data name="label1.Text" xml:space="preserve">
+    <value>This logic is meant for controlling a character
+that moves in a 3D environment.
+With the up and down movement of the nose
+the character will run, while moving the nose
+horizontally, the game camera will slide.</value>
+  </data>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>71</value>
   </metadata>

@@ -38,6 +38,7 @@ namespace Nose_Drive_GUI
         Process buildProcess;
 
         Dictionary<int, string> embeddedLogicsDictionary;
+        Dictionary<int, Panel> panelsDictionary;
 
 
         public Form1()
@@ -106,6 +107,13 @@ namespace Nose_Drive_GUI
                 { 1, "Drive" },
                 { 2, "3D_Movement" },
                 { 3, "Platform" }
+            };
+
+            panelsDictionary = new Dictionary<int, Panel>()
+            {
+                { 1, drivePanel },
+                { 2, move3dPanel },
+                { 3, platformPanel }
             };
 
 
@@ -362,13 +370,19 @@ namespace Nose_Drive_GUI
 
         private void presetBox_SelectedIndexChanged_1(object sender, EventArgs e)
         {
+            // Manage instructions for embedded logics
+            foreach (Panel p in panelsDictionary.Values) { p.Visible = false; }
+            if (panelsDictionary.ContainsKey(presetBox.SelectedIndex))
+                panelsDictionary[presetBox.SelectedIndex].Visible = true;
+
+            // Manage stuff when changing preset
             if (presetBox.SelectedIndex != 0)
             {
                 buildCheck.Checked = false;
                 buildCheck.Visible = false;
-                targetEmbeddedLogic = embeddedLogicsDictionary[presetBox.SelectedIndex];                ;
-                UpdateLogicGUI(ReadLogicFile(@"default_logics/" + targetEmbeddedLogic + @".json"));
-
+                targetEmbeddedLogic = embeddedLogicsDictionary[presetBox.SelectedIndex];                
+                //UpdateLogicGUI(ReadLogicFile(@"default_logics/" + targetEmbeddedLogic + @".json"));
+                
                 debugLabel.Text = targetEmbeddedLogic;
             }
             else
