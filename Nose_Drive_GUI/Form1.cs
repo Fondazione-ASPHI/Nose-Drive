@@ -267,6 +267,7 @@ namespace Nose_Drive_GUI
             if (buildCheck.Checked)
             {
                 string buildDir = @".\dist\custom";
+                string args = settingsPath;
                 if (scriptPath != "")
                 {
                     File.Copy(scriptPath, toBuildPath, true);
@@ -282,7 +283,8 @@ namespace Nose_Drive_GUI
                 else
                 {
                     File.Copy(customPath, toBuildPath, true);
-                    Directory.Delete(buildDir, true);
+                    if (Directory.Exists(buildDir)) { Directory.Delete(buildDir, true); }
+                    args += " " + logicPath;
                 }
 
                 if (!Directory.Exists(buildDir))
@@ -303,13 +305,13 @@ namespace Nose_Drive_GUI
                     StartInfo =
                   {
                       FileName = buildDir + @"\main.exe",
-                      Arguments = settingsPath
+                      Arguments = args
                   }
                 };
                 startBuild.Start();
                 startBuild.WaitForExit();
             }
-            // START SCRIPT
+            // START SCRIPT or PRESET
             else
             {
                 // Embedded pre-built default logics
