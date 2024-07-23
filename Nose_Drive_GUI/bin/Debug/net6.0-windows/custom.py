@@ -12,7 +12,7 @@ import vgamepad as vg # https://pypi.org/project/vgamepad/   https://github.com/
 gamepad = vg.VX360Gamepad()
 
 
-tasti = {
+buttons = {
   "A": vg.XUSB_BUTTON.XUSB_GAMEPAD_A,
   "B": vg.XUSB_BUTTON.XUSB_GAMEPAD_B,
   "X": vg.XUSB_BUTTON.XUSB_GAMEPAD_X,
@@ -29,7 +29,7 @@ tasti = {
   "Left Thumb": vg.XUSB_BUTTON.XUSB_GAMEPAD_LEFT_THUMB,
   "Home": vg.XUSB_BUTTON.XUSB_GAMEPAD_GUIDE,
 }
-#tasti["A"]
+#buttons["A"]
 
 joyfunctions = {
   "Left": gamepad.left_joystick_float,
@@ -71,6 +71,10 @@ def logic(nose_x, nose_y, mouth_x, head_tilt, trigger_eyebrows, trigger_mouth_op
     "mouth_left": mouth_x
   }
 
+  booleanMovements = {
+    "eyebrows": trigger_eyebrows
+  }
+
   xy = [0, 0]
   directions = {
     "Right": 0,
@@ -82,33 +86,38 @@ def logic(nose_x, nose_y, mouth_x, head_tilt, trigger_eyebrows, trigger_mouth_op
 
   for movement in keyBinds:
 
-    value = keyBinds[movement]
+    virtual_input = keyBinds[movement]
 
 
     # JOYSTICKS
-    if "Joystick" in value:
-      keywords = value.split(" ")
+    if "Joystick" in virtual_input:
+      keywords = virtual_input.split(" ")
       joyside = keywords[0]
       direction = keywords[2]
       if movement in analogMovements:
         xy[directions[direction]] = analogMovements[movement]
-        # print(xy)
+      elif movement in booleanMovements:
+        xy[directions[direction]] = booleanMovements[movement]
       joyfunctions[joyside](x_value_float=xy[0], y_value_float=xy[1])
 
 
     # BUTTONS
-    if value in tasti:
-      comando = tasti[value]
+    if virtual_input in buttons:
+      btn_code = buttons[virtual_input]
       if movement in analogMovements:
         if analogMovements[movement] > 0.5:                  
-          gamepad.press_button(button=comando)
+          gamepad.press_button(button=btn_code)
         else:
-          gamepad.release_button(button=comando)
+          gamepad.release_button(button=btn_code)
 
       
     # TRIGGERS
-    if "LT" in value or "RT" in value:
-      triggerfunctions[value](analogMovements[movement])
+    if "LT" in virtual_input or "RT" in virtual_input:
+      if movement in analogMovements:
+        triggerfunctions[virtual_input](analogMovements[movement])
+      elif movement in booleanMovements:
+        triggerfunctions[virtual_input](booleanMovements[movement])
+
 
 
   # UPDATE
