@@ -65,31 +65,29 @@
             scriptToolStripMenuItem = new ToolStripMenuItem();
             settingsToolStripMenuItem = new ToolStripMenuItem();
             logicBox = new GroupBox();
-            move3dPanel = new Panel();
-            label1 = new Label();
             drivePanel = new Panel();
             driveLabel = new Label();
-            platformPanel = new Panel();
-            label8 = new Label();
             presetBox = new ComboBox();
             removeScriptButton = new Button();
             groupBox2 = new GroupBox();
             pictureBox1 = new PictureBox();
             openPythonFiles = new OpenFileDialog();
             openJSONFiles = new OpenFileDialog();
-            descriptionContainer = new Panel();
+            label1 = new Label();
+            move3dPanel = new Panel();
+            label8 = new Label();
+            platformPanel = new Panel();
             ((System.ComponentModel.ISupportInitialize)eyebrowsBar).BeginInit();
             ((System.ComponentModel.ISupportInitialize)noseVerBar).BeginInit();
             ((System.ComponentModel.ISupportInitialize)mouthBar).BeginInit();
             ((System.ComponentModel.ISupportInitialize)noseHorBar).BeginInit();
             menuStrip1.SuspendLayout();
             logicBox.SuspendLayout();
-            move3dPanel.SuspendLayout();
             drivePanel.SuspendLayout();
-            platformPanel.SuspendLayout();
             groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
-            descriptionContainer.SuspendLayout();
+            move3dPanel.SuspendLayout();
+            platformPanel.SuspendLayout();
             SuspendLayout();
             // 
             // Start
@@ -485,6 +483,9 @@
             // 
             // logicBox
             // 
+            logicBox.Controls.Add(move3dPanel);
+            logicBox.Controls.Add(drivePanel);
+            logicBox.Controls.Add(platformPanel);
             logicBox.Controls.Add(presetBox);
             logicBox.Controls.Add(label11);
             logicBox.Controls.Add(label2);
@@ -511,30 +512,12 @@
             logicBox.TabStop = false;
             logicBox.Text = "LOGIC";
             // 
-            // move3dPanel
-            // 
-            move3dPanel.Controls.Add(label1);
-            move3dPanel.Location = new Point(5, 7);
-            move3dPanel.Name = "move3dPanel";
-            move3dPanel.Size = new Size(360, 378);
-            move3dPanel.TabIndex = 49;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Calibri", 18F, FontStyle.Regular, GraphicsUnit.Pixel, 0);
-            label1.Location = new Point(7, 16);
-            label1.Name = "label1";
-            label1.Size = new Size(341, 110);
-            label1.TabIndex = 0;
-            label1.Text = resources.GetString("label1.Text");
-            // 
             // drivePanel
             // 
             drivePanel.Controls.Add(driveLabel);
-            drivePanel.Location = new Point(4, 7);
+            drivePanel.Location = new Point(7, 137);
             drivePanel.Name = "drivePanel";
-            drivePanel.Size = new Size(361, 378);
+            drivePanel.Size = new Size(373, 388);
             drivePanel.TabIndex = 48;
             // 
             // driveLabel
@@ -546,24 +529,6 @@
             driveLabel.Size = new Size(329, 154);
             driveLabel.TabIndex = 0;
             driveLabel.Text = resources.GetString("driveLabel.Text");
-            // 
-            // platformPanel
-            // 
-            platformPanel.Controls.Add(label8);
-            platformPanel.Location = new Point(0, 0);
-            platformPanel.Name = "platformPanel";
-            platformPanel.Size = new Size(361, 378);
-            platformPanel.TabIndex = 49;
-            // 
-            // label8
-            // 
-            label8.AutoSize = true;
-            label8.Font = new Font("Calibri", 18F, FontStyle.Regular, GraphicsUnit.Pixel, 0);
-            label8.Location = new Point(20, 22);
-            label8.Name = "label8";
-            label8.Size = new Size(305, 88);
-            label8.TabIndex = 0;
-            label8.Text = "This logic is meant for platform games.\r\nControl the left analog with the nose\r\nwhile press some buttons with eyebrows\r\nand mouth left or right.";
             // 
             // presetBox
             // 
@@ -642,15 +607,41 @@
             openJSONFiles.InitialDirectory = "currentPath";
             openJSONFiles.Title = "Open JSON file";
             // 
-            // descriptionContainer
+            // label1
             // 
-            descriptionContainer.Controls.Add(platformPanel);
-            descriptionContainer.Controls.Add(drivePanel);
-            descriptionContainer.Controls.Add(move3dPanel);
-            descriptionContainer.Location = new Point(557, 82);
-            descriptionContainer.Name = "descriptionContainer";
-            descriptionContainer.Size = new Size(373, 388);
-            descriptionContainer.TabIndex = 50;
+            label1.AutoSize = true;
+            label1.Font = new Font("Calibri", 18F, FontStyle.Regular, GraphicsUnit.Pixel, 0);
+            label1.Location = new Point(20, 22);
+            label1.Name = "label1";
+            label1.Size = new Size(341, 110);
+            label1.TabIndex = 0;
+            label1.Text = resources.GetString("label1.Text");
+            // 
+            // move3dPanel
+            // 
+            move3dPanel.Controls.Add(label1);
+            move3dPanel.Location = new Point(7, 137);
+            move3dPanel.Name = "move3dPanel";
+            move3dPanel.Size = new Size(373, 388);
+            move3dPanel.TabIndex = 49;
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Font = new Font("Calibri", 18F, FontStyle.Regular, GraphicsUnit.Pixel, 0);
+            label8.Location = new Point(20, 22);
+            label8.Name = "label8";
+            label8.Size = new Size(305, 88);
+            label8.TabIndex = 0;
+            label8.Text = "This logic is meant for platform games.\r\nControl the left analog with the nose\r\nwhile press some buttons with eyebrows\r\nand mouth left or right.";
+            // 
+            // platformPanel
+            // 
+            platformPanel.Controls.Add(label8);
+            platformPanel.Location = new Point(7, 137);
+            platformPanel.Name = "platformPanel";
+            platformPanel.Size = new Size(373, 388);
+            platformPanel.TabIndex = 49;
             // 
             // Form1
             // 
@@ -658,7 +649,6 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(44, 39, 53);
             ClientSize = new Size(949, 848);
-            Controls.Add(descriptionContainer);
             Controls.Add(removeScriptButton);
             Controls.Add(pictureBox1);
             Controls.Add(groupBox2);
@@ -683,16 +673,15 @@
             menuStrip1.PerformLayout();
             logicBox.ResumeLayout(false);
             logicBox.PerformLayout();
-            move3dPanel.ResumeLayout(false);
-            move3dPanel.PerformLayout();
             drivePanel.ResumeLayout(false);
             drivePanel.PerformLayout();
-            platformPanel.ResumeLayout(false);
-            platformPanel.PerformLayout();
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
-            descriptionContainer.ResumeLayout(false);
+            move3dPanel.ResumeLayout(false);
+            move3dPanel.PerformLayout();
+            platformPanel.ResumeLayout(false);
+            platformPanel.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -746,6 +735,5 @@
         private Label label1;
         private Panel platformPanel;
         private Label label8;
-        private Panel descriptionContainer;
     }
 }
