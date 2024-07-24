@@ -1,9 +1,1 @@
-{
-    "nose_right": "LT",
-    "nose_left": "",
-    "nose_up": "RT",
-    "nose_down": "A",
-    "eyebrows": "",
-    "mouth_right": "",
-    "mouth_left": ""
-}
+{"nose_right":"Left Joystick Right","nose_left":"Left Joystick Left","nose_up":"","nose_down":"Left Joystick Up","eyebrows":"","mouth_right":"","mouth_left":""}

@@ -119,6 +119,7 @@ def logic(nose_x, nose_y, mouth_x, head_tilt, trigger_eyebrows, trigger_mouth_op
 
     # JOYSTICKS
     if "Joystick" in virtual_input:
+      using_joysticks = True
       keywords = virtual_input.split(" ")
       joyside = keywords[0]
       direction = keywords[2]
