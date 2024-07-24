@@ -73,12 +73,12 @@ def logic(nose_x, nose_y, mouth_x, head_tilt, trigger_eyebrows, trigger_mouth_op
    nose_down = nose_y
 
   mouth_right = 0
-  if mouth_x > 0:
-   mouth_right = mouth_x
+  if mouth_x < 0:
+   mouth_right = -mouth_x
 
   mouth_left = 0
-  if mouth_x < 0:
-   mouth_left = -mouth_x
+  if mouth_x > 0:
+   mouth_left = mouth_x
 
   # print(nose_left)
 
