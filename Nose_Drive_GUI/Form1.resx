@@ -125,7 +125,16 @@
 that moves in a 3D environment.
 With the up and down movement of the nose
 the character will run, while moving the nose
-horizontally, the game camera will slide.</value>
+horizontally, the game camera will slide.
+
+By pressing the "8" numeric keyboard key
+it is possible to switch to "Aim" mode, where
+both horizontal and vertical movement of the
+head will control the Right Joystick, to move the
+camera.
+Pressing the "9" key will revert to "Move" mode.
+
+</value>
   </data>
   <data name="driveLabel.Text" xml:space="preserve">
     <value>This logic is meant for driving games,

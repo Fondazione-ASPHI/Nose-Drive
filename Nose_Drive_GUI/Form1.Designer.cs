@@ -65,13 +65,13 @@
             scriptToolStripMenuItem = new ToolStripMenuItem();
             settingsToolStripMenuItem = new ToolStripMenuItem();
             logicBox = new GroupBox();
-            presetBox = new ComboBox();
             move3dPanel = new Panel();
             label1 = new Label();
             drivePanel = new Panel();
             driveLabel = new Label();
             platformPanel = new Panel();
             label8 = new Label();
+            presetBox = new ComboBox();
             removeScriptButton = new Button();
             groupBox2 = new GroupBox();
             pictureBox1 = new PictureBox();
@@ -507,25 +507,10 @@
             logicBox.Margin = new Padding(4);
             logicBox.Name = "logicBox";
             logicBox.Padding = new Padding(4);
-            logicBox.Size = new Size(387, 532);
+            logicBox.Size = new Size(404, 532);
             logicBox.TabIndex = 44;
             logicBox.TabStop = false;
             logicBox.Text = "LOGIC";
-            // 
-            // presetBox
-            // 
-            presetBox.BackColor = Color.FromArgb(44, 39, 53);
-            presetBox.DropDownStyle = ComboBoxStyle.DropDownList;
-            presetBox.Font = new Font("Calibri", 32F, FontStyle.Regular, GraphicsUnit.Pixel);
-            presetBox.ForeColor = Color.White;
-            presetBox.FormattingEnabled = true;
-            presetBox.Items.AddRange(new object[] { "Custom preset", "Driving games", "3D Movement", "Platform" });
-            presetBox.Location = new Point(111, 67);
-            presetBox.Margin = new Padding(2);
-            presetBox.Name = "presetBox";
-            presetBox.Size = new Size(244, 47);
-            presetBox.TabIndex = 23;
-            presetBox.SelectedIndexChanged += presetBox_SelectedIndexChanged_1;
             // 
             // move3dPanel
             // 
@@ -541,7 +526,7 @@
             label1.Font = new Font("Calibri", 18F, FontStyle.Regular, GraphicsUnit.Pixel, 0);
             label1.Location = new Point(20, 22);
             label1.Name = "label1";
-            label1.Size = new Size(341, 110);
+            label1.Size = new Size(360, 286);
             label1.TabIndex = 0;
             label1.Text = resources.GetString("label1.Text");
             // 
@@ -580,6 +565,21 @@
             label8.Size = new Size(305, 88);
             label8.TabIndex = 0;
             label8.Text = "This logic is meant for platform games.\r\nControl the left analog with the nose\r\nwhile press some buttons with eyebrows\r\nand mouth left or right.";
+            // 
+            // presetBox
+            // 
+            presetBox.BackColor = Color.FromArgb(44, 39, 53);
+            presetBox.DropDownStyle = ComboBoxStyle.DropDownList;
+            presetBox.Font = new Font("Calibri", 32F, FontStyle.Regular, GraphicsUnit.Pixel);
+            presetBox.ForeColor = Color.White;
+            presetBox.FormattingEnabled = true;
+            presetBox.Items.AddRange(new object[] { "Custom preset", "Driving games", "3D Movement", "Platform" });
+            presetBox.Location = new Point(111, 67);
+            presetBox.Margin = new Padding(2);
+            presetBox.Name = "presetBox";
+            presetBox.Size = new Size(244, 47);
+            presetBox.TabIndex = 23;
+            presetBox.SelectedIndexChanged += presetBox_SelectedIndexChanged_1;
             // 
             // removeScriptButton
             // 
