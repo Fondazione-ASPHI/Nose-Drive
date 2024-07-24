@@ -60,27 +60,60 @@ key_import.close() # Closing file
 ########
 def logic(nose_x, nose_y, mouth_x, head_tilt, trigger_eyebrows, trigger_mouth_open):
 
-  zona_morta = 0
+  # zona_morta = 0
+
+  nose_right = 0
+  if nose_x > 0:
+   nose_right = nose_x
+
+  nose_left = 0
+  if nose_x < 0:
+   nose_left = -nose_x  
+
+  nose_up = 0
+  if nose_y < 0:
+   nose_up = -nose_y
+
+  nose_down = 0
+  if nose_y > 0:
+   nose_down = nose_y
+
+  mouth_right = 0
+  if mouth_x > 0:
+   mouth_right = mouth_x
+
+  mouth_left = 0
+  if mouth_x < 0:
+   mouth_left = -mouth_x
+
+  # print(nose_left)
 
   analogMovements = {
-    "nose_right": -nose_x,
-    "nose_left": nose_x,
-    "nose_up": -nose_y,
-    "nose_down": nose_y,
-    "mouth_right": -mouth_x,
-    "mouth_left": mouth_x
+    "nose_right": nose_right,
+    "nose_left": nose_left,
+    "nose_up": nose_up,
+    "nose_down": nose_down,
+    "mouth_right": mouth_right,
+    "mouth_left": mouth_left
   }
 
   booleanMovements = {
     "eyebrows": trigger_eyebrows
   }
 
-  xy = [0, 0]
-  directions = {
-    "Right": 0,
-    "Left": 0,
-    "Up": 1,
-    "Down": 1
+  analogs = {
+    "Right": {
+      "Right": 0,
+      "Left": 0,
+      "Up": 0,
+      "Down": 0
+    },
+    "Left": {
+      "Right": 0,
+      "Left": 0,
+      "Up": 0,
+      "Down": 0
+    }
   }
 
 
@@ -95,10 +128,10 @@ def logic(nose_x, nose_y, mouth_x, head_tilt, trigger_eyebrows, trigger_mouth_op
       joyside = keywords[0]
       direction = keywords[2]
       if movement in analogMovements:
-        xy[directions[direction]] = analogMovements[movement]
+        analogs[joyside][direction] = analogMovements[movement]
       elif movement in booleanMovements:
-        xy[directions[direction]] = booleanMovements[movement]
-      joyfunctions[joyside](x_value_float=xy[0], y_value_float=xy[1])
+        analogs[joyside][direction] = booleanMovements[movement]
+      # joyfunctions[joyside](x_value_float=xy[joyside][direction], y_value_float=xy[joyside][direction])
 
 
     # BUTTONS
@@ -112,7 +145,7 @@ def logic(nose_x, nose_y, mouth_x, head_tilt, trigger_eyebrows, trigger_mouth_op
 
       
     # TRIGGERS
-    if "LT" in virtual_input or "RT" in virtual_input:
+    if virtual_input == "LT" or virtual_input == "RT":
       if movement in analogMovements:
         triggerfunctions[virtual_input](analogMovements[movement])
       elif movement in booleanMovements:
@@ -120,6 +153,16 @@ def logic(nose_x, nose_y, mouth_x, head_tilt, trigger_eyebrows, trigger_mouth_op
 
 
 
+  # Right Joystick
+  rx = analogs["Right"]["Right"] - analogs["Right"]["Left"]
+  ry = analogs["Right"]["Up"] - analogs["Right"]["Down"]
+  joyfunctions["Right"](x_value_float=rx, y_value_float=ry)
+
+  # Left Joystick
+  lx = analogs["Left"]["Right"] - analogs["Left"]["Left"]
+  ly = analogs["Left"]["Up"] - analogs["Left"]["Down"]
+  joyfunctions["Left"](x_value_float=lx, y_value_float=ly)
+  
   # UPDATE
   gamepad.update()
   gamepad.reset()
