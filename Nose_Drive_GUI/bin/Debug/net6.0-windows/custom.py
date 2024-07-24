@@ -132,8 +132,12 @@ def logic(nose_x, nose_y, mouth_x, head_tilt, trigger_eyebrows, trigger_mouth_op
     # BUTTONS
     if virtual_input in buttons:
       btn_code = buttons[virtual_input]
+      press = False
       if movement in analogMovements:
-        if analogMovements[movement] > 0.5:                  
+        press = analogMovements[movement] > 0.5
+      elif movement in booleanMovements:
+        press = booleanMovements[movement]
+        if press:                  
           gamepad.press_button(button=btn_code)
         else:
           gamepad.release_button(button=btn_code)
