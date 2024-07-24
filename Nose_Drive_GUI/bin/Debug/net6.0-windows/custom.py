@@ -29,12 +29,6 @@ buttons = {
   "Left Thumb": vg.XUSB_BUTTON.XUSB_GAMEPAD_LEFT_THUMB,
   "Home": vg.XUSB_BUTTON.XUSB_GAMEPAD_GUIDE,
 }
-#buttons["A"]
-
-joyfunctions = {
-  "Left": gamepad.left_joystick_float,
-  "Right": gamepad.right_joystick_float
-}
 
 triggerfunctions = {
   "LT": gamepad.left_trigger_float,
@@ -116,6 +110,7 @@ def logic(nose_x, nose_y, mouth_x, head_tilt, trigger_eyebrows, trigger_mouth_op
     }
   }
 
+  using_joysticks = False
 
   for movement in keyBinds:
 
@@ -131,7 +126,6 @@ def logic(nose_x, nose_y, mouth_x, head_tilt, trigger_eyebrows, trigger_mouth_op
         analogs[joyside][direction] = analogMovements[movement]
       elif movement in booleanMovements:
         analogs[joyside][direction] = booleanMovements[movement]
-      # joyfunctions[joyside](x_value_float=xy[joyside][direction], y_value_float=xy[joyside][direction])
 
 
     # BUTTONS
@@ -152,17 +146,17 @@ def logic(nose_x, nose_y, mouth_x, head_tilt, trigger_eyebrows, trigger_mouth_op
         triggerfunctions[virtual_input](booleanMovements[movement])
 
 
+  if using_joysticks:
+    # Right Joystick
+    rx = analogs["Right"]["Right"] - analogs["Right"]["Left"]
+    ry = analogs["Right"]["Up"] - analogs["Right"]["Down"]
+    gamepad.right_joystick_float(x_value_float=rx, y_value_float=ry)
 
-  # Right Joystick
-  rx = analogs["Right"]["Right"] - analogs["Right"]["Left"]
-  ry = analogs["Right"]["Up"] - analogs["Right"]["Down"]
-  joyfunctions["Right"](x_value_float=rx, y_value_float=ry)
+    # Left Joystick
+    lx = analogs["Left"]["Right"] - analogs["Left"]["Left"]
+    ly = analogs["Left"]["Up"] - analogs["Left"]["Down"]
+    gamepad.left_joystick_float(x_value_float=lx, y_value_float=ly)
 
-  # Left Joystick
-  lx = analogs["Left"]["Right"] - analogs["Left"]["Left"]
-  ly = analogs["Left"]["Up"] - analogs["Left"]["Down"]
-  joyfunctions["Left"](x_value_float=lx, y_value_float=ly)
-  
   # UPDATE
   gamepad.update()
   gamepad.reset()
