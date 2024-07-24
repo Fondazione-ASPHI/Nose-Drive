@@ -65,29 +65,29 @@
             scriptToolStripMenuItem = new ToolStripMenuItem();
             settingsToolStripMenuItem = new ToolStripMenuItem();
             logicBox = new GroupBox();
+            presetBox = new ComboBox();
+            move3dPanel = new Panel();
+            label1 = new Label();
             drivePanel = new Panel();
             driveLabel = new Label();
-            presetBox = new ComboBox();
+            platformPanel = new Panel();
+            label8 = new Label();
             removeScriptButton = new Button();
             groupBox2 = new GroupBox();
             pictureBox1 = new PictureBox();
             openPythonFiles = new OpenFileDialog();
             openJSONFiles = new OpenFileDialog();
-            label1 = new Label();
-            move3dPanel = new Panel();
-            label8 = new Label();
-            platformPanel = new Panel();
             ((System.ComponentModel.ISupportInitialize)eyebrowsBar).BeginInit();
             ((System.ComponentModel.ISupportInitialize)noseVerBar).BeginInit();
             ((System.ComponentModel.ISupportInitialize)mouthBar).BeginInit();
             ((System.ComponentModel.ISupportInitialize)noseHorBar).BeginInit();
             menuStrip1.SuspendLayout();
             logicBox.SuspendLayout();
+            move3dPanel.SuspendLayout();
             drivePanel.SuspendLayout();
+            platformPanel.SuspendLayout();
             groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
-            move3dPanel.SuspendLayout();
-            platformPanel.SuspendLayout();
             SuspendLayout();
             // 
             // Start
@@ -126,7 +126,7 @@
             label11.Location = new Point(14, 370);
             label11.Margin = new Padding(2, 0, 2, 0);
             label11.Name = "label11";
-            label11.Size = new Size(111, 31);
+            label11.Size = new Size(107, 29);
             label11.TabIndex = 22;
             label11.Text = "Eyebrows";
             // 
@@ -138,7 +138,7 @@
             label6.Location = new Point(14, 476);
             label6.Margin = new Padding(2, 0, 2, 0);
             label6.Name = "label6";
-            label6.Size = new Size(121, 31);
+            label6.Size = new Size(119, 29);
             label6.TabIndex = 18;
             label6.Text = "Mouth left";
             // 
@@ -147,7 +147,7 @@
             mouthLeftDropdown.DropDownStyle = ComboBoxStyle.DropDownList;
             mouthLeftDropdown.Font = new Font("Calibri", 18F, FontStyle.Regular, GraphicsUnit.Pixel);
             mouthLeftDropdown.FormattingEnabled = true;
-            mouthLeftDropdown.Items.AddRange(new object[] { "Left Joystick Right", "Left Joystick Left", "Left Joystick Up", "Left Joystick Down", "Right Joystick Right", "Right Joystick Left", "Right Joystick Up", "Right Joystick Down", "A", "B", "X", "Y", "LT", "RT", "LB", "RB", "Start", "Select", "Dpad Right", "Dpad Left", "Dpad Up", "Dpad Down", "Right Thumb", "Left Thumb", "Home" });
+            mouthLeftDropdown.Items.AddRange(new object[] { "", "Left Joystick Right", "Left Joystick Left", "Left Joystick Up", "Left Joystick Down", "Right Joystick Right", "Right Joystick Left", "Right Joystick Up", "Right Joystick Down", "A", "B", "X", "Y", "LT", "RT", "LB", "RB", "Start", "Select", "Dpad Right", "Dpad Left", "Dpad Up", "Dpad Down", "Right Thumb", "Left Thumb", "Home" });
             mouthLeftDropdown.Location = new Point(195, 476);
             mouthLeftDropdown.Margin = new Padding(2);
             mouthLeftDropdown.Name = "mouthLeftDropdown";
@@ -162,7 +162,7 @@
             label7.Location = new Point(14, 423);
             label7.Margin = new Padding(2, 0, 2, 0);
             label7.Name = "label7";
-            label7.Size = new Size(136, 31);
+            label7.Size = new Size(132, 29);
             label7.TabIndex = 16;
             label7.Text = "Mouth right";
             // 
@@ -171,7 +171,7 @@
             mouthRightDropdown.DropDownStyle = ComboBoxStyle.DropDownList;
             mouthRightDropdown.Font = new Font("Calibri", 18F, FontStyle.Regular, GraphicsUnit.Pixel);
             mouthRightDropdown.FormattingEnabled = true;
-            mouthRightDropdown.Items.AddRange(new object[] { "Left Joystick Right", "Left Joystick Left", "Left Joystick Up", "Left Joystick Down", "Right Joystick Right", "Right Joystick Left", "Right Joystick Up", "Right Joystick Down", "A", "B", "X", "Y", "LT", "RT", "LB", "RB", "Start", "Select", "Dpad Right", "Dpad Left", "Dpad Up", "Dpad Down", "Right Thumb", "Left Thumb", "Home" });
+            mouthRightDropdown.Items.AddRange(new object[] { "", "Left Joystick Right", "Left Joystick Left", "Left Joystick Up", "Left Joystick Down", "Right Joystick Right", "Right Joystick Left", "Right Joystick Up", "Right Joystick Down", "A", "B", "X", "Y", "LT", "RT", "LB", "RB", "Start", "Select", "Dpad Right", "Dpad Left", "Dpad Up", "Dpad Down", "Right Thumb", "Left Thumb", "Home" });
             mouthRightDropdown.Location = new Point(195, 423);
             mouthRightDropdown.Margin = new Padding(2);
             mouthRightDropdown.Name = "mouthRightDropdown";
@@ -183,7 +183,7 @@
             eyebrowsDropdown.DropDownStyle = ComboBoxStyle.DropDownList;
             eyebrowsDropdown.Font = new Font("Calibri", 18F, FontStyle.Regular, GraphicsUnit.Pixel);
             eyebrowsDropdown.FormattingEnabled = true;
-            eyebrowsDropdown.Items.AddRange(new object[] { "Left Joystick Right", "Left Joystick Left", "Left Joystick Up", "Left Joystick Down", "Right Joystick Right", "Right Joystick Left", "Right Joystick Up", "Right Joystick Down", "A", "B", "X", "Y", "LT", "RT", "LB", "RB", "Start", "Select", "Dpad Right", "Dpad Left", "Dpad Up", "Dpad Down", "Right Thumb", "Left Thumb", "Home" });
+            eyebrowsDropdown.Items.AddRange(new object[] { "", "Left Joystick Right", "Left Joystick Left", "Left Joystick Up", "Left Joystick Down", "Right Joystick Right", "Right Joystick Left", "Right Joystick Up", "Right Joystick Down", "A", "B", "X", "Y", "LT", "RT", "LB", "RB", "Start", "Select", "Dpad Right", "Dpad Left", "Dpad Up", "Dpad Down", "Right Thumb", "Left Thumb", "Home" });
             eyebrowsDropdown.Location = new Point(195, 370);
             eyebrowsDropdown.Margin = new Padding(2);
             eyebrowsDropdown.Name = "eyebrowsDropdown";
@@ -198,7 +198,7 @@
             label4.Location = new Point(14, 318);
             label4.Margin = new Padding(2, 0, 2, 0);
             label4.Name = "label4";
-            label4.Size = new Size(128, 31);
+            label4.Size = new Size(124, 29);
             label4.TabIndex = 12;
             label4.Text = "Nose down";
             label4.Click += label4_Click;
@@ -208,7 +208,7 @@
             noseDownDropdown.DropDownStyle = ComboBoxStyle.DropDownList;
             noseDownDropdown.Font = new Font("Calibri", 18F, FontStyle.Regular, GraphicsUnit.Pixel);
             noseDownDropdown.FormattingEnabled = true;
-            noseDownDropdown.Items.AddRange(new object[] { "Left Joystick Right", "Left Joystick Left", "Left Joystick Up", "Left Joystick Down", "Right Joystick Right", "Right Joystick Left", "Right Joystick Up", "Right Joystick Down", "A", "B", "X", "Y", "LT", "RT", "LB", "RB", "Start", "Select", "Dpad Right", "Dpad Left", "Dpad Up", "Dpad Down", "Right Thumb", "Left Thumb", "Home" });
+            noseDownDropdown.Items.AddRange(new object[] { "", "Left Joystick Right", "Left Joystick Left", "Left Joystick Up", "Left Joystick Down", "Right Joystick Right", "Right Joystick Left", "Right Joystick Up", "Right Joystick Down", "A", "B", "X", "Y", "LT", "RT", "LB", "RB", "Start", "Select", "Dpad Right", "Dpad Left", "Dpad Up", "Dpad Down", "Right Thumb", "Left Thumb", "Home" });
             noseDownDropdown.Location = new Point(195, 318);
             noseDownDropdown.Margin = new Padding(2);
             noseDownDropdown.Name = "noseDownDropdown";
@@ -223,7 +223,7 @@
             label5.Location = new Point(14, 265);
             label5.Margin = new Padding(2, 0, 2, 0);
             label5.Name = "label5";
-            label5.Size = new Size(97, 31);
+            label5.Size = new Size(94, 29);
             label5.TabIndex = 10;
             label5.Text = "Nose up";
             // 
@@ -232,7 +232,7 @@
             noseUpDropdown.DropDownStyle = ComboBoxStyle.DropDownList;
             noseUpDropdown.Font = new Font("Calibri", 18F, FontStyle.Regular, GraphicsUnit.Pixel);
             noseUpDropdown.FormattingEnabled = true;
-            noseUpDropdown.Items.AddRange(new object[] { "Left Joystick Right", "Left Joystick Left", "Left Joystick Up", "Left Joystick Down", "Right Joystick Right", "Right Joystick Left", "Right Joystick Up", "Right Joystick Down", "A", "B", "X", "Y", "LT", "RT", "LB", "RB", "Start", "Select", "Dpad Right", "Dpad Left", "Dpad Up", "Dpad Down", "Right Thumb", "Left Thumb", "Home" });
+            noseUpDropdown.Items.AddRange(new object[] { "", "Left Joystick Right", "Left Joystick Left", "Left Joystick Up", "Left Joystick Down", "Right Joystick Right", "Right Joystick Left", "Right Joystick Up", "Right Joystick Down", "A", "B", "X", "Y", "LT", "RT", "LB", "RB", "Start", "Select", "Dpad Right", "Dpad Left", "Dpad Up", "Dpad Down", "Right Thumb", "Left Thumb", "Home" });
             noseUpDropdown.Location = new Point(195, 265);
             noseUpDropdown.Margin = new Padding(2);
             noseUpDropdown.Name = "noseUpDropdown";
@@ -247,7 +247,7 @@
             label3.Location = new Point(14, 212);
             label3.Margin = new Padding(2, 0, 2, 0);
             label3.Name = "label3";
-            label3.Size = new Size(104, 31);
+            label3.Size = new Size(101, 29);
             label3.TabIndex = 8;
             label3.Text = "Nose left";
             // 
@@ -256,7 +256,7 @@
             noseLeftDropdown.DropDownStyle = ComboBoxStyle.DropDownList;
             noseLeftDropdown.Font = new Font("Calibri", 18F, FontStyle.Regular, GraphicsUnit.Pixel);
             noseLeftDropdown.FormattingEnabled = true;
-            noseLeftDropdown.Items.AddRange(new object[] { "Left Joystick Right", "Left Joystick Left", "Left Joystick Up", "Left Joystick Down", "Right Joystick Right", "Right Joystick Left", "Right Joystick Up", "Right Joystick Down", "A", "B", "X", "Y", "LT", "RT", "LB", "RB", "Start", "Select", "Dpad Right", "Dpad Left", "Dpad Up", "Dpad Down", "Right Thumb", "Left Thumb", "Home" });
+            noseLeftDropdown.Items.AddRange(new object[] { "", "Left Joystick Right", "Left Joystick Left", "Left Joystick Up", "Left Joystick Down", "Right Joystick Right", "Right Joystick Left", "Right Joystick Up", "Right Joystick Down", "A", "B", "X", "Y", "LT", "RT", "LB", "RB", "Start", "Select", "Dpad Right", "Dpad Left", "Dpad Up", "Dpad Down", "Right Thumb", "Left Thumb", "Home" });
             noseLeftDropdown.Location = new Point(195, 212);
             noseLeftDropdown.Margin = new Padding(2);
             noseLeftDropdown.Name = "noseLeftDropdown";
@@ -272,7 +272,7 @@
             label2.Location = new Point(14, 159);
             label2.Margin = new Padding(2, 0, 2, 0);
             label2.Name = "label2";
-            label2.Size = new Size(119, 31);
+            label2.Size = new Size(114, 29);
             label2.TabIndex = 6;
             label2.Text = "Nose right";
             label2.Click += label2_Click;
@@ -282,7 +282,7 @@
             noseRightDropdown.DropDownStyle = ComboBoxStyle.DropDownList;
             noseRightDropdown.Font = new Font("Calibri", 18F, FontStyle.Regular, GraphicsUnit.Pixel);
             noseRightDropdown.FormattingEnabled = true;
-            noseRightDropdown.Items.AddRange(new object[] { "Left Joystick Right", "Left Joystick Left", "Left Joystick Up", "Left Joystick Down", "Right Joystick Right", "Right Joystick Left", "Right Joystick Up", "Right Joystick Down", "A", "B", "X", "Y", "LT", "RT", "LB", "RB", "Start", "Select", "Dpad Right", "Dpad Left", "Dpad Up", "Dpad Down", "Right Thumb", "Left Thumb", "Home" });
+            noseRightDropdown.Items.AddRange(new object[] { "", "Left Joystick Right", "Left Joystick Left", "Left Joystick Up", "Left Joystick Down", "Right Joystick Right", "Right Joystick Left", "Right Joystick Up", "Right Joystick Down", "A", "B", "X", "Y", "LT", "RT", "LB", "RB", "Start", "Select", "Dpad Right", "Dpad Left", "Dpad Up", "Dpad Down", "Right Thumb", "Left Thumb", "Home" });
             noseRightDropdown.Location = new Point(195, 159);
             noseRightDropdown.Margin = new Padding(2);
             noseRightDropdown.Name = "noseRightDropdown";
@@ -297,7 +297,7 @@
             eyebrowsBar.Margin = new Padding(2, 4, 2, 4);
             eyebrowsBar.Maximum = 5;
             eyebrowsBar.Name = "eyebrowsBar";
-            eyebrowsBar.Size = new Size(193, 56);
+            eyebrowsBar.Size = new Size(193, 69);
             eyebrowsBar.TabIndex = 35;
             eyebrowsBar.Value = 3;
             // 
@@ -308,7 +308,7 @@
             noseVerBar.Margin = new Padding(2, 4, 2, 4);
             noseVerBar.Maximum = 5;
             noseVerBar.Name = "noseVerBar";
-            noseVerBar.Size = new Size(193, 56);
+            noseVerBar.Size = new Size(193, 69);
             noseVerBar.TabIndex = 34;
             noseVerBar.Value = 3;
             // 
@@ -319,7 +319,7 @@
             mouthBar.Margin = new Padding(2, 4, 2, 4);
             mouthBar.Maximum = 5;
             mouthBar.Name = "mouthBar";
-            mouthBar.Size = new Size(193, 56);
+            mouthBar.Size = new Size(193, 69);
             mouthBar.TabIndex = 33;
             mouthBar.Value = 3;
             // 
@@ -330,7 +330,7 @@
             noseHorBar.Margin = new Padding(2, 4, 2, 4);
             noseHorBar.Maximum = 5;
             noseHorBar.Name = "noseHorBar";
-            noseHorBar.Size = new Size(193, 56);
+            noseHorBar.Size = new Size(193, 69);
             noseHorBar.TabIndex = 32;
             noseHorBar.Value = 3;
             // 
@@ -342,7 +342,7 @@
             label14.Location = new Point(23, 300);
             label14.Margin = new Padding(2, 0, 2, 0);
             label14.Name = "label14";
-            label14.Size = new Size(111, 31);
+            label14.Size = new Size(107, 29);
             label14.TabIndex = 31;
             label14.Text = "Eyebrows";
             // 
@@ -354,7 +354,7 @@
             label15.Location = new Point(23, 419);
             label15.Margin = new Padding(2, 0, 2, 0);
             label15.Name = "label15";
-            label15.Size = new Size(190, 31);
+            label15.Size = new Size(186, 29);
             label15.TabIndex = 30;
             label15.Text = "Mouth horizontal";
             // 
@@ -366,7 +366,7 @@
             label16.Location = new Point(23, 182);
             label16.Margin = new Padding(2, 0, 2, 0);
             label16.Name = "label16";
-            label16.Size = new Size(146, 31);
+            label16.Size = new Size(140, 29);
             label16.TabIndex = 29;
             label16.Text = "Nose vertical";
             // 
@@ -378,7 +378,7 @@
             label17.Location = new Point(23, 63);
             label17.Margin = new Padding(2, 0, 2, 0);
             label17.Name = "label17";
-            label17.Size = new Size(173, 31);
+            label17.Size = new Size(168, 29);
             label17.TabIndex = 28;
             label17.Text = "Nose horizontal";
             label17.Click += label17_Click;
@@ -391,7 +391,7 @@
             buildCheck.Location = new Point(722, 774);
             buildCheck.Margin = new Padding(2);
             buildCheck.Name = "buildCheck";
-            buildCheck.Size = new Size(88, 35);
+            buildCheck.Size = new Size(90, 33);
             buildCheck.TabIndex = 41;
             buildCheck.Text = "Build";
             buildCheck.UseVisualStyleBackColor = true;
@@ -405,7 +405,7 @@
             forceCompileCheck.Location = new Point(722, 809);
             forceCompileCheck.Margin = new Padding(2);
             forceCompileCheck.Name = "forceCompileCheck";
-            forceCompileCheck.Size = new Size(208, 35);
+            forceCompileCheck.Size = new Size(204, 33);
             forceCompileCheck.TabIndex = 42;
             forceCompileCheck.Text = "Force re-compile";
             forceCompileCheck.UseVisualStyleBackColor = true;
@@ -419,7 +419,7 @@
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Padding = new Padding(5, 2, 0, 2);
-            menuStrip1.Size = new Size(949, 32);
+            menuStrip1.Size = new Size(949, 37);
             menuStrip1.TabIndex = 43;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -428,20 +428,20 @@
             saveToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { presetToolStripMenuItem1, sensibilityValuesToolStripMenuItem });
             saveToolStripMenuItem.Font = new Font("Calibri", 12F);
             saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            saveToolStripMenuItem.Size = new Size(62, 28);
+            saveToolStripMenuItem.Size = new Size(75, 33);
             saveToolStripMenuItem.Text = "Save";
             // 
             // presetToolStripMenuItem1
             // 
             presetToolStripMenuItem1.Name = "presetToolStripMenuItem1";
-            presetToolStripMenuItem1.Size = new Size(238, 28);
+            presetToolStripMenuItem1.Size = new Size(287, 38);
             presetToolStripMenuItem1.Text = "Preset";
             presetToolStripMenuItem1.Click += savePreset_Click;
             // 
             // sensibilityValuesToolStripMenuItem
             // 
             sensibilityValuesToolStripMenuItem.Name = "sensibilityValuesToolStripMenuItem";
-            sensibilityValuesToolStripMenuItem.Size = new Size(238, 28);
+            sensibilityValuesToolStripMenuItem.Size = new Size(287, 38);
             sensibilityValuesToolStripMenuItem.Text = "Sensibility Values";
             // 
             // loadScriptToolStripMenuItem
@@ -449,27 +449,27 @@
             loadScriptToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { presetToolStripMenuItem, sensibilityToolStripMenuItem, scriptToolStripMenuItem });
             loadScriptToolStripMenuItem.Font = new Font("Calibri", 12F);
             loadScriptToolStripMenuItem.Name = "loadScriptToolStripMenuItem";
-            loadScriptToolStripMenuItem.Size = new Size(64, 28);
+            loadScriptToolStripMenuItem.Size = new Size(77, 33);
             loadScriptToolStripMenuItem.Text = "Load";
             // 
             // presetToolStripMenuItem
             // 
             presetToolStripMenuItem.Name = "presetToolStripMenuItem";
-            presetToolStripMenuItem.Size = new Size(238, 28);
+            presetToolStripMenuItem.Size = new Size(287, 38);
             presetToolStripMenuItem.Text = "Preset";
             presetToolStripMenuItem.Click += loadPreset_Click;
             // 
             // sensibilityToolStripMenuItem
             // 
             sensibilityToolStripMenuItem.Name = "sensibilityToolStripMenuItem";
-            sensibilityToolStripMenuItem.Size = new Size(238, 28);
+            sensibilityToolStripMenuItem.Size = new Size(287, 38);
             sensibilityToolStripMenuItem.Text = "Sensibility Values";
             sensibilityToolStripMenuItem.Click += loadSettings_Click;
             // 
             // scriptToolStripMenuItem
             // 
             scriptToolStripMenuItem.Name = "scriptToolStripMenuItem";
-            scriptToolStripMenuItem.Size = new Size(238, 28);
+            scriptToolStripMenuItem.Size = new Size(287, 38);
             scriptToolStripMenuItem.Text = "Script";
             scriptToolStripMenuItem.Click += loadScript_Click;
             // 
@@ -477,7 +477,7 @@
             // 
             settingsToolStripMenuItem.Font = new Font("Calibri", 12F);
             settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
-            settingsToolStripMenuItem.Size = new Size(89, 28);
+            settingsToolStripMenuItem.Size = new Size(106, 33);
             settingsToolStripMenuItem.Text = "Options";
             settingsToolStripMenuItem.Click += optionsForm_Click;
             // 
@@ -512,6 +512,39 @@
             logicBox.TabStop = false;
             logicBox.Text = "LOGIC";
             // 
+            // presetBox
+            // 
+            presetBox.BackColor = Color.FromArgb(44, 39, 53);
+            presetBox.DropDownStyle = ComboBoxStyle.DropDownList;
+            presetBox.Font = new Font("Calibri", 32F, FontStyle.Regular, GraphicsUnit.Pixel);
+            presetBox.ForeColor = Color.White;
+            presetBox.FormattingEnabled = true;
+            presetBox.Items.AddRange(new object[] { "Custom preset", "Driving games", "3D Movement", "Platform" });
+            presetBox.Location = new Point(111, 67);
+            presetBox.Margin = new Padding(2);
+            presetBox.Name = "presetBox";
+            presetBox.Size = new Size(244, 47);
+            presetBox.TabIndex = 23;
+            presetBox.SelectedIndexChanged += presetBox_SelectedIndexChanged_1;
+            // 
+            // move3dPanel
+            // 
+            move3dPanel.Controls.Add(label1);
+            move3dPanel.Location = new Point(7, 137);
+            move3dPanel.Name = "move3dPanel";
+            move3dPanel.Size = new Size(373, 388);
+            move3dPanel.TabIndex = 49;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Calibri", 18F, FontStyle.Regular, GraphicsUnit.Pixel, 0);
+            label1.Location = new Point(20, 22);
+            label1.Name = "label1";
+            label1.Size = new Size(341, 110);
+            label1.TabIndex = 0;
+            label1.Text = resources.GetString("label1.Text");
+            // 
             // drivePanel
             // 
             drivePanel.Controls.Add(driveLabel);
@@ -530,20 +563,23 @@
             driveLabel.TabIndex = 0;
             driveLabel.Text = resources.GetString("driveLabel.Text");
             // 
-            // presetBox
+            // platformPanel
             // 
-            presetBox.BackColor = Color.FromArgb(44, 39, 53);
-            presetBox.DropDownStyle = ComboBoxStyle.DropDownList;
-            presetBox.Font = new Font("Calibri", 32F, FontStyle.Regular, GraphicsUnit.Pixel);
-            presetBox.ForeColor = Color.White;
-            presetBox.FormattingEnabled = true;
-            presetBox.Items.AddRange(new object[] { "Custom preset", "Driving games", "3D Movement", "Platform" });
-            presetBox.Location = new Point(111, 67);
-            presetBox.Margin = new Padding(2);
-            presetBox.Name = "presetBox";
-            presetBox.Size = new Size(244, 47);
-            presetBox.TabIndex = 23;
-            presetBox.SelectedIndexChanged += presetBox_SelectedIndexChanged_1;
+            platformPanel.Controls.Add(label8);
+            platformPanel.Location = new Point(7, 137);
+            platformPanel.Name = "platformPanel";
+            platformPanel.Size = new Size(373, 388);
+            platformPanel.TabIndex = 49;
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Font = new Font("Calibri", 18F, FontStyle.Regular, GraphicsUnit.Pixel, 0);
+            label8.Location = new Point(20, 22);
+            label8.Name = "label8";
+            label8.Size = new Size(305, 88);
+            label8.TabIndex = 0;
+            label8.Text = "This logic is meant for platform games.\r\nControl the left analog with the nose\r\nwhile press some buttons with eyebrows\r\nand mouth left or right.";
             // 
             // removeScriptButton
             // 
@@ -607,42 +643,6 @@
             openJSONFiles.InitialDirectory = "currentPath";
             openJSONFiles.Title = "Open JSON file";
             // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Calibri", 18F, FontStyle.Regular, GraphicsUnit.Pixel, 0);
-            label1.Location = new Point(20, 22);
-            label1.Name = "label1";
-            label1.Size = new Size(341, 110);
-            label1.TabIndex = 0;
-            label1.Text = resources.GetString("label1.Text");
-            // 
-            // move3dPanel
-            // 
-            move3dPanel.Controls.Add(label1);
-            move3dPanel.Location = new Point(7, 137);
-            move3dPanel.Name = "move3dPanel";
-            move3dPanel.Size = new Size(373, 388);
-            move3dPanel.TabIndex = 49;
-            // 
-            // label8
-            // 
-            label8.AutoSize = true;
-            label8.Font = new Font("Calibri", 18F, FontStyle.Regular, GraphicsUnit.Pixel, 0);
-            label8.Location = new Point(20, 22);
-            label8.Name = "label8";
-            label8.Size = new Size(305, 88);
-            label8.TabIndex = 0;
-            label8.Text = "This logic is meant for platform games.\r\nControl the left analog with the nose\r\nwhile press some buttons with eyebrows\r\nand mouth left or right.";
-            // 
-            // platformPanel
-            // 
-            platformPanel.Controls.Add(label8);
-            platformPanel.Location = new Point(7, 137);
-            platformPanel.Name = "platformPanel";
-            platformPanel.Size = new Size(373, 388);
-            platformPanel.TabIndex = 49;
-            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(9F, 22F);
@@ -673,15 +673,15 @@
             menuStrip1.PerformLayout();
             logicBox.ResumeLayout(false);
             logicBox.PerformLayout();
+            move3dPanel.ResumeLayout(false);
+            move3dPanel.PerformLayout();
             drivePanel.ResumeLayout(false);
             drivePanel.PerformLayout();
+            platformPanel.ResumeLayout(false);
+            platformPanel.PerformLayout();
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
-            move3dPanel.ResumeLayout(false);
-            move3dPanel.PerformLayout();
-            platformPanel.ResumeLayout(false);
-            platformPanel.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }

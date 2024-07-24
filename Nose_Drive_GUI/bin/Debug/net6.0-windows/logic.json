@@ -1,1 +1,9 @@
-{"nose_right":"LT","nose_left":"B","nose_up":"RT","nose_down":"A","eyebrows":"","mouth_right":"","mouth_left":""}
+{
+    "nose_right": "LT",
+    "nose_left": "",
+    "nose_up": "RT",
+    "nose_down": "A",
+    "eyebrows": "",
+    "mouth_right": "",
+    "mouth_left": ""
+}
