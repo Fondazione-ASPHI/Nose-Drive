@@ -113,32 +113,38 @@ def logic(nose_x, nose_y, mouth_x, head_tilt, trigger_eyebrows, trigger_mouth_op
   using_right_joysticks = False
   using_left_joysticks = False
 
+
   for movement in keyBinds:
 
     virtual_input = keyBinds[movement]
-
 
     # JOYSTICKS
     if "Joystick" in virtual_input:
       keywords = virtual_input.split(" ")
       joyside = keywords[0]
       direction = keywords[2]
+
+      if joyside == "Right":
+        using_right_joysticks = True
+      if joyside == "Left":
+        using_left_joysticks = True
+
       if movement in analogMovements:
         analogs[joyside][direction] = analogMovements[movement]
       elif movement in booleanMovements:
         analogs[joyside][direction] = booleanMovements[movement]
-      using_right_joysticks = joyside == "Right"
-      using_left_joysticks = joyside == "Left"
-
+      
 
     # BUTTONS
     if virtual_input in buttons:
       btn_code = buttons[virtual_input]
+
       press = False
       if movement in analogMovements:
         press = analogMovements[movement] > 0.5
       elif movement in booleanMovements:
         press = booleanMovements[movement]
+
       if press:
         gamepad.press_button(button=btn_code)
       else:
