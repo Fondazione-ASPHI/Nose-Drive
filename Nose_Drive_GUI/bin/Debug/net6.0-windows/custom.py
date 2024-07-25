@@ -110,8 +110,10 @@ def logic(nose_x, nose_y, mouth_x, head_tilt, trigger_eyebrows, trigger_mouth_op
     }
   }
 
-  using_right_joysticks = False
-  using_left_joysticks = False
+  using_right_joystick_x = False
+  using_right_joystick_y = False
+  using_left_joystick_x = False
+  using_left_joystick_y = False
 
 
   for movement in keyBinds:
@@ -125,9 +127,15 @@ def logic(nose_x, nose_y, mouth_x, head_tilt, trigger_eyebrows, trigger_mouth_op
       direction = keywords[2]
 
       if joyside == "Right":
-        using_right_joysticks = True
+        if direction == "Right" or direction == "Left":
+          using_right_joystick_x = True
+        if direction == "Up" or direction == "Down":
+          using_right_joystick_y = True
       if joyside == "Left":
-        using_left_joysticks = True
+        if direction == "Right" or direction == "Left":
+          using_left_joystick_x = True
+        if direction == "Up" or direction == "Down":
+          using_left_joystick_y = True
 
       if movement in analogMovements:
         analogs[joyside][direction] = analogMovements[movement]
@@ -160,16 +168,23 @@ def logic(nose_x, nose_y, mouth_x, head_tilt, trigger_eyebrows, trigger_mouth_op
 
 
   # Right Joystick
-  if using_right_joysticks:    
+  if using_right_joystick_x:    
     rx = analogs["Right"]["Right"] - analogs["Right"]["Left"]
+    gamepad.right_joystick_float_x(x_value_float=rx)
+  
+  if using_right_joystick_y:
     ry = analogs["Right"]["Up"] - analogs["Right"]["Down"]
-    gamepad.right_joystick_float(x_value_float=rx, y_value_float=ry)
+    gamepad.right_joystick_float_y(y_value_float=ry)    
 
   # Left Joystick
-  if using_left_joysticks:
+  if using_left_joystick_x:
     lx = analogs["Left"]["Right"] - analogs["Left"]["Left"]
+    gamepad.left_joystick_float_x(x_value_float=lx)
+
+  if using_left_joystick_y:
     ly = analogs["Left"]["Up"] - analogs["Left"]["Down"]
-    gamepad.left_joystick_float(x_value_float=lx, y_value_float=ly)
+    gamepad.left_joystick_float_y(y_value_float=ly)
+    
 
   # UPDATE
   gamepad.update()
