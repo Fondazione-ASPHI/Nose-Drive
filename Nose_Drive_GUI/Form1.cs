@@ -38,7 +38,7 @@ namespace Nose_Drive_GUI
         Process buildProcess;
 
         Dictionary<int, string> embeddedLogicsDictionary;
-        Dictionary<int, Panel> panelsDictionary;
+        Dictionary<int, string> panelsDictionary;
 
 
         public Form1()
@@ -111,11 +111,11 @@ namespace Nose_Drive_GUI
                 { 3, "Platform" }
             };
 
-            panelsDictionary = new Dictionary<int, Panel>()
+            panelsDictionary = new Dictionary<int, string>()
             {
-                { 1, drivePanel },
-                { 2, move3dPanel },
-                { 3, platformPanel }
+                { 1, "This logic is meant for driving games,\r\nusing the Left Joystick to steer and the Right\r\nand Left Triggers to accelerate and brake.\r\n\r\nNOSE DOWN: Right-Trigger (accelerator)\r\nNOSE UP: Left-Trigger (brake)\r\nNOSE RIGHT and LEFT: steer left and right\r\n" },
+                { 2, "This logic is meant for controlling a character\r\nthat moves in a 3D environment.\r\nWith the up and down movement of the nose\r\nthe character will run, while moving the nose\r\nhorizontally, the game camera will slide.\r\n\r\nBy pressing the \"8\" numeric keyboard key\r\nit is possible to switch to \"Aim\" mode, where\r\nboth horizontal and vertical movement of the\r\nhead will control the Right Joystick, to move the\r\ncamera.\r\nPressing the \"9\" key will revert to \"Move\" mode.\r\n" },
+                { 3, "This logic is meant for platform games.\r\nControl the left analog with the nose\r\nwhile press some buttons with eyebrows\r\nand mouth left or right.\r\n" }
             };
 
 
@@ -371,24 +371,22 @@ namespace Nose_Drive_GUI
 
         private void presetBox_SelectedIndexChanged_1(object sender, EventArgs e)
         {
-            // Manage instructions for embedded logics
-            foreach (Panel p in panelsDictionary.Values) { p.Visible = false; }
-            if (panelsDictionary.ContainsKey(presetBox.SelectedIndex))
-                panelsDictionary[presetBox.SelectedIndex].Visible = true;
-
             // Manage stuff when changing preset
             if (presetBox.SelectedIndex != 0)
             {
                 buildCheck.Checked = false;
                 buildCheck.Visible = false;
-                targetEmbeddedLogic = embeddedLogicsDictionary[presetBox.SelectedIndex];                
+                targetEmbeddedLogic = embeddedLogicsDictionary[presetBox.SelectedIndex];
                 //UpdateLogicGUI(ReadLogicFile(@"default_logics/" + targetEmbeddedLogic + @".json"));
+                descriptionPanel.Visible = true;
+                descriptionLabel.Text = panelsDictionary[presetBox.SelectedIndex];
                 
                 debugLabel.Text = targetEmbeddedLogic;
             }
             else
             {
                 buildCheck.Visible = true;
+                descriptionPanel.Visible = false;
             }
         }
 

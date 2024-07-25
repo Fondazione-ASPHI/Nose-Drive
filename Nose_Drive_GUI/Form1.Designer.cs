@@ -65,12 +65,8 @@
             scriptToolStripMenuItem = new ToolStripMenuItem();
             settingsToolStripMenuItem = new ToolStripMenuItem();
             logicBox = new GroupBox();
-            move3dPanel = new Panel();
-            label1 = new Label();
-            drivePanel = new Panel();
-            driveLabel = new Label();
-            platformPanel = new Panel();
-            label8 = new Label();
+            descriptionPanel = new Panel();
+            descriptionLabel = new Label();
             presetBox = new ComboBox();
             removeScriptButton = new Button();
             groupBox2 = new GroupBox();
@@ -83,9 +79,7 @@
             ((System.ComponentModel.ISupportInitialize)noseHorBar).BeginInit();
             menuStrip1.SuspendLayout();
             logicBox.SuspendLayout();
-            move3dPanel.SuspendLayout();
-            drivePanel.SuspendLayout();
-            platformPanel.SuspendLayout();
+            descriptionPanel.SuspendLayout();
             groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
@@ -151,7 +145,7 @@
             mouthLeftDropdown.Location = new Point(195, 476);
             mouthLeftDropdown.Margin = new Padding(2);
             mouthLeftDropdown.Name = "mouthLeftDropdown";
-            mouthLeftDropdown.Size = new Size(160, 30);
+            mouthLeftDropdown.Size = new Size(171, 30);
             mouthLeftDropdown.TabIndex = 17;
             // 
             // label7
@@ -175,7 +169,7 @@
             mouthRightDropdown.Location = new Point(195, 423);
             mouthRightDropdown.Margin = new Padding(2);
             mouthRightDropdown.Name = "mouthRightDropdown";
-            mouthRightDropdown.Size = new Size(160, 30);
+            mouthRightDropdown.Size = new Size(171, 30);
             mouthRightDropdown.TabIndex = 15;
             // 
             // eyebrowsDropdown
@@ -187,7 +181,7 @@
             eyebrowsDropdown.Location = new Point(195, 370);
             eyebrowsDropdown.Margin = new Padding(2);
             eyebrowsDropdown.Name = "eyebrowsDropdown";
-            eyebrowsDropdown.Size = new Size(160, 30);
+            eyebrowsDropdown.Size = new Size(171, 30);
             eyebrowsDropdown.TabIndex = 13;
             // 
             // label4
@@ -212,7 +206,7 @@
             noseDownDropdown.Location = new Point(195, 318);
             noseDownDropdown.Margin = new Padding(2);
             noseDownDropdown.Name = "noseDownDropdown";
-            noseDownDropdown.Size = new Size(160, 30);
+            noseDownDropdown.Size = new Size(171, 30);
             noseDownDropdown.TabIndex = 11;
             // 
             // label5
@@ -236,7 +230,7 @@
             noseUpDropdown.Location = new Point(195, 265);
             noseUpDropdown.Margin = new Padding(2);
             noseUpDropdown.Name = "noseUpDropdown";
-            noseUpDropdown.Size = new Size(160, 30);
+            noseUpDropdown.Size = new Size(171, 30);
             noseUpDropdown.TabIndex = 9;
             // 
             // label3
@@ -260,7 +254,7 @@
             noseLeftDropdown.Location = new Point(195, 212);
             noseLeftDropdown.Margin = new Padding(2);
             noseLeftDropdown.Name = "noseLeftDropdown";
-            noseLeftDropdown.Size = new Size(160, 30);
+            noseLeftDropdown.Size = new Size(171, 30);
             noseLeftDropdown.TabIndex = 7;
             noseLeftDropdown.SelectedIndexChanged += comboBox2_SelectedIndexChanged;
             // 
@@ -286,7 +280,7 @@
             noseRightDropdown.Location = new Point(195, 159);
             noseRightDropdown.Margin = new Padding(2);
             noseRightDropdown.Name = "noseRightDropdown";
-            noseRightDropdown.Size = new Size(160, 30);
+            noseRightDropdown.Size = new Size(171, 30);
             noseRightDropdown.TabIndex = 5;
             noseRightDropdown.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
             // 
@@ -483,9 +477,7 @@
             // 
             // logicBox
             // 
-            logicBox.Controls.Add(move3dPanel);
-            logicBox.Controls.Add(drivePanel);
-            logicBox.Controls.Add(platformPanel);
+            logicBox.Controls.Add(descriptionPanel);
             logicBox.Controls.Add(presetBox);
             logicBox.Controls.Add(label11);
             logicBox.Controls.Add(label2);
@@ -512,59 +504,23 @@
             logicBox.TabStop = false;
             logicBox.Text = "LOGIC";
             // 
-            // move3dPanel
+            // descriptionPanel
             // 
-            move3dPanel.Controls.Add(label1);
-            move3dPanel.Location = new Point(7, 137);
-            move3dPanel.Name = "move3dPanel";
-            move3dPanel.Size = new Size(373, 388);
-            move3dPanel.TabIndex = 49;
+            descriptionPanel.Controls.Add(descriptionLabel);
+            descriptionPanel.Location = new Point(14, 137);
+            descriptionPanel.Name = "descriptionPanel";
+            descriptionPanel.Size = new Size(373, 388);
+            descriptionPanel.TabIndex = 49;
             // 
-            // label1
+            // descriptionLabel
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Calibri", 18F, FontStyle.Regular, GraphicsUnit.Pixel, 0);
-            label1.Location = new Point(20, 22);
-            label1.Name = "label1";
-            label1.Size = new Size(360, 286);
-            label1.TabIndex = 0;
-            label1.Text = resources.GetString("label1.Text");
-            // 
-            // drivePanel
-            // 
-            drivePanel.Controls.Add(driveLabel);
-            drivePanel.Location = new Point(7, 137);
-            drivePanel.Name = "drivePanel";
-            drivePanel.Size = new Size(373, 388);
-            drivePanel.TabIndex = 48;
-            // 
-            // driveLabel
-            // 
-            driveLabel.AutoSize = true;
-            driveLabel.Font = new Font("Calibri", 18F, FontStyle.Regular, GraphicsUnit.Pixel, 0);
-            driveLabel.Location = new Point(20, 22);
-            driveLabel.Name = "driveLabel";
-            driveLabel.Size = new Size(329, 154);
-            driveLabel.TabIndex = 0;
-            driveLabel.Text = resources.GetString("driveLabel.Text");
-            // 
-            // platformPanel
-            // 
-            platformPanel.Controls.Add(label8);
-            platformPanel.Location = new Point(7, 137);
-            platformPanel.Name = "platformPanel";
-            platformPanel.Size = new Size(373, 388);
-            platformPanel.TabIndex = 49;
-            // 
-            // label8
-            // 
-            label8.AutoSize = true;
-            label8.Font = new Font("Calibri", 18F, FontStyle.Regular, GraphicsUnit.Pixel, 0);
-            label8.Location = new Point(20, 22);
-            label8.Name = "label8";
-            label8.Size = new Size(305, 88);
-            label8.TabIndex = 0;
-            label8.Text = "This logic is meant for platform games.\r\nControl the left analog with the nose\r\nwhile press some buttons with eyebrows\r\nand mouth left or right.";
+            descriptionLabel.AutoSize = true;
+            descriptionLabel.Font = new Font("Calibri", 18F, FontStyle.Regular, GraphicsUnit.Pixel, 0);
+            descriptionLabel.Location = new Point(10, 22);
+            descriptionLabel.Name = "descriptionLabel";
+            descriptionLabel.Size = new Size(360, 286);
+            descriptionLabel.TabIndex = 0;
+            descriptionLabel.Text = resources.GetString("descriptionLabel.Text");
             // 
             // presetBox
             // 
@@ -577,7 +533,7 @@
             presetBox.Location = new Point(111, 67);
             presetBox.Margin = new Padding(2);
             presetBox.Name = "presetBox";
-            presetBox.Size = new Size(244, 47);
+            presetBox.Size = new Size(255, 47);
             presetBox.TabIndex = 23;
             presetBox.SelectedIndexChanged += presetBox_SelectedIndexChanged_1;
             // 
@@ -673,12 +629,8 @@
             menuStrip1.PerformLayout();
             logicBox.ResumeLayout(false);
             logicBox.PerformLayout();
-            move3dPanel.ResumeLayout(false);
-            move3dPanel.PerformLayout();
-            drivePanel.ResumeLayout(false);
-            drivePanel.PerformLayout();
-            platformPanel.ResumeLayout(false);
-            platformPanel.PerformLayout();
+            descriptionPanel.ResumeLayout(false);
+            descriptionPanel.PerformLayout();
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
@@ -731,8 +683,8 @@
         private Button removeScriptButton;
         private Panel drivePanel;
         private Label driveLabel;
-        private Panel move3dPanel;
-        private Label label1;
+        private Panel descriptionPanel;
+        private Label descriptionLabel;
         private Panel platformPanel;
         private Label label8;
     }
