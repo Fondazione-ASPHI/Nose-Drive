@@ -110,7 +110,8 @@ def logic(nose_x, nose_y, mouth_x, head_tilt, trigger_eyebrows, trigger_mouth_op
     }
   }
 
-  using_joysticks = False
+  using_right_joysticks = False
+  using_left_joysticks = False
 
   for movement in keyBinds:
 
@@ -119,7 +120,6 @@ def logic(nose_x, nose_y, mouth_x, head_tilt, trigger_eyebrows, trigger_mouth_op
 
     # JOYSTICKS
     if "Joystick" in virtual_input:
-      using_joysticks = True
       keywords = virtual_input.split(" ")
       joyside = keywords[0]
       direction = keywords[2]
@@ -127,6 +127,8 @@ def logic(nose_x, nose_y, mouth_x, head_tilt, trigger_eyebrows, trigger_mouth_op
         analogs[joyside][direction] = analogMovements[movement]
       elif movement in booleanMovements:
         analogs[joyside][direction] = booleanMovements[movement]
+      using_right_joysticks = joyside == "Right"
+      using_left_joysticks = joyside == "Left"
 
 
     # BUTTONS
@@ -137,10 +139,10 @@ def logic(nose_x, nose_y, mouth_x, head_tilt, trigger_eyebrows, trigger_mouth_op
         press = analogMovements[movement] > 0.5
       elif movement in booleanMovements:
         press = booleanMovements[movement]
-        if press:                  
-          gamepad.press_button(button=btn_code)
-        else:
-          gamepad.release_button(button=btn_code)
+      if press:
+        gamepad.press_button(button=btn_code)
+      else:
+        gamepad.release_button(button=btn_code)
 
       
     # TRIGGERS
@@ -151,13 +153,14 @@ def logic(nose_x, nose_y, mouth_x, head_tilt, trigger_eyebrows, trigger_mouth_op
         triggerfunctions[virtual_input](booleanMovements[movement])
 
 
-  if using_joysticks:
-    # Right Joystick
+  # Right Joystick
+  if using_right_joysticks:    
     rx = analogs["Right"]["Right"] - analogs["Right"]["Left"]
     ry = analogs["Right"]["Up"] - analogs["Right"]["Down"]
     gamepad.right_joystick_float(x_value_float=rx, y_value_float=ry)
 
-    # Left Joystick
+  # Left Joystick
+  if using_left_joysticks:
     lx = analogs["Left"]["Right"] - analogs["Left"]["Left"]
     ly = analogs["Left"]["Up"] - analogs["Left"]["Down"]
     gamepad.left_joystick_float(x_value_float=lx, y_value_float=ly)
