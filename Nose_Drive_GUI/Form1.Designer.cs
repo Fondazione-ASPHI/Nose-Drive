@@ -117,6 +117,7 @@
             // 
             // label11
             // 
+            label11.AccessibleName = "Eyebrows";
             label11.AutoSize = true;
             label11.Font = new Font("Calibri", 24F, FontStyle.Regular, GraphicsUnit.Pixel);
             label11.ForeColor = Color.White;
@@ -129,6 +130,7 @@
             // 
             // label6
             // 
+            label6.AccessibleName = "Mouth Left";
             label6.AutoSize = true;
             label6.Font = new Font("Calibri", 24F, FontStyle.Regular, GraphicsUnit.Pixel);
             label6.ForeColor = Color.White;
@@ -141,6 +143,8 @@
             // 
             // mouthLeftDropdown
             // 
+            mouthLeftDropdown.AccessibleDescription = "Use this dropdown to assign a gamepad button to the mouth left movement";
+            mouthLeftDropdown.AccessibleName = "Mouth Left Dropdown";
             mouthLeftDropdown.DropDownStyle = ComboBoxStyle.DropDownList;
             mouthLeftDropdown.Font = new Font("Calibri", 18F, FontStyle.Regular, GraphicsUnit.Pixel);
             mouthLeftDropdown.FormattingEnabled = true;
@@ -153,6 +157,7 @@
             // 
             // label7
             // 
+            label7.AccessibleName = "Mouth Right";
             label7.AutoSize = true;
             label7.Font = new Font("Calibri", 24F, FontStyle.Regular, GraphicsUnit.Pixel);
             label7.ForeColor = Color.White;
@@ -165,6 +170,8 @@
             // 
             // mouthRightDropdown
             // 
+            mouthRightDropdown.AccessibleDescription = "Use this dropdown to assign a gamepad button to the mouth right movement";
+            mouthRightDropdown.AccessibleName = "Mouth Right Dropdown";
             mouthRightDropdown.DropDownStyle = ComboBoxStyle.DropDownList;
             mouthRightDropdown.Font = new Font("Calibri", 18F, FontStyle.Regular, GraphicsUnit.Pixel);
             mouthRightDropdown.FormattingEnabled = true;
@@ -177,6 +184,8 @@
             // 
             // eyebrowsDropdown
             // 
+            eyebrowsDropdown.AccessibleDescription = "Use this dropdown to assign a gamepad button to the eyebrows movement";
+            eyebrowsDropdown.AccessibleName = "Eyebrows Dropdown";
             eyebrowsDropdown.DropDownStyle = ComboBoxStyle.DropDownList;
             eyebrowsDropdown.Font = new Font("Calibri", 18F, FontStyle.Regular, GraphicsUnit.Pixel);
             eyebrowsDropdown.FormattingEnabled = true;
@@ -189,6 +198,7 @@
             // 
             // label4
             // 
+            label4.AccessibleName = "Nose Down";
             label4.AutoSize = true;
             label4.Font = new Font("Calibri", 24F, FontStyle.Regular, GraphicsUnit.Pixel);
             label4.ForeColor = Color.White;
@@ -202,6 +212,8 @@
             // 
             // noseDownDropdown
             // 
+            noseDownDropdown.AccessibleDescription = "Use this dropdown to assign a gamepad button to the nose down movement";
+            noseDownDropdown.AccessibleName = "Nose Down Dropdown";
             noseDownDropdown.DropDownStyle = ComboBoxStyle.DropDownList;
             noseDownDropdown.Font = new Font("Calibri", 18F, FontStyle.Regular, GraphicsUnit.Pixel);
             noseDownDropdown.FormattingEnabled = true;
@@ -214,6 +226,7 @@
             // 
             // label5
             // 
+            label5.AccessibleName = "Nose Up";
             label5.AutoSize = true;
             label5.Font = new Font("Calibri", 24F, FontStyle.Regular, GraphicsUnit.Pixel);
             label5.ForeColor = Color.White;
@@ -226,6 +239,8 @@
             // 
             // noseUpDropdown
             // 
+            noseUpDropdown.AccessibleDescription = "Use this dropdown to assign a gamepad button to the nose up movement";
+            noseUpDropdown.AccessibleName = "Nose Up Dropdown";
             noseUpDropdown.DropDownStyle = ComboBoxStyle.DropDownList;
             noseUpDropdown.Font = new Font("Calibri", 18F, FontStyle.Regular, GraphicsUnit.Pixel);
             noseUpDropdown.FormattingEnabled = true;
@@ -238,6 +253,7 @@
             // 
             // label3
             // 
+            label3.AccessibleName = "Nose Left";
             label3.AutoSize = true;
             label3.Font = new Font("Calibri", 24F, FontStyle.Regular, GraphicsUnit.Pixel);
             label3.ForeColor = Color.White;
@@ -250,6 +266,8 @@
             // 
             // noseLeftDropdown
             // 
+            noseLeftDropdown.AccessibleDescription = "Use this dropdown to assign a gamepad button to the nose left movement";
+            noseLeftDropdown.AccessibleName = "Nose Left Dropdown";
             noseLeftDropdown.DropDownStyle = ComboBoxStyle.DropDownList;
             noseLeftDropdown.Font = new Font("Calibri", 18F, FontStyle.Regular, GraphicsUnit.Pixel);
             noseLeftDropdown.FormattingEnabled = true;
@@ -263,6 +281,7 @@
             // 
             // label2
             // 
+            label2.AccessibleName = "Nose Right";
             label2.AutoSize = true;
             label2.Font = new Font("Calibri", 24F, FontStyle.Regular, GraphicsUnit.Pixel);
             label2.ForeColor = Color.White;
@@ -276,6 +295,8 @@
             // 
             // noseRightDropdown
             // 
+            noseRightDropdown.AccessibleDescription = "Use this dropdown to assign a gamepad button to the nose right movement";
+            noseRightDropdown.AccessibleName = "Nose Right Dropdown";
             noseRightDropdown.DropDownStyle = ComboBoxStyle.DropDownList;
             noseRightDropdown.Font = new Font("Calibri", 18F, FontStyle.Regular, GraphicsUnit.Pixel);
             noseRightDropdown.FormattingEnabled = true;
