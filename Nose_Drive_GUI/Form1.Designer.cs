@@ -57,12 +57,12 @@
             forceCompileCheck = new CheckBox();
             menuStrip1 = new MenuStrip();
             saveToolStripMenuItem = new ToolStripMenuItem();
-            presetToolStripMenuItem1 = new ToolStripMenuItem();
-            sensibilityValuesToolStripMenuItem = new ToolStripMenuItem();
+            savePresetMenuBtn = new ToolStripMenuItem();
+            saveSensibilityMenuBtn = new ToolStripMenuItem();
             loadScriptToolStripMenuItem = new ToolStripMenuItem();
-            presetToolStripMenuItem = new ToolStripMenuItem();
-            sensibilityToolStripMenuItem = new ToolStripMenuItem();
-            scriptToolStripMenuItem = new ToolStripMenuItem();
+            loadPresetMenuBtn = new ToolStripMenuItem();
+            loadSensibilityMenuBtn = new ToolStripMenuItem();
+            loadScriptMenuBtn = new ToolStripMenuItem();
             settingsToolStripMenuItem = new ToolStripMenuItem();
             logicBox = new GroupBox();
             descriptionPanel = new Panel();
@@ -73,6 +73,7 @@
             pictureBox1 = new PictureBox();
             openPythonFiles = new OpenFileDialog();
             openJSONFiles = new OpenFileDialog();
+            saveJSONFiles = new SaveFileDialog();
             ((System.ComponentModel.ISupportInitialize)eyebrowsBar).BeginInit();
             ((System.ComponentModel.ISupportInitialize)noseVerBar).BeginInit();
             ((System.ComponentModel.ISupportInitialize)mouthBar).BeginInit();
@@ -419,53 +420,54 @@
             // 
             // saveToolStripMenuItem
             // 
-            saveToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { presetToolStripMenuItem1, sensibilityValuesToolStripMenuItem });
+            saveToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { savePresetMenuBtn, saveSensibilityMenuBtn });
             saveToolStripMenuItem.Font = new Font("Calibri", 12F);
             saveToolStripMenuItem.Name = "saveToolStripMenuItem";
             saveToolStripMenuItem.Size = new Size(75, 33);
             saveToolStripMenuItem.Text = "Save";
             // 
-            // presetToolStripMenuItem1
+            // savePresetMenuBtn
             // 
-            presetToolStripMenuItem1.Name = "presetToolStripMenuItem1";
-            presetToolStripMenuItem1.Size = new Size(287, 38);
-            presetToolStripMenuItem1.Text = "Preset";
-            presetToolStripMenuItem1.Click += savePreset_Click;
+            savePresetMenuBtn.Name = "savePresetMenuBtn";
+            savePresetMenuBtn.Size = new Size(287, 38);
+            savePresetMenuBtn.Text = "Logic";
+            savePresetMenuBtn.Click += savePreset_Click;
             // 
-            // sensibilityValuesToolStripMenuItem
+            // saveSensibilityMenuBtn
             // 
-            sensibilityValuesToolStripMenuItem.Name = "sensibilityValuesToolStripMenuItem";
-            sensibilityValuesToolStripMenuItem.Size = new Size(287, 38);
-            sensibilityValuesToolStripMenuItem.Text = "Sensibility Values";
+            saveSensibilityMenuBtn.Name = "saveSensibilityMenuBtn";
+            saveSensibilityMenuBtn.Size = new Size(287, 38);
+            saveSensibilityMenuBtn.Text = "Sensibility Values";
+            saveSensibilityMenuBtn.Click += saveSensibilityValues;
             // 
             // loadScriptToolStripMenuItem
             // 
-            loadScriptToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { presetToolStripMenuItem, sensibilityToolStripMenuItem, scriptToolStripMenuItem });
+            loadScriptToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { loadPresetMenuBtn, loadSensibilityMenuBtn, loadScriptMenuBtn });
             loadScriptToolStripMenuItem.Font = new Font("Calibri", 12F);
             loadScriptToolStripMenuItem.Name = "loadScriptToolStripMenuItem";
             loadScriptToolStripMenuItem.Size = new Size(77, 33);
             loadScriptToolStripMenuItem.Text = "Load";
             // 
-            // presetToolStripMenuItem
+            // loadPresetMenuBtn
             // 
-            presetToolStripMenuItem.Name = "presetToolStripMenuItem";
-            presetToolStripMenuItem.Size = new Size(287, 38);
-            presetToolStripMenuItem.Text = "Preset";
-            presetToolStripMenuItem.Click += loadPreset_Click;
+            loadPresetMenuBtn.Name = "loadPresetMenuBtn";
+            loadPresetMenuBtn.Size = new Size(287, 38);
+            loadPresetMenuBtn.Text = "Logic";
+            loadPresetMenuBtn.Click += loadPreset_Click;
             // 
-            // sensibilityToolStripMenuItem
+            // loadSensibilityMenuBtn
             // 
-            sensibilityToolStripMenuItem.Name = "sensibilityToolStripMenuItem";
-            sensibilityToolStripMenuItem.Size = new Size(287, 38);
-            sensibilityToolStripMenuItem.Text = "Sensibility Values";
-            sensibilityToolStripMenuItem.Click += loadSettings_Click;
+            loadSensibilityMenuBtn.Name = "loadSensibilityMenuBtn";
+            loadSensibilityMenuBtn.Size = new Size(287, 38);
+            loadSensibilityMenuBtn.Text = "Sensibility Values";
+            loadSensibilityMenuBtn.Click += loadSettings_Click;
             // 
-            // scriptToolStripMenuItem
+            // loadScriptMenuBtn
             // 
-            scriptToolStripMenuItem.Name = "scriptToolStripMenuItem";
-            scriptToolStripMenuItem.Size = new Size(287, 38);
-            scriptToolStripMenuItem.Text = "Script";
-            scriptToolStripMenuItem.Click += loadScript_Click;
+            loadScriptMenuBtn.Name = "loadScriptMenuBtn";
+            loadScriptMenuBtn.Size = new Size(287, 38);
+            loadScriptMenuBtn.Text = "Script";
+            loadScriptMenuBtn.Click += loadScript_Click;
             // 
             // settingsToolStripMenuItem
             // 
@@ -529,7 +531,7 @@
             presetBox.Font = new Font("Calibri", 32F, FontStyle.Regular, GraphicsUnit.Pixel);
             presetBox.ForeColor = Color.White;
             presetBox.FormattingEnabled = true;
-            presetBox.Items.AddRange(new object[] { "Custom preset", "Driving games", "3D Movement", "Platform" });
+            presetBox.Items.AddRange(new object[] { "Custom logic", "Driving games", "3D Movement", "Platform" });
             presetBox.Location = new Point(111, 67);
             presetBox.Margin = new Padding(2);
             presetBox.Name = "presetBox";
@@ -598,6 +600,10 @@
             openJSONFiles.Filter = "Json files (*.json)|*.json";
             openJSONFiles.InitialDirectory = "currentPath";
             openJSONFiles.Title = "Open JSON file";
+            // 
+            // saveJSONFiles
+            // 
+            saveJSONFiles.Filter = "Json files (*.json)|*.json";
             // 
             // Form1
             // 
@@ -673,11 +679,11 @@
         private PictureBox pictureBox1;
         private ComboBox presetBox;
         private ToolStripMenuItem saveToolStripMenuItem;
-        private ToolStripMenuItem presetToolStripMenuItem;
-        private ToolStripMenuItem scriptToolStripMenuItem;
-        private ToolStripMenuItem presetToolStripMenuItem1;
-        private ToolStripMenuItem sensibilityValuesToolStripMenuItem;
-        private ToolStripMenuItem sensibilityToolStripMenuItem;
+        private ToolStripMenuItem loadPresetMenuBtn;
+        private ToolStripMenuItem loadScriptMenuBtn;
+        private ToolStripMenuItem savePresetMenuBtn;
+        private ToolStripMenuItem saveSensibilityMenuBtn;
+        private ToolStripMenuItem loadSensibilityMenuBtn;
         private OpenFileDialog openPythonFiles;
         private OpenFileDialog openJSONFiles;
         private Button removeScriptButton;
@@ -687,5 +693,6 @@
         private Label descriptionLabel;
         private Panel platformPanel;
         private Label label8;
+        private SaveFileDialog saveJSONFiles;
     }
 }

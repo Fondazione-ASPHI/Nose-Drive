@@ -63,7 +63,7 @@ namespace Nose_Drive_GUI
             //logicFilePath = logicFileInfo.FullName;
             logicData = ReadLogicFile(logicPath);
             UpdateLogicGUI(logicData);
-            
+
             removeScriptButton.Visible = false;
 
 
@@ -154,7 +154,7 @@ namespace Nose_Drive_GUI
             logicData.mouth_left = mouthLeftDropdown.Text;
         }
 
-       
+
         void UpdateLogicGUI(LogicData logicData)
         {
             if (logicData != null)
@@ -220,7 +220,24 @@ namespace Nose_Drive_GUI
         // Save .nose file
         private void savePreset_Click(object sender, EventArgs e)
         {
-            SaveLogicFile();
+            saveJSONFiles.ShowDialog();
+            if (openJSONFiles.FileName != null)
+            {
+                UpdateLogic();
+                string jsonString = JsonSerializer.Serialize(logicData);
+                File.WriteAllText(saveJSONFiles.FileName, jsonString);
+            }                
+        }
+
+        private void saveSensibilityValues(object sender, EventArgs e)
+        {
+            saveJSONFiles.ShowDialog();
+            if (openJSONFiles.FileName != null)
+            {
+                UpdateSettings();
+                string jsonString = JsonSerializer.Serialize(settingsData);
+                File.WriteAllText(saveJSONFiles.FileName, jsonString);
+            }
         }
 
         // Load .nose file
@@ -230,6 +247,8 @@ namespace Nose_Drive_GUI
             //logicPath = openJSONFiles.FileName;
             if (openJSONFiles.FileName != null)
             {
+                presetBox.SelectedIndex = 0;
+
                 File.Copy(openJSONFiles.FileName, logicPath, true);
                 UpdateLogicGUI(ReadLogicFile(logicPath));
 
@@ -252,7 +271,7 @@ namespace Nose_Drive_GUI
                 UpdateSettingsGUI(ReadSettingsFile(settingsPath));
 
                 debugLabel.Text = openJSONFiles.FileName;
-            }            
+            }
         }
 
         private void startButton_Click(object sender, EventArgs e)
@@ -274,7 +293,7 @@ namespace Nose_Drive_GUI
                     string buildName = new FileInfo(scriptPath).Name.Split('.')[0];
                     buildDir = @".\dist\" + buildName;
                     debugLabel.Text = buildName;
-                    
+
                     if (Directory.Exists(buildDir) && forceCompileCheck.Checked)
                     {
                         Directory.Delete(buildDir, true);
@@ -298,7 +317,7 @@ namespace Nose_Drive_GUI
                     buildProcess.Start();
                     buildProcess.WaitForExit();
                     Directory.Move(@".\dist\main", buildDir);
-                }                
+                }
 
                 startBuild = new Process
                 {
@@ -346,7 +365,7 @@ namespace Nose_Drive_GUI
                     };
                     startScript.Start();
                     startScript.WaitForExit();
-                }                
+                }
             }
         }
 
@@ -380,13 +399,17 @@ namespace Nose_Drive_GUI
                 //UpdateLogicGUI(ReadLogicFile(@"default_logics/" + targetEmbeddedLogic + @".json"));
                 descriptionPanel.Visible = true;
                 descriptionLabel.Text = panelsDictionary[presetBox.SelectedIndex];
-                
+                savePresetMenuBtn.Enabled = false;
+                //loadPresetMenuBtn.Enabled = false;
+
                 debugLabel.Text = targetEmbeddedLogic;
             }
             else
             {
                 buildCheck.Visible = true;
                 descriptionPanel.Visible = false;
+                savePresetMenuBtn.Enabled = true;
+                //loadPresetMenuBtn.Enabled = true;
             }
         }
 
@@ -489,6 +512,7 @@ namespace Nose_Drive_GUI
         {
 
         }
+
     }
 
     public abstract class JsonData
