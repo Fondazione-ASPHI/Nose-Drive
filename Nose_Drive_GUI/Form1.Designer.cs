@@ -525,6 +525,7 @@
             // 
             // settingsToolStripMenuItem
             // 
+            settingsToolStripMenuItem.AccessibleName = "Options menu item";
             settingsToolStripMenuItem.Font = new Font("Calibri", 12F);
             settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
             settingsToolStripMenuItem.Size = new Size(106, 33);
@@ -564,6 +565,7 @@
             // 
             // descriptionPanel
             // 
+            descriptionPanel.AccessibleName = "Description Panel";
             descriptionPanel.Controls.Add(descriptionLabel);
             descriptionPanel.Location = new Point(14, 137);
             descriptionPanel.Name = "descriptionPanel";
@@ -572,6 +574,7 @@
             // 
             // descriptionLabel
             // 
+            descriptionLabel.AccessibleName = "Description Label";
             descriptionLabel.AutoSize = true;
             descriptionLabel.Font = new Font("Calibri", 18F, FontStyle.Regular, GraphicsUnit.Pixel, 0);
             descriptionLabel.Location = new Point(10, 22);
@@ -639,6 +642,8 @@
             // 
             // pictureBox1
             // 
+            pictureBox1.AccessibleDescription = "Click this logo to view ASPHI Onlus website";
+            pictureBox1.AccessibleName = "ASPHI Onlus Logo";
             pictureBox1.BackgroundImage = Properties.Resources.path14;
             pictureBox1.Cursor = Cursors.Hand;
             pictureBox1.Location = new Point(0, 41);

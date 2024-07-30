@@ -45,6 +45,7 @@
             // 
             // previewButton
             // 
+            previewButton.AccessibleName = "Start preview Button";
             previewButton.BackColor = Color.FromArgb(242, 101, 34);
             previewButton.Cursor = Cursors.Hand;
             previewButton.Font = new Font("Calibri", 24F, FontStyle.Bold, GraphicsUnit.Pixel);
@@ -60,6 +61,7 @@
             // 
             // pictureBox1
             // 
+            pictureBox1.AccessibleName = "Camera preview";
             pictureBox1.BackColor = Color.Black;
             pictureBox1.Location = new Point(352, 84);
             pictureBox1.Name = "pictureBox1";
@@ -81,6 +83,8 @@
             // 
             // resetKeyBox
             // 
+            resetKeyBox.AccessibleDescription = "In this field a different keyboard letter can be assigned to reset the base position of the face tracking";
+            resetKeyBox.AccessibleName = "Reset base position key input field";
             resetKeyBox.Font = new Font("Calibri", 18F, FontStyle.Regular, GraphicsUnit.Pixel);
             resetKeyBox.Location = new Point(36, 189);
             resetKeyBox.Margin = new Padding(2);
@@ -92,6 +96,8 @@
             // 
             // pauseKeyBox
             // 
+            pauseKeyBox.AccessibleDescription = "In this field a different keyboard letter can be assigned to pause and resume the face tracking";
+            pauseKeyBox.AccessibleName = "Pause Key Input Field";
             pauseKeyBox.Font = new Font("Calibri", 18F, FontStyle.Regular, GraphicsUnit.Pixel);
             pauseKeyBox.Location = new Point(36, 91);
             pauseKeyBox.Margin = new Padding(2);
@@ -103,6 +109,7 @@
             // 
             // label8
             // 
+            label8.AccessibleName = "Pause Key Label";
             label8.AutoSize = true;
             label8.Font = new Font("Calibri", 24F, FontStyle.Regular, GraphicsUnit.Pixel);
             label8.ForeColor = Color.White;
@@ -112,9 +119,11 @@
             label8.Size = new Size(110, 29);
             label8.TabIndex = 42;
             label8.Text = "Pause Key";
+            label8.Click += label8_Click;
             // 
             // label13
             // 
+            label13.AccessibleName = "Calibration Time Label";
             label13.AutoSize = true;
             label13.Font = new Font("Calibri", 24F, FontStyle.Regular, GraphicsUnit.Pixel);
             label13.ForeColor = Color.White;
@@ -138,6 +147,7 @@
             // 
             // label12
             // 
+            label12.AccessibleName = "Reset Position Key Label";
             label12.AutoSize = true;
             label12.Font = new Font("Calibri", 24F, FontStyle.Regular, GraphicsUnit.Pixel);
             label12.ForeColor = Color.White;
@@ -163,6 +173,7 @@
             // 
             // camerasBox
             // 
+            camerasBox.AccessibleName = "Choose camera dropdown";
             camerasBox.BackColor = Color.FromArgb(44, 39, 53);
             camerasBox.DropDownStyle = ComboBoxStyle.DropDownList;
             camerasBox.Font = new Font("Calibri", 18F, FontStyle.Regular, GraphicsUnit.Pixel);
