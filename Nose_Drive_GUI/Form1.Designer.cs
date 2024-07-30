@@ -87,6 +87,8 @@
             // 
             // Start
             // 
+            Start.AccessibleDescription = "Starts the face tracking and virtual gamepad emulation, using the selected logic and sensibilities data.";
+            Start.AccessibleName = "Start Button";
             Start.BackColor = Color.FromArgb(242, 101, 34);
             Start.Cursor = Cursors.Hand;
             Start.Font = new Font("Calibri", 38F, FontStyle.Bold, GraphicsUnit.Pixel);
@@ -287,6 +289,8 @@
             // 
             // eyebrowsBar
             // 
+            eyebrowsBar.AccessibleDescription = "Use this slider to adjust the sensibility of the eyebrows movement";
+            eyebrowsBar.AccessibleName = "Eyebrows Slider";
             eyebrowsBar.LargeChange = 1;
             eyebrowsBar.Location = new Point(23, 340);
             eyebrowsBar.Margin = new Padding(2, 4, 2, 4);
@@ -298,6 +302,8 @@
             // 
             // noseVerBar
             // 
+            noseVerBar.AccessibleDescription = "Use this slider to adjust the sensibility of the nose vertical movement";
+            noseVerBar.AccessibleName = "Nose Vertical Slider";
             noseVerBar.LargeChange = 1;
             noseVerBar.Location = new Point(23, 221);
             noseVerBar.Margin = new Padding(2, 4, 2, 4);
@@ -309,6 +315,8 @@
             // 
             // mouthBar
             // 
+            mouthBar.AccessibleDescription = "Use this slider to adjust the sensibility of the mouth horizontal movement";
+            mouthBar.AccessibleName = "Mouth Horizontal Slider";
             mouthBar.LargeChange = 1;
             mouthBar.Location = new Point(23, 459);
             mouthBar.Margin = new Padding(2, 4, 2, 4);
@@ -320,6 +328,8 @@
             // 
             // noseHorBar
             // 
+            noseHorBar.AccessibleDescription = "Use this slider to adjust the sensibility of the nose horizontal movement";
+            noseHorBar.AccessibleName = "Nose Horizontal Slider";
             noseHorBar.LargeChange = 1;
             noseHorBar.Location = new Point(23, 102);
             noseHorBar.Margin = new Padding(2, 4, 2, 4);
@@ -331,6 +341,8 @@
             // 
             // label14
             // 
+            label14.AccessibleDescription = "";
+            label14.AccessibleName = "Eyebrows Label";
             label14.AutoSize = true;
             label14.Font = new Font("Calibri", 24F, FontStyle.Regular, GraphicsUnit.Pixel);
             label14.ForeColor = Color.White;
@@ -343,6 +355,7 @@
             // 
             // label15
             // 
+            label15.AccessibleName = "Mouth Horizontal Label";
             label15.AutoSize = true;
             label15.Font = new Font("Calibri", 24F, FontStyle.Regular, GraphicsUnit.Pixel);
             label15.ForeColor = Color.White;
@@ -355,6 +368,7 @@
             // 
             // label16
             // 
+            label16.AccessibleName = "Nose Vertical Label";
             label16.AutoSize = true;
             label16.Font = new Font("Calibri", 24F, FontStyle.Regular, GraphicsUnit.Pixel);
             label16.ForeColor = Color.White;
@@ -367,6 +381,7 @@
             // 
             // label17
             // 
+            label17.AccessibleName = "Nose Horizontal Label";
             label17.AutoSize = true;
             label17.Font = new Font("Calibri", 24F, FontStyle.Regular, GraphicsUnit.Pixel);
             label17.ForeColor = Color.White;
@@ -380,6 +395,8 @@
             // 
             // buildCheck
             // 
+            buildCheck.AccessibleDescription = "Check this if you want to build the logic into binaries. Takes a bit the first time but then should have less input lag.";
+            buildCheck.AccessibleName = "Build Check";
             buildCheck.AutoSize = true;
             buildCheck.Font = new Font("Calibri", 24F, FontStyle.Regular, GraphicsUnit.Pixel);
             buildCheck.ForeColor = Color.White;
@@ -394,6 +411,8 @@
             // 
             // forceCompileCheck
             // 
+            forceCompileCheck.AccessibleDescription = "Check this if you want to force recompile logics that you already compiled using the build check.";
+            forceCompileCheck.AccessibleName = "Force recompile Check";
             forceCompileCheck.AutoSize = true;
             forceCompileCheck.Font = new Font("Calibri", 24F, FontStyle.Regular, GraphicsUnit.Pixel);
             forceCompileCheck.ForeColor = Color.White;
@@ -420,6 +439,8 @@
             // 
             // saveToolStripMenuItem
             // 
+            saveToolStripMenuItem.AccessibleDescription = "Menu for saving logic or sensibility data in json files";
+            saveToolStripMenuItem.AccessibleName = "Save Menu Item";
             saveToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { savePresetMenuBtn, saveSensibilityMenuBtn });
             saveToolStripMenuItem.Font = new Font("Calibri", 12F);
             saveToolStripMenuItem.Name = "saveToolStripMenuItem";
@@ -428,6 +449,8 @@
             // 
             // savePresetMenuBtn
             // 
+            savePresetMenuBtn.AccessibleDescription = "Save Logic data in a JSON file";
+            savePresetMenuBtn.AccessibleName = "Save Logic Button";
             savePresetMenuBtn.Name = "savePresetMenuBtn";
             savePresetMenuBtn.Size = new Size(287, 38);
             savePresetMenuBtn.Text = "Logic";
@@ -435,6 +458,8 @@
             // 
             // saveSensibilityMenuBtn
             // 
+            saveSensibilityMenuBtn.AccessibleDescription = "Save Sensibility data in a JSON file";
+            saveSensibilityMenuBtn.AccessibleName = "Save Sensibility Button";
             saveSensibilityMenuBtn.Name = "saveSensibilityMenuBtn";
             saveSensibilityMenuBtn.Size = new Size(287, 38);
             saveSensibilityMenuBtn.Text = "Sensibility Values";
@@ -442,6 +467,8 @@
             // 
             // loadScriptToolStripMenuItem
             // 
+            loadScriptToolStripMenuItem.AccessibleDescription = "Menu for loading logic or sensibility data in json files";
+            loadScriptToolStripMenuItem.AccessibleName = "Load Menu Item";
             loadScriptToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { loadPresetMenuBtn, loadSensibilityMenuBtn, loadScriptMenuBtn });
             loadScriptToolStripMenuItem.Font = new Font("Calibri", 12F);
             loadScriptToolStripMenuItem.Name = "loadScriptToolStripMenuItem";
@@ -450,6 +477,8 @@
             // 
             // loadPresetMenuBtn
             // 
+            loadPresetMenuBtn.AccessibleDescription = "Load a Logic JSON file";
+            loadPresetMenuBtn.AccessibleName = "Load Logic Button";
             loadPresetMenuBtn.Name = "loadPresetMenuBtn";
             loadPresetMenuBtn.Size = new Size(287, 38);
             loadPresetMenuBtn.Text = "Logic";
@@ -457,6 +486,8 @@
             // 
             // loadSensibilityMenuBtn
             // 
+            loadSensibilityMenuBtn.AccessibleDescription = "Load a Sensibility JSON file";
+            loadSensibilityMenuBtn.AccessibleName = "Load Sensibility Button";
             loadSensibilityMenuBtn.Name = "loadSensibilityMenuBtn";
             loadSensibilityMenuBtn.Size = new Size(287, 38);
             loadSensibilityMenuBtn.Text = "Sensibility Values";
@@ -464,6 +495,8 @@
             // 
             // loadScriptMenuBtn
             // 
+            loadScriptMenuBtn.AccessibleDescription = "Load custom pytnon script that implements the nose-drive library. It will replace the logic in the GUI.";
+            loadScriptMenuBtn.AccessibleName = "Load Script Button";
             loadScriptMenuBtn.Name = "loadScriptMenuBtn";
             loadScriptMenuBtn.Size = new Size(287, 38);
             loadScriptMenuBtn.Text = "Script";
@@ -479,6 +512,8 @@
             // 
             // logicBox
             // 
+            logicBox.AccessibleDescription = "Logic box containing dropdown menus to bind each movement to a gamepad button.";
+            logicBox.AccessibleName = "Logic Box Container";
             logicBox.Controls.Add(descriptionPanel);
             logicBox.Controls.Add(presetBox);
             logicBox.Controls.Add(label11);
@@ -526,6 +561,8 @@
             // 
             // presetBox
             // 
+            presetBox.AccessibleDescription = "Selection box to change logic, can be custom or one of the default embedded logics.";
+            presetBox.AccessibleName = "Logic selection box";
             presetBox.BackColor = Color.FromArgb(44, 39, 53);
             presetBox.DropDownStyle = ComboBoxStyle.DropDownList;
             presetBox.Font = new Font("Calibri", 32F, FontStyle.Regular, GraphicsUnit.Pixel);
@@ -541,6 +578,8 @@
             // 
             // removeScriptButton
             // 
+            removeScriptButton.AccessibleDescription = "Remove currently loaded python nose-drive script and return to GUI custom logic selection.";
+            removeScriptButton.AccessibleName = "Remove Script Button";
             removeScriptButton.BackColor = Color.FromArgb(242, 101, 34);
             removeScriptButton.Cursor = Cursors.Hand;
             removeScriptButton.Font = new Font("Calibri", 24F, FontStyle.Bold, GraphicsUnit.Pixel);
@@ -556,14 +595,16 @@
             // 
             // groupBox2
             // 
-            groupBox2.Controls.Add(eyebrowsBar);
+            groupBox2.AccessibleDescription = "Sensibility box containing sliders to adjust the sensibility of the supported facial movements";
+            groupBox2.AccessibleName = "Sensibility Box Container";
             groupBox2.Controls.Add(label17);
-            groupBox2.Controls.Add(noseVerBar);
             groupBox2.Controls.Add(label16);
-            groupBox2.Controls.Add(mouthBar);
             groupBox2.Controls.Add(label15);
-            groupBox2.Controls.Add(noseHorBar);
             groupBox2.Controls.Add(label14);
+            groupBox2.Controls.Add(eyebrowsBar);
+            groupBox2.Controls.Add(noseHorBar);
+            groupBox2.Controls.Add(noseVerBar);
+            groupBox2.Controls.Add(mouthBar);
             groupBox2.Font = new Font("Calibri", 32F, FontStyle.Bold, GraphicsUnit.Pixel);
             groupBox2.ForeColor = Color.White;
             groupBox2.Location = new Point(659, 154);
@@ -607,6 +648,8 @@
             // 
             // Form1
             // 
+            AccessibleDescription = "A graphical user interface for the nose-drive project.";
+            AccessibleName = "Nose Drive GUI";
             AutoScaleDimensions = new SizeF(9F, 22F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(44, 39, 53);
