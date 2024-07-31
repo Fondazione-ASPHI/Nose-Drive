@@ -10,12 +10,11 @@ AUTHORS: [ASPHI Onlus](https://asphi.it/games)
 ## Demo video ##
 [![YouTube sample video](Images/Nose_Drive.png)](https://youtube.com/playlist?list=PLFr79ayA5ASsFJidifoh-_BYXApgLFIkx&si=cHLuuedKiLudvU_A)
 
-## Quick start and configuration ##
+## Quick start with Nose Drive GUI - Desktop App ##
 * Install the [ViGEmBus driver](https://github.com/ViGEm/ViGEmBus/releases)
-* Download and extract our [latest release ZIP file](https://github.com/Fondazione-ASPHI/Nose-Drive/releases)
-* Double click on the "START.bat" file
-* Wait for your webcam image to show up
-* Stand still in front of the webcam in your base position for 5 seconds (can be edited)
+* Download and install our [latest release](https://github.com/Fondazione-ASPHI/Nose-Drive/releases)
+* Choose game mode and press the START button
+* Stand still in front of the webcam in your base position for 3 seconds (can be edited)
 * Start playing your game
 * The "N" key on the keyboard can always be pressed to reset the base position to the actual position
 * The "P" key pauses and resumes inputs simulation
