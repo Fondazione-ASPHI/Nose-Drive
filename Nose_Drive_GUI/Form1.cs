@@ -1,3 +1,4 @@
+using Emgu.CV;
 using System.Diagnostics;
 using System.Reflection.Emit;
 using System.Text.Json;
@@ -204,24 +205,27 @@ namespace Nose_Drive_GUI
 
         private void loadScript_Click(object sender, EventArgs e)
         {
-            openPythonFiles.ShowDialog();
-            scriptPath = openPythonFiles.FileName;
-            logicBox.Visible = (scriptPath == "");
-            removeScriptButton.Visible = (scriptPath != "");
-            if (scriptPath != "")
+            DialogResult result = openPythonFiles.ShowDialog();
+            if (result == DialogResult.OK)
             {
-                buildCheck.Visible = true;
-                presetBox.SelectedIndex = 0;
-            }
+                scriptPath = openPythonFiles.FileName;
+                logicBox.Visible = (scriptPath == "");
+                removeScriptButton.Visible = (scriptPath != "");
+                if (scriptPath != "")
+                {
+                    buildCheck.Visible = true;
+                    presetBox.SelectedIndex = 0;
+                }
 
-            debugLabel.Text = openPythonFiles.FileName;
+                debugLabel.Text = openPythonFiles.FileName;
+            }
         }
 
         // Save .nose file
         private void savePreset_Click(object sender, EventArgs e)
         {
-            saveJSONFiles.ShowDialog();
-            if (openJSONFiles.FileName != null)
+            DialogResult result = saveJSONFiles.ShowDialog();
+            if (result == DialogResult.OK)
             {
                 UpdateLogic();
                 string jsonString = JsonSerializer.Serialize(logicData);
@@ -231,8 +235,8 @@ namespace Nose_Drive_GUI
 
         private void saveSensibilityValues(object sender, EventArgs e)
         {
-            saveJSONFiles.ShowDialog();
-            if (openJSONFiles.FileName != null)
+            DialogResult result = saveJSONFiles.ShowDialog();
+            if (result == DialogResult.OK)
             {
                 UpdateSettings();
                 string jsonString = JsonSerializer.Serialize(settingsData);
@@ -243,9 +247,8 @@ namespace Nose_Drive_GUI
         // Load .nose file
         private void loadPreset_Click(object sender, EventArgs e)
         {
-            openJSONFiles.ShowDialog();
-            //logicPath = openJSONFiles.FileName;
-            if (openJSONFiles.FileName != null)
+            DialogResult result = openJSONFiles.ShowDialog();
+            if (result == DialogResult.OK)
             {
                 presetBox.SelectedIndex = 0;
 
@@ -263,9 +266,8 @@ namespace Nose_Drive_GUI
 
         private void loadSettings_Click(object sender, EventArgs e)
         {
-            openJSONFiles.ShowDialog();
-            //settingsPath = openJSONFiles.FileName;
-            if (openJSONFiles.FileName != null)
+            DialogResult result = openJSONFiles.ShowDialog();
+            if (result == DialogResult.OK)
             {
                 File.Copy(openJSONFiles.FileName, settingsPath, true);
                 UpdateSettingsGUI(ReadSettingsFile(settingsPath));
