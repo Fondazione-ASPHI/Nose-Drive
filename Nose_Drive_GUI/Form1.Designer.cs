@@ -74,6 +74,8 @@
             openPythonFiles = new OpenFileDialog();
             openJSONFiles = new OpenFileDialog();
             saveJSONFiles = new SaveFileDialog();
+            backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            Stop = new Button();
             ((System.ComponentModel.ISupportInitialize)eyebrowsBar).BeginInit();
             ((System.ComponentModel.ISupportInitialize)noseVerBar).BeginInit();
             ((System.ComponentModel.ISupportInitialize)mouthBar).BeginInit();
@@ -124,7 +126,7 @@
             label11.Location = new Point(14, 370);
             label11.Margin = new Padding(2, 0, 2, 0);
             label11.Name = "label11";
-            label11.Size = new Size(107, 29);
+            label11.Size = new Size(111, 31);
             label11.TabIndex = 22;
             label11.Text = "Eyebrows";
             // 
@@ -137,7 +139,7 @@
             label6.Location = new Point(14, 476);
             label6.Margin = new Padding(2, 0, 2, 0);
             label6.Name = "label6";
-            label6.Size = new Size(119, 29);
+            label6.Size = new Size(121, 31);
             label6.TabIndex = 18;
             label6.Text = "Mouth left";
             // 
@@ -164,7 +166,7 @@
             label7.Location = new Point(14, 423);
             label7.Margin = new Padding(2, 0, 2, 0);
             label7.Name = "label7";
-            label7.Size = new Size(132, 29);
+            label7.Size = new Size(136, 31);
             label7.TabIndex = 16;
             label7.Text = "Mouth right";
             // 
@@ -205,7 +207,7 @@
             label4.Location = new Point(14, 318);
             label4.Margin = new Padding(2, 0, 2, 0);
             label4.Name = "label4";
-            label4.Size = new Size(124, 29);
+            label4.Size = new Size(128, 31);
             label4.TabIndex = 12;
             label4.Text = "Nose down";
             label4.Click += label4_Click;
@@ -233,7 +235,7 @@
             label5.Location = new Point(14, 265);
             label5.Margin = new Padding(2, 0, 2, 0);
             label5.Name = "label5";
-            label5.Size = new Size(94, 29);
+            label5.Size = new Size(97, 31);
             label5.TabIndex = 10;
             label5.Text = "Nose up";
             // 
@@ -260,7 +262,7 @@
             label3.Location = new Point(14, 212);
             label3.Margin = new Padding(2, 0, 2, 0);
             label3.Name = "label3";
-            label3.Size = new Size(101, 29);
+            label3.Size = new Size(104, 31);
             label3.TabIndex = 8;
             label3.Text = "Nose left";
             // 
@@ -288,7 +290,7 @@
             label2.Location = new Point(14, 159);
             label2.Margin = new Padding(2, 0, 2, 0);
             label2.Name = "label2";
-            label2.Size = new Size(114, 29);
+            label2.Size = new Size(119, 31);
             label2.TabIndex = 6;
             label2.Text = "Nose right";
             label2.Click += label2_Click;
@@ -317,7 +319,7 @@
             eyebrowsBar.Margin = new Padding(2, 4, 2, 4);
             eyebrowsBar.Maximum = 5;
             eyebrowsBar.Name = "eyebrowsBar";
-            eyebrowsBar.Size = new Size(193, 69);
+            eyebrowsBar.Size = new Size(193, 56);
             eyebrowsBar.TabIndex = 35;
             eyebrowsBar.Value = 3;
             // 
@@ -330,7 +332,7 @@
             noseVerBar.Margin = new Padding(2, 4, 2, 4);
             noseVerBar.Maximum = 5;
             noseVerBar.Name = "noseVerBar";
-            noseVerBar.Size = new Size(193, 69);
+            noseVerBar.Size = new Size(193, 56);
             noseVerBar.TabIndex = 34;
             noseVerBar.Value = 3;
             // 
@@ -343,7 +345,7 @@
             mouthBar.Margin = new Padding(2, 4, 2, 4);
             mouthBar.Maximum = 5;
             mouthBar.Name = "mouthBar";
-            mouthBar.Size = new Size(193, 69);
+            mouthBar.Size = new Size(193, 56);
             mouthBar.TabIndex = 33;
             mouthBar.Value = 3;
             // 
@@ -356,7 +358,7 @@
             noseHorBar.Margin = new Padding(2, 4, 2, 4);
             noseHorBar.Maximum = 5;
             noseHorBar.Name = "noseHorBar";
-            noseHorBar.Size = new Size(193, 69);
+            noseHorBar.Size = new Size(193, 56);
             noseHorBar.TabIndex = 32;
             noseHorBar.Value = 3;
             // 
@@ -370,7 +372,7 @@
             label14.Location = new Point(23, 300);
             label14.Margin = new Padding(2, 0, 2, 0);
             label14.Name = "label14";
-            label14.Size = new Size(107, 29);
+            label14.Size = new Size(111, 31);
             label14.TabIndex = 31;
             label14.Text = "Eyebrows";
             // 
@@ -383,7 +385,7 @@
             label15.Location = new Point(23, 419);
             label15.Margin = new Padding(2, 0, 2, 0);
             label15.Name = "label15";
-            label15.Size = new Size(186, 29);
+            label15.Size = new Size(190, 31);
             label15.TabIndex = 30;
             label15.Text = "Mouth horizontal";
             // 
@@ -396,7 +398,7 @@
             label16.Location = new Point(23, 182);
             label16.Margin = new Padding(2, 0, 2, 0);
             label16.Name = "label16";
-            label16.Size = new Size(140, 29);
+            label16.Size = new Size(146, 31);
             label16.TabIndex = 29;
             label16.Text = "Nose vertical";
             // 
@@ -409,7 +411,7 @@
             label17.Location = new Point(23, 63);
             label17.Margin = new Padding(2, 0, 2, 0);
             label17.Name = "label17";
-            label17.Size = new Size(168, 29);
+            label17.Size = new Size(173, 31);
             label17.TabIndex = 28;
             label17.Text = "Nose horizontal";
             label17.Click += label17_Click;
@@ -424,7 +426,7 @@
             buildCheck.Location = new Point(722, 774);
             buildCheck.Margin = new Padding(2);
             buildCheck.Name = "buildCheck";
-            buildCheck.Size = new Size(90, 33);
+            buildCheck.Size = new Size(88, 35);
             buildCheck.TabIndex = 41;
             buildCheck.Text = "Build";
             buildCheck.UseVisualStyleBackColor = true;
@@ -440,7 +442,7 @@
             forceCompileCheck.Location = new Point(722, 809);
             forceCompileCheck.Margin = new Padding(2);
             forceCompileCheck.Name = "forceCompileCheck";
-            forceCompileCheck.Size = new Size(204, 33);
+            forceCompileCheck.Size = new Size(208, 35);
             forceCompileCheck.TabIndex = 42;
             forceCompileCheck.Text = "Force re-compile";
             forceCompileCheck.UseVisualStyleBackColor = true;
@@ -454,7 +456,7 @@
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Padding = new Padding(5, 2, 0, 2);
-            menuStrip1.Size = new Size(949, 37);
+            menuStrip1.Size = new Size(949, 32);
             menuStrip1.TabIndex = 43;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -465,7 +467,7 @@
             saveToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { savePresetMenuBtn, saveSensibilityMenuBtn });
             saveToolStripMenuItem.Font = new Font("Calibri", 12F);
             saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            saveToolStripMenuItem.Size = new Size(75, 33);
+            saveToolStripMenuItem.Size = new Size(62, 28);
             saveToolStripMenuItem.Text = "Save";
             // 
             // savePresetMenuBtn
@@ -473,7 +475,7 @@
             savePresetMenuBtn.AccessibleDescription = "Save Logic data in a JSON file";
             savePresetMenuBtn.AccessibleName = "Save Logic Button";
             savePresetMenuBtn.Name = "savePresetMenuBtn";
-            savePresetMenuBtn.Size = new Size(287, 38);
+            savePresetMenuBtn.Size = new Size(238, 28);
             savePresetMenuBtn.Text = "Logic";
             savePresetMenuBtn.Click += savePreset_Click;
             // 
@@ -482,7 +484,7 @@
             saveSensibilityMenuBtn.AccessibleDescription = "Save Sensibility data in a JSON file";
             saveSensibilityMenuBtn.AccessibleName = "Save Sensibility Button";
             saveSensibilityMenuBtn.Name = "saveSensibilityMenuBtn";
-            saveSensibilityMenuBtn.Size = new Size(287, 38);
+            saveSensibilityMenuBtn.Size = new Size(238, 28);
             saveSensibilityMenuBtn.Text = "Sensibility Values";
             saveSensibilityMenuBtn.Click += saveSensibilityValues;
             // 
@@ -493,7 +495,7 @@
             loadScriptToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { loadPresetMenuBtn, loadSensibilityMenuBtn, loadScriptMenuBtn });
             loadScriptToolStripMenuItem.Font = new Font("Calibri", 12F);
             loadScriptToolStripMenuItem.Name = "loadScriptToolStripMenuItem";
-            loadScriptToolStripMenuItem.Size = new Size(77, 33);
+            loadScriptToolStripMenuItem.Size = new Size(64, 28);
             loadScriptToolStripMenuItem.Text = "Load";
             // 
             // loadPresetMenuBtn
@@ -501,7 +503,7 @@
             loadPresetMenuBtn.AccessibleDescription = "Load a Logic JSON file";
             loadPresetMenuBtn.AccessibleName = "Load Logic Button";
             loadPresetMenuBtn.Name = "loadPresetMenuBtn";
-            loadPresetMenuBtn.Size = new Size(287, 38);
+            loadPresetMenuBtn.Size = new Size(238, 28);
             loadPresetMenuBtn.Text = "Logic";
             loadPresetMenuBtn.Click += loadPreset_Click;
             // 
@@ -510,7 +512,7 @@
             loadSensibilityMenuBtn.AccessibleDescription = "Load a Sensibility JSON file";
             loadSensibilityMenuBtn.AccessibleName = "Load Sensibility Button";
             loadSensibilityMenuBtn.Name = "loadSensibilityMenuBtn";
-            loadSensibilityMenuBtn.Size = new Size(287, 38);
+            loadSensibilityMenuBtn.Size = new Size(238, 28);
             loadSensibilityMenuBtn.Text = "Sensibility Values";
             loadSensibilityMenuBtn.Click += loadSettings_Click;
             // 
@@ -519,7 +521,7 @@
             loadScriptMenuBtn.AccessibleDescription = "Load custom pytnon script that implements the nose-drive library. It will replace the logic in the GUI.";
             loadScriptMenuBtn.AccessibleName = "Load Script Button";
             loadScriptMenuBtn.Name = "loadScriptMenuBtn";
-            loadScriptMenuBtn.Size = new Size(287, 38);
+            loadScriptMenuBtn.Size = new Size(238, 28);
             loadScriptMenuBtn.Text = "Script";
             loadScriptMenuBtn.Click += loadScript_Click;
             // 
@@ -528,7 +530,7 @@
             settingsToolStripMenuItem.AccessibleName = "Options menu item";
             settingsToolStripMenuItem.Font = new Font("Calibri", 12F);
             settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
-            settingsToolStripMenuItem.Size = new Size(106, 33);
+            settingsToolStripMenuItem.Size = new Size(89, 28);
             settingsToolStripMenuItem.Text = "Options";
             settingsToolStripMenuItem.Click += optionsForm_Click;
             // 
@@ -672,6 +674,28 @@
             // 
             saveJSONFiles.Filter = "Json files (*.json)|*.json";
             // 
+            // backgroundWorker1
+            // 
+            backgroundWorker1.DoWork += backgroundWorker1_DoWork;
+            // 
+            // Stop
+            // 
+            Stop.AccessibleDescription = "Stops the face tracking and virtual gamepad emulation";
+            Stop.AccessibleName = "Stop Button";
+            Stop.BackColor = Color.Red;
+            Stop.Cursor = Cursors.Hand;
+            Stop.Font = new Font("Calibri", 38F, FontStyle.Bold, GraphicsUnit.Pixel);
+            Stop.ForeColor = Color.White;
+            Stop.Location = new Point(491, 742);
+            Stop.Margin = new Padding(4);
+            Stop.Name = "Stop";
+            Stop.Size = new Size(214, 78);
+            Stop.TabIndex = 48;
+            Stop.Text = "STOP";
+            Stop.UseVisualStyleBackColor = false;
+            Stop.Visible = false;
+            Stop.Click += Stop_Click;
+            // 
             // Form1
             // 
             AccessibleDescription = "A graphical user interface for the nose-drive project.";
@@ -680,6 +704,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(44, 39, 53);
             ClientSize = new Size(949, 848);
+            Controls.Add(Stop);
             Controls.Add(removeScriptButton);
             Controls.Add(pictureBox1);
             Controls.Add(groupBox2);
@@ -763,5 +788,7 @@
         private Panel platformPanel;
         private Label label8;
         private SaveFileDialog saveJSONFiles;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private Button Stop;
     }
 }

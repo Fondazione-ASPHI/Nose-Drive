@@ -38,6 +38,8 @@ namespace Nose_Drive_GUI
         Process pyInst2;
         Process buildProcess;
 
+        Process activeProcess; //Pointer to currently active process
+
         Dictionary<int, string> embeddedLogicsDictionary;
         Dictionary<int, string> panelsDictionary;
 
@@ -230,7 +232,7 @@ namespace Nose_Drive_GUI
                 UpdateLogic();
                 string jsonString = JsonSerializer.Serialize(logicData);
                 File.WriteAllText(saveJSONFiles.FileName, jsonString);
-            }                
+            }
         }
 
         private void saveSensibilityValues(object sender, EventArgs e)
@@ -326,11 +328,12 @@ namespace Nose_Drive_GUI
                     StartInfo =
                   {
                       FileName = buildDir + @"\main.exe",
-                      Arguments = args
+                      Arguments = args,
+                      UseShellExecute = false,
+                      CreateNoWindow = true
                   }
                 };
-                startBuild.Start();
-                startBuild.WaitForExit();
+                StartProcess(startBuild);
             }
             // START SCRIPT or PRESET
             else
@@ -343,11 +346,12 @@ namespace Nose_Drive_GUI
                         StartInfo =
                           {
                               FileName = @".\dist\Embedded_Logics\main.exe",
-                              Arguments = settingsPath + " " + targetEmbeddedLogic
+                              Arguments = settingsPath + " " + targetEmbeddedLogic,
+                              UseShellExecute = false,
+                              CreateNoWindow = true
                           }
                     };
-                    startEmbedded.Start();
-                    startEmbedded.WaitForExit();
+                    StartProcess(startEmbedded);
                 }
                 // External script or custom-preset script with GUI customized json
                 else
@@ -362,13 +366,23 @@ namespace Nose_Drive_GUI
                         StartInfo =
                           {
                               FileName = @".\python_310\python.exe",
-                              Arguments = args
+                              Arguments = args,
+                              UseShellExecute = false,
+                              CreateNoWindow = true
                           }
                     };
-                    startScript.Start();
-                    startScript.WaitForExit();
+                    StartProcess(startScript);                    
                 }
             }
+        }
+
+        private void StartProcess(Process process)
+        {
+            activeProcess = process;
+            process.Start();
+            //startScript.WaitForExit();
+            Start.Visible = false;
+            Stop.Visible = true;
         }
 
         private void removeScript_Click(object sender, EventArgs e)
@@ -423,6 +437,18 @@ namespace Nose_Drive_GUI
                 p.StartInfo.UseShellExecute = true;
                 p.Start();
             }
+        }
+
+        private void backgroundWorker1_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
+        {
+
+        }
+
+        private void Stop_Click(object sender, EventArgs e)
+        {
+            activeProcess.Kill();
+            Start.Visible = true;
+            Stop.Visible = false;
         }
 
         private void logictab_selecting(object sender, TabControlCancelEventArgs e)
@@ -514,7 +540,6 @@ namespace Nose_Drive_GUI
         {
 
         }
-
     }
 
     public abstract class JsonData
