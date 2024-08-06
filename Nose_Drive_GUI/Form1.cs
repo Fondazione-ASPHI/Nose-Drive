@@ -329,7 +329,7 @@ namespace Nose_Drive_GUI
                   {
                       FileName = buildDir + @"\main.exe",
                       Arguments = args,
-                      UseShellExecute = false,
+                      UseShellExecute = true,
                       CreateNoWindow = true
                   }
                 };
@@ -347,7 +347,7 @@ namespace Nose_Drive_GUI
                           {
                               FileName = @".\dist\Embedded_Logics\main.exe",
                               Arguments = settingsPath + " " + targetEmbeddedLogic,
-                              UseShellExecute = false,
+                              UseShellExecute = true,
                               CreateNoWindow = true
                           }
                     };
@@ -367,11 +367,11 @@ namespace Nose_Drive_GUI
                           {
                               FileName = @".\python_310\python.exe",
                               Arguments = args,
-                              UseShellExecute = false,
+                              UseShellExecute = true,
                               CreateNoWindow = true
                           }
                     };
-                    StartProcess(startScript);                    
+                    StartProcess(startScript);
                 }
             }
         }
@@ -383,6 +383,13 @@ namespace Nose_Drive_GUI
             //startScript.WaitForExit();
             Start.Visible = false;
             Stop.Visible = true;
+        }
+
+        private void StopProcess()
+        {
+            activeProcess.Kill();
+            Start.Visible = true;
+            Stop.Visible = false;
         }
 
         private void removeScript_Click(object sender, EventArgs e)
@@ -446,9 +453,15 @@ namespace Nose_Drive_GUI
 
         private void Stop_Click(object sender, EventArgs e)
         {
-            activeProcess.Kill();
-            Start.Visible = true;
-            Stop.Visible = false;
+            StopProcess();
+        }
+
+        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (activeProcess != null)
+            {
+                StopProcess();
+            }
         }
 
         private void logictab_selecting(object sender, TabControlCancelEventArgs e)
