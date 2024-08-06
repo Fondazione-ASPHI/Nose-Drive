@@ -1,4 +1,5 @@
 using Emgu.CV;
+using System;
 using System.Diagnostics;
 using System.Reflection.Emit;
 using System.Text.Json;
@@ -329,7 +330,8 @@ namespace Nose_Drive_GUI
                   {
                       FileName = buildDir + @"\main.exe",
                       Arguments = args,
-                      UseShellExecute = true,
+                      UseShellExecute = false,
+                      RedirectStandardOutput = true,
                       CreateNoWindow = true
                   }
                 };
@@ -347,7 +349,8 @@ namespace Nose_Drive_GUI
                           {
                               FileName = @".\dist\Embedded_Logics\main.exe",
                               Arguments = settingsPath + " " + targetEmbeddedLogic,
-                              UseShellExecute = true,
+                              UseShellExecute = false,
+                              RedirectStandardOutput = true,
                               CreateNoWindow = true
                           }
                     };
@@ -367,7 +370,8 @@ namespace Nose_Drive_GUI
                           {
                               FileName = @".\python_310\python.exe",
                               Arguments = args,
-                              UseShellExecute = true,
+                              UseShellExecute = false,
+                              RedirectStandardOutput = true,
                               CreateNoWindow = true
                           }
                     };
@@ -378,18 +382,22 @@ namespace Nose_Drive_GUI
 
         private void StartProcess(Process process)
         {
-            activeProcess = process;
-            process.Start();
-            //startScript.WaitForExit();
             Start.Visible = false;
             Stop.Visible = true;
+
+            activeProcess = process;
+            debugLabel.Text = "Background process started";
+            backgroundWorker1.RunWorkerAsync(argument: process);
         }
+
 
         private void StopProcess()
         {
-            activeProcess.Kill();
-            Start.Visible = true;
-            Stop.Visible = false;
+            //backgroundWorker1.CancelAsync();
+            activeProcess.Kill();            
+
+            //Start.Visible = true;
+            //Stop.Visible = false;
         }
 
         private void removeScript_Click(object sender, EventArgs e)
@@ -446,11 +454,6 @@ namespace Nose_Drive_GUI
             }
         }
 
-        private void backgroundWorker1_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
-        {
-
-        }
-
         private void Stop_Click(object sender, EventArgs e)
         {
             StopProcess();
@@ -462,6 +465,43 @@ namespace Nose_Drive_GUI
             {
                 StopProcess();
             }
+        }
+
+        private void backgroundWorker1_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
+        {            
+            Process process = e.Argument as Process;            
+            process.Start();
+            while (!process.StandardOutput.EndOfStream)
+            {
+                string line = process.StandardOutput.ReadLine();
+                
+            }
+            process.WaitForExit();
+        }
+
+        private void backgroundWorker1_ProgressChanged(object sender, System.ComponentModel.ProgressChangedEventArgs e)
+        {
+
+        }
+
+        private void backgroundWorker1_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
+        {
+            if (e.Cancelled)
+            {
+                debugLabel.Text = "Process was cancelled";
+            }
+            else if (e.Error != null)
+            {
+                debugLabel.Text = "There was an error running the process. The thread aborted";
+            }
+            else
+            {
+                debugLabel.Text = "Process was completed";
+            }
+
+            debugLabel.Text = "Background process ended";
+            Start.Visible = true;
+            Stop.Visible = false;
         }
 
         private void logictab_selecting(object sender, TabControlCancelEventArgs e)
@@ -552,7 +592,7 @@ namespace Nose_Drive_GUI
         private void options_Click(object sender, EventArgs e)
         {
 
-        }
+        }        
     }
 
     public abstract class JsonData

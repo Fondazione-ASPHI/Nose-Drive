@@ -76,6 +76,7 @@
             saveJSONFiles = new SaveFileDialog();
             backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             Stop = new Button();
+            label1 = new Label();
             ((System.ComponentModel.ISupportInitialize)eyebrowsBar).BeginInit();
             ((System.ComponentModel.ISupportInitialize)noseVerBar).BeginInit();
             ((System.ComponentModel.ISupportInitialize)mouthBar).BeginInit();
@@ -676,7 +677,11 @@
             // 
             // backgroundWorker1
             // 
+            backgroundWorker1.WorkerReportsProgress = true;
+            backgroundWorker1.WorkerSupportsCancellation = true;
             backgroundWorker1.DoWork += backgroundWorker1_DoWork;
+            backgroundWorker1.ProgressChanged += backgroundWorker1_ProgressChanged;
+            backgroundWorker1.RunWorkerCompleted += backgroundWorker1_RunWorkerCompleted;
             // 
             // Stop
             // 
@@ -696,6 +701,21 @@
             Stop.Visible = false;
             Stop.Click += Stop_Click;
             // 
+            // label1
+            // 
+            label1.AccessibleName = "Nose Horizontal Label";
+            label1.AutoSize = true;
+            label1.BackColor = Color.Yellow;
+            label1.Font = new Font("Calibri", 24F, FontStyle.Regular, GraphicsUnit.Pixel);
+            label1.ForeColor = Color.Black;
+            label1.Location = new Point(342, 758);
+            label1.Margin = new Padding(2, 0, 2, 0);
+            label1.Name = "label1";
+            label1.Size = new Size(90, 29);
+            label1.TabIndex = 36;
+            label1.Text = "PAUSED";
+            label1.Visible = false;
+            // 
             // Form1
             // 
             AccessibleDescription = "A graphical user interface for the nose-drive project.";
@@ -704,6 +724,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(44, 39, 53);
             ClientSize = new Size(949, 848);
+            Controls.Add(label1);
             Controls.Add(Stop);
             Controls.Add(removeScriptButton);
             Controls.Add(pictureBox1);
@@ -791,5 +812,6 @@
         private SaveFileDialog saveJSONFiles;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private Button Stop;
+        private Label label1;
     }
 }
