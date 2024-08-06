@@ -331,7 +331,7 @@ namespace Nose_Drive_GUI
                       FileName = buildDir + @"\main.exe",
                       Arguments = args,
                       UseShellExecute = false,
-                      RedirectStandardOutput = true,
+                      RedirectStandardError = true,
                       CreateNoWindow = true
                   }
                 };
@@ -350,7 +350,7 @@ namespace Nose_Drive_GUI
                               FileName = @".\dist\Embedded_Logics\main.exe",
                               Arguments = settingsPath + " " + targetEmbeddedLogic,
                               UseShellExecute = false,
-                              RedirectStandardOutput = true,
+                              RedirectStandardError = true,
                               CreateNoWindow = true
                           }
                     };
@@ -371,7 +371,7 @@ namespace Nose_Drive_GUI
                               FileName = @".\python_310\python.exe",
                               Arguments = args,
                               UseShellExecute = false,
-                              RedirectStandardOutput = true,
+                              RedirectStandardError = true,
                               CreateNoWindow = true
                           }
                     };
@@ -471,9 +471,16 @@ namespace Nose_Drive_GUI
         {            
             Process process = e.Argument as Process;            
             process.Start();
-            while (!process.StandardOutput.EndOfStream)
+            while (!process.StandardError.EndOfStream)
             {
-                string line = process.StandardOutput.ReadLine();
+                string line = process.StandardError.ReadLine();
+                Debug.WriteLine(line);
+                if (line == "Paused: True")
+                {
+                    debugLabel.Invoke((MethodInvoker)delegate {
+                        debugLabel.Text = "Paused: True";
+                    });
+                }
                 
             }
             process.WaitForExit();

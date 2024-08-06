@@ -76,7 +76,7 @@
             saveJSONFiles = new SaveFileDialog();
             backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             Stop = new Button();
-            label1 = new Label();
+            button1 = new Button();
             ((System.ComponentModel.ISupportInitialize)eyebrowsBar).BeginInit();
             ((System.ComponentModel.ISupportInitialize)noseVerBar).BeginInit();
             ((System.ComponentModel.ISupportInitialize)mouthBar).BeginInit();
@@ -607,7 +607,7 @@
             // 
             removeScriptButton.AccessibleDescription = "Remove currently loaded python nose-drive script and return to GUI custom logic selection.";
             removeScriptButton.AccessibleName = "Remove Script Button";
-            removeScriptButton.BackColor = Color.FromArgb(242, 101, 34);
+            removeScriptButton.BackColor = Color.FromArgb(227, 94, 163);
             removeScriptButton.Cursor = Cursors.Hand;
             removeScriptButton.Font = new Font("Calibri", 24F, FontStyle.Bold, GraphicsUnit.Pixel);
             removeScriptButton.ForeColor = Color.White;
@@ -687,11 +687,11 @@
             // 
             Stop.AccessibleDescription = "Stops the face tracking and virtual gamepad emulation";
             Stop.AccessibleName = "Stop Button";
-            Stop.BackColor = Color.Red;
+            Stop.BackColor = Color.FromArgb(227, 94, 163);
             Stop.Cursor = Cursors.Hand;
             Stop.Font = new Font("Calibri", 38F, FontStyle.Bold, GraphicsUnit.Pixel);
             Stop.ForeColor = Color.White;
-            Stop.Location = new Point(491, 742);
+            Stop.Location = new Point(450, 742);
             Stop.Margin = new Padding(4);
             Stop.Name = "Stop";
             Stop.Size = new Size(214, 78);
@@ -701,20 +701,22 @@
             Stop.Visible = false;
             Stop.Click += Stop_Click;
             // 
-            // label1
+            // button1
             // 
-            label1.AccessibleName = "Nose Horizontal Label";
-            label1.AutoSize = true;
-            label1.BackColor = Color.Yellow;
-            label1.Font = new Font("Calibri", 24F, FontStyle.Regular, GraphicsUnit.Pixel);
-            label1.ForeColor = Color.Black;
-            label1.Location = new Point(342, 758);
-            label1.Margin = new Padding(2, 0, 2, 0);
-            label1.Name = "label1";
-            label1.Size = new Size(90, 29);
-            label1.TabIndex = 36;
-            label1.Text = "PAUSED";
-            label1.Visible = false;
+            button1.AccessibleDescription = "Stops the face tracking and virtual gamepad emulation";
+            button1.AccessibleName = "Stop Button";
+            button1.BackColor = Color.FromArgb(3, 160, 139);
+            button1.Cursor = Cursors.Hand;
+            button1.Font = new Font("Calibri", 38F, FontStyle.Bold, GraphicsUnit.Pixel);
+            button1.ForeColor = Color.White;
+            button1.Location = new Point(207, 742);
+            button1.Margin = new Padding(4);
+            button1.Name = "button1";
+            button1.Size = new Size(214, 78);
+            button1.TabIndex = 49;
+            button1.Text = "PAUSE";
+            button1.UseVisualStyleBackColor = false;
+            button1.Visible = false;
             // 
             // Form1
             // 
@@ -724,7 +726,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(44, 39, 53);
             ClientSize = new Size(949, 848);
-            Controls.Add(label1);
+            Controls.Add(button1);
             Controls.Add(Stop);
             Controls.Add(removeScriptButton);
             Controls.Add(pictureBox1);
@@ -812,6 +814,6 @@
         private SaveFileDialog saveJSONFiles;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private Button Stop;
-        private Label label1;
+        private Button button1;
     }
 }
