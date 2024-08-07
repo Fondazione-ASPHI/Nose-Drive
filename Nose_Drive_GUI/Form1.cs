@@ -461,17 +461,20 @@ namespace Nose_Drive_GUI
 
         private void Pause_Click(object sender, EventArgs e)
         {
+            Pause.Enabled = false;
             keypressProcess = new Process
             {
                 StartInfo =
                   {
                       FileName = @".\python_310\python.exe",
                       Arguments = "utils.py keypress " + settingsData.pause,
-                      RedirectStandardError = true
+                      UseShellExecute = false,
+                      CreateNoWindow = true
                   }
             };
             keypressProcess.Start();
             keypressProcess.WaitForExit();
+            Pause.Enabled = true;
         }
 
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
