@@ -73,6 +73,16 @@ namespace Nose_Drive_GUI.Properties {
         /// <summary>
         ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap logo_onlus {
+            get {
+                object obj = ResourceManager.GetObject("logo_onlus", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap path1 {
             get {
                 object obj = ResourceManager.GetObject("path1", resourceCulture);

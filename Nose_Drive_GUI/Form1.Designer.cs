@@ -109,7 +109,7 @@
             // 
             debugLabel.AutoSize = true;
             debugLabel.ForeColor = SystemColors.ButtonFace;
-            debugLabel.Location = new Point(172, 49);
+            debugLabel.Location = new Point(161, 55);
             debugLabel.Margin = new Padding(4, 0, 4, 0);
             debugLabel.Name = "debugLabel";
             debugLabel.Size = new Size(80, 22);
@@ -647,12 +647,12 @@
             // 
             pictureBox1.AccessibleDescription = "Click this logo to view ASPHI Onlus website";
             pictureBox1.AccessibleName = "ASPHI Onlus Logo";
-            pictureBox1.BackgroundImage = Properties.Resources.path14;
+            pictureBox1.BackgroundImage = Properties.Resources.logo_onlus;
             pictureBox1.Cursor = Cursors.Hand;
-            pictureBox1.Location = new Point(0, 41);
+            pictureBox1.Location = new Point(13, 41);
             pictureBox1.Margin = new Padding(4);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(120, 120);
+            pictureBox1.Size = new Size(94, 108);
             pictureBox1.TabIndex = 46;
             pictureBox1.TabStop = false;
             pictureBox1.Click += logoImage_Click;
