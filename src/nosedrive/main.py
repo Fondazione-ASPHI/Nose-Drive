@@ -5,7 +5,7 @@ import time
 import math
 import keyboard as kb
 import platform
-
+import sys
 
 
 # function definition to compute magnitude o f the vector
@@ -13,13 +13,16 @@ def magnitude(vector):
   return math.sqrt(sum(pow(element, 2) for element in vector))
 
 
+def get_keypress(keystring):
+  if keystring != "" and keystring != None:
+    return kb.is_pressed(keystring)
+
 
 def track_face(logic, options):
 
   mp_drawing = mp.solutions.drawing_utils
   mp_drawing_styles = mp.solutions.drawing_styles
   mp_face_mesh = mp.solutions.face_mesh
-
 
 
   ###############################
@@ -185,10 +188,10 @@ def track_face(logic, options):
         ###############################
         # CALIBRATION
         ###############################
-        if not calibrated or kb.is_pressed(reset_pos_key):
+        if not calibrated or get_keypress(reset_pos_key):
           if not message:
             start_time = time.time()
-            print("Saving base position... - Stay still, wait " + str(calibration_time) + " seconds")
+            print("Saving base position... - Stay still, wait " + str(calibration_time) + " seconds", file=sys.stderr)
             message = True
           if time.time() - start_time > calibration_time:
             nose_base = nose_point
@@ -198,8 +201,8 @@ def track_face(logic, options):
             eyebrows_base = eyebrows
             mouth_open_base = mouth_open
             calibrated = True
-            print("Base position saved. Press 'N' to reset base position.")
-            print("Now Tracking.")
+            print("Base position saved. Press 'N' to reset base position.", file=sys.stderr)
+            print("Now Tracking.", file=sys.stderr)
         else:
 
           #################
@@ -244,11 +247,11 @@ def track_face(logic, options):
           mouth_open = (mouth_open - mouth_open_base) * mouth_open_sensibility
 
 
-          if kb.is_pressed(pause_key):
+          if get_keypress(pause_key):
             if not pause_key_pressed:
               pause_key_pressed = True              
               paused = not paused
-              print("Paused: " + str(paused))
+              print("Paused: " + str(paused), file=sys.stderr)
           elif pause_key_pressed:
             pause_key_pressed = False
               
@@ -291,7 +294,9 @@ def track_face(logic, options):
               connection_drawing_spec=mp_drawing_styles
               .get_default_face_mesh_iris_connections_style())
       # Flip the image horizontally for a selfie-view display.
-      cv2.imshow('MediaPipe Face Mesh', cv2.flip(image, 1))
+      cv2.imshow("Nose Drive Tracking", cv2.flip(image, 1))
       if cv2.waitKey(5) & 0xFF == 27:
+        break
+      if cv2.getWindowProperty("Nose Drive Tracking", cv2.WND_PROP_VISIBLE) <1:
         break
   cap.release()
