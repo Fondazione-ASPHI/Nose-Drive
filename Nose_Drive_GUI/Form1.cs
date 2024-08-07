@@ -2,6 +2,7 @@ using Emgu.CV;
 using System;
 using System.Diagnostics;
 using System.Reflection.Emit;
+using System.Runtime.InteropServices;
 using System.Text.Json;
 using System.Windows.Forms;
 
@@ -38,8 +39,10 @@ namespace Nose_Drive_GUI
         Process pyInst;
         Process pyInst2;
         Process buildProcess;
+        Process keypressProcess;
 
         Process activeProcess; //Pointer to currently active process
+        int activeProcessID;
 
         Dictionary<int, string> embeddedLogicsDictionary;
         Dictionary<int, string> panelsDictionary;
@@ -106,7 +109,7 @@ namespace Nose_Drive_GUI
                       FileName = @".\python_310\Scripts\pyinstaller.exe",
                       Arguments = "Builder.spec"
                   }
-            };
+            };            
 
             embeddedLogicsDictionary = new Dictionary<int, string>()
             {
@@ -384,6 +387,7 @@ namespace Nose_Drive_GUI
         {
             Start.Visible = false;
             Stop.Visible = true;
+            Pause.Visible = true;
 
             activeProcess = process;
             debugLabel.Text = "Background process started";
@@ -393,11 +397,7 @@ namespace Nose_Drive_GUI
 
         private void StopProcess()
         {
-            //backgroundWorker1.CancelAsync();
-            activeProcess.Kill();            
-
-            //Start.Visible = true;
-            //Stop.Visible = false;
+            activeProcess.Kill();
         }
 
         private void removeScript_Click(object sender, EventArgs e)
@@ -459,6 +459,21 @@ namespace Nose_Drive_GUI
             StopProcess();
         }
 
+        private void Pause_Click(object sender, EventArgs e)
+        {
+            keypressProcess = new Process
+            {
+                StartInfo =
+                  {
+                      FileName = @".\python_310\python.exe",
+                      Arguments = "utils.py keypress " + settingsData.pause,
+                      RedirectStandardError = true
+                  }
+            };
+            keypressProcess.Start();
+            keypressProcess.WaitForExit();
+        }
+
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
         {
             if (activeProcess != null)
@@ -468,20 +483,31 @@ namespace Nose_Drive_GUI
         }
 
         private void backgroundWorker1_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
-        {            
-            Process process = e.Argument as Process;            
+        {
+            Process process = e.Argument as Process;
             process.Start();
+            activeProcessID = process.Id;
             while (!process.StandardError.EndOfStream)
             {
                 string line = process.StandardError.ReadLine();
                 Debug.WriteLine(line);
                 if (line == "Paused: True")
                 {
-                    debugLabel.Invoke((MethodInvoker)delegate {
+                    debugLabel.Invoke((MethodInvoker)delegate
+                    {
                         debugLabel.Text = "Paused: True";
+                        Pause.Text = "RESUME";
                     });
                 }
-                
+                else if (line == "Paused: False")
+                {
+                    debugLabel.Invoke((MethodInvoker)delegate
+                    {
+                        debugLabel.Text = "Paused: False";
+                        Pause.Text = "PAUSE";
+                    });
+                }
+
             }
             process.WaitForExit();
         }
@@ -509,6 +535,7 @@ namespace Nose_Drive_GUI
             debugLabel.Text = "Background process ended";
             Start.Visible = true;
             Stop.Visible = false;
+            Pause.Visible = false;
         }
 
         private void logictab_selecting(object sender, TabControlCancelEventArgs e)

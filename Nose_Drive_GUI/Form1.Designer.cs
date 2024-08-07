@@ -76,7 +76,7 @@
             saveJSONFiles = new SaveFileDialog();
             backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             Stop = new Button();
-            button1 = new Button();
+            Pause = new Button();
             ((System.ComponentModel.ISupportInitialize)eyebrowsBar).BeginInit();
             ((System.ComponentModel.ISupportInitialize)noseVerBar).BeginInit();
             ((System.ComponentModel.ISupportInitialize)mouthBar).BeginInit();
@@ -701,22 +701,23 @@
             Stop.Visible = false;
             Stop.Click += Stop_Click;
             // 
-            // button1
+            // Pause
             // 
-            button1.AccessibleDescription = "Stops the face tracking and virtual gamepad emulation";
-            button1.AccessibleName = "Stop Button";
-            button1.BackColor = Color.FromArgb(3, 160, 139);
-            button1.Cursor = Cursors.Hand;
-            button1.Font = new Font("Calibri", 38F, FontStyle.Bold, GraphicsUnit.Pixel);
-            button1.ForeColor = Color.White;
-            button1.Location = new Point(207, 742);
-            button1.Margin = new Padding(4);
-            button1.Name = "button1";
-            button1.Size = new Size(214, 78);
-            button1.TabIndex = 49;
-            button1.Text = "PAUSE";
-            button1.UseVisualStyleBackColor = false;
-            button1.Visible = false;
+            Pause.AccessibleDescription = "Stops the face tracking and virtual gamepad emulation";
+            Pause.AccessibleName = "Stop Button";
+            Pause.BackColor = Color.FromArgb(3, 160, 139);
+            Pause.Cursor = Cursors.Hand;
+            Pause.Font = new Font("Calibri", 38F, FontStyle.Bold, GraphicsUnit.Pixel);
+            Pause.ForeColor = Color.White;
+            Pause.Location = new Point(207, 742);
+            Pause.Margin = new Padding(4);
+            Pause.Name = "Pause";
+            Pause.Size = new Size(214, 78);
+            Pause.TabIndex = 49;
+            Pause.Text = "PAUSE";
+            Pause.UseVisualStyleBackColor = false;
+            Pause.Visible = false;
+            Pause.Click += Pause_Click;
             // 
             // Form1
             // 
@@ -726,7 +727,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(44, 39, 53);
             ClientSize = new Size(949, 848);
-            Controls.Add(button1);
+            Controls.Add(Pause);
             Controls.Add(Stop);
             Controls.Add(removeScriptButton);
             Controls.Add(pictureBox1);
@@ -814,6 +815,6 @@
         private SaveFileDialog saveJSONFiles;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private Button Stop;
-        private Button button1;
+        private Button Pause;
     }
 }
