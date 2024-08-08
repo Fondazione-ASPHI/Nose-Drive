@@ -73,10 +73,10 @@ namespace Nose_Drive_GUI
 
         private void pauseKeyBox_TextChanged(object sender, EventArgs e)
         {
-            string acceptedValues = "abcdefghijklmnopqrstuvwxyz123456789";
+            string acceptedValues = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz123456789";
             if (acceptedValues.Contains(pauseKeyBox.Text) && pauseKeyBox.Text.Count() <= 1)
             {
-                parent.settingsData.pause = pauseKeyBox.Text;
+                parent.settingsData.pause = pauseKeyBox.Text.ToUpper();
             }
             else
             {
@@ -86,10 +86,10 @@ namespace Nose_Drive_GUI
 
         private void resetKeyBox_TextChanged(object sender, EventArgs e)
         {
-            string acceptedValues = "abcdefghijklmnopqrstuvwxyz123456789";
+            string acceptedValues = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz123456789";
             if (acceptedValues.Contains(resetKeyBox.Text) && resetKeyBox.Text.Count() <= 1)
             {
-                parent.settingsData.reset_pos = resetKeyBox.Text;
+                parent.settingsData.reset_pos = resetKeyBox.Text.ToUpper();
             }
             else
             {
