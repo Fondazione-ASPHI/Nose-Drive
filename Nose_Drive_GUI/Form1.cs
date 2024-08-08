@@ -130,6 +130,11 @@ namespace Nose_Drive_GUI
             presetBox.SelectedIndex = 1;
         }
 
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
         void UpdateSettings()
         {
             // Trackbars in main window
@@ -287,8 +292,7 @@ namespace Nose_Drive_GUI
             UpdateSettings();
             SaveSettingsFile();
             UpdateLogic();
-            SaveLogicFile();
-
+            SaveLogicFile();            
 
             // START BUILD
             if (buildCheck.Checked)
@@ -387,7 +391,19 @@ namespace Nose_Drive_GUI
         {
             Start.Visible = false;
             Stop.Visible = true;
-            Pause.Visible = true;
+
+            // Check enable Pause
+            string letters = "abcdefghijklmnopqrstuvwxyz";
+            if (!letters.Contains(settingsData.pause) || settingsData.pause == "" || settingsData.pause == null)
+            {
+                Pause.Visible = false;
+                pauseLabel.Visible = true;
+            }
+            else
+            {
+                Pause.Visible = true;
+                pauseLabel.Visible = false;
+            }            
 
             activeProcess = process;
             debugLabel.Text = "Background process started";
@@ -539,6 +555,7 @@ namespace Nose_Drive_GUI
             Start.Visible = true;
             Stop.Visible = false;
             Pause.Visible = false;
+            pauseLabel.Visible = false;
         }
 
         private void logictab_selecting(object sender, TabControlCancelEventArgs e)
@@ -592,11 +609,6 @@ namespace Nose_Drive_GUI
         }
 
         private void label21_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
         {
 
         }

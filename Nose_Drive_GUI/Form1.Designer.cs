@@ -77,6 +77,7 @@
             backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             Stop = new Button();
             Pause = new Button();
+            pauseLabel = new Label();
             ((System.ComponentModel.ISupportInitialize)eyebrowsBar).BeginInit();
             ((System.ComponentModel.ISupportInitialize)noseVerBar).BeginInit();
             ((System.ComponentModel.ISupportInitialize)mouthBar).BeginInit();
@@ -719,6 +720,18 @@
             Pause.Visible = false;
             Pause.Click += Pause_Click;
             // 
+            // pauseLabel
+            // 
+            pauseLabel.AutoSize = true;
+            pauseLabel.ForeColor = SystemColors.ButtonFace;
+            pauseLabel.Location = new Point(226, 707);
+            pauseLabel.Margin = new Padding(4, 0, 4, 0);
+            pauseLabel.Name = "pauseLabel";
+            pauseLabel.Size = new Size(175, 132);
+            pauseLabel.TabIndex = 50;
+            pauseLabel.Text = "Pausing is disabled.\r\nTo enable pausing,\r\nassign a keyboard\r\nletter key to the pause\r\nfield inside the options\r\nmenu.";
+            pauseLabel.Visible = false;
+            // 
             // Form1
             // 
             AccessibleDescription = "A graphical user interface for the nose-drive project.";
@@ -727,6 +740,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(44, 39, 53);
             ClientSize = new Size(949, 848);
+            Controls.Add(pauseLabel);
             Controls.Add(Pause);
             Controls.Add(Stop);
             Controls.Add(removeScriptButton);
@@ -816,5 +830,6 @@
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private Button Stop;
         private Button Pause;
+        private Label pauseLabel;
     }
 }
