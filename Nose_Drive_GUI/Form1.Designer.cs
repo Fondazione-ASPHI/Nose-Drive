@@ -722,14 +722,16 @@
             // 
             // pauseLabel
             // 
+            pauseLabel.AccessibleDescription = "Warning label for missing pause key";
+            pauseLabel.AccessibleName = "Missing pause key warning";
             pauseLabel.AutoSize = true;
             pauseLabel.ForeColor = SystemColors.ButtonFace;
-            pauseLabel.Location = new Point(226, 707);
+            pauseLabel.Location = new Point(223, 707);
             pauseLabel.Margin = new Padding(4, 0, 4, 0);
             pauseLabel.Name = "pauseLabel";
-            pauseLabel.Size = new Size(175, 132);
+            pauseLabel.Size = new Size(181, 132);
             pauseLabel.TabIndex = 50;
-            pauseLabel.Text = "Pausing is disabled.\r\nTo enable pausing,\r\nassign a keyboard\r\nletter key to the pause\r\nfield inside the options\r\nmenu.";
+            pauseLabel.Text = "Pausing is disabled.\r\nTo enable pausing,\r\nassign a keyboard letter\r\nor number key to the\r\npause field inside the\r\noptions menu.";
             pauseLabel.Visible = false;
             // 
             // Form1

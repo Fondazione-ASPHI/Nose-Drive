@@ -73,12 +73,28 @@ namespace Nose_Drive_GUI
 
         private void pauseKeyBox_TextChanged(object sender, EventArgs e)
         {
-            parent.settingsData.pause = pauseKeyBox.Text;
+            string acceptedValues = "abcdefghijklmnopqrstuvwxyz123456789";
+            if (acceptedValues.Contains(pauseKeyBox.Text) && pauseKeyBox.Text.Count() <= 1)
+            {
+                parent.settingsData.pause = pauseKeyBox.Text;
+            }
+            else
+            {
+                pauseKeyBox.Text = "";
+            }            
         }
 
         private void resetKeyBox_TextChanged(object sender, EventArgs e)
         {
-            parent.settingsData.reset_pos = resetKeyBox.Text;
+            string acceptedValues = "abcdefghijklmnopqrstuvwxyz123456789";
+            if (acceptedValues.Contains(resetKeyBox.Text) && resetKeyBox.Text.Count() <= 1)
+            {
+                parent.settingsData.reset_pos = resetKeyBox.Text;
+            }
+            else
+            {
+                resetKeyBox.Text = "";
+            }
         }
 
         private void preview_Click(object sender, EventArgs e)

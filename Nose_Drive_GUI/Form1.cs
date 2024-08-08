@@ -393,8 +393,7 @@ namespace Nose_Drive_GUI
             Stop.Visible = true;
 
             // Check enable Pause
-            string letters = "abcdefghijklmnopqrstuvwxyz";
-            if (!letters.Contains(settingsData.pause) || settingsData.pause == "" || settingsData.pause == null)
+            if (settingsData.pause == "" || settingsData.pause == null)
             {
                 Pause.Visible = false;
                 pauseLabel.Visible = true;
@@ -556,6 +555,7 @@ namespace Nose_Drive_GUI
             Stop.Visible = false;
             Pause.Visible = false;
             pauseLabel.Visible = false;
+            Pause.Text = "PAUSE";
         }
 
         private void logictab_selecting(object sender, TabControlCancelEventArgs e)
