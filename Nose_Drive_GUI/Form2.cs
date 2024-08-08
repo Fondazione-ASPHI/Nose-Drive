@@ -81,7 +81,7 @@ namespace Nose_Drive_GUI
             else
             {
                 pauseKeyBox.Text = "";
-            }            
+            }
         }
 
         private void resetKeyBox_TextChanged(object sender, EventArgs e)
@@ -139,6 +139,12 @@ namespace Nose_Drive_GUI
         private void label8_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void updateLibButton_Click(object sender, EventArgs e)
+        {
+            parent.updateLibrary.Start();
+            parent.updateLibrary.WaitForExit();
         }
     }
 }

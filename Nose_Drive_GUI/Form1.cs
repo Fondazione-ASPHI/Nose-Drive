@@ -38,6 +38,7 @@ namespace Nose_Drive_GUI
         Process getPip;
         Process pyInst;
         Process pyInst2;
+        public Process updateLibrary;
         Process buildProcess;
         Process keypressProcess;
 
@@ -99,6 +100,15 @@ namespace Nose_Drive_GUI
                   {
                       FileName = @".\python_310\Scripts\pip.exe",
                       Arguments = "install pyinstaller"
+                  }
+            };
+
+            updateLibrary = new Process
+            {
+                StartInfo =
+                  {
+                      FileName = @".\python_310\Scripts\pip.exe",
+                      Arguments = "install --upgrade nosedrive"
                   }
             };
 

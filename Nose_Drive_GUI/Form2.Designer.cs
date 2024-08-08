@@ -39,6 +39,7 @@
             label12 = new Label();
             cameraNameLabel = new Label();
             camerasBox = new ComboBox();
+            updateLibButton = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)timeUpDown).BeginInit();
             SuspendLayout();
@@ -74,7 +75,7 @@
             label20.AutoSize = true;
             label20.Font = new Font("Calibri", 12F);
             label20.ForeColor = Color.White;
-            label20.Location = new Point(90, 322);
+            label20.Location = new Point(90, 282);
             label20.Margin = new Padding(2, 0, 2, 0);
             label20.Name = "label20";
             label20.Size = new Size(92, 29);
@@ -86,7 +87,7 @@
             resetKeyBox.AccessibleDescription = "In this field a different keyboard letter can be assigned to reset the base position of the face tracking";
             resetKeyBox.AccessibleName = "Reset base position key input field";
             resetKeyBox.Font = new Font("Calibri", 18F, FontStyle.Regular, GraphicsUnit.Pixel);
-            resetKeyBox.Location = new Point(36, 189);
+            resetKeyBox.Location = new Point(36, 163);
             resetKeyBox.Margin = new Padding(2);
             resetKeyBox.Name = "resetKeyBox";
             resetKeyBox.Size = new Size(40, 29);
@@ -99,7 +100,7 @@
             pauseKeyBox.AccessibleDescription = "In this field a different keyboard letter can be assigned to pause and resume the face tracking";
             pauseKeyBox.AccessibleName = "Pause Key Input Field";
             pauseKeyBox.Font = new Font("Calibri", 18F, FontStyle.Regular, GraphicsUnit.Pixel);
-            pauseKeyBox.Location = new Point(36, 91);
+            pauseKeyBox.Location = new Point(36, 65);
             pauseKeyBox.Margin = new Padding(2);
             pauseKeyBox.Name = "pauseKeyBox";
             pauseKeyBox.Size = new Size(40, 29);
@@ -113,7 +114,7 @@
             label8.AutoSize = true;
             label8.Font = new Font("Calibri", 24F, FontStyle.Regular, GraphicsUnit.Pixel);
             label8.ForeColor = Color.White;
-            label8.Location = new Point(30, 52);
+            label8.Location = new Point(30, 26);
             label8.Margin = new Padding(2, 0, 2, 0);
             label8.Name = "label8";
             label8.Size = new Size(110, 29);
@@ -127,7 +128,7 @@
             label13.AutoSize = true;
             label13.Font = new Font("Calibri", 24F, FontStyle.Regular, GraphicsUnit.Pixel);
             label13.ForeColor = Color.White;
-            label13.Location = new Point(30, 273);
+            label13.Location = new Point(30, 233);
             label13.Margin = new Padding(2, 0, 2, 0);
             label13.Name = "label13";
             label13.Size = new Size(171, 29);
@@ -137,7 +138,7 @@
             // timeUpDown
             // 
             timeUpDown.Font = new Font("Calibri", 18F, FontStyle.Regular, GraphicsUnit.Pixel);
-            timeUpDown.Location = new Point(36, 317);
+            timeUpDown.Location = new Point(36, 277);
             timeUpDown.Margin = new Padding(1);
             timeUpDown.Name = "timeUpDown";
             timeUpDown.Size = new Size(46, 29);
@@ -151,7 +152,7 @@
             label12.AutoSize = true;
             label12.Font = new Font("Calibri", 24F, FontStyle.Regular, GraphicsUnit.Pixel);
             label12.ForeColor = Color.White;
-            label12.Location = new Point(30, 150);
+            label12.Location = new Point(30, 124);
             label12.Margin = new Padding(2, 0, 2, 0);
             label12.Name = "label12";
             label12.Size = new Size(192, 29);
@@ -186,12 +187,29 @@
             camerasBox.TabIndex = 53;
             camerasBox.SelectedIndexChanged += camerasBox_SelectedIndexChanged;
             // 
+            // updateLibButton
+            // 
+            updateLibButton.AccessibleName = "Start preview Button";
+            updateLibButton.BackColor = Color.FromArgb(242, 101, 34);
+            updateLibButton.Cursor = Cursors.Hand;
+            updateLibButton.Font = new Font("Calibri", 24F, FontStyle.Bold, GraphicsUnit.Pixel);
+            updateLibButton.ForeColor = Color.White;
+            updateLibButton.Location = new Point(13, 395);
+            updateLibButton.Margin = new Padding(4);
+            updateLibButton.Name = "updateLibButton";
+            updateLibButton.Size = new Size(186, 41);
+            updateLibButton.TabIndex = 54;
+            updateLibButton.Text = "Update library";
+            updateLibButton.UseVisualStyleBackColor = false;
+            updateLibButton.Click += updateLibButton_Click;
+            // 
             // Form2
             // 
             AutoScaleDimensions = new SizeF(9F, 22F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(44, 39, 53);
             ClientSize = new Size(821, 449);
+            Controls.Add(updateLibButton);
             Controls.Add(previewButton);
             Controls.Add(camerasBox);
             Controls.Add(cameraNameLabel);
@@ -228,5 +246,6 @@
         private Button previewButton;
         private Label cameraNameLabel;
         private ComboBox camerasBox;
+        private Button updateLibButton;
     }
 }
