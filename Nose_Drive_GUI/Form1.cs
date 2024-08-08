@@ -493,7 +493,7 @@ namespace Nose_Drive_GUI
                 StartInfo =
                   {
                       FileName = @".\python_310\python.exe",
-                      Arguments = "utils.py keypress " + settingsData.pause,
+                      Arguments = "utils.py keypress " + settingsData.pause.ToLower(),
                       UseShellExecute = false,
                       CreateNoWindow = true
                   }
