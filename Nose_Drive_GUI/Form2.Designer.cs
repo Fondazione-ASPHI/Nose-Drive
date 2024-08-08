@@ -201,6 +201,7 @@
             updateLibButton.TabIndex = 54;
             updateLibButton.Text = "Update library";
             updateLibButton.UseVisualStyleBackColor = false;
+            updateLibButton.Visible = false;
             updateLibButton.Click += updateLibButton_Click;
             // 
             // Form2
