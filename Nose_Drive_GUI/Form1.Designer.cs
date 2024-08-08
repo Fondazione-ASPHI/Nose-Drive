@@ -718,6 +718,7 @@
             Pause.Text = "PAUSE";
             Pause.UseVisualStyleBackColor = false;
             Pause.Visible = false;
+            Pause.EnabledChanged += Pause_EnabledChanged;
             Pause.Click += Pause_Click;
             // 
             // pauseLabel

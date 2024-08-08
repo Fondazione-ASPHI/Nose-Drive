@@ -109,7 +109,7 @@ namespace Nose_Drive_GUI
                       FileName = @".\python_310\Scripts\pyinstaller.exe",
                       Arguments = "Builder.spec"
                   }
-            };            
+            };
 
             embeddedLogicsDictionary = new Dictionary<int, string>()
             {
@@ -292,7 +292,7 @@ namespace Nose_Drive_GUI
             UpdateSettings();
             SaveSettingsFile();
             UpdateLogic();
-            SaveLogicFile();            
+            SaveLogicFile();
 
             // START BUILD
             if (buildCheck.Checked)
@@ -402,7 +402,8 @@ namespace Nose_Drive_GUI
             {
                 Pause.Visible = true;
                 pauseLabel.Visible = false;
-            }            
+            }
+            Pause.Enabled = false;
 
             activeProcess = process;
             debugLabel.Text = "Background process started";
@@ -511,7 +512,7 @@ namespace Nose_Drive_GUI
                 Debug.WriteLine(line);
                 if (line == "Paused: True")
                 {
-                    debugLabel.Invoke((MethodInvoker)delegate
+                    Pause.Invoke((MethodInvoker)delegate
                     {
                         debugLabel.Text = "Paused: True";
                         Pause.Text = "RESUME";
@@ -519,10 +520,18 @@ namespace Nose_Drive_GUI
                 }
                 else if (line == "Paused: False")
                 {
-                    debugLabel.Invoke((MethodInvoker)delegate
+                    Pause.Invoke((MethodInvoker)delegate
                     {
                         debugLabel.Text = "Paused: False";
                         Pause.Text = "PAUSE";
+                    });
+                }
+                else if (line == "Now Tracking.")
+                {
+                    Pause.Invoke((MethodInvoker)delegate
+                    {
+                        debugLabel.Text = "Now Tracking.";
+                        Pause.Enabled = true;
                     });
                 }
 
@@ -556,6 +565,20 @@ namespace Nose_Drive_GUI
             Pause.Visible = false;
             pauseLabel.Visible = false;
             Pause.Text = "PAUSE";
+        }
+
+        private void Pause_EnabledChanged(object sender, EventArgs e)
+        {
+            if (Pause.Enabled)
+            {
+                Pause.BackColor = Color.FromArgb(3, 160, 139);
+                Pause.ForeColor = Color.White;
+            }
+            else
+            {
+                Pause.BackColor = Color.DarkGray;
+                Pause.ForeColor = Color.WhiteSmoke;
+            }
         }
 
         private void logictab_selecting(object sender, TabControlCancelEventArgs e)
