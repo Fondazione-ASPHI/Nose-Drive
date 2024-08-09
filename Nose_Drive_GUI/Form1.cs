@@ -148,20 +148,20 @@ namespace Nose_Drive_GUI
         void UpdateSettings()
         {
             // Trackbars in main window
-            settingsData.nose_horizontal_sensibility = noseHorBar.Value * 10;
-            settingsData.nose_vertical_sensibility = noseVerBar.Value * 10;
-            settingsData.mouth_horizontal_sensibility = mouthBar.Value * 15;
-            settingsData.eyebrows_sensibility = eyebrowsBar.Value * 40;
+            settingsData.nose_horizontal_sensibility = noseHorBar.Value;
+            settingsData.nose_vertical_sensibility = noseVerBar.Value;
+            settingsData.mouth_horizontal_sensibility = mouthBar.Value;
+            settingsData.eyebrows_sensibility = eyebrowsBar.Value;
         }
 
         void UpdateSettingsGUI(SettingsData settingsData)
         {
             if (settingsData != null)
             {
-                noseHorBar.Value = (int)(settingsData.nose_horizontal_sensibility / 10);
-                noseVerBar.Value = (int)(settingsData.nose_vertical_sensibility / 10);
-                mouthBar.Value = (int)(settingsData.mouth_horizontal_sensibility / 15);
-                eyebrowsBar.Value = (int)(settingsData.eyebrows_sensibility / 40);
+                noseHorBar.Value = (int)(settingsData.nose_horizontal_sensibility);
+                noseVerBar.Value = (int)(settingsData.nose_vertical_sensibility);
+                mouthBar.Value = (int)(settingsData.mouth_horizontal_sensibility);
+                eyebrowsBar.Value = (int)(settingsData.eyebrows_sensibility);
             }
         }
 
