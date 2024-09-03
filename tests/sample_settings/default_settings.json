@@ -1,10 +1,10 @@
 {
-    "nose_horizontal_sensibility": 10,
-    "nose_vertical_sensibility": 20,
-    "mouth_horizontal_sensibility": 50,
-    "eyebrows_sensibility": 80,
-    "calibration_time": 5,
-    "camera": 0,
-    "reset_pos" : "n",
-    "pause" : "p"
+    "nose_horizontal_sensibility": 2,
+    "nose_vertical_sensibility": 3,
+    "mouth_horizontal_sensibility": 2,
+    "eyebrows_sensibility": 3,
+    "pause": "P",
+    "reset_pos": "N",
+    "calibration_time": 3,
+    "camera": 1
 }

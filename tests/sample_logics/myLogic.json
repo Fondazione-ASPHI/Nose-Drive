@@ -1,1 +1,9 @@
-{"nose_horizontal_sensibility":20,"nose_vertical_sensibility":20,"mouth_horizontal_sensibility":30,"eyebrows_sensibility":80,"pause":"p","reset_pos":"n","calibration_time":3,"camera":1}
+{
+    "nose_right": "Right Joystick Right",
+    "nose_left": "Right Joystick Left",
+    "nose_up": "Left Joystick Up",
+    "nose_down": "Left Joystick Down",
+    "eyebrows": "A",
+    "mouth_right": "Dpad Right",
+    "mouth_left": "Dpad Left"
+}
