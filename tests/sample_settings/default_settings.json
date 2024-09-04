@@ -6,5 +6,5 @@
     "pause": "P",
     "reset_pos": "N",
     "calibration_time": 3,
-    "camera": 1
+    "camera": 0
 }

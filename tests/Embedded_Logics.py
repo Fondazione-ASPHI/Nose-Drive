@@ -19,10 +19,8 @@ import keyboard as kb
 def drive(nose_x, nose_y, mouth_x, head_tilt, trigger_eyebrows, trigger_mouth_open):
   gamepad.left_joystick_float(x_value_float=nose_x, y_value_float=0)
   if nose_y > 0:
-    # controller.release(Key.down)
     gamepad.right_trigger_float(value_float=nose_y)
   elif nose_y < 0:
-    # controller.press(Key.down)
     gamepad.left_trigger_float(value_float=1) # value_float=-y if you want analog brake
   gamepad.update()
   gamepad.reset()
@@ -44,17 +42,17 @@ def move3d(nose_x, nose_y, mouth_x, head_tilt, trigger_eyebrows, trigger_mouth_o
 
   if mode == "Move":
     # Camera with HORIZONTAL NOSE
-    if nose_x < -0.2 or nose_x > 0.2: # Left
+    if nose_x < -0.2 or nose_x > 0.2:
       gamepad.right_joystick_float(x_value_float=nose_x, y_value_float=0)
 
     # Movement with VERTICAL NOSE
     gamepad.left_joystick_float(x_value_float=0, y_value_float=nose_y)
 
   elif mode == "Aim":    
-    if nose_x < -0.2 or nose_x > 0.2: # Left
+    if nose_x < -0.2 or nose_x > 0.2:
       x = nose_x
-    if nose_y < -0.2 or nose_y > 0.2: # Right
-      y = nose_y
+    if nose_y < -0.2 or nose_y > 0.2:
+      y = -nose_y
     gamepad.right_joystick_float(x_value_float=x, y_value_float=y)
 
   gamepad.update()
