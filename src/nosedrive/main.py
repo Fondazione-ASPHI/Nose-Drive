@@ -74,17 +74,17 @@ def track_face(logic, options):
 
   # Get options
   if "nose_horizontal_sensibility" in options:
-    nose_horizontal_sensibility = options["nose_horizontal_sensibility"]
+    nose_horizontal_sensibility = options["nose_horizontal_sensibility"] * 10
   if "nose_vertical_sensibility" in options:
-    nose_vertical_sensibility = options["nose_vertical_sensibility"]
+    nose_vertical_sensibility = options["nose_vertical_sensibility"] * 10
   if "mouth_horizontal_sensibility" in options:
-    mouth_horizontal_sensibility = options["mouth_horizontal_sensibility"]
+    mouth_horizontal_sensibility = options["mouth_horizontal_sensibility"] * 15
   if "head_tilt_sensibility" in options:
-    head_tilt_sensibility = options["head_tilt_sensibility"]  
+    head_tilt_sensibility = options["head_tilt_sensibility"] * 10
   if "eyebrows_sensibility" in options:
-    eyebrows_sensibility = options["eyebrows_sensibility"]
+    eyebrows_sensibility = options["eyebrows_sensibility"] * 40
   if "mouth_open_sensibility" in options:
-    mouth_open_sensibility = options["mouth_open_sensibility"]
+    mouth_open_sensibility = options["mouth_open_sensibility"] * 50
   if "calibration_time" in options:
     calibration_time = options["calibration_time"]
   if "camera" in options:
@@ -299,12 +299,24 @@ def track_face(logic, options):
       
       # Flip and show the image horizontally for a selfie-view display.
       flipped_image = cv2.flip(image, 1)
+
+      # TEXT MESSAGE
       if not calibrated:        
         cv2.rectangle(flipped_image, (30, 15), (630, 70), (0, 0, 0), -1)
         cv2.putText(flipped_image, "Stay still in your base position: " + str(calibration_time - wait_time)[0], (50, 50), font, 1, (255, 255, 255), 2, cv2.LINE_4)
       else:
-        cv2.rectangle(flipped_image, (30, 25), (630, 60), (0, 0, 0), -1)
-        cv2.putText(flipped_image, "Now Tracking - " + pause_key + ": pause - " + reset_pos_key + ": reset position", (50, 50), font, 0.75, (255, 255, 255), 2, cv2.LINE_4)
+        message = "Now Tracking"
+        rect_len = 270
+        if pause_key != "":
+          message += " - " + pause_key + ": pause"
+          rect_len += 180
+        if reset_pos_key != "":
+          message += " - " + reset_pos_key + ": reset position"
+          rect_len += 180
+        cv2.rectangle(flipped_image, (30, 25), (rect_len, 60), (0, 0, 0), -1)
+        cv2.putText(flipped_image, message, (50, 50), font, 0.75, (255, 255, 255), 2, cv2.LINE_4)
+      
+      # Show Image
       cv2.imshow("Nose Drive Tracking", flipped_image)
 
       # EXIT

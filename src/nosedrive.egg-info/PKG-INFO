@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: nosedrive
-Version: 0.0.6
+Version: 0.0.7
 Summary: Simulate gamepad or mouse/keyboard inputs using Mediapipe tracking of Face joints.
 Author-email: ASPHI Onlus <supporto@asphi.it>
 Project-URL: Homepage, https://github.com/Fondazione-ASPHI/Nose-Drive
