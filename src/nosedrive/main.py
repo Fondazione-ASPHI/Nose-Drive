@@ -329,9 +329,8 @@ def track_face(logic, options):
           #instead of "adding" the X value to 'tell' how much it shoud move to a direction from a side,
           #we do the opposite and "flip" the logic by taking the opposite side and 'tell' how much it should move away
         #RGB values are flipped: here they are 'BGR'
-        cv2.circle(flipped_image,(width - position_x,position_y), 8, (34,101,241), -1, cv2.LINE_AA)
-        cv2.circle(flipped_image,(width - position_x,position_y), 8, (0,0,0), 2)
-        cv2.circle(flipped_image,(width - position_x,position_y), 7, (255,255,255), 2, cv2.LINE_AA)
+        cv2.circle(flipped_image,(width - position_x,position_y), 8, (34,101,241), -1)
+        cv2.circle(flipped_image,(width - position_x,position_y), 7, (255,255,255), 2)
 
 
       # Show Image
