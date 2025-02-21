@@ -376,7 +376,7 @@ namespace Nose_Drive_GUI
                 // External script or custom-preset script with GUI customized json
                 else
                 {
-                    string args = scriptPath + " " + settingsPath;
+                    string args = "\"" + scriptPath + "\"" + " " + settingsPath;
                     if (scriptPath == "") // case custom preset
                         args = customPath + " " + settingsPath + " " + logicPath;
                     debugLabel.Text = "args: " + args;
